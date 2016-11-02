@@ -55,6 +55,25 @@ def make_label(n, a):
     abbrev = {'alpha': 'a', 'beta': 'b'}
     return('{:s}{:s}'.format(n, abbrev[a]))
 ##
+def merge_degenerate(df_orbs):
+    # orbitals are considered degenerate if their binding and kinetic energies are identical
+    # combine data for degenerate orbitals in DataFrame, merely by increasing
+    #   the corresponding electron count
+    dupl = df_orbs.duplicated(['Energy', 'KE'])
+    uniq = df_orbs.loc[~dupl]
+    degen = df_orbs.loc[dupl]
+    for i in uniq.index:
+        # increase electron count for each matching orbital in 'ndegen' 
+        urow = uniq.loc[i].copy()
+        for j in degen.index:
+            drow = degen.loc[j]
+            if (urow.Energy == drow.Energy) and (urow.KE == drow.KE):
+                # this is a match
+                urow.N += drow.N
+        # replace the electron count in 'uniq'
+        uniq.set_value(i, 'N', urow.N)
+    return uniq
+##
 #
 # Read molecule name from command line
 if len(sys.argv) < 2:
@@ -253,7 +272,7 @@ else:
     # RHF case; simple numeric label
     BUtable['Label'] = BUtable['Orbital']
     ept['Label'] = ept['Orbital']
-# make 'Label' the index of the DataFrames
+# make 'Label' the index of the DataFrames, to use for combining them
 BUtable.set_index(['Label'], inplace=True)
 ept.set_index(['Label'], inplace=True)
 # Replace with HF/ECP values as available
@@ -265,28 +284,31 @@ BUtable.update(ept[['Energy', 'Method']])
 #
 # put Label on the same footing as the other columns
 BUtable.reset_index(inplace=True)
-# delete the 'Orbital' and 'Spin' columns
-del BUtable['Orbital']
-del BUtable['Spin']
-# insert columns: 'N', 'Q', 'DblIon', 'Special'
-BUtable.insert(3, 'N', 1 if uhf else 2)
-BUtable.insert(4, 'Q', 1)
-BUtable.insert(5, 'DblIon', 'No')
-BUtable.insert(6, 'Special', 'none')
+# add columns: 'N', 'Q', 'DblIon', 'Special'
+BUtable['N'] = 1 if uhf else 2
+BUtable['Q'] = 1
+BUtable['DblIon'] = 'No'
+BUtable['Special'] = 'none'
 # make energies positive and convert to eV
 BUtable['Energy'] = BUtable['Energy'].apply(hartree_eV, args=('to_eV', -1))
 BUtable['KE'] = BUtable['KE'].apply(hartree_eV)
 # mark 'DblIon' column where B > VIE2
 BUtable.ix[BUtable['Energy'] > VIE2, 'DblIon'] = 'Yes'
+# Consolidate degenerate orbitals
+BUtable = merge_degenerate(BUtable)
+# delete the 'Orbital' and 'Spin' columns
+del BUtable['Orbital']
+del BUtable['Spin']
 if VIE_method == 'CCSD(T)':
     # replace binding energy for HOMO
     lastrow = len(BUtable.index) - 1
     BUtable.loc[lastrow, 'Energy'] = VIE
     BUtable.loc[lastrow, 'Method'] = VIE_method
-# rename columns as appropriate for input to 'beb_table.pl'
+# rename and rearrange columns as needed for input to 'beb_tbl.pl'
 BUtable = BUtable.rename(index=str, columns={'Label': '#MO', 'KE': 'U/eV', 'Energy': 'B/eV'})
 BUtable = BUtable.rename(index=str, columns={'Method': 'Remarks'})
-# prepend 'B from' to the last column
+BUtable = BUtable[['#MO', 'B/eV', 'U/eV', 'N', 'Q', 'DblIon', 'Special', 'Remarks']]
+# prepend 'B from' to the 'Remarks' column
 BUtable['Remarks'] = 'B from ' + BUtable['Remarks']
 print()
 # print energies rounded to .01 eV and left-justify Remarks
