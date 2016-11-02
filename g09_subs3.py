@@ -251,7 +251,7 @@ def read_g09_std_orient(fhandl):
 def read_g09_stoichiometry(fhandl):
     # read stoichiometry string(s) and parse into a dict. Return a DataFrame:
     #   (1) line number, (2) byte number,
-    #   (3) unparsed stoichiometry string,
+    #   (3) stoichiometry string without parenthetical info,
     #   (4) dict of {element: count} pairs
     byte_start = fhandl.tell()
     fhandl.seek(0)  # rewind file
@@ -261,7 +261,7 @@ def read_g09_stoichiometry(fhandl):
     fline = []
     fpos = []
     lineno = 0
-    regx = re.compile(r'Stoichiometry\s+(\S+)')
+    regx = re.compile(r'Stoichiometry\s+([A-Za-z0-9]+)')
     regxel = re.compile(r'([A-Z][a-z]?)(\d*)')
     while True:
         line = fhandl.readline()
@@ -292,6 +292,7 @@ def read_g09_stoichiometry(fhandl):
     cols = ['line', 'byte', 'Stoich', 'Elements']
     df = pd.DataFrame(data=data, columns=cols)
     fhandl.seek(byte_start) # restore file pointer to original position
+    print(df)
     return df
 ##
 def read_g09_rotational(fhandl):
@@ -987,6 +988,8 @@ def read_g09_ept(fhandl):
     # Read correlated orbital energies from electron propagator calculation.
     # Only read the first set of such data in the target file.
     # Energies in hartree.
+    # NOTE: Gaussian sometimes reports PS = 1.000 when the calculation actually failed.
+    #   so change PS = 1.000 to PS = 0.000 if there was a preceding warning.
     # Return a pandas DataFrame with a row for each orbital like:
     #   (1) line number, (2) byte number,
     #   (3) orbital number (starting with 1 for the lowest core orbital),
@@ -1026,12 +1029,19 @@ def read_g09_ept(fhandl):
     ovgfps = []
     p32ps = []
     p33ps = []
+    warnPS = 0  # counter/flag
+    degenPair = []  # pairs of degenerate orbitals, one skipped by Gaussian
+    degenTo = []  # for each degen. pair, this is the orbital that was skipped
     regx = re.compile('^\s*Summary of results for\s+(alpha|beta)\s+spin-orbital\s+(\d+)\s+(OVGF|P3):')
     regncore = re.compile('^\s*NBasis=\s.*\sNFC=\s+(\d+)\s')
     regkoop = re.compile('^\s*Koopmans theorem:\s+(\S+)')
     reg2nd = re.compile('^\s*Converged second order pole:\s+(\S+).*eV\s+(\S+)')
     reg3rd = re.compile('^\s*Converged (?:third|3rd).*pole:\s+(\S+).*eV\s+(\S+)')
     regova = re.compile('^\s*Outer Valence Approximation:\s+(\S+).*eV\s+(\S+)')
+    regdegen = re.compile('^\s*Orbitals\s+(\d+)\s+and\s+(\d+)\s+are degenerate.  Skipping orbital\s+(\d+)')
+    regwarn = re.compile('WARNING')
+    regblank = re.compile('^\s*$')
+    regPSbad = re.compile('1\.000 \(PS\)')
     ncore = -1
     block = ''  # either 'OVGF' or 'P3'
     while True:
@@ -1045,7 +1055,27 @@ def read_g09_ept(fhandl):
                 # get the number of frozen-core orbitals
                 ncore = int(m.group(1))
         else:
-            # already read the number of frozen cores; look for results
+            # already found the number of frozen cores; look for results
+            m = regdegen.match(line)
+            if m:
+                # a degeneracy statement
+                degenPair.append( (int(m.group(1))+ncore, int(m.group(2))+ncore) )
+                degenTo.append(int(m.group(3)) + ncore)
+            m = regwarn.search(line)
+            if warnPS:
+                # a warning has been issued recently by the EPT module
+                if regblank.match(line):
+                    # blank line, decrement warning monitor
+                    warnPS -= 1
+                else:
+                    if regPSbad.search(line):
+                        # pole strength of 1.000 is probably a mistake;
+                        #   change it to zero
+                        line = line.replace('1.000', '0.000')
+            if m:
+                # the EPT module issued a warning about the following orbital
+                # decrement 'warnPS' with each blank line and ignore it when < 1
+                warnPS = 2
             if block == '':
                 # look for a data block
                 m = regx.match(line)
@@ -1115,8 +1145,7 @@ def read_g09_ept(fhandl):
             'OVGF-3rd', 'OVGF3 PS', 'OVGF', 'OVGF PS']
         df_ovgf = pd.DataFrame(data=data, columns=cols)
         df_ovgf['Orbital'] += ncore # reset the numbering to include the core
-        fhandl.seek(byte_start) # restore file pointer to original position
-        return df_ovgf
+        df = df_ovgf
     if len(oline) < 1 and len(pline) > 0:
         # we have P3 data but no OVGF data
         data = list(zip(pline, ppos, porb, pspin, pkoop, 
@@ -1125,8 +1154,7 @@ def read_g09_ept(fhandl):
             'P3-2nd', 'P3-2 PS', 'P3-3rd', 'P3-3 PS']
         df_p3 = pd.DataFrame(data=data, columns=cols)
         df_p3['Orbital'] += ncore
-        fhandl.seek(byte_start) # restore file pointer to original position
-        return df_p3
+        df = df_p3
     if len(oline) > 0 and len(pline) > 0:
         # we have both OVGF and P3 data
         if len(oline) != len(pline):
@@ -1142,10 +1170,19 @@ def read_g09_ept(fhandl):
             'P3-2nd', 'P3-2 PS', 'P3-3rd', 'P3-3 PS']
         df = pd.DataFrame(data=data, columns=cols)
         df['Orbital'] += ncore
-        fhandl.seek(byte_start) # restore file pointer to original position
-        return df
     fhandl.seek(byte_start) # restore file pointer to original position
-    return 'should not get here in read_g09_ept'
+    # apply any degeneracy information
+    for i in range(len(degenTo)):
+        degenFrom = degenPair[i][0]
+        if degenFrom == degenTo[i]:
+            # choose the other one
+            degenFrom = degenPair[i][1]
+        # duplicate data for the degenerate orbital
+        rowFrom = df[df['Orbital'] == degenFrom]
+        df = df.append(rowFrom, ignore_index=True)
+        lastrow = len(df.index) - 1
+        df.set_value(lastrow, 'Orbital', degenTo[i])
+    return df
 ##
 def read_best_ept(fhandl, minPS=0.80):
     # select the "best" values from EPT/OVGF calculations
