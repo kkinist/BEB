@@ -1,0 +1,27 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'no2' (doublet NO2)
+# Double-ionization threshold = 34.59 eV from CCSD(T) (to doublet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1a	562.92	794.46	1	1	Yes	none	B from Koopmans
+1b	562.52	795.08	1	1	Yes	none	B from Koopmans
+2a	562.92	794.46	1	1	Yes	none	B from Koopmans
+2b	562.52	795.09	1	1	Yes	none	B from Koopmans
+3a	432.12	602.12	1	1	Yes	none	B from Koopmans
+3b	431.50	602.73	1	1	Yes	none	B from Koopmans
+4a	45.77	72.80	1	1	Yes	none	B from Koopmans
+4b	44.59	71.13	1	1	Yes	none	B from Koopmans
+5a	40.88	79.26	1	1	Yes	none	B from Koopmans
+5b	39.73	77.42	1	1	Yes	none	B from Koopmans
+6a	22.83	79.26	1	1	No	none	B from P3-3rd
+6b	22.05	81.32	1	1	No	none	B from P3-3rd
+7a	19.92	59.48	1	1	No	none	B from P3-3rd
+7b	19.41	71.79	1	1	No	none	B from P3-3rd
+8b	18.59	51.06	1	1	No	none	B from P3-3rd
+8a	19.89	72.05	1	1	No	none	B from P3-3rd
+9b	18.14	51.49	1	1	No	none	B from P3-3rd
+9a	19.05	51.26	1	1	No	none	B from P3-3rd
+10b	13.71	64.73	1	1	No	none	B from P3-3rd
+10a	14.27	72.09	1	1	No	none	B from P3-3rd
+11b	13.09	65.61	1	1	No	none	B from P3-3rd
+11a	13.90	65.19	1	1	No	none	B from P3-3rd
+12a	11.05	75.76	1	1	No	none	B from CCSD(T)

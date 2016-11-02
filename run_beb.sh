@@ -7,7 +7,7 @@ if [ $# -lt 1 ]; then
 	echo 'Please supply a filename root (i.e., specify molecule)'
 	exit
 fi
-for suff in "_geom" "_bu" "_bupp" "_ept" "_cc" "_ept2" "_dbl"; do
+for suff in "_opt" "_bu" "_bupp" "_ept1" "_ept2" "_cc" "_cc1hi" "_cc1lo" "_cc2hi" "_cc2lo" ; do
 	fin="$1$suff.gjf"
 	fout="$1$suff.out"
 	if [ -e "$fout" ]; then
@@ -16,7 +16,7 @@ for suff in "_geom" "_bu" "_bupp" "_ept" "_cc" "_ept2" "_dbl"; do
 		echo Running $fin
 		g09 < $fin > $fout
 	fi
-    if [ "$suff" = "_geom" ]; then
+    if [ "$suff" = "_opt" ]; then
         # check number of imaginary vib. freqs
         nim=`nimag.pl $fout`
         if [[ $nim =~ [1-9]$ ]]; then
