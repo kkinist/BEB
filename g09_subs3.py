@@ -1031,6 +1031,7 @@ def read_g09_ept(fhandl):
     p33ps = []
     warnPS = 0  # counter/flag
     degenPair = []  # pairs of degenerate orbitals, one skipped by Gaussian
+    #   one element of degenPair looks like ('alpha'|'beta', orbnum1, orbnum2)
     degenTo = []  # for each degen. pair, this is the orbital that was skipped
     regx = re.compile('^\s*Summary of results for\s+(alpha|beta)\s+spin-orbital\s+(\d+)\s+(OVGF|P3):')
     regncore = re.compile('^\s*NBasis=\s.*\sNFC=\s+(\d+)\s')
@@ -1059,7 +1060,7 @@ def read_g09_ept(fhandl):
             m = regdegen.match(line)
             if m:
                 # a degeneracy statement
-                degenPair.append( (int(m.group(1))+ncore, int(m.group(2))+ncore) )
+                degenPair.append( ( ospin[-1], int(m.group(1))+ncore, int(m.group(2))+ncore) )
                 degenTo.append(int(m.group(3)) + ncore)
             m = regwarn.search(line)
             if warnPS:
@@ -1080,6 +1081,7 @@ def read_g09_ept(fhandl):
                 # look for a data block
                 m = regx.match(line)
                 if m:
+                    # this is a data block
                     block = m.group(3)
                     if block == 'OVGF':
                         oline.append(lineno)
@@ -1173,12 +1175,12 @@ def read_g09_ept(fhandl):
     fhandl.seek(byte_start) # restore file pointer to original position
     # apply any degeneracy information
     for i in range(len(degenTo)):
-        degenFrom = degenPair[i][0]
+        degenFrom = degenPair[i][1]
         if degenFrom == degenTo[i]:
             # choose the other one
-            degenFrom = degenPair[i][1]
+            degenFrom = degenPair[i][2]
         # duplicate data for the degenerate orbital
-        rowFrom = df[df['Orbital'] == degenFrom]
+        rowFrom = df[(df['Orbital'] == degenFrom) & (df['Spin'] == degenPair[i][0])]
         df = df.append(rowFrom, ignore_index=True)
         lastrow = len(df.index) - 1
         df.set_value(lastrow, 'Orbital', degenTo[i])
