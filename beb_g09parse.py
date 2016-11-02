@@ -53,7 +53,7 @@ def ion_multiplicity(nalp_neut, nbet_neut, orb_spin):
 ##
 def make_label(n, a):
     abbrev = {'alpha': 'a', 'beta': 'b'}
-    return('{:s}{:s}'.format(n, abbrev[a]))
+    return('{:d}{:s}'.format(n, abbrev[a]))
 ##
 def merge_degenerate(df_orbs):
     # orbitals are considered degenerate if their binding and kinetic energies are identical
@@ -263,22 +263,31 @@ if cc_neut != 0:
 # Make an index, 'Label', that works for UHF and RHF
 BUtable = buae.copy()
 BUtable['Method'] = 'Koopmans'
+# Replace with HF/ECP values as available
+# xxx yet to be coded xxx
 # If this is UHF-based, replace orbital numbers with labels like '1a', '1b'
 if uhf:
     # re-label orbitals 
-    BUtable['Label'] = BUtable.apply(lambda: make_label(x['Orbital'], x['Spin']), axis=1)
-    ept['Label'] = ept.apply(lambda: make_label(x['Orbital'], x['Spin']), axis=1)
+    BUtable['Label'] = BUtable.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
 else:
     # RHF case; simple numeric label
     BUtable['Label'] = BUtable['Orbital']
-    ept['Label'] = ept['Orbital']
-# make 'Label' the index of the DataFrames, to use for combining them
-BUtable.set_index(['Label'], inplace=True)
-ept.set_index(['Label'], inplace=True)
-# Replace with HF/ECP values as available
-# xxx
-# Replace with EPT values as available
-BUtable.update(ept[['Energy', 'Method']])
+# If EPT calculations were done, use those values where available
+try:
+    if uhf:
+        ept['Label'] = ept.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
+    else:
+        ept['Label'] = ept['Orbital']
+    # make 'Label' the index of the DataFrames, to use for combining them
+    BUtable.set_index(['Label'], inplace=True)
+    ept.set_index(['Label'], inplace=True)
+    # Replace with EPT values as available
+    BUtable.update(ept[['Energy', 'Method']])
+    # restore default label
+    BUtable.reset_index(inplace=True)
+except:
+    # no EPT calculations are available
+    pass
 #
 # prepare BUtable for output
 #
@@ -296,20 +305,29 @@ BUtable['KE'] = BUtable['KE'].apply(hartree_eV)
 BUtable.ix[BUtable['Energy'] > VIE2, 'DblIon'] = 'Yes'
 # Consolidate degenerate orbitals
 BUtable = merge_degenerate(BUtable)
-# delete the 'Orbital' and 'Spin' columns
-del BUtable['Orbital']
-del BUtable['Spin']
 if VIE_method == 'CCSD(T)':
     # replace binding energy for HOMO
-    lastrow = len(BUtable.index) - 1
-    BUtable.loc[lastrow, 'Energy'] = VIE
-    BUtable.loc[lastrow, 'Method'] = VIE_method
+    if uhf and (mult_ion > mult):
+        # apply VIE to the highest beta orbital
+        homo_spin = 'beta'
+    else:
+        # apply VIE to the highest alpha orbital
+        homo_spin = 'alpha'
+    homo = BUtable.loc[BUtable['Spin'] == homo_spin]['Orbital'].idxmax()
+    BUtable.loc[homo, 'Energy'] = VIE
+    BUtable.loc[homo, 'Method'] = VIE_method
+# sort by orbital number (with alphas and betas interleaved)
+BUtable = BUtable.sort_values(by='Orbital')
 # rename and rearrange columns as needed for input to 'beb_tbl.pl'
 BUtable = BUtable.rename(index=str, columns={'Label': '#MO', 'KE': 'U/eV', 'Energy': 'B/eV'})
 BUtable = BUtable.rename(index=str, columns={'Method': 'Remarks'})
 BUtable = BUtable[['#MO', 'B/eV', 'U/eV', 'N', 'Q', 'DblIon', 'Special', 'Remarks']]
 # prepend 'B from' to the 'Remarks' column
 BUtable['Remarks'] = 'B from ' + BUtable['Remarks']
+# last-minute check of electron count
+if BUtable['N'].sum() != (nalp + nbet):
+    # We've lost or gained electrons!
+    print('*** Error: there are {:d} electrons but should be {:d}! ***'.format(BUtable['N'].sum(), nalp+nbet))
 print()
 # print energies rounded to .01 eV and left-justify Remarks
 fp2 = lambda x: '{:.2f}'.format(x)
@@ -321,7 +339,7 @@ fbun = '{:s}.bun'.format(mol)
 fh = open(fbun, 'w')
 fh.write('# Results from automated beb_g09build.py and beb_g09parse.py\n')
 fh.write("# Molecule is '{:s}' ({:s} {:s})\n".format(mol, spinname(mult), stoich))
-fh.write('# Double-ionization threshold = {:.2f} from {:s} (to {:s} dication)\n'.format(VIE2, VIE2_method, spinname(mult_dicat)))
+fh.write('# Double-ionization threshold = {:.2f} eV from {:s} (to {:s} dication)\n'.format(VIE2, VIE2_method, spinname(mult_dicat)))
 fh.write(s)
 fh.close()
 print('BUN data file {:s} written and closed.'.format(fbun))
