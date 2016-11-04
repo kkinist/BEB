@@ -204,7 +204,7 @@ def newfile(froot, filext):
     # return the filehandle
     fname = '{:s}_{:s}.gjf'.format(froot, filext)
     fgjf = open( fname, 'w' )
-    print( 'created file ', fname )
+    print( 'creating file', fname )
     return fgjf
 #
 # MAIN
@@ -265,10 +265,11 @@ fgjf.write( basis )
 fgjf.close()
 #
 # create all-electron input file for Hartree-Fock B + U (step 2)
+# [include Mulliken population analysis]
 #
 step = 2
 fgjf = newfile(froot, filext[step])
-directive = '# HF/GEN geom=check IOP(6/81=3) scf=xqc\n'
+directive = '# HF/GEN geom=check IOP(6/81=3) scf=xqc pop=reg\n'
 comment = '\nBEB step {:d}: Hartree-Fock B and U for {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 basis = specify_basis( elem, step )
