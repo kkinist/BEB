@@ -84,6 +84,7 @@ mol = sys.argv[1]
 df_bun = pd.DataFrame()
 # initialize CCSD(T) energies to zero (calculations may not be available)
 cc_neut = cc_ion_hi = cc_ion_lo = cc_dicat_hi = cc_dicat_lo = 0
+ecp = False  # flag
 # parse each output job file in turn
 for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
     fname = '{:s}_{:s}.out'.format(mol, suff)
@@ -129,6 +130,15 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         buae = read_g09_oeke(fgau)[['Orbital', 'Spin', 'Energy', 'KE']]
         print('HF orbital and kinetic energies (hartree):')
         print(buae.to_string(index=False))
+        # In case there are no ECP calculations, cope with n>2 possibility
+        zvals = elz(list(elems.keys()))
+        heavies = max(zvals) > 10
+        if heavies:
+            # Deal with this!
+            buae['Special'] = 'deal'
+        else:
+            # just create the 'Special' column
+            buae['Special'] = 'none'
         uhf = ('beta' in buae.Spin.tolist() )   # flag to indicate separate beta orbitals
         # extract crude molecular ionization threhold
         VIE, iespin, iemeth = weakest_binding(buae)
@@ -136,32 +146,34 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         print('Crude VIE = {:.2f} eV to {:s} cation.'.format(VIE, spinname(mult_ion)))
         VIE_method = 'Koopmans'
         VIE2 = 40.0  # guess for vertical double ionization energy (eV)
-        VIE2_method = 'guess'
+        VIE2_method = 'guessing'
+        mult_dicat = 0  # unknown
     if suff == 'bupp':
         # get valence B/U from HF/ECP calculation
-        bupp = read_g09_oeke(fgau)[['Orbital', 'Spin', 'E', 'KE']]
+        bupp = read_g09_oeke(fgau)[['Orbital', 'Spin', 'Energy', 'KE']]
         print('HF/ECP orbital (-B) and kinetic (U) energies (hartree):')
         bupp['Method'] = 'ECP'
-        print(bupp.to_string(index=False))
+        # adjust orbital numbers to account for core
         ppcore = len(buae[buae.Spin == 'alpha'].index) - len(bupp[bupp.Spin == 'alpha'].index) 
         print('ECP (pseudopotential) replaced {:d} electron pairs'.format(ppcore))
+        bupp['Orbital'] += ppcore
+        print(bupp.to_string(index=False))
         # note any light-atom core orbitals remaining
         ppskip = ncore - ppcore
-        print('\t({:d} core orbitals remain)'.format(ppskip))
-        sys.exit('stop for now')
-        for x in bu:
-            # print B and U values in eV; key 'x' is 'alpha' or 'beta'
-            if len( bu[x] ) < 1 :
-                continue
-            print( '\t\t', x, '[-B, U]/eV' )
-            for y in bu[x]:
-                # 'y' is the list [B, U] for one orbital; print in eV and rounded
-                yev = [ round(t*ev, 2) for t in y ]
-                print( '\t\t', yev )
-        # must add code to extract VIE, replacing 'bu' value xxx
+        if ppskip > 0:
+            print('({:d} core orbitals remain)'.format(ppskip))
+        # extract VIE but don't replace the all-electron value from the previous file
+        VIE_pp, ppspin, ppmeth = weakest_binding(bupp)
+        mult_pp, nalp_pp, nbet_pp = ion_multiplicity(nalp-ppcore, nbet-ppcore, ppspin)
+        print('Crude VIE = {:.2f} eV to {:s} cation.'.format(VIE_pp, spinname(mult_pp)))
+        ecp = True
     if suff == 'ept1':
         # extract correlated orbital energies (negative of binding energies)
         ept = read_best_ept(fgau, minPS=0.75)
+        # degeneracies will cause a funny orbital ordering--sort before printing
+        ept = ept.sort_values(by=['Spin', 'Orbital'])
+        # also put columns in the same order as the HF results just displayed
+        ept = ept[['Orbital', 'Spin', 'Energy', 'PS', 'Method']]
         print(ept.to_string(index=False))
         # infer cation ground state
         VIE, iespin, VIE_method = weakest_binding(ept)
@@ -181,7 +193,22 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         mult_dicat, nalpdbl, nbetdbl = ion_multiplicity(nalpion, nbetion, ie2spin)
         print('Second IE = {:.2f} eV to the {:s} dication from {:s} theory.'.format(IEcat,
             spinname(mult_dicat), ie2meth))
-        VIE2_method = ie2meth
+        # infer double-ionization threshold, VIE2
+        # was this calculation referenced to the ground state of the ion?
+        if mult_ion == nalpion - nbetion + 1:
+            # yes
+            VIE2 = VIE + IEcat
+            VIE2_method = '({:s} + {:s})'.format(VIE_method, ie2meth)
+        else:
+            # no, it was referenced to an excited state; it should only be too high by S=1
+            if mult_ion == nalpion - nbetion - 1:
+                # was high-spin; choose the highest beta orbital energy from ept1
+                VIE_exc, iespin, exc_method = weakest_binding(ept.loc[ept['Spin'] == 'beta'])
+                VIE2 = VIE_exc + IEcat
+                VIE2_method = '({:s} + {:s})'.format(exc_method, ie2meth)
+            else:
+                print('--- I am confused about the EPT spin states to combine for VIE2 ---')
+        print('Estimated VIE2 = {:.2f} eV from {:s} theory.'.format(VIE2, VIE2_method))
     if re.match('cc\S*', suff):
         # one of the CCSD(T) calculations
         # use only the first CCSD(T) energy in the file
@@ -231,7 +258,7 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
 # done reading Gaussian output files
 fgau.close()
 # process available CCSD(T) energies
-cc_ion = cc_dicat = mult_ion = mult_dicat = 0   # for the lower-energy states
+cc_ion = cc_dicat = 0   # for the lower-energy states
 if cc_neut != 0:
     # neutral energy is available; try to compute VIE and VIE2
     if (cc_ion_hi + cc_ion_lo) != 0:
@@ -263,8 +290,6 @@ if cc_neut != 0:
 # Make an index, 'Label', that works for UHF and RHF
 BUtable = buae.copy()
 BUtable['Method'] = 'Koopmans'
-# Replace with HF/ECP values as available
-# xxx yet to be coded xxx
 # If this is UHF-based, replace orbital numbers with labels like '1a', '1b'
 if uhf:
     # re-label orbitals 
@@ -272,19 +297,32 @@ if uhf:
 else:
     # RHF case; simple numeric label
     BUtable['Label'] = BUtable['Orbital']
+# make 'Label' the index so merging the DataFrames is easier
+BUtable.set_index(['Label'], inplace=True)
+# Use kinetic energies from ECP calculation, if available
+if ecp:
+    if uhf:
+        bupp['Label'] = bupp.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
+    else:
+        bupp['Label'] = bupp['Orbital']
+    bupp.set_index(['Label'], inplace=True)
+    # replace the kinetic energies
+    BUtable.update(bupp[['KE', 'Method']])
+    # remove n>2 special cases
+    BUtable['Special'] = 'none'
 # If EPT calculations were done, use those values where available
 try:
     if uhf:
         ept['Label'] = ept.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
     else:
         ept['Label'] = ept['Orbital']
-    # make 'Label' the index of the DataFrames, to use for combining them
-    BUtable.set_index(['Label'], inplace=True)
     ept.set_index(['Label'], inplace=True)
     # Replace with EPT values as available
-    BUtable.update(ept[['Energy', 'Method']])
-    # restore default label
-    BUtable.reset_index(inplace=True)
+    BUtable.update(ept['Energy'])
+    # If Method == ECP, don't erase that info
+    BUtable.loc[BUtable['Method'] != 'ECP'].update(ept['Method'])
+    ecprows = BUtable['Method'] == 'ECP'
+    BUtable.loc[ecprows, 'Method'] = 'B ' + ept['Method'] + '; U ECP'
 except:
     # no EPT calculations are available
     pass
@@ -293,11 +331,10 @@ except:
 #
 # put Label on the same footing as the other columns
 BUtable.reset_index(inplace=True)
-# add columns: 'N', 'Q', 'DblIon', 'Special'
+# add columns: 'N', 'Q', 'DblIon'
 BUtable['N'] = 1 if uhf else 2
 BUtable['Q'] = 1
 BUtable['DblIon'] = 'No'
-BUtable['Special'] = 'none'
 # make energies positive and convert to eV
 BUtable['Energy'] = BUtable['Energy'].apply(hartree_eV, args=('to_eV', -1))
 BUtable['KE'] = BUtable['KE'].apply(hartree_eV)
@@ -322,17 +359,12 @@ BUtable = BUtable.sort_values(by='Orbital')
 BUtable = BUtable.rename(index=str, columns={'Label': '#MO', 'KE': 'U/eV', 'Energy': 'B/eV'})
 BUtable = BUtable.rename(index=str, columns={'Method': 'Remarks'})
 BUtable = BUtable[['#MO', 'B/eV', 'U/eV', 'N', 'Q', 'DblIon', 'Special', 'Remarks']]
-# prepend 'B from' to the 'Remarks' column
-BUtable['Remarks'] = 'B from ' + BUtable['Remarks']
 # last-minute check of electron count
 if BUtable['N'].sum() != (nalp + nbet):
     # We've lost or gained electrons!
     print('*** Error: there are {:d} electrons but should be {:d}! ***'.format(BUtable['N'].sum(), nalp+nbet))
 print()
-# print energies rounded to .01 eV and left-justify Remarks
-fp2 = lambda x: '{:.2f}'.format(x)
-fl = lambda x: '{:15s}'.format(x)
-# tab-delimited
+# print tab-delimited and with energies rounded to .01 eV 
 s = BUtable.to_csv(sep='\t', float_format='%.2f', index=False)
 print(s)
 fbun = '{:s}.bun'.format(mol)
