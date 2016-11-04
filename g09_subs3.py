@@ -5,7 +5,9 @@
 import sys
 import re
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+from chem_subs import *
 ####
 def read_g09_command(fhandl):
     # read all Gaussian command-lines
@@ -292,7 +294,6 @@ def read_g09_stoichiometry(fhandl):
     cols = ['line', 'byte', 'Stoich', 'Elements']
     df = pd.DataFrame(data=data, columns=cols)
     fhandl.seek(byte_start) # restore file pointer to original position
-    print(df)
     return df
 ##
 def read_g09_rotational(fhandl):
@@ -927,6 +928,7 @@ def read_g09_oeke(fhandl, virtual=False):
     #   (3) orbital number, (4) spin (alpha or beta), (5) orbital label,
     #   (6) energy,
     #   (7) kinetic energy
+    # To get appropriate output from Gaussian, use IOP(6/81=3)
     #
     byte_start = fhandl.tell()
     fhandl.seek(0)  # rewind file
@@ -1213,4 +1215,166 @@ def read_best_ept(fhandl, minPS=0.80):
         df.ix[choose, 'Energy'] = df[ecol]
         df.ix[choose, 'PS'] = df[col]
     return df[['Orbital', 'Spin', 'Method', 'Energy', 'PS']]
+##
+def n_sdd(atno, all=False):
+    # given Z value (or element symbol) return number of electrons replaced by SDD
+    #   pseudopotential (SDDall if all==True)
+    if type(atno) != int:
+        # convert symbol to Z value
+        atno = elz(atno)
+    if all:
+        zmin = 1
+    else:
+        zmin = 19
+    if atno < zmin:
+        return 0
+    core = {
+        3  :  2,
+        11 : 10,
+        31 : 28,
+        49 : 46,
+        57 : 28,
+        72 : 60,
+        81 : 78,
+        89 : 60
+    }
+    npp = 0
+    for ki in sorted(core):
+        if atno >= ki:
+            npp = core[ki]
+    return npp
+##
+def read_Mulliken_charges(fhandl, sumH=False):
+    # Read Mulliken charges.  If sumH==True, read "with hydrogens summed into heavy atoms".
+    # Return a pandas DataFrame with a row for each set of populations like:
+    #   (1) line number, (2) byte number,
+    #   (3) a DataFrame with columns:
+    #       (a) 'Element' (element symbol)
+    #       (b) 'Charge' (Mulliken atomic charge)
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    fline = []
+    fpos = []
+    Mulq = []
+    lineno = 0
+    inblock = False
+    if sumH:
+        regstart = re.compile('Mulliken charges( and spin densities)? with hydrogens summed')
+    else:
+        regstart = re.compile('Mulliken charges( and spin densities)?:')
+    regdata = re.compile(r'\s+\d+\s+[A-Z][a-z]?\s+')    # atom number, element symbol
+    regheader = re.compile(r'^[\s\d]+$')
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        lineno += 1
+        if inblock:
+            m = regdata.match(line)
+            if m:
+                # save the element symbol and the charge
+                # line example: " 1  Cl   0.069672   0.086170" (last float is spin density)
+                fields = line.split()
+                elem.append(fields[1])
+                charge.append(float(fields[2]))
+            else:
+                m = regheader.match(line)
+                if m:
+                    # just skip this line
+                    continue
+                # end of data block
+                data = list(zip(elem, charge))
+                cols = ['Element', 'Charge']
+                df = pd.DataFrame(data, columns=cols)
+                Mulq.append(df)
+                inblock = False
+        m = regstart.search(line)
+        if m:
+            # found a block of Mulliken charges
+            fline.append(lineno)
+            fpos.append(fhandl.tell())
+            inblock = True
+            elem = []
+            charge = []
+    data = list(zip(fline, fpos, Mulq))
+    cols = ['line', 'byte', 'Mulliken']
+    df = pd.DataFrame(data, columns=cols)
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return df
+##
+def read_Mulliken_pops(fhandl):
+    # Read (one) full Mulliken population analysis
+    # Return four things:
+    #   (1) number of basis functions (i.e., dimensionality of mulpop matrix)
+    #   (2) list of element symbols
+    #   (3) list of basis function descriptors, each a tuple:
+    #       (a) atom number (corresponding to list of element symbols)
+    #       (b) basis function label (a string)
+    #   (4) numpy array (nbfn x nbfn) of Mulliken populations
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    nbfn = 0
+    symb = []
+    bfn_label = []
+    regnbf = re.compile('\s*NBsUse=\s+(\d+)\s+')
+    regstart = re.compile('\s+Full Mulliken')
+    regend = re.compile('\s+Gross orbital')
+    regheader = re.compile(r'^[\s\d]+$')
+    regdata = re.compile(r'\s+\d+\s+.*\d+[A-Z]+.*\d\.\d{5}')
+    regfloat = re.compile(r'-?\d+\.\d+\b')
+    regolbl = re.compile('\d+[A-Z]+([-+ ]\d)?')  # orbital label may have embedded space!
+    inblock = False
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        m = regnbf.match(line)
+        if m:
+            # number of basis functions
+            nbfn = int(m.group(1))
+            # prepare mulpop array with this dimensionality
+            mulpop = np.zeros((nbfn, nbfn))
+        if inblock:
+            # have we reached the end of the data block?
+            m = regend.match(line)
+            if m:
+                # stop reading the file
+                inblock = False
+                print('block end')
+                break
+            # is this a header line of indices?
+            m = regheader.match(line)
+            if m:
+                # yes, read orbital indices
+                colnum = [int(i)-1 for i in line.split()]
+                continue
+            # is this a data line?
+            m = regdata.match(line)
+            if m:
+                # yes, read some data
+                field = line.split()
+                rownum = int(field[0]) - 1
+                # extract orbital label
+                m = regolbl.search(line)
+                fnlabel = m.group(0)
+                try:
+                    # if second field is integer, it's an atom number followed by a symbol
+                    atno = int(field[1]) - 1
+                    if atno >= len(symb):
+                        # add this atom to the list
+                        symb.append(field[2])
+                except:
+                    # this is a regular data line
+                    pass
+                if rownum >= len(bfn_label):
+                    bfn_label.append(fnlabel)
+                # remaining fields are mulpop values
+                vals = regfloat.findall(line)
+        m = regstart.match(line)
+        if m:
+            # found the Mulliken populations
+            print('block start')
+            inblock = True
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return nbfn, symb, bfn_label, mulpop
 ##
