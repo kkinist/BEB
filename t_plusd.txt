@@ -1,0 +1,2 @@
+The file t_plusd.gbs includes sets for Na and Mg that are really cc-pVTZ, not 
+cc-pV(T+d)Z.  I did this for convenience in writing beb_g09build.py.

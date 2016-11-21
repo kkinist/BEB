@@ -1,0 +1,13 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'h2s' (singlet H2S)
+# Double-ionization threshold = 31.59 eV from CCSD(T) (to singlet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	2502.63	3297.09	2	1	Yes	none	Koopmans
+2	244.15	509.18	2	1	Yes	none	Koopmans
+3	181.08	478.00	2	1	Yes	none	Koopmans
+4	181.06	478.57	2	1	Yes	none	Koopmans
+5	181.01	479.58	2	1	Yes	none	Koopmans
+6	26.71	11.97	2	1	No	none	B Koopmans; U ECP
+7	15.40	18.79	2	1	No	none	B P3-3rd; U ECP
+8	12.95	17.99	2	1	No	none	B P3-3rd; U ECP
+9	10.30	17.89	2	1	No	none	CCSD(T)
