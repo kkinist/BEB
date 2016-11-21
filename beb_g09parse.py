@@ -33,14 +33,14 @@ def weakest_binding(df_orbitals):
 ##
 def ion_multiplicity(nalp_neut, nbet_neut, orb_spin):
     # given N_alpha and N_beta for neutral molecule, and spin of orbital ('alpha'
-    #   or 'beta') being ionized, return: 
+    #   or 'beta' or 'both') being ionized, return: 
     #   (1) the spin multiplicity of the resulting ion,
     #   (2) the number of alpha and (3) beta electrons in the ion
     nalp_ion = nalp_neut
     nbet_ion = nbet_neut
     if orb_spin == 'alpha':
         nalp_ion -= 1
-    elif orb_spin == 'beta':
+    elif orb_spin == 'beta' or orb_spin == 'both':
         nbet_ion -= 1
     else:
         print('*** Unrecognized orbital spin for ionization: {:s}'.format(orb_spin))
@@ -50,10 +50,6 @@ def ion_multiplicity(nalp_neut, nbet_neut, orb_spin):
         (nalp_ion, nbet_ion) = (nbet_ion, nalp_ion)
     ionmult = nalp_ion - nbet_ion + 1
     return ionmult, nalp_ion, nbet_ion
-##
-def make_label(n, a):
-    abbrev = {'alpha': 'a', 'beta': 'b'}
-    return('{:d}{:s}'.format(n, abbrev[a]))
 ##
 def merge_degenerate(df_orbs):
     # orbitals are considered degenerate if their binding and kinetic energies are identical
@@ -74,7 +70,96 @@ def merge_degenerate(df_orbs):
         uniq.set_value(i, 'N', urow.N)
     return uniq
 ##
-#
+def assign_n(contrib, cumul, degen, nmin):
+    # assign the principal quantum number in Mulliken contributions of AOs to MOs
+    if contrib > 1:
+        # avoid n-skipping by disallowing contributions > 1
+        cumul -= contrib - 1
+    a = cumul / degen
+    i = int(a)
+    if a == i:
+        n = nmin + i - 1
+    else:
+        n = nmin + i
+    return int(n)
+##
+def special_n(fgau, Nthresh):
+    # Read AO contributions to MOs, using 'read_AOpop_in_MOs()',
+    #   return a dict of 'special' strings, e.g., '3p' or '3s' with
+    #   MO labels as index
+    # 'Nthresh' is the minimum contribution to trigger 'special' treatment
+    # Take ECPs into account
+    df = read_AOpop_in_MOs(fgau)
+    df_occ = df[df['Occ'] == 'occ'].copy()
+    # if there are separate alpha and beta orbitals, change the 'MO' label
+    #   to include that information
+    if 'beta' in set(df_occ['Spin']):
+        df_occ = combine_MOspin(df_occ, 'MO', 'Spin', 'MO')
+    # for each atom, sum the contributions for each L-value
+    csum = df_occ.groupby(by=['Spin', 'Atom#', 'L']).cumsum()['Contrib']
+    df_occ = df_occ.assign(Cumul = csum)
+    grp = df_occ.groupby(by=['Spin', 'Atom#', 'L'])
+    df_occ['n'] = 0
+    # Find how many core electrons are replaced by pseudopotentials (on each atom)
+    ppe = read_ECP_electrons(fgau)
+    for name, group in grp:
+        iatno = name[1] # center number in molecule (starting from 1)
+        Lval = name[2]  # angular momentum value ('s', 'p', 'd', etc.)
+        elem = group['Elem'].iloc[0]
+        # routine 'assign_n' determines the values of n
+        nstart = starting_n(Lval, ppe[iatno])
+        degen = L_degeneracy(Lval)
+        #print('iatno =', iatno, 'Lval =', Lval, 'elem =', elem, 'nstart =', nstart, 'degen =', degen)
+        # the ECP only removes (radial) nodes if it replaces an inner shell of the same L
+        if nstart == starting_n(Lval, 0):
+            # this is the starting 'n' you'd have without an ECP, so it will be 'special'
+            nvals = group.apply(lambda row: assign_n(row['Contrib'], row['Cumul'], degen, nstart), axis=1)
+        else:
+            # some radial nodes have been removed, so this AO is not 'special'
+            pass
+        df_occ['n'].update(nvals)
+    # For each MO, see if it is dominated by one n.  If so, report that n.
+    gmo = df_occ.groupby(by=['MO'])
+    ndomin = {}  # dominant value of principal quantum number (n) for each MO
+    ldomin = {}  # dominant angular momentum within ndomin[mo]
+    for mo, group in gmo:
+        nsum = {}  # sums for values of n
+        for nval in set(group['n']):
+            nsum[nval] = group[group['n'] == nval]['Contrib'].sum()
+            if nsum[nval] > Nthresh:
+                # dominant value of n for this MO
+                ndomin[mo] = nval
+        if not mo in ndomin:
+            # no dominant value of n; combine "high" values
+            hi = 0
+            cmax = nmax = 0
+            for n in nsum:
+                if n >= 3:
+                    # these are 'high' values of n
+                    hi += nsum[n]
+                    if nsum[n] > cmax:
+                        nmax = n
+            if hi > Nthresh:
+                # threshold exceeded for mixed high-n 
+                # choose the value of n that has the largest contribution
+                ndomin[mo] = nmax
+            else:
+                ndomin[mo] = ldomin[mo] = 0  # no dominant value of n
+    # find the dominant value of L
+    gmon = df_occ.groupby(by=['MO','n'])
+    for (mo, n), group in gmon:
+        if ndomin[mo] == n:
+            i = group['Contrib'].idxmax()
+            ldomin[mo] = group.loc[i, 'L']
+    domlbl = {}
+    for mo, group in gmo:
+        if ndomin[mo] >= 3:
+            domlbl[mo] = str(ndomin[mo]) + ldomin[mo]
+        else:
+            domlbl[mo] = ''
+    return domlbl
+##
+##
 # Read molecule name from command line
 if len(sys.argv) < 2:
     sys.exit('This script is for parsing Gaussian jobs created by script "beb_g09build.py"' +
@@ -114,6 +199,7 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         else:
             print('local minimum with nimag = 0')
     if suff == 'bu':
+        # this is the only file that is essential to get a BEB result
         # extract stoichiometry, charge, and spin multiplicity
         df = read_g09_stoichiometry(fgau)
         stoich = df.iloc[0].Stoich
@@ -121,23 +207,35 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         df = read_g09_charge_mult(fgau)
         charge = df.iloc[0].Charge
         mult = df.iloc[0].Mult
-        ncore = n_core(elems) // 2  # number of conventional core orbitals
         nelec = read_g09_electrons(fgau).iloc[0]
         nalp = nelec.Alpha
         nbet = nelec.Beta
+        nelec = nelec.Total
         # extract HF orbital energies and kinetic energies for occupied orbitals
         # orbital energies are negative binding energies
         buae = read_g09_oeke(fgau)[['Orbital', 'Spin', 'Energy', 'KE']]
         print('HF orbital and kinetic energies (hartree):')
-        print(buae.to_string(index=False))
         # In case there are no ECP calculations, cope with n>2 possibility
         zvals = elz(list(elems.keys()))
         heavies = max(zvals) > 10
         if heavies:
-            # Deal with this!
+            # Find MOs that are dominated by high-n AOs
+            specialThresh = 0.75  # AO contribution threshold for AO "special" status (1/n in BEB)
+            domlbl = special_n(fgau, specialThresh)
             buae['Special'] = 'deal'
+            for mo in domlbl:
+                if domlbl[mo] == '':
+                    buae.loc[buae['Orbital'] == mo, 'Special'] = 'none'
+                else:
+                    buae.loc[buae['Orbital'] == mo, 'Special'] = domlbl[mo]
+            # if there are "special" MOs, print the AO contribution threshold
+            m = buae[buae['Special'] != 'none'].shape[0]    # number of 'specials'
+            if m > 0:
+                print('"Special" AO contribution threshold is', specialThresh)
+            print(buae.to_string(index=False))
         else:
             # just create the 'Special' column
+            print(buae.to_string(index=False))
             buae['Special'] = 'none'
         uhf = ('beta' in buae.Spin.tolist() )   # flag to indicate separate beta orbitals
         # extract crude molecular ionization threhold
@@ -151,17 +249,31 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
     if suff == 'bupp':
         # get valence B/U from HF/ECP calculation
         bupp = read_g09_oeke(fgau)[['Orbital', 'Spin', 'Energy', 'KE']]
-        print('HF/ECP orbital (-B) and kinetic (U) energies (hartree):')
+        if uhf:
+            nelec_pp = len(bupp.index)
+        else:
+            nelec_pp = len(bupp.index) * 2
+        ppcore = nelec - nelec_pp 
+        print('ECP (pseudopotential) replaced {:d} electrons.'.format(ppcore))
         bupp['Method'] = 'ECP'
+        # Find any MOs that are dominated by high-n AOs
+        domlbl = special_n(fgau, specialThresh)
+        bupp['Special'] = 'none'
+        for mo in domlbl:
+            if domlbl[mo]:
+                bupp.loc[buae['Orbital'] == mo, 'Special'] = domlbl[mo]
+        print('HF/ECP orbital and kinetic energies (hartree):')
         # adjust orbital numbers to account for core
-        ppcore = len(buae[buae.Spin == 'alpha'].index) - len(bupp[bupp.Spin == 'alpha'].index) 
-        print('ECP (pseudopotential) replaced {:d} electron pairs'.format(ppcore))
-        bupp['Orbital'] += ppcore
+        bupp['Orbital'] += ppcore / 2
         print(bupp.to_string(index=False))
         # note any light-atom core orbitals remaining
-        ppskip = ncore - ppcore
-        if ppskip > 0:
-            print('({:d} core orbitals remain)'.format(ppskip))
+        lightcore = 0
+        for el in elems:
+            if elz(el) <= 10:
+                lightcore += n_core({el: elems[el]})
+        if lightcore > 0:
+            lightcore //= 2  # convert number of electrons to number of orbitals
+            print('({:d} light-atom core orbitals remain)'.format(lightcore))
         # extract VIE but don't replace the all-electron value from the previous file
         VIE_pp, ppspin, ppmeth = weakest_binding(bupp)
         mult_pp, nalp_pp, nbet_pp = ion_multiplicity(nalp-ppcore, nbet-ppcore, ppspin)
@@ -176,10 +288,16 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         ept = ept[['Orbital', 'Spin', 'Energy', 'PS', 'Method']]
         print(ept.to_string(index=False))
         # infer cation ground state
-        VIE, iespin, VIE_method = weakest_binding(ept)
+        VIE_ept, iespin, VIE_method = weakest_binding(ept)
         mult_ion, nalp_ion, nbet_ion = ion_multiplicity(nalp, nbet, iespin)
-        print('VIE = {:.2f} eV to the {:s} cation from {:s} theory.'.format(VIE,
+        print('VIE = {:.2f} eV to the {:s} cation from {:s} theory.'.format(VIE_ept,
             spinname(mult_ion), VIE_method))
+        if abs(VIE_ept - VIE) > 1.0:
+            # discrepancy between VIE values; maybe EPT calculation has wrong number
+            #   of orbitals
+            print('*** Warning: Large discrepancy of {:.2f} eV between Koopmans and EPT VIE values ***'.format(VIE_ept - VIE))
+            print('*** Check the number of orbitals in the EPT calculation ***')
+        VIE = VIE_ept
     if suff == 'ept2':
         # get electron counts for cation
         ecation = read_g09_electrons(fgau).iloc[0]
@@ -293,7 +411,7 @@ BUtable['Method'] = 'Koopmans'
 # If this is UHF-based, replace orbital numbers with labels like '1a', '1b'
 if uhf:
     # re-label orbitals 
-    BUtable['Label'] = BUtable.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
+    BUtable = combine_MOspin(BUtable, 'Orbital', 'Spin', 'Label')
 else:
     # RHF case; simple numeric label
     BUtable['Label'] = BUtable['Orbital']
@@ -302,18 +420,16 @@ BUtable.set_index(['Label'], inplace=True)
 # Use kinetic energies from ECP calculation, if available
 if ecp:
     if uhf:
-        bupp['Label'] = bupp.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
+        bupp = combine_MOspin(bupp, 'Orbital', 'Spin', 'Label')
     else:
         bupp['Label'] = bupp['Orbital']
     bupp.set_index(['Label'], inplace=True)
     # replace the kinetic energies
-    BUtable.update(bupp[['KE', 'Method']])
-    # remove n>2 special cases
-    BUtable['Special'] = 'none'
+    BUtable.update(bupp[['KE', 'Method', 'Special']])
 # If EPT calculations were done, use those values where available
 try:
     if uhf:
-        ept['Label'] = ept.apply(lambda x: make_label(x['Orbital'], x['Spin']), axis=1)
+        ept = combine_MOspin(ept, 'Orbital', 'Spin', 'Label')
     else:
         ept['Label'] = ept['Orbital']
     ept.set_index(['Label'], inplace=True)
@@ -323,19 +439,22 @@ try:
     BUtable.loc[BUtable['Method'] != 'ECP'].update(ept['Method'])
     ecprows = BUtable['Method'] == 'ECP'
     BUtable.loc[ecprows, 'Method'] = 'B ' + ept['Method'] + '; U ECP'
+    # any 'Method' listed as NaN (from 'ept') should be 'B Koopmans; U ECP'
+    nans = BUtable['Method'].isnull()
+    BUtable.loc[nans, 'Method'] = 'B Koopmans; U ECP'
 except:
     # no EPT calculations are available
     pass
 #
 # prepare BUtable for output
 #
-# put Label on the same footing as the other columns
+# put Label on the same footing as the other columns to cope with degneracies
 BUtable.reset_index(inplace=True)
 # add columns: 'N', 'Q', 'DblIon'
 BUtable['N'] = 1 if uhf else 2
 BUtable['Q'] = 1
 BUtable['DblIon'] = 'No'
-# make energies positive and convert to eV
+# make energies positive binding energies and convert to eV
 BUtable['Energy'] = BUtable['Energy'].apply(hartree_eV, args=('to_eV', -1))
 BUtable['KE'] = BUtable['KE'].apply(hartree_eV)
 # mark 'DblIon' column where B > VIE2
@@ -349,10 +468,17 @@ if VIE_method == 'CCSD(T)':
         homo_spin = 'beta'
     else:
         # apply VIE to the highest alpha orbital
-        homo_spin = 'alpha'
+        if uhf:
+            homo_spin = 'alpha'
+        else:
+            homo_spin = 'both'
     homo = BUtable.loc[BUtable['Spin'] == homo_spin]['Orbital'].idxmax()
     BUtable.loc[homo, 'Energy'] = VIE
-    BUtable.loc[homo, 'Method'] = VIE_method
+    if 'U ECP' in BUtable.loc[homo, 'Method']:
+        # Don't erase ECP information for HOMO
+        BUtable.loc[homo, 'Method'] = 'B ' + VIE_method + '; U ECP'
+    else:
+        BUtable.loc[homo, 'Method'] = VIE_method
 # sort by orbital number (with alphas and betas interleaved)
 BUtable = BUtable.sort_values(by='Orbital')
 # rename and rearrange columns as needed for input to 'beb_tbl.pl'
@@ -363,7 +489,6 @@ BUtable = BUtable[['#MO', 'B/eV', 'U/eV', 'N', 'Q', 'DblIon', 'Special', 'Remark
 if BUtable['N'].sum() != (nalp + nbet):
     # We've lost or gained electrons!
     print('*** Error: there are {:d} electrons but should be {:d}! ***'.format(BUtable['N'].sum(), nalp+nbet))
-print()
 # print tab-delimited and with energies rounded to .01 eV 
 s = BUtable.to_csv(sep='\t', float_format='%.2f', index=False)
 print(s)

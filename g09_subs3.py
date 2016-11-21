@@ -925,7 +925,9 @@ def read_g09_oeke(fhandl, virtual=False):
     # only read the first set of such data in the target file
     # Return a pandas DataFrame with a row for each orbital like:
     #   (1) line number, (2) byte number,
-    #   (3) orbital number, (4) spin (alpha or beta), (5) orbital label,
+    #   (3) orbital number,
+    #   (4) spin ('alpha' or 'beta' or 'both'),
+    #   (5) orbital label,
     #   (6) energy,
     #   (7) kinetic energy
     # To get appropriate output from Gaussian, use IOP(6/81=3)
@@ -984,10 +986,16 @@ def read_g09_oeke(fhandl, virtual=False):
             inblock = True
             curspin = 'alpha'
     fhandl.seek(byte_start) # restore file pointer to original position
+    # If there are only alph orbitals, presume this is an RHF calculation
+    #   and call the spin 'both'
+    if not 'beta' in set(table['Spin']):
+        # no 'beta'
+        table['Spin'] = 'both'
     return table
 ##
 def read_g09_ept(fhandl):
     # Read correlated orbital energies from electron propagator calculation.
+    #   Gaussian keyword: EPT(OVGF+P3)
     # Only read the first set of such data in the target file.
     # Energies in hartree.
     # NOTE: Gaussian sometimes reports PS = 1.000 when the calculation actually failed.
@@ -1064,7 +1072,6 @@ def read_g09_ept(fhandl):
                 # a degeneracy statement
                 degenPair.append( ( ospin[-1], int(m.group(1))+ncore, int(m.group(2))+ncore) )
                 degenTo.append(int(m.group(3)) + ncore)
-            m = regwarn.search(line)
             if warnPS:
                 # a warning has been issued recently by the EPT module
                 if regblank.match(line):
@@ -1075,7 +1082,7 @@ def read_g09_ept(fhandl):
                         # pole strength of 1.000 is probably a mistake;
                         #   change it to zero
                         line = line.replace('1.000', '0.000')
-            if m:
+            if regwarn.search(line):
                 # the EPT module issued a warning about the following orbital
                 # decrement 'warnPS' with each blank line and ignore it when < 1
                 warnPS = 2
@@ -1090,11 +1097,37 @@ def read_g09_ept(fhandl):
                         opos.append(fhandl.tell())
                         ospin.append(m.group(1))
                         oorb.append(int(m.group(2)))
+                        # check for missing P3 results; fill with zeros
+                        if len(pkoop) < len(pline):
+                            pkoop.append(0.)
+                        if len(p32) < len(pline):
+                            p32.append(0.)
+                        if len(p32ps) < len(pline):
+                            p32ps.append(0.)
+                        if len(p33) < len(pline):
+                            p33.append(0.)
+                        if len(p33ps) < len(pline):
+                            p33ps.append(0.)
                     if block == 'P3':
                         pline.append(lineno)
                         ppos.append(fhandl.tell())
                         pspin.append(m.group(1))
                         porb.append(int(m.group(2)))
+                        # check for missing OVGF results; fill with zeros
+                        if len(okoop) < len(oline):
+                            okoop.append(0.)
+                        if len(ovgf2) < len(oline):
+                            ovgf2.append(0.)
+                        if len(ovgf2ps) < len(oline):
+                            ovgf2ps.append(0.)
+                        if len(ovgf3) < len(oline):
+                            ovgf3.append(0.)
+                        if len(ovgf3ps) < len(oline):
+                            ovgf3ps.append(0.)
+                        if len(ovgf) < len(oline):
+                            ovgf.append(0.)
+                        if len(ovgfps) < len(oline):
+                            ovgfps.append(0.)
             else:
                 # already in an energy data block
                 if block == 'OVGF':
@@ -1141,6 +1174,29 @@ def read_g09_ept(fhandl):
                         continue
                 # get here if we ran out of data in a data block
                 block = ''
+    if False:
+        print('list lengths:')
+        print('\toline: ', len(oline))
+        print('\topos: ', len(opos))
+        print('\toorb: ', len(oorb))
+        print('\tospin: ', len(ospin))
+        print('\tokoop: ', len(okoop))
+        print('\tovgf2: ', len(ovgf2))
+        print('\tovgf2ps: ', len(ovgf2ps))
+        print('\tovgf3: ', len(ovgf3))
+        print('\tovgf3ps: ', len(ovgf3ps))
+        print('\tovgf: ', len(ovgf))
+        print('\tovgfps: ', len(ovgfps))
+        print('\tpline: ', len(pline))
+        print('\tppos: ', len(ppos))
+        print('\tporb: ', len(porb))
+        print('\tpspin: ', len(pspin))
+        print('\tpkoop: ', len(pkoop))
+        print('\tp32: ', len(p32))
+        print('\tp32ps: ', len(p32ps))
+        print('\tp33: ', len(p33))
+        print('\tp33ps: ', len(p33ps))
+        print('\tovgf:', ovgf)
     if len(oline) > 0 and len(pline) < 1:
         # we have OVGF data but no P3 data
         data = list(zip(oline, opos, oorb, ospin, okoop, ovgf2, ovgf2ps,
@@ -1314,8 +1370,9 @@ def read_Mulliken_pops(fhandl):
     byte_start = fhandl.tell()
     fhandl.seek(0)  # rewind file
     nbfn = 0
-    symb = []
-    bfn_label = []
+    bfn_atom = []   # cumulative list of number of bfns on each atom
+    symb = []   # element symbols
+    bfn_label = []  # strings describing basis functions
     regnbf = re.compile('\s*NBsUse=\s+(\d+)\s+')
     regstart = re.compile('\s+Full Mulliken')
     regend = re.compile('\s+Gross orbital')
@@ -1363,18 +1420,193 @@ def read_Mulliken_pops(fhandl):
                     if atno >= len(symb):
                         # add this atom to the list
                         symb.append(field[2])
+                        bfn_atom.append(rownum + 1)
                 except:
                     # this is a regular data line
                     pass
                 if rownum >= len(bfn_label):
+                    # we're still building the list of basis function labels
                     bfn_label.append(fnlabel)
+                    bfn_atom[atno] = rownum + 1   # this is the largest func. no., for now
                 # remaining fields are mulpop values
-                vals = regfloat.findall(line)
+                vals = [float(p) for p in regfloat.findall(line)]
+                for i in range(len(vals)):
+                    col = i + colnum[0]
+                    mulpop[rownum, col] = vals[col - colnum[0]]
         m = regstart.match(line)
         if m:
             # found the Mulliken populations
             print('block start')
             inblock = True
     fhandl.seek(byte_start) # restore file pointer to original position
-    return nbfn, symb, bfn_label, mulpop
+    # symmetrize to generate the full (symmetric) mulpop matrix
+    mulpop = mulpop + mulpop.T - np.diag(np.diag(mulpop))
+    return nbfn, bfn_atom, symb, bfn_label, mulpop
+##
+def read_AOpop_in_MOs(fhandl):
+    # Read one occurence of the output from the Gaussian09 keyword:
+    #   pop=AllOrbitals
+    # Return a pandas DataFrame with the following columns:
+    #   (1) MO number (starting from 1)
+    #   (2) 'alpha' or 'beta'
+    #   (3) 'occ' or 'virt'
+    #   (4) orbital energy (hartree)
+    #   (5) element symbol of atom
+    #   (6) atom number of atom (starting from 1)
+    #   (7) AO orbital type ('s', 'p', 'd', etc.)
+    #   (8) AO contribution
+    # So each MO may be spread across multiple rows of the table. 
+    # Long lines may contain embedded line breaks. 
+    #
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    regstart = re.compile('Atomic contributions to (Alpha|Beta ) molecular orbitals:')
+    regline1 = re.compile(' (occ|vir) ')  # beginning of data line(s)
+    regblank = re.compile('^\s*$')
+    regAO = re.compile('([A-Z][a-z]?)(\d+)-([spdfghijkl])')
+    reginicap = re.compile('^\s*[A-Z]')
+    MOnum = []
+    spin = []
+    occ = []
+    OE = []
+    symb = []
+    atnum = []
+    L = []
+    contrib = []
+    inblock = False
+    endData = False
+    prevline = ''
+    while True:
+        line = fhandl.readline()
+        if not line:
+            # reached the end of the input file
+            break
+        if inblock:
+            if regblank.match(line):
+                # blank line indicates the end of the data block
+                inblock = False
+                endData = True
+            else:
+                # in the data block and not a blank line
+                if regline1.search(line):
+                    # this is the first of (possibly continuing) data lines
+                    # any previous line is complete and should be parsed
+                    pass
+                else:
+                    # this is a continuation line; join it with the previous line
+                    # if the continuation line begins with a capital letter, put
+                    #   a space in between
+                    if reginicap.match(line):
+                        prevline = prevline.strip() + ' ' + line.strip()
+                    else:
+                        prevline = prevline.strip() + line.strip()
+                    # don't parse anything yet, just read the next line of input
+                    continue
+            if len(prevline) == 0:
+                # there is no previous line to parse; read next line of input
+                prevline = line
+                continue
+            # parse the (previous) line
+            fields = prevline.split()
+            # fifth field is word 'is'; remaining fields are contribution strings
+            for s in fields[5:]:
+                sf = s.split('=')
+                # now sf[0] is the AO string and sf[1] is the contribution
+                m = regAO.match(sf[0])
+                if m:
+                    # first field is spin label
+                    spin.append(fields[0].lower())
+                    # second field is occupation status
+                    if fields[1] == 'occ':
+                        occ.append('occ')
+                    else:
+                        occ.append('virt')
+                    # third field is MO number
+                    MOnum.append(int(fields[2]))
+                    # fourth field is OE string
+                    s = fields[3].split('=')
+                    OE.append(float(s[1]))
+                    symb.append(m.group(1))
+                    atnum.append(int(m.group(2)))
+                    L.append(m.group(3))
+                    contrib.append(float(sf[1]))
+                else:
+                    # something is wrong
+                    print('*** Failure parsing AO label:', sf[0])
+                    print(line)
+            # done parsing the previous, complete line; replace with current line
+            prevline = line
+        else:
+            # not in a data block
+            if endData:
+                break
+            if regstart.search(line):
+                # this is the beginning of the data block 
+                inblock = True
+                continue
+    data = list(zip(MOnum, spin, occ, OE, symb, atnum, L, contrib))
+    cols = ['MO', 'Spin', 'Occ', 'Energy', 'Elem', 'Atom#', 'L', 'Contrib']
+    df = pd.DataFrame(data, columns=cols)
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return df
+##
+def read_ECP_electrons(fhandl):
+    # Read (one time) the number of electrons, on each atom, that have been replaced
+    #   by an effective core potential (ECP; aka pseudopotential, "PP")
+    # Return a dict where the key is the atom ordinal number (starting from 1)
+    #   and the value is the number of electrons replaced on that atom
+    #
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    regstart = re.compile('^\s*Pseudopotential Parameters\s*$')
+    regend = re.compile('There are\s+\d+\s+symmetry')
+    regx = re.compile(r'^\s{,6}\d+\s+\d+\b')
+    regnatom = re.compile('\s*NAtoms=\s+(\d+)\s+')
+    inblock = False
+    centerno = []
+    atz = []
+    nval = []
+    natom = 0
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        # Look for the number of atoms.  Only needed if no ECP is found.
+        m = regnatom.match(line)
+        if m:
+            natom = int(m.group(1))
+        if inblock:
+            m = regend.search(line)
+            if m:
+                inblock = False
+                # Read only the first occurrence
+                break
+            # still within the data block--is it a line of interest?
+            m = regx.match(line)
+            if m:
+                # yes, parse this line
+                fields = line.split()
+                centerno.append(int(fields[0]))
+                atz.append(int(fields[1]))
+                if len(fields) == 3:
+                    # there is a PP on this center
+                    nval.append(int(fields[2]))
+                else:
+                    # no pseudopotential here; set nval = Z
+                    nval.append(int(fields[1]))
+        else:
+            # check for beginning of data block
+            m = regstart.match(line)
+            if m:
+                inblock = True
+    # subtract to obtain the number of electrons replaced
+    nppe = {}
+    for i in range(len(centerno)):
+        nppe[centerno[i]] = atz[i] - nval[i]
+    if len(nppe) == 0:
+        # no ECP was found; just fill with zeros
+        for i in range(natom):
+            nppe[i+1] = 0
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return nppe
 ##

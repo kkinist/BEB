@@ -3,6 +3,7 @@
 #
 import re
 import string
+import pandas as pd
 #
 amu_au = 1 / 5.4857990946E-4    # amu expressed in a.u. (viz., electron masses)
 au_wavenumber = 219474.6313708  # hartree expressed in wavenumbers
@@ -15,10 +16,11 @@ eV_per_hartree = 27.21138602  # from NIST website 10/25/2016
 au_kjmol = au_joule * avogadro / 1000   # hartree expressed in kJ/mol
 ev_wavenumber = au_wavenumber / eV_per_hartree      # eV expressed in cm**-1
 #
-def elz( ar ):
+def elz(ar):
     # return atomic number given an elemental symbol, or
     # return elemental symbol given an atomic number 
-    symb = [ 'n',
+    # if 'ar' is a list, then return a corresponding list
+    symb = ['n',
         'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne',
         'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar',
         'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni',
@@ -33,26 +35,32 @@ def elz( ar ):
         'Fr', 'Ra',
             'Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk',
                  'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr',
-               'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt' ]
-    if type( ar ) == int:
-        return symb[ ar ]
-    return symb.index( ar )
+               'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt']
+    if type(ar) == int:
+        return symb[ar]
+    if type(ar) == list:
+        vals = []
+        for el in ar:
+            vals.append(elz(el))
+        return vals
+    return symb.index(ar)
 ##
-def n_core( atno ):
+def n_core(atno):
     # given Z value (or element symbol) return number of core electrons
     # if 'atno' is a stoichiometric dict of {'el' : number}, then return the sum for
     #   the whole molecule
     ncore = 0
     if type(atno) == str:
         # convert symbol to Z value
-        atno = elz( atno )
+        atno = elz(atno)
     if type(atno) == dict:
+        # a molecular formula
         for el, natom in atno.items():
             ncore += n_core(el) * natom
         return ncore
     core = {
-		# these are the maximum atomic numbers-1 (Z-1) that have
-		#   the given number of core elecrons
+        # these are the maximum atomic numbers-1 (Z-1) that have
+        #   the given number of core elecrons (Z-1 : ncore)
         3  :  2,
         11 : 10,
         19 : 18,
@@ -63,29 +71,29 @@ def n_core( atno ):
         81 : 78,
         87 : 86
     }
-    for ki in sorted( core ):
+    for ki in sorted(core):
         if atno >= ki:
             ncore = core[ki]
     return ncore
 ##
-def read_regex( regex, fhandl, idx=1 ):
+def read_regex(regex, fhandl, idx=1):
     # Return something from a line matchine a regular expression.
     #   First arg is the regular expression; idx is the match-group
     #	to return.  Return a list of values from all matching lines. 
     fhandl.seek(0)
     matches = []
-    regx = re.compile( regex )
+    regx = re.compile(regex)
     for line in fhandl:
-        mch = regx.search( line )
+        mch = regx.search(line)
         if mch:
-            matches.append( mch.group( idx ) )
+            matches.append(mch.group(idx))
     return matches
 ##
-def spinname( m ):
+def spinname(m):
     # given a spin multiplity (m = 2S+1), return the text name
     name = [ 'spinless', 'singlet', 'doublet', 'triplet', 'quartet', 'quintet', 'sextet',
         'septet', 'octet', 'nonet', 'decet', 'undecet', 'duodecet' ]
-    m = int( m )
+    m = int(m)
     if m in range(12):
         return name[m]
     else:
@@ -101,12 +109,65 @@ def max_not_exceed(bigser, target):
 ##
 def hartree_eV(energy, direction='to_eV', multiplier=1):
     # convert from hartree to eV or the reverse (if direction == 'from_eV')
-    # use multiplier = -1 to change the sign, too
     if direction == 'to_eV':
-        return multiplier * energy * eV_per_hartree 
+        return multiplier * energy * eV_per_hartree
     elif direction == 'from_eV':
         return multiplier * energy / eV_per_hartree
     else:
         # illegal direction
         return 'unrecognized direction = {:s} in routine hartree_eV'.format(direction)
+##
+def starting_n(Ltype, nppe=0):
+    # given an orbital-angular momentum type ('s', 'p', etc.), 
+    # return the lowest possible principal quantum number (1, 2, etc.)
+    # The optional second argument is the number of electrons that have
+    #   been replaced by an ECP/pseudopotential
+    # This routine only handles the common cases
+    nmin = {'s': 1, 'p': 2, 'd': 3, 'f': 4, 'g': 5, 'h': 6}
+    cases = [2, 10, 18, 28, 36, 46, 54, 60, 68, 78, 92]
+    if nppe > 0:
+        # Some electrons have been replaced by ECP; adjust the explicit
+        #   shell numbers accordingly
+        if (not nppe in cases):
+            print('*** Unhandled number of ECP-replaced electrons ***')
+            print('\tnppe = {:d} in routine "starting_n"'.format(nppe))
+            # But go ahead and apply the algorithm, anyway!
+        # determine number of shells replaced
+        rcore = {'s': 0, 'p': 0, 'd': 0, 'f':0}
+        resid = nppe
+        nf = (resid - 28) // 32 # number of f shells replaced
+        if nf > 0:
+            rcore['f'] = nf
+            resid -= nf * 14
+        nd = (resid - 10) // 18 # number of d shells replaced
+        if nd > 0:
+            rcore['d'] = nd
+            resid -= nd * 10
+        np = (resid - 2) // 8  # number of p shells replaced
+        if np > 0:
+            rcore['p'] = np
+            resid -= np * 6
+        ns = resid // 2  # number of s shells replaced
+        rcore['s'] = ns
+        resid -= ns * 2
+        if resid != 0:
+            print('*** Unexpected residual electrons in routine "starting_n" ***')
+        for L in rcore:
+            nmin[L] += rcore[L]
+    return nmin[Ltype.lower()]
+##
+def L_degeneracy(Ltype):
+    # given an orbital-angular momentum type ('s', 'p', etc.), 
+    # return the degeneracy (1, 3, etc.)
+    degen = {'s': 1, 'p': 3, 'd': 5, 'f': 7, 'g': 9, 'h': 11, 'i': 13}
+    return degen[Ltype.lower()]
+##
+def combine_MOspin(df, col1='MO', col2='Spin', colnew='Label'):
+    # Given a pandas DataFrame, combine a numeric 'MO' field with
+    #   a 'Spin' field ('alpha' or 'beta') to create a new 'MO' field
+    #   that is a combination like '1a' or '5b'.
+    # Return that new DataFrame.
+    dfret = df.copy()
+    dfret[colnew] = df.apply(lambda x: str(x[col1])+(x[col2])[0], axis=1)
+    return dfret
 ##
