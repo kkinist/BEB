@@ -204,7 +204,7 @@ def newfile(froot, filext):
     # return the filehandle
     fname = '{:s}_{:s}.gjf'.format(froot, filext)
     fgjf = open( fname, 'w' )
-    print( 'created file ', fname )
+    print( 'creating file', fname )
     return fgjf
 #
 # MAIN
@@ -265,10 +265,11 @@ fgjf.write( basis )
 fgjf.close()
 #
 # create all-electron input file for Hartree-Fock B + U (step 2)
+# [include Mulliken population analysis]
 #
 step = 2
 fgjf = newfile(froot, filext[step])
-directive = '# HF/GEN geom=check IOP(6/81=3) scf=xqc\n'
+directive = '# HF/GEN geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)\n'
 comment = '\nBEB step {:d}: Hartree-Fock B and U for {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 basis = specify_basis( elem, step )
@@ -282,7 +283,7 @@ lowz, midz, hiz = sort_atoms( elem )
 if ( len(midz) + len(hiz) ) > 0:
     # there are atoms with n>3: create PP files for B+U calc.
     fgjf = newfile(froot, filext[step])
-    directive = '# HF/GEN geom=check IOP(6/81=3) pseudo=read scf=xqc\n'
+    directive = '# HF/GEN geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)\n'
     comment = '\nBEB step {:d}: pseudopotential B and U for {:s}\n\n'.format(step, froot)
     fgjf.write( header + directive + comment )
     basis = specify_basis( elem, step )
