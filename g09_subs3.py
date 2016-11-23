@@ -999,7 +999,7 @@ def read_g09_ept(fhandl):
     # Only read the first set of such data in the target file.
     # Energies in hartree.
     # NOTE: Gaussian sometimes reports PS = 1.000 when the calculation actually failed.
-    #   so change PS = 1.000 to PS = 0.000 if there was a preceding warning.
+    #   Change PS to 0.000 if there was a preceding warning.
     # Return a pandas DataFrame with a row for each orbital like:
     #   (1) line number, (2) byte number,
     #   (3) orbital number (starting with 1 for the lowest core orbital),
@@ -1052,8 +1052,11 @@ def read_g09_ept(fhandl):
     regdegen = re.compile('^\s*Orbitals\s+(\d+)\s+and\s+(\d+)\s+are degenerate.  Skipping orbital\s+(\d+)')
     regwarn = re.compile('WARNING')
     regblank = re.compile('^\s*$')
-    regPSbad = re.compile('1\.000 \(PS\)')
+    regPS = re.compile(r'\d\.\d{3} \(PS\)')
     ncore = -1
+    nppe = read_ECP_electrons(fhandl)  # get numbers of ECP-replaced electrons on each center
+    nppe = sum(nppe.values())  # the total number of electrons replaced
+    pporb = nppe // 2  # the number of core orbitals replaced
     block = ''  # either 'OVGF' or 'P3'
     while True:
         line = fhandl.readline()
@@ -1063,25 +1066,26 @@ def read_g09_ept(fhandl):
         if ncore < 0:
             m = regncore.match(line)
             if m:
-                # get the number of frozen-core orbitals
+                # get the number of frozen-core explicit orbitals
                 ncore = int(m.group(1))
+                # add it to the number of ECP-replaced orbitals
+                pporb += ncore  # this is the total number of missing core orbitals
         else:
             # already found the number of frozen cores; look for results
             m = regdegen.match(line)
             if m:
                 # a degeneracy statement
-                degenPair.append( ( ospin[-1], int(m.group(1))+ncore, int(m.group(2))+ncore) )
-                degenTo.append(int(m.group(3)) + ncore)
+                degenPair.append( ( ospin[-1], int(m.group(1))+pporb, int(m.group(2))+pporb) )
+                degenTo.append(int(m.group(3)) + pporb)
             if warnPS:
                 # a warning has been issued recently by the EPT module
                 if regblank.match(line):
                     # blank line, decrement warning monitor
                     warnPS -= 1
                 else:
-                    if regPSbad.search(line):
-                        # pole strength of 1.000 is probably a mistake;
-                        #   change it to zero
-                        line = line.replace('1.000', '0.000')
+                    # zero out any pole strength to avoid using the following values
+                    if regPS.search(line):
+                        line = regPS.sub('0.000 (PS)', line)
             if regwarn.search(line):
                 # the EPT module issued a warning about the following orbital
                 # decrement 'warnPS' with each blank line and ignore it when < 1
@@ -1204,7 +1208,7 @@ def read_g09_ept(fhandl):
         cols = ['line', 'byte', 'Orbital', 'Spin', 'Koopmans', 'OVGF-2nd', 'OVGF2 PS', 
             'OVGF-3rd', 'OVGF3 PS', 'OVGF', 'OVGF PS']
         df_ovgf = pd.DataFrame(data=data, columns=cols)
-        df_ovgf['Orbital'] += ncore # reset the numbering to include the core
+        df_ovgf['Orbital'] += pporb # reset the numbering to include the core
         df = df_ovgf
     if len(oline) < 1 and len(pline) > 0:
         # we have P3 data but no OVGF data
@@ -1213,7 +1217,7 @@ def read_g09_ept(fhandl):
         cols = ['line', 'byte', 'Orbital', 'Spin', 'Koopmans', 
             'P3-2nd', 'P3-2 PS', 'P3-3rd', 'P3-3 PS']
         df_p3 = pd.DataFrame(data=data, columns=cols)
-        df_p3['Orbital'] += ncore
+        df_p3['Orbital'] += pporb
         df = df_p3
     if len(oline) > 0 and len(pline) > 0:
         # we have both OVGF and P3 data
@@ -1229,7 +1233,7 @@ def read_g09_ept(fhandl):
             'OVGF-3rd', 'OVGF3 PS', 'OVGF', 'OVGF PS',
             'P3-2nd', 'P3-2 PS', 'P3-3rd', 'P3-3 PS']
         df = pd.DataFrame(data=data, columns=cols)
-        df['Orbital'] += ncore
+        df['Orbital'] += pporb
     fhandl.seek(byte_start) # restore file pointer to original position
     # apply any degeneracy information
     for i in range(len(degenTo)):

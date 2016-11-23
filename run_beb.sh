@@ -26,3 +26,4 @@ for suff in "_opt" "_bu" "_bupp" "_ept1" "_ept2" "_cc" "_cc1hi" "_cc1lo" "_cc2hi
         fi
     fi
 done
+echo "Calculations complete for: " $1

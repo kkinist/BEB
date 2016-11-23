@@ -8,19 +8,22 @@
 #   final blank line
 #
 #   Input files as examples and for testing:
-#       h2o.inp (singlet, non-degenerate orbitals)
-#       ch4.inp (singlet, degenerate orbitals)
-#       no2.inp (doublet, non-degen)
-#       ch3.inp (doublet, degen)
 #       ch2.inp (triplet, non-degen)
+#       ch3.inp (doublet, degen)
+#       ch4.inp (singlet, degenerate orbitals)
+#       gacl.inp (singlet, mixed n>2 and/or ECP)
+#       h2o.inp (singlet, non-degenerate orbitals)
+#       h2s.inp (singlet, ECP or special n>2)
+#       no2.inp (doublet, non-degen)
 #       o2.inp  (triplet, degen)
-# NEED MORE TESTS: SULFUR, ZINC, ETC.
+#       ZnEt2.inp (singlet, ECP and special n>2)
+# 
 # Command-line arguments can be used to specify memory and number of processors:
 #   -m<mwords> -n<nprocs>
 #
 # BEB is defined for neutral and singly-positive targets but only neutrals are
 #   handled by this software.  
-# Latest change: 18 August 2016
+# Latest change: 22 November 2016
 #
 # DISCLAIMER:  
 #   Certain commercial software is identified in order to specify procedures
@@ -101,7 +104,7 @@ def specify_basis( atoms, step=1 ):
     # the next three lists show the basis set to be used for each step number
     light = ['', '6-31G(d)', '6-311G(d,p)', '6-311G(d,p)', '6-311+G(d,p)', '6-311+G(d,p)', 
         'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ']
-    middle = ['', '6-31G(d)', '6-311G(d,p)', 'SDDall', '6-311+G(d,p)', '6-311+G(d,p)',
+    middle = ['', '6-31G(d)', '6-311G(d,p)', 'SDDall', '6-311+G(d,p)', '6-311+G(d,p)', 
         'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ']
     heavy = ['', '3-21G*', '3-21G*', 'SDD', 'SDD', 'SDD',
         'SDD', 'SDD', 'SDD', 'SDD', 'SDD']
@@ -164,16 +167,16 @@ def specify_basis( atoms, step=1 ):
     if ( len(ecpstring) > 0 ):
         basisstring += ecpstring + '\n'
     if (step in [4,5]):
-        # EPT calculation needs to know how many orbitals are replaced
-        #   by ECPs (aka pseudopotentials, PPs); create dict
+        # EPT calculation needs to know if any core orbitals are
+        #   replaced by ECPs (aka pseudopotentials, PPs); create dict
         nopp = {}
         for el in atoms:
             nopp[el] = 0
         for el in midz:
-            if re.search('SDD', middle[3]):
+            if re.search('SDD', middle[step]):
                 nopp[el] = n_sdd(el) / 2
         for el in highz:
-            if re.search('SDD', heavy[3]):
+            if re.search('SDD', heavy[step]):
                 nopp[el] = n_sdd(el) / 2
         return basisstring, nopp
     return basisstring
@@ -309,7 +312,8 @@ nalp = (nel + mult - 1) // 2     # number of alpha electrons
 nbet = nel - nalp
 ncore = 0
 for el in elem:
-    ncore += max( n_core(el), nopp[el] )
+    print('el =', el, 'n_core =', n_core(el, 'g09'), 'nopp =', nopp[el])
+    ncore += max( n_core(el, 'g09'), nopp[el] )
 ncore //= 2
 nalp -= ncore   # number of valence alpha electrons
 nbet -= ncore

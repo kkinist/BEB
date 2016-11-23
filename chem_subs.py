@@ -45,10 +45,12 @@ def elz(ar):
         return vals
     return symb.index(ar)
 ##
-def n_core(atno):
+def n_core(atno, code=None):
     # given Z value (or element symbol) return number of core electrons
     # if 'atno' is a stoichiometric dict of {'el' : number}, then return the sum for
     #   the whole molecule
+    # if the optional argument, 'code', is specified, the number will be the default
+    #   for that quantum chemistry code
     ncore = 0
     if type(atno) == str:
         # convert symbol to Z value
@@ -58,19 +60,32 @@ def n_core(atno):
         for el, natom in atno.items():
             ncore += n_core(el) * natom
         return ncore
-    core = {
-        # these are the maximum atomic numbers-1 (Z-1) that have
-        #   the given number of core elecrons (Z-1 : ncore)
-        3  :  2,
-        11 : 10,
-        19 : 18,
-        31 : 28,
-        37 : 36,
-        49 : 46,
-        55 : 54,
-        81 : 78,
-        87 : 86
-    }
+    if code == 'g09':
+        # default for Gaussian09 frozen-core calculations
+        core = {
+            # these are the minimum atomic numbers (Z) that have
+            #   the given number of core elecrons (Z : ncore)
+            3  :  2,
+            11 : 10,
+            19 : 18,
+            37 : 36,
+            55 : 54, # this is a guess
+            87 : 86  # this is a guess
+        }
+    else:
+        core = {
+            # these are the minimum atomic numbers (Z) that have
+            #   the given number of core elecrons (Z : ncore)
+            3  :  2,
+            11 : 10,
+            19 : 18,
+            31 : 28,
+            37 : 36,
+            49 : 46,
+            55 : 54,
+            81 : 78,
+            87 : 86
+        }
     for ki in sorted(core):
         if atno >= ki:
             ncore = core[ki]

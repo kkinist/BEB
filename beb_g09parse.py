@@ -95,7 +95,7 @@ def special_n(fgau, Nthresh):
     #   to include that information
     if 'beta' in set(df_occ['Spin']):
         df_occ = combine_MOspin(df_occ, 'MO', 'Spin', 'MO')
-    # for each atom, sum the contributions for each L-value
+    # for each atom, sum the contributions for each L-value to determine n-value
     csum = df_occ.groupby(by=['Spin', 'Atom#', 'L']).cumsum()['Contrib']
     df_occ = df_occ.assign(Cumul = csum)
     grp = df_occ.groupby(by=['Spin', 'Atom#', 'L'])
@@ -109,15 +109,14 @@ def special_n(fgau, Nthresh):
         # routine 'assign_n' determines the values of n
         nstart = starting_n(Lval, ppe[iatno])
         degen = L_degeneracy(Lval)
-        #print('iatno =', iatno, 'Lval =', Lval, 'elem =', elem, 'nstart =', nstart, 'degen =', degen)
         # the ECP only removes (radial) nodes if it replaces an inner shell of the same L
         if nstart == starting_n(Lval, 0):
             # this is the starting 'n' you'd have without an ECP, so it will be 'special'
             nvals = group.apply(lambda row: assign_n(row['Contrib'], row['Cumul'], degen, nstart), axis=1)
+            df_occ['n'].update(nvals)
         else:
             # some radial nodes have been removed, so this AO is not 'special'
             pass
-        df_occ['n'].update(nvals)
     # For each MO, see if it is dominated by one n.  If so, report that n.
     gmo = df_occ.groupby(by=['MO'])
     ndomin = {}  # dominant value of principal quantum number (n) for each MO
@@ -139,6 +138,7 @@ def special_n(fgau, Nthresh):
                     hi += nsum[n]
                     if nsum[n] > cmax:
                         nmax = n
+                        cmax = nsum[n]
             if hi > Nthresh:
                 # threshold exceeded for mixed high-n 
                 # choose the value of n that has the largest contribution
@@ -192,7 +192,7 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         # check that there are no imaginary frequencies
         nimag = get_nimag(fgau)
         if nimag > 0:
-            print('NOT a minimum ({:d} imaginary vibrational frequencies)'.format(nimag))
+            print('NOT a minimum! ({:d} imaginary vibrational frequencies)'.format(nimag))
             sys.exit()
         elif nimag < 0:
             print('No vibrational frequencies found')
@@ -292,11 +292,10 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         mult_ion, nalp_ion, nbet_ion = ion_multiplicity(nalp, nbet, iespin)
         print('VIE = {:.2f} eV to the {:s} cation from {:s} theory.'.format(VIE_ept,
             spinname(mult_ion), VIE_method))
-        if abs(VIE_ept - VIE) > 1.0:
-            # discrepancy between VIE values; maybe EPT calculation has wrong number
-            #   of orbitals
+        if abs(VIE_ept - VIE) > 1.5:
+            # discrepancy between VIE values; 
+            #   maybe EPT calculation has wrong number of orbitals
             print('*** Warning: Large discrepancy of {:.2f} eV between Koopmans and EPT VIE values ***'.format(VIE_ept - VIE))
-            print('*** Check the number of orbitals in the EPT calculation ***')
         VIE = VIE_ept
     if suff == 'ept2':
         # get electron counts for cation
@@ -433,11 +432,11 @@ try:
     else:
         ept['Label'] = ept['Orbital']
     ept.set_index(['Label'], inplace=True)
-    # Replace with EPT values as available
+    # Replace with EPT binding energies as available
     BUtable.update(ept['Energy'])
     # If Method == ECP, don't erase that info
-    BUtable.loc[BUtable['Method'] != 'ECP'].update(ept['Method'])
     ecprows = BUtable['Method'] == 'ECP'
+    BUtable.update(ept['Method'])
     BUtable.loc[ecprows, 'Method'] = 'B ' + ept['Method'] + '; U ECP'
     # any 'Method' listed as NaN (from 'ept') should be 'B Koopmans; U ECP'
     nans = BUtable['Method'].isnull()
