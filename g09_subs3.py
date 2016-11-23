@@ -1077,7 +1077,7 @@ def read_g09_ept(fhandl):
                 # a degeneracy statement
                 degenPair.append( ( ospin[-1], int(m.group(1))+pporb, int(m.group(2))+pporb) )
                 degenTo.append(int(m.group(3)) + pporb)
-            if warnPS:
+            if warnPS > 0:
                 # a warning has been issued recently by the EPT module
                 if regblank.match(line):
                     # blank line, decrement warning monitor
