@@ -1,2 +1,2 @@
-The file t_plusd.gbs includes sets for Na and Mg that are really cc-pVTZ, not 
-cc-pV(T+d)Z.  I did this for convenience in writing beb_g09build.py.
+These are the cc-pV(T+d)Z basis sets that supersed the deprecated cc-pVTZ sets for
+these elements. 

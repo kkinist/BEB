@@ -1,0 +1,6 @@
+The basis sets in 'dzp.gbs' are all-electron set taken from EMSL, which provides
+the following citations.
+
+! Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe: C. L. Barros, P. J. P. de Oliveira, F. E. Jorge, A. Canal Neto, and M. Campos, Gaussian basis set of double zeta quality for atoms Rb through Xe: application in non-relativistic and relativistic calculations of atomic and molecular properties, Mol. Phys. 108, 1965 (2010).
+! Pt: R. C. de Berrêdo, and F. E. Jorge, All-electron double zeta basis sets for platinum: Estimating scalar relativistic effects on platinum(II) anticancer drugs, J. Mol. Struct. (Theochem) 961, 107 (2010).
+! Cs Ba La Hf Ta W Re Os Ir Au Hg Tl Pb Bi Po At Rn: A. Canal Neto and F. E. Jorge, All-electron double zeta basis sets for the most fifth-row atoms: Application in DFT spectroscopic constant calculations, Chem. Phys. Lett. 582, 158 (2013).

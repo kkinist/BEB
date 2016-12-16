@@ -1,6 +1,6 @@
 # Routines specific to Gaussian09.
-# Karl Irikura, starting from scratch using python3 and pandas (Sept. 2016)
-# Routines are poorly tested, unfit for distribution.
+# Python3 and pandas (started Sept. 2016)
+# Karl Irikura
 ####
 import sys
 import re
@@ -1562,10 +1562,10 @@ def read_ECP_electrons(fhandl):
     #
     byte_start = fhandl.tell()
     fhandl.seek(0)  # rewind file
-    regstart = re.compile('^\s*Pseudopotential Parameters\s*$')
-    regend = re.compile('There are\s+\d+\s+symmetry')
+    regstart = re.compile(r'^\s*Pseudopotential Parameters\s*$')
+    regdash = re.compile(r'==========================================')
     regx = re.compile(r'^\s{,6}\d+\s+\d+\b')
-    regnatom = re.compile('\s*NAtoms=\s+(\d+)\s+')
+    regnatom = re.compile(r'\s*NAtoms=\s+(\d+)\s+')
     inblock = False
     centerno = []
     atz = []
@@ -1580,10 +1580,12 @@ def read_ECP_electrons(fhandl):
         if m:
             natom = int(m.group(1))
         if inblock:
-            m = regend.search(line)
-            if m:
+            if regdash.search(line):
+                ndash -= 1  # decrement counter
+            if ndash < 1:
+                # end of ECP data block; finish up
                 inblock = False
-                # Read only the first occurrence
+                # Read only the first ECP data block in the file
                 break
             # still within the data block--is it a line of interest?
             m = regx.match(line)
@@ -1603,6 +1605,7 @@ def read_ECP_electrons(fhandl):
             m = regstart.match(line)
             if m:
                 inblock = True
+                ndash = 3  # counter; down to 0 at end of data block
     # subtract to obtain the number of electrons replaced
     nppe = {}
     for i in range(len(centerno)):
@@ -1613,4 +1616,20 @@ def read_ECP_electrons(fhandl):
             nppe[i+1] = 0
     fhandl.seek(byte_start) # restore file pointer to original position
     return nppe
+##
+def count_g09_success(fhandl):
+    # Return the number of occurrences of "Normal Termination "
+    #
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    regx = re.compile('Normal termination ')
+    nsuccess = 0
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        if regx.search(line):
+            nsuccess += 1
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return nsuccess
 ##

@@ -183,6 +183,14 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
             print('\n*** Optional file not found: {:s} ***'.format(fname))
             continue
     print('\n>>> Reading file {:s} <<<'.format(fname))
+    nok = count_g09_success(fgau)
+    if nok < 1:
+        print('*** Calculation did not complete successfully')
+        if suff == 'bu':
+            sys.exit('\tThis file is required!')
+        # Gaussian calculation had a problem, but this is not the essential,
+        #   all-electron BU calculation
+        continue
     if suff == 'opt':
         # check that geometry optimization converged
         if opt_success(fgau):

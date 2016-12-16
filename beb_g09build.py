@@ -2,28 +2,35 @@
 # Create Gaussian09 input files needed for BEB calculation on a neutral target.
 # Basic method:  G. E. Scott and K. K. Irikura, Surf. Interf. Anal. 37, 973-977 (2005)
 #
+# BEB is defined for neutral and singly-positive targets but only neutrals are
+#   handled by this software.  
+#
+############
 # Required input file format (whitespace-delimited): 
 #   line 1: charge, spin-multiplicity [integers]
 #   next: element symbol, cartesian triple [one atom per line]
 #   final blank line
-#
-#   Input files as examples and for testing:
-#       ch2.inp (triplet, non-degen)
-#       ch3.inp (doublet, degen)
-#       ch4.inp (singlet, degenerate orbitals)
-#       gacl.inp (singlet, mixed n>2 and/or ECP)
-#       h2o.inp (singlet, non-degenerate orbitals)
-#       h2s.inp (singlet, ECP or special n>2)
-#       no2.inp (doublet, non-degen)
-#       o2.inp  (triplet, degen)
-#       ZnEt2.inp (singlet, ECP and special n>2)
 # 
 # Command-line arguments can be used to specify memory and number of processors:
-#   -m<mwords> -n<nprocs>
+#   beb_g09build.py <input file name> -m<Mwords> -n<nprocs>
+#   (1 Mword = 8 Mbyte)
 #
-# BEB is defined for neutral and singly-positive targets but only neutrals are
-#   handled by this software.  
-# Latest change: 22 November 2016
+# The resulting Gaussian input files (*.gjf) can be run using the script
+#   "run_beb.sh".  This requires the additional script, "nimag.pl", to verify
+#   that the geometry optimization has succeeded. 
+#
+#   Only the job "*_bu.gjf" is required; the others provide more refined
+#   molecular-orbital parameters. 
+#
+# The Gaussian output files are then processed using the script "beb_g09parse.py". 
+#   That produces a *.bun file of molecular-orbital parameters.  The BUN file is
+#   input to the script "beb_tbl.pl", which produces total ionization cross sections
+#   using the BEB model. 
+############
+#
+# Software citation: 
+#   BEB automation software, Karl K. Irikura, National Institute of Standards
+#   and Technology (2017). 
 #
 # DISCLAIMER:  
 #   Certain commercial software is identified in order to specify procedures
@@ -32,15 +39,24 @@
 #   it imply that the material or equipment identified is necessarily the best
 #   available for the purpose.
 #
-# Software citation: 
-#   BEB automation software, Karl K. Irikura, National Institute of Standards
-#   and Technology (2016). 
+# Input files as examples and for testing:
+#   ch2.inp (triplet, non-degen)
+#   ch3.inp (doublet, degen)
+#   ch4.inp (singlet, degenerate orbitals)
+#   gacl.inp (singlet, mixed n>2 and/or ECP)
+#   h2o.inp (singlet, non-degenerate orbitals)
+#   h2s.inp (singlet, ECP or special n>2)
+#   no2.inp (doublet, non-degen)
+#   o2.inp  (triplet, degen)
+#   ZnEt2.inp (singlet, ECP and special n>2)
+#   BiFClBrIAt.inp (singlet; ECP; special n>2; heavy atoms)
+#   cef4.inp (singlet; f-element; symmetry)
+#   thf3.inp (doublet; 5f; symmetry)
 #
 import sys
 import os
 import re
-#from beb_subs import *
-sys.path.append('/media/sf_bin3')
+#sys.path.append('/media/sf_bin3')
 from g09_subs3 import *
 from chem_subs import *
 ##
@@ -73,8 +89,11 @@ def sort_atoms( atoms, name='z' ):
             lowz.append( z )
         elif z < 37:
             midz.append( z )
-        else:
+        elif z < 104:
             highz.append( z )
+        else:
+            sys.exit('I cannot cope with elements heavier than Lr because of ' +
+                'a lack of all-electron basis sets. Sorry.')
     if name == 'symbol':
         # return element symbols instead of atomic numbers
         lowz = list( map( elz, lowz ) )
@@ -87,7 +106,7 @@ def specify_basis( atoms, step=1 ):
     # return:
     #   formatted string suitable for G09 input file,
     # first arg is coordinates, to be parsed for element symbols
-    # second arg is the computational job number:
+    # second arg is the computational step number:
     #   1 = geometry optimization and vibrational frequencies
     #   2 = binding and kinetic energies -- all-electron
     #   3 = as above, but with ECP on most atoms (if needed)
@@ -100,13 +119,15 @@ def specify_basis( atoms, step=1 ):
     #   8 = CCSD(T) for ion for VIE1 -- low-spin
     #   9 = CCSD(T) for dication for VIE2 -- high-spin
     #  10 = CCSD(T) for dication for VIE2 -- low-spin
+    # also return:
+    #   list of strings describing the basis set ([El, basis] for each element)
     #
     # the next three lists show the basis set to be used for each step number
     light = ['', '6-31G(d)', '6-311G(d,p)', '6-311G(d,p)', '6-311+G(d,p)', '6-311+G(d,p)', 
         'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ']
     middle = ['', '6-31G(d)', '6-311G(d,p)', 'SDDall', '6-311+G(d,p)', '6-311+G(d,p)', 
         'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ', 'cc-pVTZ']
-    heavy = ['', '3-21G*', '3-21G*', 'SDD', 'SDD', 'SDD',
+    heavy = ['', 'SDD', 'assorted', 'SDD', 'SDD', 'SDD',
         'SDD', 'SDD', 'SDD', 'SDD', 'SDD']
     # main-group pseudopotentials need d-polarization functions added (from 6-311G**)
     dpol = { 'Na': 0.175, 'Mg': 0.175,
@@ -115,25 +136,41 @@ def specify_basis( atoms, step=1 ):
         'Se': 0.305, 'Br': 0.451, 'Kr': 0.395, 'I': 0.302 }
     # the 3p-block elements need +d added to the Dunning basis sets
     plusd = [ 'Al', 'Si', 'P', 'S', 'Cl', 'Ar' ]
+    # 'basdir' is the location of the special basis set files, "*.gbs"
+    basdir = ''
     basisstring = ''
     ecpstring = ''
+    basisdescr = {}
     lowz, midz, highz = sort_atoms( atoms, 'symbol' )
     if len( lowz ) > 0:
         basisstring += " ".join( lowz ) + ' 0\n'
         basisstring += light[step]
         basisstring += '\n****\n'
+        for el in lowz:
+            basisdescr[el] = light[step]
     if len( midz ) > 0:
+        for el in midz:
+            basisdescr[el] = middle[step]
         if re.search( 'cc-pVTZ', middle[step] ):
             # do we need cc-pVTZ, cc-pV(T+d)Z, or both?
-            # add tight d-function to old cc basis set
             needd = list( set(plusd) & set(midz) )
-            noneed = list( set(midz) - set(plusd) )
-            if len( needd ):
-                basisstring += '@/home/irikura/basis/t_plusd.gbs\n'
-            if len( noneed ):
-                basisstring += " ".join( noneed ) + ' 0 \n'
-                basisstring += middle[step] + '\n****\n'
+            noneed = list( set(midz) - set(needd) )
+            if len(needd):
+                # cc-pV(T+d)Z basis sets will be read from a file at run time
+                basfile = basdir + 't_plusd.gbs'
+                basisstring += '@{:s}\n'.format(basfile)
+                if not os.path.exists(basfile):
+                    # basis-set file is not on this machine; OK if it's found at run time
+                    print('*** Warning: basis-set file not found: {:s}\n'.format(basfile))
+                for el in needd:
+                    basisdescr[el] = basisdescr[el].replace('T', '(T+d)')
+            if len(noneed):
+                # plain cc-pVTZ basis sets
+                basisstring += " ".join(noneed) + ' 0\n'
+                basisstring += middle[step]
+                basisstring += '\n****\n'
         else:
+            # not a cc-pVTZ type of basis
             basisstring += " ".join( midz ) + ' 0\n'
             basisstring += middle[step]
             if re.search( 'SDD', middle[step] ):
@@ -143,22 +180,48 @@ def specify_basis( atoms, step=1 ):
                 # may need to add d-polarization function to valence basis
                 for el in midz:
                     if el in dpol:
-                        # add d-polarization
+                        # add d-polarization for each element separately
+                        basisstring += '\n****\n'
+                        basisstring += '{:s} 0'.format(el)
                         basisstring += '\n D   1 1.00       0.000000000000\n'
-                        basisstring += '      %16.10e  0.1000000000D+01' % dpol[el]
-                        break
+                        basisstring += '      {:16.10e}  0.1000000000D+01'.format(dpol[el])
+                        basisdescr[el] += '+d'
             basisstring += '\n****\n'
     if len( highz ) > 0:
         # polarization functions available only for some elements; put one per line
         isecp = re.search( 'SDD', heavy[step] )
+        isspecial = re.search( 'assorted', heavy[step] )
+        if isspecial:
+            # the basis sets will be read at run time
+            basfile = basdir + 'dzp_dkh.gbs'
+            for basfile in ['dzp_dkh.gbs', 'sarc_dkh.gbs', 'ano_rcc_dz.gbs']:
+                basisstring += '@{:s}{:s}\n'.format(basdir, basfile)
+                if not os.path.exists(basfile):
+                    # basis-set file is not on this machine; OK if it's found at run time
+                    print('*** Warning: basis-set file not found: {:s}\n'.format(basfile))
         for el in highz:
-            basisstring += el + ' 0\n'
-            basisstring += heavy[step]
-            if el in dpol and isecp:
-                # d-polarization function is available for this element--use it
-                basisstring += '\n D   1 1.00       0.000000000000\n'
-                basisstring += '      %16.10e  0.1000000000D+01' % dpol[el]
-            basisstring += '\n****\n'
+            if isspecial:
+                # check atomic number to learn basis set
+                z = elz(el)
+                if z in [87, 88]:
+                    # this is my DZ truncation of the ANO-RCC sets
+                    basisdescr[el] = 'ANO-RCC-DZ'
+                elif z in list(range(37,58)) + list(range(72, 87)):
+                    basisdescr[el] = 'DZP-DKH'
+                else:
+                    # hopefully this covers all other cases encountered here
+                    basisdescr[el] = 'SARC-DKH'
+            else:
+                # not an 'assorted' basis set
+                basisdescr[el] = heavy[step]
+                basisstring += el + ' 0\n'
+                basisstring += heavy[step]
+                if el in dpol and isecp:
+                    # d-polarization function is available for this element--use it
+                    basisstring += '\n D   1 1.00       0.000000000000\n'
+                    basisstring += '      %16.10e  0.1000000000D+01' % dpol[el]
+                    basisdescr[el] += '+d'
+                basisstring += '\n****\n'
         if isecp:
             # need to specify pseudopotential
             ecpstring += " ".join( highz ) + ' 0\n'
@@ -174,12 +237,12 @@ def specify_basis( atoms, step=1 ):
             nopp[el] = 0
         for el in midz:
             if re.search('SDD', middle[step]):
-                nopp[el] = n_sdd(el) / 2
+                nopp[el] = n_sdd(el) // 2
         for el in highz:
             if re.search('SDD', heavy[step]):
-                nopp[el] = n_sdd(el) / 2
-        return basisstring, nopp
-    return basisstring
+                nopp[el] = n_sdd(el) // 2
+        return basisstring, nopp, basisdescr
+    return basisstring, basisdescr
 ##
 def need_ecp( basisstring ):
     # return 1 if basisstring specifies ECP-basis, else 0
@@ -208,7 +271,61 @@ def newfile(froot, filext):
     fname = '{:s}_{:s}.gjf'.format(froot, filext)
     fgjf = open( fname, 'w' )
     print( 'creating file', fname )
-    return fgjf
+    return fgjf, fname
+##
+def update_log():
+    # update log file (descriptions of calculations) using global variables
+    nparen = 1  # maximum number of parenthetical arguments to display
+    task = ['', 'Optimize geometry to a local minimum (no imaginary vibrational frequencies)',
+        'All-electron calculation of binding energies and kinetic energies',
+        'Orbital kinetic energies with effective core potentials (pseudopotentials)',
+        'Correlated binding energies for outer orbitals',
+        'Doubly vertical ionization energy of cation',
+        'Correlated total ground-state energy',
+        'Correlated total energy of high-spin, vertical cation',
+        'Correlated total energy of low-spin, vertical cation',
+        'Correlated total energy of high-spin, doubly vertical dication',
+        'Correlated total energy of low-spin, doubly vertical dication' ]
+    s = '{:s} (step {:d})'.format(fname, step)
+    flog.write('\n{:s}\n'.format(s))
+    s = '-' * len(s)
+    flog.write('{:s}\n'.format(s))
+    s = task[step]
+    flog.write('{:s}\n'.format(s))
+    # extract theoretical method from 'directive'
+    regtheory = re.compile(r'#\s*(.+?)/')
+    reg6D = re.compile(r'\s6D')
+    regparen = re.compile(r'\(.*\)')
+    regdk = re.compile(r'int\S+(DKH\S*)', re.IGNORECASE)
+    m = regtheory.match(directive)
+    if m:
+        theory = m.group(1)
+        # if there are parenthetical arguments, only display the first 'nparen' of them
+        m = regparen.search(theory)
+        if m:
+            # may not display all these sub-commands
+            scmd = m.group(0).strip('()').split(',')
+            n = min(nparen, len(scmd))
+            theory = regparen.sub('(' + ','.join(scmd[0:n]) + ')', theory)
+        # check for Douglas-Kroll-Hess hamiltonian
+        m = regdk.search(directive)
+        if m:
+            theory += '-{:s}'.format(m.group(1).upper())
+        s = 'Theoretical method: {:s}'.format(theory)
+    else:
+        # failed to read theoretical method; print directive instead
+        s = '{:s}\n'.format(directive)
+    flog.write('{:s}\n'.format(s))
+    # report basis sets 
+    s = 'Elem\tBasis'
+    flog.write('{:s}\n'.format(s))
+    for b in basdescr:
+        s = '{:s}\t{:s}'.format(b, basdescr[b])
+        flog.write('{:s}\n'.format(s))
+    if reg6D.search(directive):
+        s = 'd-functions used in sets of 6'
+        flog.write('{:s}\n'.format(s))
+    return
 #
 # MAIN
 #
@@ -240,10 +357,18 @@ for arg in sys.argv:
 coords = finp.readlines()
 finp.close()
 elem = get_elements( coords )
+lowz, midz, hiz = sort_atoms( elem )
 (charge, mult) = ( int(x) for x in coords[0].split() )
 if ( charge != 0):
     print( 'charge =', charge )
     sys.exit( 'The target molecule must be electrically neutral.' )
+#
+# create log file describing each computation
+fname_log = '{:s}_build.log'.format(froot)
+flog = open(fname_log, 'w')
+flog.write('Descriptions of the Gaussian calculations are below.\n')
+flog.write('See corresponding *.txt files for descriptions of ' \
+    'non-standard basis sets.\n')
 #
 # filename extensions for each computational job step
 filext = ['', 'opt', 'bu', 'bupp', 'ept1', 'ept2',
@@ -252,12 +377,15 @@ filext = ['', 'opt', 'bu', 'bupp', 'ept1', 'ept2',
 # create input file for geometry optimization and frequencies (step 1)
 #
 step = 1
-fgjf = newfile(froot, filext[step])
+fgjf, fname = newfile(froot, filext[step])
 header =  '%chk={:s}.chk\n%nprocs={:d}\n%mem={:d}mw\n'.format(froot.replace(",", "-"),
     nprocs, mem)
-directive = '# B3LYP/GEN OPT FREQ scf=xqc'
+directive = '# B3LYP/GEN gfinput OPT FREQ scf=xqc'
 comment = '\nBEB step {:d}: geom and freqs for {:s}\n\n'.format(step, froot)
-basis = specify_basis( elem, step )
+basis, basdescr = specify_basis( elem, step )
+if re.search('SDD', basis):
+    # must read pseudopotential
+    directive += ' pseudo=read'
 if need_6D(basis):
     directive += ' 6D\n'
 else:
@@ -266,39 +394,47 @@ fgjf.write( header + directive + comment )
 fgjf.write( "".join( coords ) )
 fgjf.write( basis )
 fgjf.close()
+update_log()    # update logfile (description of calculations) 
 #
 # create all-electron input file for Hartree-Fock B + U (step 2)
 # [include Mulliken population analysis]
 #
 step = 2
-fgjf = newfile(froot, filext[step])
-directive = '# HF/GEN geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)\n'
+fgjf, fname = newfile(froot, filext[step])
+directive = '# HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)'
+# if there are heavy elements, include scalar relativistic effects via DKH2
+if len(hiz) > 0:
+    # there are heavy elements; use DKH2 to get "better" BU values
+    directive += ' int=DKH2\n'
+else:
+    directive += '\n'
 comment = '\nBEB step {:d}: Hartree-Fock B and U for {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
-basis = specify_basis( elem, step )
+basis, basdescr = specify_basis( elem, step )
 fgjf.write( coords[0] + '\n' + basis )  # coords[0] is the "charge mult" line
 fgjf.close()
+update_log()
 #
 # create pseudopotential input file for Hartree-Fock B + U (step 3), if needed
 #
 step = 3
-lowz, midz, hiz = sort_atoms( elem )
 if ( len(midz) + len(hiz) ) > 0:
     # there are atoms with n>3: create PP files for B+U calc.
-    fgjf = newfile(froot, filext[step])
-    directive = '# HF/GEN geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)\n'
+    fgjf, fname = newfile(froot, filext[step])
+    directive = '# HF/GEN gfinput geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)\n'
     comment = '\nBEB step {:d}: pseudopotential B and U for {:s}\n\n'.format(step, froot)
     fgjf.write( header + directive + comment )
-    basis = specify_basis( elem, step )
+    basis, basdescr = specify_basis( elem, step )
     fgjf.write( coords[0] + '\n' + basis )
     fgjf.close()
+    update_log()
 #
 # create input file for correlated (EPT) binding energies B (step 4)
 #
 step = 4
-fgjf = newfile(froot, filext[step])
-basis, nopp = specify_basis( elem, step )
-directive = '# EPT(OVGF+P3,ReadOrbitals)/GEN geom=check scf=xqc'
+fgjf, fname = newfile(froot, filext[step])
+basis, nopp, basdescr = specify_basis( elem, step )
+directive = '# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check scf=xqc'
 if need_ecp( basis ):
     directive += ' pseudo=read\n'
 else:
@@ -312,8 +448,7 @@ nalp = (nel + mult - 1) // 2     # number of alpha electrons
 nbet = nel - nalp
 ncore = 0
 for el in elem:
-    print('el =', el, 'n_core =', n_core(el, 'g09'), 'nopp =', nopp[el])
-    ncore += max( n_core(el, 'g09'), nopp[el] )
+    ncore += max( n_core(el, 'g09'), 2 * nopp[el] )
 ncore //= 2
 nalp -= ncore   # number of valence alpha electrons
 nbet -= ncore
@@ -325,6 +460,7 @@ else:
     #fgjf.write( "1 %d %d %d\n\n" % (nalp, nbet, nbet) )
 fgjf.close()
 directive_ept = directive
+update_log()
 #
 # For ions, assume minimal values for 'high' and 'low' spin.
 # [0] is for even spin multiplicities (i.e., odd number of electrons)
@@ -339,12 +475,11 @@ i = (mult + 2) % 2  # for +2 ion
 # cation multiplicity must be between dication options
 ref_mult = (ion_mult[i]['hi'] + ion_mult[i]['lo']) // 2
 step = 5
-fgjf = newfile(froot, filext[step])
-basis, nopp = specify_basis( elem, step )
+fgjf, fname = newfile(froot, filext[step])
+basis, nopp, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: cation EPT for VIE2 for {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive_ept + comment )
 fgjf.write('1 {:d}\n'.format(ref_mult) + '\n' + basis )
-#fgjf.write( coords[0] + '\n' + basis )
 # figure out the orbital window to get the HOMO(s)
 nalp = (nel-1 + ref_mult-1) // 2     # number of alpha electrons in cation
 nbet = nel-1 - nalp
@@ -352,13 +487,14 @@ nalp -= ncore   # number of valence alpha electrons
 nbet -= ncore
 fgjf.write('{:d} {:d} {:d} {:d}\n\n'.format(nalp, nalp, nbet, nbet))
 fgjf.close()
+update_log()
 #
 # create input file for neutral CCSD(T) (step 6)
 #
 step = 6
-fgjf = newfile(froot, filext[step])
-basis = specify_basis( elem, step )
-directive = '# CCSD(T)/GEN geom=check scf=xqc'
+fgjf, fname = newfile(froot, filext[step])
+basis, basdescr = specify_basis( elem, step )
+directive = '# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc'
 if need_ecp( basis ):
     directive += ' pseudo=read\n'
 else:
@@ -367,48 +503,56 @@ comment = '\nBEB step {:d}: CCSD(T) for neutral {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 fgjf.write( coords[0] + '\n' + basis )
 fgjf.close()
+update_log()
 #
 # create input file for high-spin cation CCSD(T) (step 7)
 #
 step = 7
-fgjf = newfile(froot, filext[step])
-basis = specify_basis( elem, step )
+fgjf, fname = newfile(froot, filext[step])
+basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 i = (mult + 1) % 2
 fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
 fgjf.close()
+update_log()
 #
 # create input file for low-spin cation CCSD(T) (step 8)
 #
 step = 8
-fgjf = newfile(froot, filext[step])
-basis = specify_basis( elem, step )
+fgjf, fname = newfile(froot, filext[step])
+basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 i = (mult + 1) % 2
 fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
 fgjf.close()
+update_log()
 #
 # create input file for high-spin dication CCSD(T) (step 9)
 #
 step = 9
-fgjf = newfile(froot, filext[step])
-basis = specify_basis( elem, step )
+fgjf, fname = newfile(froot, filext[step])
+basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 i = (mult + 2) % 2
 fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
 fgjf.close()
+update_log()
 #
 # create input file for low-spin dication CCSD(T) (step 10)
 #
 step = 10
-fgjf = newfile(froot, filext[step])
-basis = specify_basis( elem, step )
+fgjf, fname = newfile(froot, filext[step])
+basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )
 i = (mult + 2) % 2
 fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
 fgjf.close()
+update_log()
+#
+flog.close()
+print('Descriptions of the calculations are in the file "{:s}".'.format(fname_log))
 

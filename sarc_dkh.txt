@@ -1,0 +1,11 @@
+The basis sets in 'sarc_dkh.gbs' are all-electron set taken from EMSL, which provides
+the following citations.
+
+!  SARC-DKH  EMSL  Basis Set Exchange Library   12/5/16 1:20 PM
+! Elements                             References
+! --------                             ----------
+! Hf Ta W Re Os Ir Pt Au Hg: Dimitrios. A. Pantazis, Xian-Yang Chen, Clark R. Landis, and Frank Neese, All-Electron Scalar Relativistic Basis Sets for Third-Row Transition Metal Atoms, Journal of Chemical Theory and Computation 4(6), 908?919 (2008).
+! La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu: Dimitrios A. Pantazis and Frank Neese, All-electron scalar relativistic basis sets for the lanthanides, J. Chem. Theory Comput. 5, 2229 (2009).
+! Tl Pb Bi Po At Rn: Dimitrios A. Pantazis and Frank Neese, All-electron scalar relativistic basis sets for the 6p elements, Theor. Chem. Acc. 131, 1292 (2012).
+! Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr: Dimitrios A. Pantazis and Frank Neese, All-electron scalar relativistic basis sets for the actinides, J. Chem. Theory Comput. 7, 677 (2011).
+! 

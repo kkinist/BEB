@@ -1,0 +1,8 @@
+The basis sets in 'dkh2.gbs' are all-electron set taken from EMSL, which provides
+the following citation.
+
+!  Cologne DKH2  EMSL  Basis Set Exchange Library   12/5/16 1:10 PM
+! Elements                             References
+! --------                             ----------
+! La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu: Michael Dolg, Segmented contracted Douglas-Kroll-Hess adapted basis sets for lanthanides, Journal of Chemical Theory and Computation 7, 3131 (2011).
+! 

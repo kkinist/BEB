@@ -1,0 +1,8 @@
+The basis sets in 'ano_rcc_dz.gbs' are all-electron set taken from EMSL, which provides
+the following citation. Here, they are truncated to DZ (8s6p4d2f).
+
+!  ANO-RCC  EMSL  Basis Set Exchange Library   12/5/16 1:23 PM
+! Elements                             References
+! --------                             ----------
+! Li Be Na Mg K Ca Rb Sr Cs Ba Fr Ra: O. Roos, V. Veryazov and P.-O. Widmark, Relativistic atomic natural orbital type basis sets for the alkaline and alkaline-earth atoms applied to the ground-state potentials for the corresponding dimers., Theor. Chem. Acc. 111, 345-351 (2003).
+! 

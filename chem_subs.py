@@ -1,9 +1,12 @@
 # Routines for general quantum chemistry (no particular software package)
+# Python3 and pandas
 # Karl Irikura 
 #
 import re
 import string
+import numpy as np
 import pandas as pd
+from scipy.spatial.distance import cdist
 #
 amu_au = 1 / 5.4857990946E-4    # amu expressed in a.u. (viz., electron masses)
 au_wavenumber = 219474.6313708  # hartree expressed in wavenumbers
@@ -16,9 +19,10 @@ eV_per_hartree = 27.21138602  # from NIST website 10/25/2016
 au_kjmol = au_joule * avogadro / 1000   # hartree expressed in kJ/mol
 ev_wavenumber = au_wavenumber / eV_per_hartree      # eV expressed in cm**-1
 #
-def elz(ar):
+def elz(ar, choice=None):
     # return atomic number given an elemental symbol, or
     # return elemental symbol given an atomic number 
+    # If 'choice' is specified as 'symbol' or 'Z', return that.
     # if 'ar' is a list, then return a corresponding list
     symb = ['n',
         'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne',
@@ -36,14 +40,25 @@ def elz(ar):
             'Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk',
                  'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr',
                'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt']
-    if type(ar) == int:
-        return symb[ar]
+    if type(ar) == str and not re.match(r'^\d+$', ar):
+        # this looks like an element symbol
+        ar = ar.title()  # Title Case
+        if choice == 'symbol':
+            return ar
+        else:
+            return symb.index(ar)
     if type(ar) == list:
+        # process a list of atoms
         vals = []
         for el in ar:
-            vals.append(elz(el))
+            vals.append(elz(el), choice)
         return vals
-    return symb.index(ar)
+    # if we got here, the argument an atomic number
+    Z = int(ar)
+    if choice == 'Z':
+        return Z
+    else:
+        return symb[Z]
 ##
 def n_core(atno, code=None):
     # given Z value (or element symbol) return number of core electrons
@@ -185,4 +200,106 @@ def combine_MOspin(df, col1='MO', col2='Spin', colnew='Label'):
     dfret = df.copy()
     dfret[colnew] = df.apply(lambda x: str(x[col1])+(x[col2])[0], axis=1)
     return dfret
+##
+class Atom:
+    # Minimal description: element symbol + cartesian coordinates
+    def __init__(self, el, xyz):
+        # 'el' : Element symbol or atomic number
+        # 'xyz': cartesian coordinates as list or numpy array 
+        self.el = elz(el, choice='symbol')
+        self.xyz = np.array(xyz)
+    def copy( self ):
+        newatom = Atom(self.el, self.xyz)
+        return newatom
+    def print( self ):
+        # print routine
+        print('{:s}\t{:9.5f}\t{:9.5f}\t{:9.5f}'.format(self.el, self.xyz[0], self.xyz[1], self.xyz[2]))
+        return
+##
+def distance(pos1, pos2):
+    # return distance between two vectors (numpy)
+    # return NaN if the vectors have different dimensionality
+    if len(pos1) != len(pos2):
+        print('Unequal vector dimensions in "distance": dim1 = {:d}, dim2 = {:d}')
+        return np.nan 
+    v = pos2 - pos1
+    d = np.sqrt(np.dot(v, v))
+    return d
+##
+class Geometry:
+    # a list of Atoms
+    def __init__(self, *args, intype='1list'):
+        # three input types are recognized:
+        #   '2lists'    : a list of elements and a list of coordinate triples
+        #   '1list'     : a list of [el, x, y, z] quadruples
+        #   'atlist'    : a list of Atoms
+        #   'DataFrame' : a pandas DataFrame with four columns (Z, x, y, z)
+        self.atom = []
+        if len(args) == 0:
+            # return an empty Geometry
+            return
+        if intype == 'atlist':
+            # argument is already a list of Atoms
+            self.atom = list(args[0])
+            return
+        if intype == '1list':
+            # argument is a list of quadruples, [el, x, y, z]
+            for quad in args[0]:
+                at = Atom(quad[0], quad[1:4])
+                self.atom.append(at)
+            return
+        if intype == '2lists':
+            # first argument is a list of elements
+            # second argument is a list of triples
+            nsymb = len(args[0])
+            nxyz = len(args[1])
+            if nsymb != nxyz:
+                print('*** Inconsistent #symb = {:d} and #xyz = {:d} in Geometry initialization'.format(nsymb, nxyz))
+                return  # empty 
+            for iat in range(nsymb):
+                at = Atom(args[0][iat], args[1][iat])
+                self.atom.append(at)
+            return
+        if intype == 'DataFrame':
+            # argument is a four-column pandas DataFrame (Z, x, y, z)
+            for iat in range(len(args[0].index)):
+                elxyz = args[0].iloc[iat]
+                at = Atom(elxyz[0], elxyz[1:].tolist())
+                self.atom.append(at)
+    def addatom(self, atom):
+        self.atom.append(atom)
+        return
+    def delatom(self, iatom):
+        del self.atom[iatom]
+        return
+    def copy(self, elements=[]):
+        # If a list of elements is provided, the new Geometry includes only them
+        newgeom = Geometry()
+        for a in self.atom:
+            if (len(elements) == 0) or (a.el in elements):
+                newgeom.addatom(a.copy())
+        return newgeom
+    def natom(self):
+        return len(self.atom)
+    def print(self):
+        # printing routine
+        print('el\t     x\t\t     y\t\t     z')
+        for atom in self.atom:
+            atom.print()
+        return
+    def distance(self, i, j):
+        # distance between atoms i and j
+        try:
+            d = distance(self.atom[i].xyz, self.atom[j].xyz)
+            return d
+        except IndexError:
+            s = '*** Illegal atom number in Geometry.distance(): ' + \
+                'i = {:d}, j = {:d}'.format(i, j)
+            print(s)
+            return np.nan
+    def distmat(self):
+        # 2D array of interatomic distances
+        xyz = [a.xyz for a in self.atom]
+        dmat = cdist(xyz, xyz, metric='euclidean')
+        return dmat
 ##
