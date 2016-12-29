@@ -1633,3 +1633,74 @@ def count_g09_success(fhandl):
     fhandl.seek(byte_start) # restore file pointer to original position
     return nsuccess
 ##
+def read_orbital_irreps(fhandl):
+    # return a DataFrame: (1) line numbers (base 1),
+    #   (2) byte numbers (file positions for seek/tell),
+    #   (3) the orbital type (e.g., initial guess)
+    #   (4) a DataFrame describing the orbitals:
+    #       (4a) irrep label as printed by Gaussian
+    #       (4b) occupied? (True or False)
+    #       (4c) spin ('alpha', 'beta', or 'both')
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    fline = []
+    fpos = []
+    otype = []
+    orbsDF = []
+    lineno = 0
+    reginit = re.compile(r'\s*Initial guess orbital symmetries:')
+    regconvg = re.compile(r'\s*Orbital [Ss]ymmetries:')
+    regend = re.compile(r'\s*Requested convergence|eigenvalues')
+    regspin = re.compile(r'\s*(Alpha|Beta)\s{1,2}Orbitals:')
+    regocc = re.compile(r'^\s+Occupied\s+')
+    regvirt = re.compile(r'^\s+Virtual\s+')
+    regparens = re.compile(r'(\s+\(\S+\))+')
+    inblock = False
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        lineno += 1
+        if inblock:
+            # read orbital info
+            if regend.search(line):
+                inblock = False
+                # build the orbital DataFrame
+                data = list(zip(irrep, occup, spin))
+                cols = ['Irrep', 'Occup', 'Spin']
+                df = pd.DataFrame(data=data, columns=cols)
+                orbsDF.append(df)
+                continue
+            m = regspin.match(line)
+            if m:
+                spinup = m.group(1).lower()  # 'alpha' or 'beta'
+            if regocc.match(line):
+                isocc = True
+            if regvirt.match(line):
+                isocc = False
+            m = regparens.search(line)
+            if m:
+                # read irreps
+                irr = re.findall(r'\((\S+)\)', m.group(0))
+                irrep.extend(irr)
+                occup.extend([isocc] * len(irr))
+                spin.extend([spinup] * len(irr))
+        if reginit.match(line) or regconvg.match(line):
+            if reginit.match(line):
+                otype.append('initial guess')
+            else:
+                otype.append('converged')
+            inblock = True
+            fline.append(lineno)
+            pos = fhandl.tell()
+            fpos.append(pos)
+            # initialize lists of orbitals
+            irrep = []
+            occup = []
+            spin = []
+            spinup = 'both'  # may change to 'alpha' or 'beta'
+    data = list(zip(fline, fpos, otype, orbsDF))
+    cols = ['line', 'byte', 'Type', 'Orbs']
+    df = pd.DataFrame(data=data, columns=cols)
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return df

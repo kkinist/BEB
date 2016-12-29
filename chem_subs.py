@@ -51,7 +51,7 @@ def elz(ar, choice=None):
         # process a list of atoms
         vals = []
         for el in ar:
-            vals.append(elz(el), choice)
+            vals.append(elz(el, choice))
         return vals
     # if we got here, the argument an atomic number
     Z = int(ar)
@@ -302,4 +302,338 @@ class Geometry:
         xyz = [a.xyz for a in self.atom]
         dmat = cdist(xyz, xyz, metric='euclidean')
         return dmat
+##
+def mulpopDiff(df1, df2):
+    print('--- OBSOLETE ---')
+    # Compare two pandas DataFrames with Mulliken population data,
+    #   as returned by routine 'read_AOpop_in_MOs()' in 'g09_subs.py'
+    # Return a DataFrame:
+    #   (1) MO number
+    #   (2) Energy difference (E2 - E1)
+    #   (3) Popdiff : numerical difference between AO populations (per MO)
+    #   (4) AOpops : DataFrame, columns = AO labels, index = ['P1', 'P2']
+    #     (4a) AO contribution in first orbital set
+    #     (4b) AO contribution in second orbital set
+    #
+    # The two input DataFrames may not have the same list of MO numbers
+    #   only consider MOs they have in common
+    MOnums = sorted(set(list(df1.MO)) & set(list(df2.MO)))  # set intersection
+    jointMO = []
+    ediff = []
+    popdiff = []
+    AOpops = []  # a list of DataFrames
+    for MO in MOnums:
+        orb1 = df1[df1.MO == MO]
+        orb2 = df2[df2.MO == MO]
+        e1 = orb1.iloc[0]['Energy']
+        e2 = orb2.iloc[0]['Energy']
+        ediff.append(e2 - e1)
+        jointMO.append(MO)
+        # compare the Mulliken populations
+        mulpop1 = {}
+        mulpop2 = {}
+        # create a label for each AO that looks like '#5-p' for a p-orbital on atom #5
+        for irow in range(len(orb1.index)):
+            s = '#{:d}-{:s}'.format(orb1.iloc[irow]['Atom#'], orb1.iloc[irow]['L'])
+            c = orb1.iloc[irow]['Contrib']
+            mulpop1[s] = c
+        for irow in range(len(orb2.index)):
+            s = '#{:d}-{:s}'.format(orb2.iloc[irow]['Atom#'], orb2.iloc[irow]['L'])
+            c = orb2.iloc[irow]['Contrib']
+            mulpop2[s] = c
+        # for each AO, subtract the populations
+        pdiff = 0
+        # make a list of the AOs used by either orbital
+        aolist = sorted(set(list(mulpop1.keys()) + list(mulpop2.keys())))
+        # create DataFrame for this MO, all zeros at first
+        dfpop = pd.DataFrame(data=np.zeros((2,len(aolist))), columns=aolist)
+        for ao in aolist:
+            try:
+                pdiff += abs(mulpop2[ao] - mulpop1[ao])
+                dfpop.iloc[0][ao] = mulpop1[ao]
+                dfpop.iloc[1][ao] = mulpop2[ao]
+            except:
+                # probably an AO present in only one of the two orbitals
+                try:
+                    pdiff += abs(mulpop1[ao])
+                    dfpop.iloc[0][ao] = mulpop1[ao]
+                    dfpop.iloc[1][ao] = 0
+                except:
+                    # must be the other orbital
+                    pdiff += abs(mulpop2[ao])
+                    dfpop.iloc[1][ao] = mulpop2[ao]
+                    dfpop.iloc[0][ao] = 0
+        popdiff.append(pdiff)
+        dfpop.insert(0, 'orbset', ['P1', 'P2'])
+        AOpops.append(dfpop.set_index('orbset'))
+    data = list(zip(jointMO, ediff, popdiff, AOpops))
+    cols = ['MO', 'E2-E1', 'P2-P1', 'AOpops']
+    dfdiff = pd.DataFrame(data=data, columns=cols)
+    return dfdiff
+##
+def JSdm(P, Q, base=4):
+    # Jensen-Shannon divergence metric; base=4 gives range = [0, 1]
+    # P and Q are *discrete* PDFs (with same data type)
+    # Allowed data types: tuple; list; dict; numpy array
+    # P and Q must be same length, except when dict
+    # Return:
+    #   (1) metric (float)
+    #   (2) messages (list of string)
+    #
+    message = []
+    if type(P) != type(Q):
+        print('*** P and Q must be same data type in routine JSdm() ***')
+        return (None, None)
+    if (type(P) == list) or (type(P) == tuple) or (type(P) == np.ndarray):
+        P = np.array(P).astype(float)
+        Q = np.array(Q).astype(float)
+        allkeys = []   # length will be tested later, to infer input type
+    elif type(P) == dict:
+        # make a sorted list of all the keys
+        allkeys = sorted(set(list(P.keys()) + list(Q.keys())))
+        Plist = []
+        Qlist = []
+        for key in allkeys:
+            try:
+                Plist.append(P[key])
+            except:
+                # probably key is not present in this dict
+                Plist.append(0)
+            try:
+                Qlist.append(Q[key])
+            except:
+                Qlist.append(0)
+        if P.keys() != Q.keys():
+            message.append('Different key lists merged for P and Q')
+        # convert list to numpy array
+        P = np.array(Plist).astype(float)
+        Q = np.array(Qlist).astype(float)
+    else:
+        print('*** Unhandled data type in routine JSdm():', type(P))
+        return (None, None)
+    # No negative values are allowed
+    if len(np.where(P < 0)[0]) or len(np.where(Q < 0)[0]):
+        print('*** Negative values not allowed in routine JSdm() ***')
+        return (None, None)
+    # P and Q must have the same number of elements
+    if len(P) != len(Q):
+        print('*** P and Q must have same length in routine JSdm() ***')
+        return (None, None)
+    # Normalize both PDFs (L1-normalization)
+    Plen = P.sum()
+    Qlen = Q.sum()
+    if (Plen == 0) or (Qlen == 0):
+        print('*** P and Q may not be all zeros in routine JSdm() ***')
+        return (None, None)
+    P /= Plen
+    Q /= Qlen
+    pqsum = P + Q
+    # find any zeros in (P+Q) and delete corresponding elements in P, Q, and P+Q
+    nullidx = np.where(pqsum == 0)[0]
+    if len(nullidx > 0):
+        # delete the troublesome elements
+        if len(allkeys) > 0:
+            # input was dict
+            message.append('Deleted null elements with indices ' + str([allkeys[i] for i in nullidx]))
+        else:
+            # input was list-like
+            message.append('Deleted null elements with indices ' + str(nullidx))
+        P = np.delete(P, nullidx)
+        Q = np.delete(Q, nullidx)
+        pqsum = np.delete(pqsum, nullidx)
+    # compute the JSDM
+    # P or Q may still contain zeros, so don't take straight logarithm
+    #   instead, use x*ln(y) = ln(y**x) and convention 0**0 = 1
+    s1 = 2 * P / pqsum
+    s2 = 2 * Q / pqsum
+    s1 = s1 ** P
+    s2 = s2 ** Q
+    s1 = np.log(s1) / np.log(base)
+    s2 = np.log(s2) / np.log(base)
+    dsq = (s1 + s2).sum()
+    return np.sqrt(dsq), message
+##
+def matchMOsByPop(df1, df2, thresh=0.1):
+    print('--- OBSOLETE ---')
+    # Compare two pandas DataFrames with Mulliken population data,
+    #   as returned by routine 'read_AOpop_in_MOs()' in 'g09_subs.py'
+    # Argument 'thresh' is the cutoff for AO contribution differences
+    #   to be considered bad.
+    # Return a dict of MO number correspondences, based upon Mulliken
+    #   AO contributions.  (Weighted) orbital energies are also considered,
+    #   as a proxy for principal quantum number. The dict only includes
+    #   orbitals that appear to be mismatched. 
+    # Keys are MO labels in df2, values are MO labels in df1.
+    #
+    # Look for better matches: first contruct matrix of AO-pop differences
+    Eweight = 0.1  # weighting for energy differences
+    momap = {}
+    popDiff = mulpopDiff(df1, df2)
+    bigDiff = popDiff[(popDiff['P2-P1'] + popDiff['E2-E1'].abs()) > thresh]
+    ndim = len(bigDiff.index)
+    if (ndim == 0):
+        # no problems to correct
+        return momap
+    diffmat = np.zeros((ndim, ndim))
+    idxlist = list(bigDiff.index)  # these are the row/column numbers
+    for iorb in bigDiff.index:
+        imo = bigDiff.loc[iorb]['MO']
+        refdP = bigDiff.loc[iorb]['P2-P1']
+        refE = df1[df1.MO == imo].iloc[0]['Energy']
+        P1 = bigDiff.loc[iorb]['AOpops'].loc['P1']
+        for jorb in bigDiff.index:
+            jmo = bigDiff.loc[jorb]['MO']
+            jE = df2[df2.MO == jmo].iloc[0]['Energy']
+            dE = jE - refE
+            # compute the sum|P2-P1| difference in AO contributions
+            P2 = bigDiff.loc[jorb]['AOpops'].loc['P2']
+            aos = list(bigDiff.loc[iorb]['AOpops'].columns.values) + list(bigDiff.loc[jorb]['AOpops'].columns.values)
+            aos = sorted(set(aos))
+            # include |E2-E1|*Eweight in the sum
+            dP = abs(dE) * Eweight
+            for ao in aos:
+                try:
+                    dP += abs(P2.loc[ao] - P1.loc[ao])
+                except:
+                    # probably 'ao' is missing from one of the orbitals
+                    try:
+                        dP += abs(P1.loc[ao])
+                    except:
+                        # must be the other orbitals
+                        dP += abs(P2.loc[ao])
+            diffmat[idxlist.index(iorb), idxlist.index(jorb)] = dP
+    claimed = []  # list of orbitals in set2 as they are paired
+    pairing = list(range(ndim))  # default is no rearrangement
+    # start pairing with the closest matches 
+    for iorb in diffmat.min(axis=1).argsort():
+        # loop over rows, in order by best available match
+        for jorb in diffmat[iorb, :].argsort():
+            # loop over columns, in order by best match
+            if jorb in claimed:
+                # this orbital already paired
+                continue
+            # this is a pairing
+            claimed.append(jorb)
+            pairing[iorb] = jorb
+            break  # done with this first-set MO
+    # convert into a mapping of MO numbers
+    for i in range(ndim):
+        imo = bigDiff.iloc[i]['MO']
+        j = pairing[i]
+        jmo = bigDiff.iloc[j]['MO']
+        if imo != jmo:
+            # report only these non-identity mappings
+            momap[jmo] = imo  # key is the MO number in the 2nd set
+    return momap
+##
+def AOpopdiffmats(df1, df2):
+    # Compare two pandas DataFrames with Mulliken population data,
+    #   as returned by routine 'read_AOpop_in_MOs()' in 'g09_subs.py'
+    # Return two numpy 2D-arrays:
+    #   (1) JSdm() differences in AO populations (Jensen-Shannon divergence metric)
+    #   (2) (E2-E1) orbital energy differences
+    # Also return two lists of MO numbers:
+    #   (3) MO numbers in df1 (rows of matrices)
+    #   (4) MO numbers in df2 (columns of matrics)
+    MOlist1 = sorted(set(df1.MO))
+    MOlist2 = sorted(set(df2.MO))
+    nmo1 = len(MOlist1)
+    nmo2 = len(MOlist2)
+    dPmat = np.zeros((nmo1, nmo2))
+    dEmat = np.zeros((nmo1, nmo2))
+    for imo in MOlist1:
+        # looping over MOs in first set
+        idx = MOlist1.index(imo)  # row number in returned matrices
+        orb1 = df1[df1.MO == imo]
+        E1 = orb1.iloc[0]['Energy']
+        # convert AO populations into a dict
+        mulpop1 = {}
+        # create a label for each AO that looks like '#5-p' for a p-orbital on atom #5
+        for ao in orb1.index:
+            s = '#{:d}-{:s}'.format(orb1.loc[ao]['Atom#'], orb1.loc[ao]['L'])
+            c = orb1.loc[ao]['Contrib']
+            if c < 0:
+                # this should not happen
+                print('*** Warning: negative AO contribution found in MO #{:d} in df1 ***'.format(imo))
+                c = abs(c)
+            mulpop1[s] = c
+        # loop over orbitals in second set
+        for jmo in MOlist2:
+            jdx = MOlist2.index(jmo)  # column number in returned matrices
+            orb2 = df2[df2.MO == jmo]
+            E2 = orb2.iloc[0]['Energy']
+            dEmat[idx, jdx] = E2 - E1  # signed difference
+            # construct dict of AO populations as above
+            mulpop2 = {}
+            for ao in orb2.index:
+                s = '#{:d}-{:s}'.format(orb2.loc[ao]['Atom#'], orb2.loc[ao]['L'])
+                c = orb2.loc[ao]['Contrib']
+                if c < 0:
+                    # this should not happen
+                    print('*** Warning: negative AO contribution found in MO #{:d} in df2 ***'.format(jmo))
+                    c = abs(c)
+                mulpop2[s] = c
+            # get JSdm distance between the two AO population vectors
+            dist = JSdm(mulpop1, mulpop2)
+            dPmat[idx, jdx] = dist[0]
+    return dPmat, dEmat, MOlist1, MOlist2
+##
+def orbitalPopMatch(df1, df2, Eweight=0.1, diagBias=0.001):
+    # Find which MOs correspond between two calculations. 
+    # Note: Cannot distinguish degenerate orbitals! 
+    # Compare two pandas DataFrames with Mulliken population data,
+    #   as returned by routine 'read_AOpop_in_MOs()' in 'g09_subs.py'
+    # Argument 'Eweight' is the weight to give to energy differences.
+    # Argument 'diagBias' is the preference to give to the existing
+    #   orbital numbering.
+    # Return a dict of MO number correspondences. The dict only includes
+    #   orbitals that appear to be mismatched. 
+    # Keys are MO labels in df2, values are MO labels in df1.
+    #
+    dPmat, dEmat, MOs1, MOs2 = AOpopdiffmats(df1, df2)
+    # count the MOs in each orbital set
+    norb1 = len(MOs1)
+    norb2 = len(MOs2)
+    nmo = min(norb1, norb2)
+    # use unsigned energy differences
+    diffmat = dPmat + Eweight * np.fabs(dEmat)
+    # install the bias toward perserving the existing numbering
+    # Note: Gaussian prints the populations only to 0.01 precision
+    for i in range(norb1):
+        imo = MOs1[i]
+        try:
+            j = MOs2.index(imo)
+            diffmat[i, j] -= diagBias
+        except:
+            # probably an orbital missing from set 2
+            pass
+    # find closest distance for each row
+    rowmin = diffmat.min(axis=1)
+    # sort by increasing distance (i.e., best matches first)
+    rowlist = rowmin.argsort()
+    # truncate to smallest dimension
+    rowlist = rowlist[0 : nmo]
+    claimed = []  # list of orbitals in set2 as they are paired
+    pairing = {}  # mapping between orbital indices (not MO numbers/labels)
+    for iorb in rowlist:
+        # loop over matrix rows, starting with those with best available matches
+        for jorb in diffmat[iorb, :].argsort():
+            # loop over columns, starting with best match
+            if jorb in claimed:
+                # this orbital already paired
+                continue
+            # this is a pairing
+            claimed.append(jorb)
+            pairing[iorb] = jorb
+            break  # done with this first-set MO
+    # convert into a mapping of MO numbers
+    momap = {}
+    for i in pairing.keys():
+        imo = MOs1[i]  # MO number from first set
+        j = pairing[i]
+        jmo = MOs2[j]  # MO number from second set
+        if imo != jmo:
+            # report only non-identity mappings
+            momap[jmo] = imo  # key is the MO number in the 2nd set
+    return momap 
 ##

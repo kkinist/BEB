@@ -250,6 +250,9 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         VIE, iespin, iemeth = weakest_binding(buae)
         mult_ion, nalp_ion, nbet_ion = ion_multiplicity(nalp, nbet, iespin)
         print('Crude VIE = {:.2f} eV to {:s} cation.'.format(VIE, spinname(mult_ion)))
+        mulpops_bu = read_AOpop_in_MOs(fgau)   # will be used to match up MOs from different calculations
+        mulpops_bu = mulpops_bu[mulpops_bu.Occ == 'occ']  # restrict attention to occupied orbitals
+        #print(mulpops_bu[mulpops_bu.MO == 32])
         VIE_method = 'Koopmans'
         VIE2 = 40.0  # guess for vertical double ionization energy (eV)
         VIE2_method = 'guessing'
@@ -272,7 +275,7 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
                 bupp.loc[buae['Orbital'] == mo, 'Special'] = domlbl[mo]
         print('HF/ECP orbital and kinetic energies (hartree):')
         # adjust orbital numbers to account for core
-        bupp['Orbital'] += ppcore / 2
+        bupp['Orbital'] += ppcore // 2
         print(bupp.to_string(index=False))
         # note any light-atom core orbitals remaining
         lightcore = 0
@@ -286,10 +289,20 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         VIE_pp, ppspin, ppmeth = weakest_binding(bupp)
         mult_pp, nalp_pp, nbet_pp = ion_multiplicity(nalp-ppcore, nbet-ppcore, ppspin)
         print('Crude VIE = {:.2f} eV to {:s} cation.'.format(VIE_pp, spinname(mult_pp)))
+        mulpops_bupp = read_AOpop_in_MOs(fgau)
+        mulpops_bupp = mulpops_bupp[mulpops_bupp.Occ == 'occ']  # restrict attention to occupied orbitals
+        mulpops_bupp.MO += ppcore // 2  # adjust orbital numbers
+        #print(mulpops_bupp)
+        momap_bupp = orbitalPopMatch(mulpops_bu, mulpops_bupp)
+        if len(momap_bupp) > 0:
+            print('Orbitals re-ordered, based upon Mulliken populations:')
+            print(bupp.to_string(index=False))
         ecp = True
     if suff == 'ept1':
         # extract correlated orbital energies (negative of binding energies)
-        ept = read_best_ept(fgau, minPS=0.75)
+        minPS = 0.75
+        ept = read_best_ept(fgau, minPS=minPS)
+        print('(minimum acceptable pole strength = {:.2f})'.format(minPS))
         # degeneracies will cause a funny orbital ordering--sort before printing
         ept = ept.sort_values(by=['Spin', 'Orbital'])
         # also put columns in the same order as the HF results just displayed
@@ -303,15 +316,42 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         if abs(VIE_ept - VIE) > 1.5:
             # discrepancy between VIE values; 
             #   maybe EPT calculation has wrong number of orbitals
-            print('*** Warning: Large discrepancy of {:.2f} eV between Koopmans and EPT VIE values ***'.format(VIE_ept - VIE))
+            print('*** Warning: Large difference of {:.2f} eV between Koopmans and EPT VIE values ***'.format(VIE_ept - VIE))
         VIE = VIE_ept
+        mulpops_ept1 = read_AOpop_in_MOs(fgau)
+        mulpops_ept1 = mulpops_ept1[mulpops_ept1.Occ == 'occ']  # restrict attention to occupied orbitals
+        # adjust orbital numbering if necessary, to match other calculations
+        ndispl = mulpops_bu.MO.max() - mulpops_ept1.MO.max()
+        if ndispl > 0:
+            # there must be an ECP in the ept1 calculation
+            mulpops_ept1.MO += ndispl
+        #print(mulpops_ept1[mulpops_ept1.MO == 35])
+        momap_ept1 = orbitalPopMatch(mulpops_bu, mulpops_ept1)
+        # delete mappings of orbitals not computed by EPT
+        minmo = ept.Orbital.min()
+        keylist = list(momap_ept1.keys())
+        keylist = []
+        for key in keylist:
+            if key < minmo:
+                del momap_ept1[key]
+        if len(momap_ept1) > 0:
+            print('Orbitals re-ordered, based mostly upon unsigned Mulliken populations:')
+            #print(momap_ept1)
+            # loop once through the rows, changing MO numbers
+            for idx in ept.index:
+                imo = ept.loc[idx, 'Orbital'] 
+                if imo in momap_ept1.keys():
+                    # change this MO number
+                    ept.loc[idx, 'Orbital'] = momap_ept1[imo]
+            print(ept.to_string(index=False))
     if suff == 'ept2':
         # get electron counts for cation
         ecation = read_g09_electrons(fgau).iloc[0]
         nalpion = ecation.Alpha
         nbetion = ecation.Beta
         # find ground state of (vertical) dication and (VIE2 - VIE) energy
-        ept2 = read_best_ept(fgau, minPS=0.75)
+        ept2 = read_best_ept(fgau, minPS=minPS)
+        print('(minimum acceptable pole strength = {:.2f})'.format(minPS))
         print(ept2.to_string(index=False))
         # extract molecular ionization energy
         IEcat, ie2spin, ie2meth = weakest_binding(ept2)

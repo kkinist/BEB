@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#
 # Create Gaussian09 input files needed for BEB calculation on a neutral target.
 # Basic method:  G. E. Scott and K. K. Irikura, Surf. Interf. Anal. 37, 973-977 (2005)
 #
@@ -397,7 +398,8 @@ fgjf.close()
 update_log()    # update logfile (description of calculations) 
 #
 # create all-electron input file for Hartree-Fock B + U (step 2)
-# [include Mulliken population analysis]
+# [include Mulliken population analysis for identifying orbitals with n>2]
+# Only this step is absolutely required.
 #
 step = 2
 fgjf, fname = newfile(froot, filext[step])
@@ -416,6 +418,7 @@ fgjf.close()
 update_log()
 #
 # create pseudopotential input file for Hartree-Fock B + U (step 3), if needed
+# [include Mulliken population analysis for identifying orbitals with n>2]
 #
 step = 3
 if ( len(midz) + len(hiz) ) > 0:
@@ -430,11 +433,13 @@ if ( len(midz) + len(hiz) ) > 0:
     update_log()
 #
 # create input file for correlated (EPT) binding energies B (step 4)
+# [include Mulliken population analysis to sort orbitals consistently
+#  with previous calculations]
 #
 step = 4
 fgjf, fname = newfile(froot, filext[step])
 basis, nopp, basdescr = specify_basis( elem, step )
-directive = '# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check scf=xqc'
+directive = '# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)'
 if need_ecp( basis ):
     directive += ' pseudo=read\n'
 else:
@@ -511,6 +516,7 @@ step = 7
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
+directive = directive.rstrip() + ' guess=check\n'  # avoid excited states
 fgjf.write( header + directive + comment )
 i = (mult + 1) % 2
 fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
