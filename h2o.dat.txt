@@ -1,9 +1,0 @@
-# Results from automated beb_g09build.py and beb_g09parse.py
-# Molecule is 'h2o' (singlet H2O)
-# Double-ionization threshold = 39.98 eV from CCSD(T) (to triplet)
-#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	559.12	794.60	2	1	Yes	none	
-2	36.75	70.85	2	1	No	none	
-3	18.74	47.70	2	1	No	none	B from P3
-4	14.71	58.81	2	1	No	none	B from P3
-5	12.45	62.29	2	1	No	none	B from CCSD(T)

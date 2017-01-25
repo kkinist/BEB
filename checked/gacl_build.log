@@ -1,0 +1,83 @@
+Descriptions of the Gaussian calculations are below.
+See corresponding *.txt files for descriptions of non-standard basis sets.
+
+gacl_opt.gjf (step 1)
+---------------------
+Optimize geometry to a local minimum (no imaginary vibrational frequencies)
+Theoretical method: B3LYP
+Elem	Basis
+Cl	6-31G(d)
+Ga	6-31G(d)
+d-functions used in sets of 6
+
+gacl_bu.gjf (step 2)
+--------------------
+All-electron calculation of binding energies and kinetic energies
+Theoretical method: HF
+Elem	Basis
+Cl	6-311G(d,p)
+Ga	6-311G(d,p)
+
+gacl_bupp.gjf (step 3)
+----------------------
+Orbital kinetic energies with effective core potentials (pseudopotentials)
+Theoretical method: HF
+Elem	Basis
+Cl	SDDall+d
+Ga	SDDall+d
+
+gacl_ept1.gjf (step 4)
+----------------------
+Correlated binding energies for outer orbitals
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+Cl	6-311+G(d,p)
+Ga	6-311+G(d,p)
+
+gacl_ept2.gjf (step 5)
+----------------------
+Doubly vertical ionization energy of cation
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+Cl	6-311+G(d,p)
+Ga	6-311+G(d,p)
+
+gacl_cc.gjf (step 6)
+--------------------
+Correlated total ground-state energy
+Theoretical method: CCSD(T)
+Elem	Basis
+Cl	cc-pV(T+d)Z
+Ga	cc-pVTZ
+
+gacl_cc1hi.gjf (step 7)
+-----------------------
+Correlated total energy of high-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+Cl	cc-pV(T+d)Z
+Ga	cc-pVTZ
+
+gacl_cc1lo.gjf (step 8)
+-----------------------
+Correlated total energy of low-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+Cl	cc-pV(T+d)Z
+Ga	cc-pVTZ
+
+gacl_cc2hi.gjf (step 9)
+-----------------------
+Correlated total energy of high-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+Cl	cc-pV(T+d)Z
+Ga	cc-pVTZ
+
+gacl_cc2lo.gjf (step 10)
+------------------------
+Correlated total energy of low-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+Cl	cc-pV(T+d)Z
+Ga	cc-pVTZ

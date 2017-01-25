@@ -1,0 +1,109 @@
+
+>>> Reading file gacl_opt.out <<<
+Geometry optimization converged: No vibrational frequencies found
+
+>>> Reading file gacl_bu.out <<<
+HF orbital and kinetic energies (hartree):
+"Special" AO contribution threshold is 0.75
+MO      Energy          KE Special
+ 1 -378.853937  465.394913    none
+ 2 -104.798289  137.113442    none
+ 3  -48.203435   89.794851    none
+ 4  -42.530367   88.495756    none
+ 5  -42.530367   88.495756    none
+ 6  -42.529389   88.499259    none
+ 7  -10.524646   21.813007    none
+ 8   -7.991920   20.635722    none
+ 9   -7.990539   20.646521    none
+10   -7.990539   20.646521    none
+11   -6.430698   19.858954      3s
+12   -4.520414   17.885924      3p
+13   -4.520414   17.885924      3p
+14   -4.517558   17.915348      3p
+15   -1.228318   12.783740      3d
+16   -1.227700   13.073914      3d
+17   -1.227700   13.073914      3d
+18   -1.224070   13.071887      3d
+19   -1.224070   13.071887      3d
+20   -1.044547    3.194812      3s
+21   -0.541698    2.062057      3p
+22   -0.441658    2.088590      3p
+23   -0.441658    2.088590      3p
+24   -0.357437    1.773580      4s
+Crude VIE = 9.73 eV to doublet cation.
+
+>>> Reading file gacl_bupp.out <<<
+ECP (pseudopotential) replaced 38 electrons.
+HF/ECP orbital and kinetic energies (hartree):
+MO    Energy        KE Special
+20 -1.047121  0.491534    none
+21 -0.541115  0.580921    none
+22 -0.439344  0.805191    none
+23 -0.439344  0.805191    none
+24 -0.360226  0.508715    none
+Orbital ordering is consistent with gacl_bu.out
+Crude VIE = 9.80 eV to doublet cation.
+
+>>> Reading file gacl_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy    Method     PS
+15 -1.22790  Koopmans  0.000
+16 -1.06400    P3-3rd  0.859
+17 -1.06400    P3-3rd  0.859
+18 -1.22370  Koopmans  0.000
+19 -1.22370  Koopmans  0.000
+20 -1.04330  Koopmans  0.000
+21 -0.50495    P3-3rd  0.880
+22 -0.40112    P3-3rd  0.904
+23 -0.40112    P3-3rd  0.904
+24 -0.35376    P3-3rd  0.930
+VIE = 9.63 eV to the doublet cation from P3-3rd theory.
+
+>>> Reading file gacl_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+     24  alpha  P3-3rd -0.64743  0.928
+     23   beta  P3-3rd -0.63617  0.897
+Second IE = 17.31 eV to the triplet dication from P3-3rd theory.
+Estimated VIE2 = 26.94 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file gacl_cc.out <<<
+CCSD(T) = -2383.231041 for neutral molecule
+
+>>> Reading file gacl_cc1hi.out <<<
+CCSD(T) = -2382.678655 for quartet ion
+
+>>> Reading file gacl_cc1lo.out <<<
+CCSD(T) = -2382.870257 for doublet ion
+
+>>> Reading file gacl_cc2hi.out <<<
+CCSD(T) = -2382.217158 for triplet dication
+
+>>> Reading file gacl_cc2lo.out <<<
+CCSD(T) = -2382.221648 for singlet dication
+
+VIE = 9.82 eV to doublet cation from CCSD(T)
+VIE2 = 27.47 eV to singlet dication from CCSD(T)
+Taking kinetic energies from ECP calculation.
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	10309.14	12664.04	2	1	Yes	none	Koopmans
+2	2851.71	3731.05	2	1	Yes	none	Koopmans
+3	1311.68	2443.44	2	1	Yes	none	Koopmans
+4	1157.30	2408.12	6	1	Yes	none	Koopmans
+7	286.39	593.56	2	1	Yes	none	Koopmans
+8	217.45	561.72	6	1	Yes	none	Koopmans
+11	174.99	540.39	2	1	Yes	3s	Koopmans
+12	123.01	486.70	4	1	Yes	3p	Koopmans
+14	122.93	487.50	2	1	Yes	3p	Koopmans
+15	33.41	347.86	2	1	Yes	3d	Koopmans
+16	28.95	355.76	4	1	Yes	3d	P3-3rd
+18	33.30	355.70	4	1	Yes	3d	Koopmans
+20	28.39	13.38	2	1	Yes	none	B Koopmans; U ECP
+21	13.74	15.81	2	1	No	none	B P3-3rd; U ECP
+22	10.92	21.91	4	1	No	none	B P3-3rd; U ECP
+24	9.82	13.84	2	1	No	none	B CCSD(T); U ECP
+
+BUN data file gacl.bun written and closed.

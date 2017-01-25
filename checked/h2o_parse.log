@@ -1,0 +1,59 @@
+
+>>> Reading file h2o_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file h2o_bu.out <<<
+HF orbital and kinetic energies (hartree):
+MO     Energy         KE
+1 -20.547450  29.200948
+2  -1.336232   2.603790
+3  -0.698740   1.752952
+4  -0.571456   2.161240
+5  -0.499259   2.289240
+Crude VIE = 13.59 eV to doublet cation.
+
+>>> Reading file h2o_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy    Method     PS
+2 -1.35040  Koopmans  0.000
+3 -0.68873    P3-3rd  0.942
+4 -0.54072    P3-3rd  0.936
+5 -0.45679    P3-3rd  0.933
+VIE = 12.43 eV to the doublet cation from P3-3rd theory.
+
+>>> Reading file h2o_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+      5  alpha  P3-3rd -1.03850  0.928
+      4   beta  P3-3rd -0.99187  0.936
+Second IE = 26.99 eV to the triplet dication from P3-3rd theory.
+Estimated VIE2 = 39.42 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file h2o_cc.out <<<
+CCSD(T) = -76.332054 for neutral molecule
+
+>>> Reading file h2o_cc1hi.out <<<
+CCSD(T) = -75.384441 for quartet ion
+
+>>> Reading file h2o_cc1lo.out <<<
+CCSD(T) = -75.874456 for doublet ion
+
+>>> Reading file h2o_cc2hi.out <<<
+CCSD(T) = -74.862886 for triplet dication
+
+>>> Reading file h2o_cc2lo.out <<<
+CCSD(T) = -74.820391 for singlet dication
+
+VIE = 12.45 eV to doublet cation from CCSD(T)
+VIE2 = 39.98 eV to triplet dication from CCSD(T)
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	559.12	794.60	2	1	Yes	none	Koopmans
+2	36.75	70.85	2	1	No	none	Koopmans
+3	18.74	47.70	2	1	No	none	P3-3rd
+4	14.71	58.81	2	1	No	none	P3-3rd
+5	12.45	62.29	2	1	No	none	CCSD(T)
+
+BUN data file h2o.bun written and closed.

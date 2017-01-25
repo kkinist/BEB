@@ -1,0 +1,67 @@
+
+>>> Reading file ch2_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file ch2_bu.out <<<
+HF orbital and kinetic energies (hartree):
+MO     Energy         KE
+1a -11.263292  15.997904
+2a  -0.946609   1.393532
+3a  -0.614673   1.002641
+4a  -0.450693   1.167526
+5a  -0.408943   1.166214
+1b -11.214722  16.058617
+2b  -0.773640   1.175366
+3b  -0.582743   0.946578
+Crude VIE = 11.13 eV to doublet cation.
+
+>>> Reading file ch2_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy  Method     PS
+2a -0.85008  P3-3rd  0.825
+3a -0.59221  P3-3rd  0.925
+4a -0.41445  P3-3rd  0.933
+5a -0.37171  P3-3rd  0.935
+2b -0.73127  P3-3rd  0.906
+3b -0.55735  P3-3rd  0.930
+VIE = 10.11 eV to the doublet cation from P3-3rd theory.
+
+>>> Reading file ch2_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+      4  alpha  P3-3rd -0.82065  0.944
+      3   beta  P3-3rd -0.97224  0.950
+Second IE = 22.33 eV to the singlet dication from P3-3rd theory.
+Estimated VIE2 = 32.45 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file ch2_cc.out <<<
+CCSD(T) = -39.077834 for neutral molecule
+
+>>> Reading file ch2_cc1hi.out <<<
+CCSD(T) = -38.508787 for quartet ion
+
+>>> Reading file ch2_cc1lo.out <<<
+CCSD(T) = -38.697980 for doublet ion
+
+>>> Reading file ch2_cc2hi.out <<<
+CCSD(T) = -37.712352 for triplet dication
+
+>>> Reading file ch2_cc2lo.out <<<
+CCSD(T) = -37.870154 for singlet dication
+
+VIE = 10.34 eV to doublet cation from CCSD(T)
+VIE2 = 32.86 eV to singlet dication from CCSD(T)
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1a	306.49	435.33	1	1	Yes	none	Koopmans
+1b	305.17	436.98	1	1	Yes	none	Koopmans
+2a	23.13	37.92	1	1	No	none	P3-3rd
+2b	19.90	31.98	1	1	No	none	P3-3rd
+3a	16.11	27.28	1	1	No	none	P3-3rd
+3b	15.17	25.76	1	1	No	none	P3-3rd
+4a	11.28	31.77	1	1	No	none	P3-3rd
+5a	10.34	31.73	1	1	No	none	CCSD(T)
+
+BUN data file ch2.bun written and closed.

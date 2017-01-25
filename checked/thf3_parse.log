@@ -1,0 +1,377 @@
+
+>>> Reading file thf3_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file thf3_bu.out <<<
+HF orbital and kinetic energies (hartree):
+"Special" AO contribution threshold is 0.75
+MO       Energy            KE Special
+ 1a -4036.604651  11576.782046    none
+ 2a  -756.008476   2539.324795    none
+ 3a  -639.257144   1175.721522    none
+ 4a  -639.256689   1175.723943    none
+ 5a  -639.256689   1175.723943    none
+ 6a  -192.635410    732.223830      3s
+ 7a  -159.331782    399.008795      3p
+ 8a  -159.330235    399.016165      3p
+ 9a  -159.330235    399.016165      3p
+10a  -126.803287    320.856654      3d
+11a  -126.801867    320.852313      3d
+12a  -126.801867    320.852313      3d
+13a  -126.800784    320.856005      3d
+14a  -126.800784    320.856005      3d
+15a   -50.105516    229.870161      4s
+16a   -38.946921    134.241410      4p
+17a   -38.944472    134.255153      4p
+18a   -38.944472    134.255153      4p
+19a   -26.504765    104.410666      4d
+20a   -26.502399    104.394002      4d
+21a   -26.502399    104.394002      4d
+22a   -26.500305    104.398996      4d
+23a   -26.500305    104.398996      4d
+24a   -26.280622     37.525563    none
+25a   -26.280621     37.525708    none
+26a   -26.280621     37.525708    none
+27a   -13.384813     84.581173      4f
+28a   -13.384533     84.581683      4f
+29a   -13.384533     84.581683      4f
+30a   -13.383204     84.580478      4f
+31a   -13.383204     84.580478      4f
+32a   -13.381065     84.581958      4f
+33a   -13.380908     84.580752      4f
+34a   -11.548964     63.237800      5s
+35a    -8.015163     36.724542      5p
+36a    -8.015163     36.724542      5p
+37a    -8.013696     36.689354      5p
+38a    -3.831570     24.302327      5d
+39a    -3.829122     24.240848      5d
+40a    -3.829122     24.240848      5d
+41a    -3.826857     24.229550      5d
+42a    -3.826857     24.229550      5d
+43a    -2.082233     13.656182      6s
+44a    -1.570341      3.867424    none
+45a    -1.570341      3.867424    none
+46a    -1.534723      4.388220    none
+47a    -1.119626      6.872652      6p
+48a    -1.097357      6.987428      6p
+49a    -1.097357      6.987428      6p
+50a    -0.660872      3.565117    none
+51a    -0.650814      3.065503    none
+52a    -0.650814      3.065503    none
+53a    -0.631188      2.913385    none
+54a    -0.631188      2.913385    none
+55a    -0.630832      2.974696    none
+56a    -0.610160      3.200842    none
+57a    -0.580837      4.149851    none
+58a    -0.580837      4.149851    none
+59a    -0.244352      2.110545      7s
+ 1b -4036.604162  11576.777069    none
+ 2b  -756.007604   2539.321813    none
+ 3b  -639.256435   1175.722681    none
+ 4b  -639.256356   1175.725173    none
+ 5b  -639.256356   1175.725173    none
+ 6b  -192.634733    732.219318      3s
+ 7b  -159.332234    399.011936      3p
+ 8b  -159.329638    399.016747      3p
+ 9b  -159.329638    399.016747      3p
+10b  -126.802113    320.851405      3d
+11b  -126.801878    320.852359      3d
+12b  -126.801878    320.852359      3d
+13b  -126.800191    320.856217      3d
+14b  -126.800191    320.856217      3d
+15b   -50.104315    229.858415      4s
+16b   -38.947552    134.247496      4p
+17b   -38.943313    134.253299      4p
+18b   -38.943313    134.253299      4p
+19b   -26.502923    104.398380      4d
+20b   -26.502324    104.393875      4d
+21b   -26.502324    104.393875      4d
+22b   -26.499250    104.400247      4d
+23b   -26.499250    104.400247      4d
+24b   -26.281253     37.524408    none
+25b   -26.281252     37.524555    none
+26b   -26.281252     37.524555    none
+27b   -13.384313     84.582656      4f
+28b   -13.384178     84.582823      4f
+29b   -13.384178     84.582823      4f
+30b   -13.382972     84.580973      4f
+31b   -13.382972     84.580973      4f
+32b   -13.380192     84.583619      4f
+33b   -13.380039     84.582430      4f
+34b   -11.545911     63.217382      5s
+35b    -8.012778     36.714572      5p
+36b    -8.012778     36.714572      5p
+37b    -8.012193     36.720589      5p
+38b    -3.827209     24.245902      5d
+39b    -3.827209     24.245902      5d
+40b    -3.826512     24.220523      5d
+41b    -3.826512     24.220523      5d
+42b    -3.824359     24.270109      5d
+43b    -2.073022     13.656332      6s
+44b    -1.571403      3.869135    none
+45b    -1.571403      3.869135    none
+46b    -1.536249      4.404003    none
+47b    -1.092193      6.970957      6p
+48b    -1.092193      6.970957      6p
+49b    -1.087102      7.335435      6p
+50b    -0.660609      3.586159    none
+51b    -0.651330      3.068403    none
+52b    -0.651330      3.068403    none
+53b    -0.634067      2.943761    none
+54b    -0.634067      2.943761    none
+55b    -0.631955      2.980257    none
+56b    -0.614045      3.235716    none
+57b    -0.581289      4.168900    none
+58b    -0.581289      4.168900    none
+Crude VIE = 6.65 eV to singlet cation.
+
+>>> Reading file thf3_bupp.out <<<
+ECP (pseudopotential) replaced 60 electrons.
+HF/ECP orbital and kinetic energies (hartree):
+MO     Energy         KE Special
+31a -26.260324  37.248023    none
+32a -26.260323  37.248054    none
+33a -26.260323  37.248054    none
+34a -11.825884   4.268538    none
+35a  -7.721286   4.722586    none
+36a  -7.721286   4.722586    none
+37a  -7.720550   4.719986    none
+38a  -3.918222   6.555418    none
+39a  -3.915439   6.544186    none
+40a  -3.915439   6.544186    none
+41a  -3.913943   6.542965    none
+42a  -3.913943   6.542965    none
+43a  -2.100466   2.497861    none
+44a  -1.566512   3.617050    none
+45a  -1.566512   3.617050    none
+46a  -1.532060   3.926548    none
+47a  -1.109004   2.005853    none
+48a  -1.086490   2.445455    none
+49a  -1.086490   2.445455    none
+50a  -0.661962   3.112343    none
+51a  -0.651227   2.856680    none
+52a  -0.651227   2.856680    none
+53a  -0.631676   2.856456    none
+54a  -0.631676   2.856456    none
+55a  -0.631171   2.946197    none
+56a  -0.610696   3.016656    none
+57a  -0.581238   3.309221    none
+58a  -0.581238   3.309221    none
+59a  -0.245759   0.776231    none
+31b -26.260940  37.246907    none
+32b -26.260939  37.246937    none
+33b -26.260939  37.246937    none
+34b -11.823138   4.267614    none
+35b  -7.719139   4.722016    none
+36b  -7.718692   4.722095    none
+37b  -7.718692   4.722095    none
+38b  -3.913629   6.540519    none
+39b  -3.913629   6.540519    none
+40b  -3.913342   6.545714    none
+41b  -3.913342   6.545714    none
+42b  -3.911495   6.550788    none
+43b  -2.091322   2.501035    none
+44b  -1.567534   3.628044    none
+45b  -1.567534   3.628044    none
+46b  -1.533557   3.932146    none
+47b  -1.081299   2.437864    none
+48b  -1.081299   2.437864    none
+49b  -1.075255   2.137545    none
+50b  -0.661683   3.122245    none
+51b  -0.651721   2.863807    none
+52b  -0.651721   2.863807    none
+53b  -0.634482   2.890445    none
+54b  -0.634482   2.890445    none
+55b  -0.632270   2.952213    none
+56b  -0.614340   3.040666    none
+57b  -0.581630   3.314181    none
+58b  -0.581630   3.314181    none
+(3 light-atom core orbitals remain)
+Orbitals re-labeled, based mostly upon Mulliken populations:
+MO     Energy         KE Special
+24a -26.260324  37.248023    none
+26a -26.260323  37.248054    none
+25a -26.260323  37.248054    none
+34a -11.825884   4.268538    none
+35a  -7.721286   4.722586    none
+36a  -7.721286   4.722586    none
+37a  -7.720550   4.719986    none
+38a  -3.918222   6.555418    none
+39a  -3.915439   6.544186    none
+40a  -3.915439   6.544186    none
+41a  -3.913943   6.542965    none
+42a  -3.913943   6.542965    none
+43a  -2.100466   2.497861    none
+44a  -1.566512   3.617050    none
+45a  -1.566512   3.617050    none
+46a  -1.532060   3.926548    none
+47a  -1.109004   2.005853    none
+49a  -1.086490   2.445455    none
+48a  -1.086490   2.445455    none
+50a  -0.661962   3.112343    none
+52a  -0.651227   2.856680    none
+51a  -0.651227   2.856680    none
+54a  -0.631676   2.856456    none
+53a  -0.631676   2.856456    none
+55a  -0.631171   2.946197    none
+56a  -0.610696   3.016656    none
+57a  -0.581238   3.309221    none
+58a  -0.581238   3.309221    none
+59a  -0.245759   0.776231    none
+24b -26.260940  37.246907    none
+25b -26.260939  37.246937    none
+26b -26.260939  37.246937    none
+34b -11.823138   4.267614    none
+35b  -7.719139   4.722016    none
+36b  -7.718692   4.722095    none
+37b  -7.718692   4.722095    none
+38b  -3.913629   6.540519    none
+39b  -3.913629   6.540519    none
+40b  -3.913342   6.545714    none
+41b  -3.913342   6.545714    none
+42b  -3.911495   6.550788    none
+43b  -2.091322   2.501035    none
+44b  -1.567534   3.628044    none
+45b  -1.567534   3.628044    none
+46b  -1.533557   3.932146    none
+48b  -1.081299   2.437864    none
+47b  -1.081299   2.437864    none
+49b  -1.075255   2.137545    none
+50b  -0.661683   3.122245    none
+52b  -0.651721   2.863807    none
+51b  -0.651721   2.863807    none
+54b  -0.634482   2.890445    none
+53b  -0.634482   2.890445    none
+55b  -0.632270   2.952213    none
+56b  -0.614340   3.040666    none
+57b  -0.581630   3.314181    none
+58b  -0.581630   3.314181    none
+Crude VIE = 6.69 eV to singlet cation.
+
+>>> Reading file thf3_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy    Method     PS
+47a -1.56940  Koopmans  0.000
+48a -1.56940  Koopmans  0.000
+49a -1.53500  Koopmans  0.000
+50a -0.59849    P3-3rd  0.926
+51a -0.58928    P3-3rd  0.933
+52a -0.58928    P3-3rd  0.933
+53a -0.56887    P3-3rd  0.929
+54a -0.56887    P3-3rd  0.929
+55a -0.56577    P3-3rd  0.933
+56a -0.54822    P3-3rd  0.928
+57a -0.52538    P3-3rd  0.929
+58a -0.52538    P3-3rd  0.929
+59a -0.24766    P3-3rd  0.981
+47b -1.57040  Koopmans  0.000
+48b -1.57040  Koopmans  0.000
+49b -1.53650  Koopmans  0.000
+50b -0.59773    P3-3rd  0.925
+51b -0.58922    P3-3rd  0.933
+52b -0.58922    P3-3rd  0.933
+53b -0.56939    P3-3rd  0.930
+54b -0.56939    P3-3rd  0.930
+55b -0.56622    P3-3rd  0.933
+56b -0.54977    P3-3rd  0.930
+57b -0.52555    P3-3rd  0.929
+58b -0.52555    P3-3rd  0.929
+VIE = 6.74 eV to the singlet cation from P3-3rd theory.
+Orbitals re-labeled, based mostly upon Mulliken populations:
+MO   Energy    Method     PS
+44a -1.56940  Koopmans  0.000
+45a -1.56940  Koopmans  0.000
+46a -1.53500  Koopmans  0.000
+50a -0.59849    P3-3rd  0.926
+52a -0.58928    P3-3rd  0.933
+51a -0.58928    P3-3rd  0.933
+54a -0.56887    P3-3rd  0.929
+53a -0.56887    P3-3rd  0.929
+55a -0.56577    P3-3rd  0.933
+56a -0.54822    P3-3rd  0.928
+57a -0.52538    P3-3rd  0.929
+58a -0.52538    P3-3rd  0.929
+59a -0.24766    P3-3rd  0.981
+44b -1.57040  Koopmans  0.000
+45b -1.57040  Koopmans  0.000
+46b -1.53650  Koopmans  0.000
+50b -0.59773    P3-3rd  0.925
+52b -0.58922    P3-3rd  0.933
+51b -0.58922    P3-3rd  0.933
+54b -0.56939    P3-3rd  0.930
+53b -0.56939    P3-3rd  0.930
+55b -0.56622    P3-3rd  0.933
+56b -0.54977    P3-3rd  0.930
+57b -0.52555    P3-3rd  0.929
+58b -0.52555    P3-3rd  0.929
+
+>>> Reading file thf3_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+     59  alpha  P3-3rd -0.45602  0.977
+     57   beta  P3-3rd -0.73557  0.908
+Second IE = 12.41 eV to the doublet dication from P3-3rd theory.
+Estimated VIE2 = 26.71 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file thf3_cc.out <<<
+CCSD(T) = -705.687320 for neutral molecule
+
+>>> Reading file thf3_cc1hi.out <<<
+*** Calculation did not complete successfully
+
+>>> Reading file thf3_cc1lo.out <<<
+CCSD(T) = -705.455238 for singlet ion
+
+>>> Reading file thf3_cc2hi.out <<<
+CCSD(T) = -704.444569 for quartet dication
+
+>>> Reading file thf3_cc2lo.out <<<
+CCSD(T) = -704.724463 for doublet dication
+
+VIE = 6.32 eV to singlet cation from CCSD(T)
+VIE2 = 26.20 eV to doublet dication from CCSD(T)
+Taking kinetic energies from ECP calculation.
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	109841.60	315020.22	2	1	Yes	none	Koopmans
+2	20572.03	69098.51	2	1	Yes	none	Koopmans
+3	17395.06	31993.07	6	1	Yes	none	Koopmans
+6	5241.87	19924.76	2	1	Yes	3s	Koopmans
+7	4335.61	10857.74	6	1	Yes	3p	Koopmans
+10	3450.44	8730.89	10	1	Yes	3d	Koopmans
+15	1363.42	6254.93	2	1	Yes	4s	Koopmans
+16	1059.75	3653.15	6	1	Yes	4p	Koopmans
+19	721.15	2840.82	10	1	Yes	4d	Koopmans
+24	715.14	1013.56	6	1	Yes	none	B Koopmans; U ECP
+27	364.17	2301.59	14	1	Yes	4f	Koopmans
+34	314.22	116.14	2	1	Yes	none	B Koopmans; U ECP
+35	218.06	128.49	6	1	Yes	none	B Koopmans; U ECP
+38a	104.26	178.38	1	1	Yes	none	B Koopmans; U ECP
+39	104.14	178.08	9	1	Yes	none	B Koopmans; U ECP
+43a	56.66	67.97	1	1	Yes	none	B Koopmans; U ECP
+43b	56.41	68.06	1	1	Yes	none	B Koopmans; U ECP
+44a	42.71	98.42	2	1	Yes	none	B Koopmans; U ECP
+44b	42.73	98.72	2	1	Yes	none	B Koopmans; U ECP
+46a	41.77	106.85	1	1	Yes	none	B Koopmans; U ECP
+46b	41.81	107.00	1	1	Yes	none	B Koopmans; U ECP
+47a	30.47	54.58	1	1	Yes	none	B Koopmans; U ECP
+47b	29.72	66.34	2	1	Yes	none	B Koopmans; U ECP
+48a	29.86	66.54	2	1	Yes	none	B Koopmans; U ECP
+49b	29.58	58.17	1	1	Yes	none	B Koopmans; U ECP
+50a	16.29	84.69	1	1	No	none	B P3-3rd; U ECP
+50b	16.27	84.96	1	1	No	none	B P3-3rd; U ECP
+51a	16.04	77.73	2	1	No	none	B P3-3rd; U ECP
+51b	16.03	77.93	2	1	No	none	B P3-3rd; U ECP
+53a	15.48	77.73	2	1	No	none	B P3-3rd; U ECP
+53b	15.49	78.65	2	1	No	none	B P3-3rd; U ECP
+55a	15.40	80.17	1	1	No	none	B P3-3rd; U ECP
+55b	15.41	80.33	1	1	No	none	B P3-3rd; U ECP
+56a	14.92	82.09	1	1	No	none	B P3-3rd; U ECP
+56b	14.96	82.74	1	1	No	none	B P3-3rd; U ECP
+57a	14.30	90.05	2	1	No	none	B P3-3rd; U ECP
+57b	14.30	90.18	2	1	No	none	B P3-3rd; U ECP
+59a	6.32	21.12	1	1	No	none	B CCSD(T); U ECP
+
+BUN data file thf3.bun written and closed.

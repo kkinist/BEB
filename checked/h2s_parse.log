@@ -1,0 +1,80 @@
+
+>>> Reading file h2s_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file h2s_bu.out <<<
+HF orbital and kinetic energies (hartree):
+"Special" AO contribution threshold is 0.75
+MO     Energy          KE Special
+1 -91.969883  121.165696    none
+2  -8.972311   18.712139    none
+3  -6.654519   17.566189    none
+4  -6.653684   17.587121    none
+5  -6.651857   17.624094    none
+6  -0.982313    2.036104      3s
+7  -0.591137    1.295538    none
+8  -0.500353    1.668355      3p
+9  -0.384854    1.666794      3p
+Crude VIE = 10.47 eV to doublet cation.
+
+>>> Reading file h2s_bupp.out <<<
+ECP (pseudopotential) replaced 10 electrons.
+HF/ECP orbital and kinetic energies (hartree):
+MO    Energy        KE Special
+6 -0.986969  0.439803    none
+7 -0.590305  0.690421    none
+8 -0.499313  0.661256    none
+9 -0.383517  0.657449    none
+Orbital ordering is consistent with h2s_bu.out
+Crude VIE = 10.44 eV to doublet cation.
+
+>>> Reading file h2s_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy    Method     PS
+6 -0.98140  Koopmans  0.000
+7 -0.56576    P3-3rd  0.924
+8 -0.47598    P3-3rd  0.924
+9 -0.36269    P3-3rd  0.931
+VIE = 9.87 eV to the doublet cation from P3-3rd theory.
+
+>>> Reading file h2s_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+      9  alpha  P3-3rd -0.77253  0.935
+      8   beta  P3-3rd -0.79912  0.937
+Second IE = 21.02 eV to the singlet dication from P3-3rd theory.
+Estimated VIE2 = 30.89 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file h2s_cc.out <<<
+CCSD(T) = -398.938042 for neutral molecule
+
+>>> Reading file h2s_cc1hi.out <<<
+CCSD(T) = -398.200387 for quartet ion
+
+>>> Reading file h2s_cc1lo.out <<<
+CCSD(T) = -398.559690 for doublet ion
+
+>>> Reading file h2s_cc2hi.out <<<
+CCSD(T) = -397.740877 for triplet dication
+
+>>> Reading file h2s_cc2lo.out <<<
+CCSD(T) = -397.776995 for singlet dication
+
+VIE = 10.30 eV to doublet cation from CCSD(T)
+VIE2 = 31.59 eV to singlet dication from CCSD(T)
+Taking kinetic energies from ECP calculation.
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	2502.63	3297.09	2	1	Yes	none	Koopmans
+2	244.15	509.18	2	1	Yes	none	Koopmans
+3	181.08	478.00	2	1	Yes	none	Koopmans
+4	181.06	478.57	2	1	Yes	none	Koopmans
+5	181.01	479.58	2	1	Yes	none	Koopmans
+6	26.71	11.97	2	1	No	none	B Koopmans; U ECP
+7	15.40	18.79	2	1	No	none	B P3-3rd; U ECP
+8	12.95	17.99	2	1	No	none	B P3-3rd; U ECP
+9	10.30	17.89	2	1	No	none	B CCSD(T); U ECP
+
+BUN data file h2s.bun written and closed.

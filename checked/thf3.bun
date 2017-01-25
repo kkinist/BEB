@@ -1,0 +1,42 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'thf3' (doublet F3Th)
+# Double-ionization threshold = 26.20 eV from CCSD(T) (to doublet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	109841.60	315020.22	2	1	Yes	none	Koopmans
+2	20572.03	69098.51	2	1	Yes	none	Koopmans
+3	17395.06	31993.07	6	1	Yes	none	Koopmans
+6	5241.87	19924.76	2	1	Yes	3s	Koopmans
+7	4335.61	10857.74	6	1	Yes	3p	Koopmans
+10	3450.44	8730.89	10	1	Yes	3d	Koopmans
+15	1363.42	6254.93	2	1	Yes	4s	Koopmans
+16	1059.75	3653.15	6	1	Yes	4p	Koopmans
+19	721.15	2840.82	10	1	Yes	4d	Koopmans
+24	715.14	1013.56	6	1	Yes	none	B Koopmans; U ECP
+27	364.17	2301.59	14	1	Yes	4f	Koopmans
+34	314.22	116.14	2	1	Yes	none	B Koopmans; U ECP
+35	218.06	128.49	6	1	Yes	none	B Koopmans; U ECP
+38a	104.26	178.38	1	1	Yes	none	B Koopmans; U ECP
+39	104.14	178.08	9	1	Yes	none	B Koopmans; U ECP
+43a	56.66	67.97	1	1	Yes	none	B Koopmans; U ECP
+43b	56.41	68.06	1	1	Yes	none	B Koopmans; U ECP
+44a	42.71	98.42	2	1	Yes	none	B Koopmans; U ECP
+44b	42.73	98.72	2	1	Yes	none	B Koopmans; U ECP
+46a	41.77	106.85	1	1	Yes	none	B Koopmans; U ECP
+46b	41.81	107.00	1	1	Yes	none	B Koopmans; U ECP
+47a	30.47	54.58	1	1	Yes	none	B Koopmans; U ECP
+47b	29.72	66.34	2	1	Yes	none	B Koopmans; U ECP
+48a	29.86	66.54	2	1	Yes	none	B Koopmans; U ECP
+49b	29.58	58.17	1	1	Yes	none	B Koopmans; U ECP
+50a	16.29	84.69	1	1	No	none	B P3-3rd; U ECP
+50b	16.27	84.96	1	1	No	none	B P3-3rd; U ECP
+51a	16.04	77.73	2	1	No	none	B P3-3rd; U ECP
+51b	16.03	77.93	2	1	No	none	B P3-3rd; U ECP
+53a	15.48	77.73	2	1	No	none	B P3-3rd; U ECP
+53b	15.49	78.65	2	1	No	none	B P3-3rd; U ECP
+55a	15.40	80.17	1	1	No	none	B P3-3rd; U ECP
+55b	15.41	80.33	1	1	No	none	B P3-3rd; U ECP
+56a	14.92	82.09	1	1	No	none	B P3-3rd; U ECP
+56b	14.96	82.74	1	1	No	none	B P3-3rd; U ECP
+57a	14.30	90.05	2	1	No	none	B P3-3rd; U ECP
+57b	14.30	90.18	2	1	No	none	B P3-3rd; U ECP
+59a	6.32	21.12	1	1	No	none	B CCSD(T); U ECP

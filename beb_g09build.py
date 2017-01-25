@@ -343,8 +343,8 @@ except:
     # assume user forgot file suffix, probably .inp
     finp = open( sys.argv[1] + '.inp' )
 froot = os.path.splitext( sys.argv[1] )[0]
-nprocs = 8  # default value
-mem = 200   # default value (Mwords)
+nprocs = 1  # default value
+mem = 1000   # default value (Mwords)
 for arg in sys.argv:
     # nprocs specification leads with '-n'
     m = re.match(r'-n(\d+)', arg)
@@ -561,4 +561,7 @@ update_log()
 #
 flog.close()
 print('Descriptions of the calculations are in the file "{:s}".'.format(fname_log))
-
+if nprocs == 1:
+    print('Your calculations will use 1 processor and {:d} Mw of memory.'.format(mem))
+else:
+    print('Your calculations will use {:d} processors and {:d} Mw of memory.'.format(nprocs, mem))

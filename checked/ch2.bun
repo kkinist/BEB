@@ -1,0 +1,12 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'ch2' (triplet CH2)
+# Double-ionization threshold = 32.86 eV from CCSD(T) (to singlet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1a	306.49	435.33	1	1	Yes	none	Koopmans
+1b	305.17	436.98	1	1	Yes	none	Koopmans
+2a	23.13	37.92	1	1	No	none	P3-3rd
+2b	19.90	31.98	1	1	No	none	P3-3rd
+3a	16.11	27.28	1	1	No	none	P3-3rd
+3b	15.17	25.76	1	1	No	none	P3-3rd
+4a	11.28	31.77	1	1	No	none	P3-3rd
+5a	10.34	31.73	1	1	No	none	CCSD(T)

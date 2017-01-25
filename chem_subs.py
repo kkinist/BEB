@@ -192,13 +192,14 @@ def L_degeneracy(Ltype):
     degen = {'s': 1, 'p': 3, 'd': 5, 'f': 7, 'g': 9, 'h': 11, 'i': 13}
     return degen[Ltype.lower()]
 ##
-def combine_MOspin(df, col1='MO', col2='Spin', colnew='Label'):
-    # Given a pandas DataFrame, combine a numeric 'MO' field with
+def combine_MOspin(df, col1='Orbital', col2='Spin', colnew='MO'):
+    # Given a pandas DataFrame, combine a numeric 'Orbital' field with
     #   a 'Spin' field ('alpha' or 'beta') to create a new 'MO' field
     #   that is a combination like '1a' or '5b'.
     # Return that new DataFrame.
+    abbrev = {'alpha': 'a', 'beta': 'b', 'both': ''}
     dfret = df.copy()
-    dfret[colnew] = df.apply(lambda x: str(x[col1])+(x[col2])[0], axis=1)
+    dfret[colnew] = df.apply(lambda x: str(x[col1])+abbrev[x[col2]], axis=1)
     return dfret
 ##
 class Atom:
@@ -374,7 +375,7 @@ def mulpopDiff(df1, df2):
 def JSdm(P, Q, base=4):
     # Jensen-Shannon divergence metric; base=4 gives range = [0, 1]
     # P and Q are *discrete* PDFs (with same data type)
-    # Allowed data types: tuple; list; dict; numpy array
+    # Allowed data types: tuple; list; dict; 1D numpy array
     # P and Q must be same length, except when dict
     # Return:
     #   (1) metric (float)
@@ -533,8 +534,8 @@ def AOpopdiffmats(df1, df2):
     #   (1) JSdm() differences in AO populations (Jensen-Shannon divergence metric)
     #   (2) (E2-E1) orbital energy differences
     # Also return two lists of MO numbers:
-    #   (3) MO numbers in df1 (rows of matrices)
-    #   (4) MO numbers in df2 (columns of matrics)
+    #   (3) MO labels in df1 (rows of matrices)
+    #   (4) MO labels in df2 (columns of matrics)
     MOlist1 = sorted(set(df1.MO))
     MOlist2 = sorted(set(df2.MO))
     nmo1 = len(MOlist1)
@@ -553,8 +554,8 @@ def AOpopdiffmats(df1, df2):
             s = '#{:d}-{:s}'.format(orb1.loc[ao]['Atom#'], orb1.loc[ao]['L'])
             c = orb1.loc[ao]['Contrib']
             if c < 0:
-                # this should not happen
-                print('*** Warning: negative AO contribution found in MO #{:d} in df1 ***'.format(imo))
+                # treat negative AO pop as a new variable (by changing its label)
+                s += '-neg'
                 c = abs(c)
             mulpop1[s] = c
         # loop over orbitals in second set
@@ -569,8 +570,8 @@ def AOpopdiffmats(df1, df2):
                 s = '#{:d}-{:s}'.format(orb2.loc[ao]['Atom#'], orb2.loc[ao]['L'])
                 c = orb2.loc[ao]['Contrib']
                 if c < 0:
-                    # this should not happen
-                    print('*** Warning: negative AO contribution found in MO #{:d} in df2 ***'.format(jmo))
+                    # negative AO pop
+                    s += '-neg'
                     c = abs(c)
                 mulpop2[s] = c
             # get JSdm distance between the two AO population vectors
@@ -588,8 +589,18 @@ def orbitalPopMatch(df1, df2, Eweight=0.1, diagBias=0.001):
     #   orbital numbering.
     # Return a dict of MO number correspondences. The dict only includes
     #   orbitals that appear to be mismatched. 
-    # Keys are MO labels in df2, values are MO labels in df1.
+    #   Keys are MO labels in df2, values are MO labels in df1.
+    # Do not mix alpha with beta orbitals.
     #
+    momap = {}
+    if (df1['Spin']  == 'alpha').any() & (df1['Spin'] == 'beta').any():
+        # this is a UHF case; keep alpha and beta orbitals separate
+        for sp in ['alpha', 'beta']:
+            set1 = df1[df1['Spin'] == sp]
+            set2 = df2[df2['Spin'] == sp]
+            momap.update(orbitalPopMatch(set1, set2, Eweight=Eweight, diagBias=diagBias))
+        return momap 
+    # simple, single-spin case
     dPmat, dEmat, MOs1, MOs2 = AOpopdiffmats(df1, df2)
     # count the MOs in each orbital set
     norb1 = len(MOs1)
@@ -627,7 +638,6 @@ def orbitalPopMatch(df1, df2, Eweight=0.1, diagBias=0.001):
             pairing[iorb] = jorb
             break  # done with this first-set MO
     # convert into a mapping of MO numbers
-    momap = {}
     for i in pairing.keys():
         imo = MOs1[i]  # MO number from first set
         j = pairing[i]
@@ -636,4 +646,16 @@ def orbitalPopMatch(df1, df2, Eweight=0.1, diagBias=0.001):
             # report only non-identity mappings
             momap[jmo] = imo  # key is the MO number in the 2nd set
     return momap 
+##
+def relabelOrbitals(df, momap):
+    # re-label MOs based upon a mapping provided by 'orbitalPopMatch()'
+    # Return value: the DataFrame with orbitals re-labeled
+    #
+    # loop once through the rows, changing MO labels
+    for idx in df.index:
+        imo = df.loc[idx, 'MO'] 
+        if imo in momap.keys():
+            # change this MO label
+            df.loc[idx, 'MO'] = momap[imo]
+    return df
 ##

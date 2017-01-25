@@ -1003,7 +1003,7 @@ def read_g09_ept(fhandl):
     # Return a pandas DataFrame with a row for each orbital like:
     #   (1) line number, (2) byte number,
     #   (3) orbital number (starting with 1 for the lowest core orbital),
-    #   (4) spin (alpha or beta), 
+    #   (4) spin (alpha or beta or 'both'), 
     #   (5) Koopmans value (uncorrelated),
     #   (6) OVGF second-order energy,
     #   (7) OVGF second-order pole strength,
@@ -1246,6 +1246,9 @@ def read_g09_ept(fhandl):
         df = df.append(rowFrom, ignore_index=True)
         lastrow = len(df.index) - 1
         df.set_value(lastrow, 'Orbital', degenTo[i])
+    if not (df.Spin == 'beta').any():
+        # this is an RHF case; change spin labels to 'both'
+        df.Spin = 'both'
     return df
 ##
 def read_best_ept(fhandl, minPS=0.80):
@@ -1254,7 +1257,7 @@ def read_best_ept(fhandl, minPS=0.80):
     # Energies in hartree.
     # Return a pandas DataFrame with a row for each orbital like:
     #   (1) orbital number (starting with 1 for the lowest core orbital),
-    #   (2) spin (alpha or beta), 
+    #   (2) spin (alpha or beta or 'both'), 
     #   (3) method (e.g., 'OVGF-2nd')
     #   (4) energy
     #   (5) pole strength
@@ -1448,11 +1451,11 @@ def read_Mulliken_pops(fhandl):
     return nbfn, bfn_atom, symb, bfn_label, mulpop
 ##
 def read_AOpop_in_MOs(fhandl):
-    # Read one occurence of the output from the Gaussian09 keyword:
+    # Read the output from the Gaussian09 keyword:
     #   pop=AllOrbitals
     # Return a pandas DataFrame with the following columns:
-    #   (1) MO number (starting from 1)
-    #   (2) 'alpha' or 'beta'
+    #   (1) orbital number (starting from 1)
+    #   (2) 'alpha' or 'beta' or 'both'
     #   (3) 'occ' or 'virt'
     #   (4) orbital energy (hartree)
     #   (5) element symbol of atom
@@ -1478,7 +1481,7 @@ def read_AOpop_in_MOs(fhandl):
     L = []
     contrib = []
     inblock = False
-    endData = False
+    #endData = False
     prevline = ''
     while True:
         line = fhandl.readline()
@@ -1487,9 +1490,9 @@ def read_AOpop_in_MOs(fhandl):
             break
         if inblock:
             if regblank.match(line):
-                # blank line indicates the end of the data block
+                # blank line indicates the end of a data block
                 inblock = False
-                endData = True
+                #endData = True
             else:
                 # in the data block and not a blank line
                 if regline1.search(line):
@@ -1542,15 +1545,18 @@ def read_AOpop_in_MOs(fhandl):
             prevline = line
         else:
             # not in a data block
-            if endData:
-                break
+            #if endData:
+            #    break
             if regstart.search(line):
                 # this is the beginning of the data block 
                 inblock = True
                 continue
     data = list(zip(MOnum, spin, occ, OE, symb, atnum, L, contrib))
-    cols = ['MO', 'Spin', 'Occ', 'Energy', 'Elem', 'Atom#', 'L', 'Contrib']
+    cols = ['Orbital', 'Spin', 'Occ', 'Energy', 'Elem', 'Atom#', 'L', 'Contrib']
     df = pd.DataFrame(data, columns=cols)
+    if not (df.Spin == 'beta').any():
+        # RHF case; change spin-labels to 'both'
+        df.Spin = 'both'
     fhandl.seek(byte_start) # restore file pointer to original position
     return df
 ##

@@ -1,0 +1,24 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'cef4' (singlet CeF4)
+# Double-ionization threshold = 34.28 eV from CCSD(T) (to singlet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	40604.92	64640.71	2	1	Yes	none	Koopmans
+2	6622.67	13489.47	2	1	Yes	none	Koopmans
+3	5935.39	10580.82	6	1	Yes	none	Koopmans
+6	1482.07	3889.00	2	1	Yes	3s	Koopmans
+7	1256.97	3182.17	6	1	Yes	3p	Koopmans
+10	933.08	2802.81	10	1	Yes	3d	Koopmans
+15	715.73	1013.56	8	1	Yes	none	B Koopmans; U ECP
+19	327.42	135.04	2	1	Yes	none	B Koopmans; U ECP
+20	250.36	179.13	6	1	Yes	none	B Koopmans; U ECP
+23	135.10	281.06	6	1	Yes	none	B Koopmans; U ECP
+26	135.05	280.72	4	1	Yes	none	B Koopmans; U ECP
+28	56.42	66.61	2	1	Yes	none	B Koopmans; U ECP
+29	43.27	97.30	6	1	Yes	none	B Koopmans; U ECP
+32	41.94	108.55	2	1	Yes	none	B Koopmans; U ECP
+33	32.96	73.92	6	1	No	none	B Koopmans; U ECP
+36	16.80	79.60	6	1	No	none	B P3-3rd; U ECP
+39	16.37	76.39	4	1	No	none	B P3-3rd; U ECP
+41	16.13	90.78	2	1	No	none	B P3-3rd; U ECP
+42	15.72	83.06	6	1	No	none	B P3-3rd; U ECP
+45	14.18	89.80	6	1	No	none	B CCSD(T); U ECP
