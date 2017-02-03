@@ -54,7 +54,11 @@ def elz(ar, choice=None):
             vals.append(elz(el, choice))
         return vals
     # if we got here, the argument an atomic number
-    Z = int(ar)
+    try:
+        Z = int(ar)
+    except:
+        print('Error taking int of ar =', ar, type(ar))
+        return None
     if choice == 'Z':
         return Z
     else:

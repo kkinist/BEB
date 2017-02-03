@@ -2,16 +2,16 @@
 # Molecule is 'BiFClBrIAt' (singlet AtBiBrClFI)
 # Double-ionization threshold = 23.18 eV from CCSD(T) (to triplet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	96010.98	235494.21	2	1	Yes	none	Koopmans
-2	91083.77	217487.38	2	1	Yes	none	Koopmans
-3	33352.04	50707.43	2	1	Yes	none	Koopmans
-4	17625.77	53357.29	2	1	Yes	none	Koopmans
-5	15160.74	26757.70	2	1	Yes	none	Koopmans
-6	15128.33	27320.70	6	1	Yes	none	Koopmans
-9	14408.00	25831.72	6	1	Yes	none	Koopmans
-12	13499.86	17799.10	2	1	Yes	none	Koopmans
-13	5289.44	10561.22	2	1	Yes	none	Koopmans
-14	4751.80	8538.52	6	1	Yes	none	Koopmans
+1	96010.98	235494.21	2	1	Yes	heavy_core	Koopmans
+2	91083.77	217487.38	2	1	Yes	heavy_core	Koopmans
+3	33352.04	50707.43	2	1	Yes	heavy_core	Koopmans
+4	17625.77	53357.29	2	1	Yes	heavy_core	Koopmans
+5	15160.74	26757.70	2	1	Yes	heavy_core	Koopmans
+6	15128.33	27320.70	6	1	Yes	heavy_core	Koopmans
+9	14408.00	25831.72	6	1	Yes	heavy_core	Koopmans
+12	13499.86	17799.10	2	1	Yes	heavy_core	Koopmans
+13	5289.44	10561.22	2	1	Yes	heavy_core	Koopmans
+14	4751.80	8538.52	6	1	Yes	heavy_core	Koopmans
 17	4401.07	15766.87	2	1	Yes	3s	Koopmans
 18	3679.14	9276.14	6	1	Yes	3p	Koopmans
 21	3486.76	6054.63	2	1	Yes	3s	Koopmans
@@ -19,8 +19,8 @@
 25	2921.27	7805.68	10	1	Yes	3d	Koopmans
 30	2861.36	3823.69	2	1	Yes	none	Koopmans
 31	2754.38	7465.44	10	1	Yes	3d	Koopmans
-36	1822.22	3530.15	2	1	Yes	none	Koopmans
-37	1606.56	3258.84	6	1	Yes	none	Koopmans
+36	1822.22	3530.15	2	1	Yes	heavy_core	Koopmans
+37	1606.56	3258.84	6	1	Yes	heavy_core	Koopmans
 40	1136.49	2981.36	2	1	Yes	3s	Koopmans
 41	1083.90	4349.61	2	1	Yes	4s	Koopmans
 42	956.93	2520.09	6	1	Yes	3p	Koopmans

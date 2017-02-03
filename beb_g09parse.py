@@ -144,6 +144,8 @@ def special_n(fgau, Nthresh):
     # 'Nthresh' is the minimum contribution to trigger 'special' treatment
     # Take ECPs into account
     # Allow for multiple contributions toward the high-n threshold
+    heavy_core_Z = 19     # Z >= this value: core orbitals may be labeled 'heavy_core'
+    heavy_core_n = [1,2]  # core n in this list:  orbital may be labeled 'heavy_core'
     df = read_AOpop_in_MOs(fgau)
     df_occ = df[df['Occ'] == 'occ'].copy()
     # Make an 'MO' label that includes any spin information
@@ -159,12 +161,12 @@ def special_n(fgau, Nthresh):
         iatno = name[1] # center number in molecule (starting from 1)
         Lval = name[2]  # angular momentum value ('s', 'p', 'd', etc.)
         elem = group['Elem'].iloc[0]
-        # routine 'assign_n' determines the values of n
         nstart = starting_n(Lval, ppe[iatno])
         degen = L_degeneracy(Lval)
         # the ECP only removes (radial) nodes if it replaces an inner shell of the same L
         if nstart == starting_n(Lval, 0):
-            # this is the starting 'n' you'd have without an ECP, so it will be 'special'
+            # this is the starting 'n' you'd have without an ECP, so it may be 'special'
+            # routine 'assign_n' determines the values of n
             nvals = group.apply(lambda row: assign_n(row['Contrib'], row['Cumul'], degen, nstart), axis=1)
             df_occ['n'].update(nvals)
         else:
@@ -205,9 +207,17 @@ def special_n(fgau, Nthresh):
     domlbl = {}
     for mo, group in gmo:
         if ndomin[mo] >= 3:
+            # mark for (u+1)/n modification
             domlbl[mo] = str(ndomin[mo]) + ldomin[mo]
         else:
             domlbl[mo] = ''
+            # check for 'heavy_core' situation
+            hvcore = group.apply(lambda x: (elz(x['Elem']) >= heavy_core_Z) and (x['n'] in heavy_core_n), axis=1)
+            if hvcore.any():
+                # is the total core contribution enough to be 'dominant'?
+                corefrac = group[hvcore].Contrib.sum()
+                if corefrac > Nthresh:
+                    domlbl[mo] = 'heavy_core'
     return domlbl
 ##
 ##

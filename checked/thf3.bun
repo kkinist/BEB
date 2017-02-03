@@ -2,9 +2,9 @@
 # Molecule is 'thf3' (doublet F3Th)
 # Double-ionization threshold = 26.20 eV from CCSD(T) (to doublet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	109841.60	315020.22	2	1	Yes	none	Koopmans
-2	20572.03	69098.51	2	1	Yes	none	Koopmans
-3	17395.06	31993.07	6	1	Yes	none	Koopmans
+1	109841.60	315020.22	2	1	Yes	heavy_core	Koopmans
+2	20572.03	69098.51	2	1	Yes	heavy_core	Koopmans
+3	17395.06	31993.07	6	1	Yes	heavy_core	Koopmans
 6	5241.87	19924.76	2	1	Yes	3s	Koopmans
 7	4335.61	10857.74	6	1	Yes	3p	Koopmans
 10	3450.44	8730.89	10	1	Yes	3d	Koopmans

@@ -2,10 +2,10 @@
 # Molecule is 'gacl' (singlet ClGa)
 # Double-ionization threshold = 27.47 eV from CCSD(T) (to singlet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	10309.14	12664.04	2	1	Yes	none	Koopmans
+1	10309.14	12664.04	2	1	Yes	heavy_core	Koopmans
 2	2851.71	3731.05	2	1	Yes	none	Koopmans
-3	1311.68	2443.44	2	1	Yes	none	Koopmans
-4	1157.30	2408.12	6	1	Yes	none	Koopmans
+3	1311.68	2443.44	2	1	Yes	heavy_core	Koopmans
+4	1157.30	2408.12	6	1	Yes	heavy_core	Koopmans
 7	286.39	593.56	2	1	Yes	none	Koopmans
 8	217.45	561.72	6	1	Yes	none	Koopmans
 11	174.99	540.39	2	1	Yes	3s	Koopmans

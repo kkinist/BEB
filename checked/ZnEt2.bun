@@ -2,9 +2,9 @@
 # Molecule is 'ZnEt2' (singlet C4H10Zn)
 # Double-ionization threshold = 23.56 eV from CCSD(T) (to singlet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	9613.90	11850.09	2	1	Yes	none	Koopmans
-2	1206.69	2272.43	2	1	Yes	none	Koopmans
-3	1059.50	2235.03	6	1	Yes	none	Koopmans
+1	9613.90	11850.09	2	1	Yes	heavy_core	Koopmans
+2	1206.69	2272.43	2	1	Yes	heavy_core	Koopmans
+3	1059.50	2235.03	6	1	Yes	heavy_core	Koopmans
 7	305.02	436.05	4	1	Yes	none	B Koopmans; U ECP
 8	304.35	436.08	4	1	Yes	none	B Koopmans; U ECP
 10	153.27	90.21	2	1	Yes	none	B Koopmans; U ECP

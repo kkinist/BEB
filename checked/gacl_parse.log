@@ -5,31 +5,31 @@ Geometry optimization converged: No vibrational frequencies found
 >>> Reading file gacl_bu.out <<<
 HF orbital and kinetic energies (hartree):
 "Special" AO contribution threshold is 0.75
-MO      Energy          KE Special
- 1 -378.853937  465.394913    none
- 2 -104.798289  137.113442    none
- 3  -48.203435   89.794851    none
- 4  -42.530367   88.495756    none
- 5  -42.530367   88.495756    none
- 6  -42.529389   88.499259    none
- 7  -10.524646   21.813007    none
- 8   -7.991920   20.635722    none
- 9   -7.990539   20.646521    none
-10   -7.990539   20.646521    none
-11   -6.430698   19.858954      3s
-12   -4.520414   17.885924      3p
-13   -4.520414   17.885924      3p
-14   -4.517558   17.915348      3p
-15   -1.228318   12.783740      3d
-16   -1.227700   13.073914      3d
-17   -1.227700   13.073914      3d
-18   -1.224070   13.071887      3d
-19   -1.224070   13.071887      3d
-20   -1.044547    3.194812      3s
-21   -0.541698    2.062057      3p
-22   -0.441658    2.088590      3p
-23   -0.441658    2.088590      3p
-24   -0.357437    1.773580      4s
+MO      Energy          KE     Special
+ 1 -378.853937  465.394913  heavy_core
+ 2 -104.798289  137.113442        none
+ 3  -48.203435   89.794851  heavy_core
+ 4  -42.530367   88.495756  heavy_core
+ 5  -42.530367   88.495756  heavy_core
+ 6  -42.529389   88.499259  heavy_core
+ 7  -10.524646   21.813007        none
+ 8   -7.991920   20.635722        none
+ 9   -7.990539   20.646521        none
+10   -7.990539   20.646521        none
+11   -6.430698   19.858954          3s
+12   -4.520414   17.885924          3p
+13   -4.520414   17.885924          3p
+14   -4.517558   17.915348          3p
+15   -1.228318   12.783740          3d
+16   -1.227700   13.073914          3d
+17   -1.227700   13.073914          3d
+18   -1.224070   13.071887          3d
+19   -1.224070   13.071887          3d
+20   -1.044547    3.194812          3s
+21   -0.541698    2.062057          3p
+22   -0.441658    2.088590          3p
+23   -0.441658    2.088590          3p
+24   -0.357437    1.773580          4s
 Crude VIE = 9.73 eV to doublet cation.
 
 >>> Reading file gacl_bupp.out <<<
@@ -89,10 +89,10 @@ Taking binding energies from EPT calculation.
 Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
 Taking threshold energy from CCSD(T) calculation.
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	10309.14	12664.04	2	1	Yes	none	Koopmans
+1	10309.14	12664.04	2	1	Yes	heavy_core	Koopmans
 2	2851.71	3731.05	2	1	Yes	none	Koopmans
-3	1311.68	2443.44	2	1	Yes	none	Koopmans
-4	1157.30	2408.12	6	1	Yes	none	Koopmans
+3	1311.68	2443.44	2	1	Yes	heavy_core	Koopmans
+4	1157.30	2408.12	6	1	Yes	heavy_core	Koopmans
 7	286.39	593.56	2	1	Yes	none	Koopmans
 8	217.45	561.72	6	1	Yes	none	Koopmans
 11	174.99	540.39	2	1	Yes	3s	Koopmans

@@ -2,9 +2,9 @@
 # Molecule is 'cef4' (singlet CeF4)
 # Double-ionization threshold = 34.28 eV from CCSD(T) (to singlet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
-1	40604.92	64640.71	2	1	Yes	none	Koopmans
-2	6622.67	13489.47	2	1	Yes	none	Koopmans
-3	5935.39	10580.82	6	1	Yes	none	Koopmans
+1	40604.92	64640.71	2	1	Yes	heavy_core	Koopmans
+2	6622.67	13489.47	2	1	Yes	heavy_core	Koopmans
+3	5935.39	10580.82	6	1	Yes	heavy_core	Koopmans
 6	1482.07	3889.00	2	1	Yes	3s	Koopmans
 7	1256.97	3182.17	6	1	Yes	3p	Koopmans
 10	933.08	2802.81	10	1	Yes	3d	Koopmans
