@@ -10,7 +10,6 @@
 # Required input file format (whitespace-delimited): 
 #   line 1: charge, spin-multiplicity [integers]
 #   next: element symbol, cartesian triple [one atom per line]
-#   final blank line
 # 
 # Command-line arguments can be used to specify memory and number of processors:
 #   beb_g09build.py <input file name> -m<Mwords> -n<nprocs>
@@ -86,6 +85,7 @@ def sort_atoms( atoms, name='z' ):
     midz = []
     highz = []
     for z in atno:
+        # this is where 'light', 'medium', and 'heavy' atoms are defined
         if z < 11:
             lowz.append( z )
         elif z < 37:
@@ -357,6 +357,11 @@ for arg in sys.argv:
 # read input file
 coords = finp.readlines()
 finp.close()
+# remove trailing blank lines, then add a single blank line
+regblank = re.compile(r'^\s*$')
+while regblank.match(coords[-1]):
+    coords.pop()
+coords.append('\n')
 elem = get_elements( coords )
 lowz, midz, hiz = sort_atoms( elem )
 (charge, mult) = ( int(x) for x in coords[0].split() )
@@ -516,8 +521,8 @@ step = 7
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
-directive = directive.rstrip() + ' guess=check\n'  # avoid excited states
-fgjf.write( header + directive + comment )
+directive_ch = directive.rstrip() + ' guess=check\n'  # avoid excited states
+fgjf.write( header + directive_ch + comment )
 i = (mult + 1) % 2
 fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
 fgjf.close()
@@ -529,6 +534,7 @@ step = 8
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
+# not using 'guess=check' here:  it gave a bad result for CS molecule
 fgjf.write( header + directive + comment )
 i = (mult + 1) % 2
 fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
@@ -541,7 +547,7 @@ step = 9
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
-fgjf.write( header + directive + comment )
+fgjf.write( header + directive_ch + comment )
 i = (mult + 2) % 2
 fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
 fgjf.close()
@@ -553,7 +559,7 @@ step = 10
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
-fgjf.write( header + directive + comment )
+fgjf.write( header + directive + comment )  # no 'guess=check' for low-spin
 i = (mult + 2) % 2
 fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
 fgjf.close()

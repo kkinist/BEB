@@ -6,7 +6,7 @@ import re
 import string
 import numpy as np
 import pandas as pd
-from scipy.spatial.distance import cdist
+#from scipy.spatial.distance import cdist
 #
 amu_au = 1 / 5.4857990946E-4    # amu expressed in a.u. (viz., electron masses)
 au_wavenumber = 219474.6313708  # hartree expressed in wavenumbers

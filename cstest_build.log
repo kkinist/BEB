@@ -1,0 +1,83 @@
+Descriptions of the Gaussian calculations are below.
+See corresponding *.txt files for descriptions of non-standard basis sets.
+
+cstest_opt.gjf (step 1)
+-----------------------
+Optimize geometry to a local minimum (no imaginary vibrational frequencies)
+Theoretical method: B3LYP
+Elem	Basis
+C	6-31G(d)
+S	6-31G(d)
+d-functions used in sets of 6
+
+cstest_bu.gjf (step 2)
+----------------------
+All-electron calculation of binding energies and kinetic energies
+Theoretical method: HF
+Elem	Basis
+C	6-311G(d,p)
+S	6-311G(d,p)
+
+cstest_bupp.gjf (step 3)
+------------------------
+Orbital kinetic energies with effective core potentials (pseudopotentials)
+Theoretical method: HF
+Elem	Basis
+C	6-311G(d,p)
+S	SDDall+d
+
+cstest_ept1.gjf (step 4)
+------------------------
+Correlated binding energies for outer orbitals
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+C	6-311+G(d,p)
+S	6-311+G(d,p)
+
+cstest_ept2.gjf (step 5)
+------------------------
+Doubly vertical ionization energy of cation
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+C	6-311+G(d,p)
+S	6-311+G(d,p)
+
+cstest_cc.gjf (step 6)
+----------------------
+Correlated total ground-state energy
+Theoretical method: CCSD(T)
+Elem	Basis
+C	cc-pVTZ
+S	cc-pV(T+d)Z
+
+cstest_cc1hi.gjf (step 7)
+-------------------------
+Correlated total energy of high-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+C	cc-pVTZ
+S	cc-pV(T+d)Z
+
+cstest_cc1lo.gjf (step 8)
+-------------------------
+Correlated total energy of low-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+C	cc-pVTZ
+S	cc-pV(T+d)Z
+
+cstest_cc2hi.gjf (step 9)
+-------------------------
+Correlated total energy of high-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+C	cc-pVTZ
+S	cc-pV(T+d)Z
+
+cstest_cc2lo.gjf (step 10)
+--------------------------
+Correlated total energy of low-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+C	cc-pVTZ
+S	cc-pV(T+d)Z

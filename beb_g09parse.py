@@ -145,7 +145,7 @@ def special_n(fgau, Nthresh):
     # Take ECPs into account
     # Allow for multiple contributions toward the high-n threshold
     heavy_core_Z = 19     # Z >= this value: core orbitals may be labeled 'heavy_core'
-    heavy_core_n = [1,2]  # core n in this list:  orbital may be labeled 'heavy_core'
+    heavy_core_n = [1,2]  # n in this list:  orbital may be labeled 'heavy_core'
     df = read_AOpop_in_MOs(fgau)
     df_occ = df[df['Occ'] == 'occ'].copy()
     # Make an 'MO' label that includes any spin information
@@ -441,7 +441,8 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         # was this calculation referenced to the ground state of the ion?
         if mult_ion == nalpion - nbetion + 1:
             # yes
-            VIE2 = VIE + IEcat
+            VIE2_ept = VIE + IEcat
+            VIE2 = VIE2_ept
             VIE2_method = '({:s} + {:s})'.format(VIE_method, ie2meth)
         else:
             # no, it was referenced to an excited state; it should only be too high by S=1
@@ -503,6 +504,7 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
 fgau.close()
 # process available CCSD(T) energies
 cc_ion = cc_dicat = 0   # for the lower-energy states
+worry_diff = 0.04   # fractional difference warning threshold for VIE discrepancies
 if cc_neut != 0:
     # neutral energy is available; try to compute VIE and VIE2
     if (cc_ion_hi + cc_ion_lo) != 0:
@@ -516,6 +518,10 @@ if cc_neut != 0:
         # calculate and use this VIE 
         VIE = hartree_eV(cc_ion - cc_neut)
         print('\nVIE = {:.2f} eV to {:s} cation from CCSD(T)'.format(VIE, spinname(mult_ion)))
+        vd = VIE - VIE_ept
+        if abs(vd/VIE_ept) > worry_diff:
+            # maybe the SCF is an excited state in the CCSD(T) step
+            print('*** Warning: Large difference of {:.2f} eV between CCSD(T) and {:s} VIE values ***'.format(vd, VIE_method))
         VIE_method = 'CCSD(T)'
     if (cc_dicat_hi + cc_dicat_lo) != 0:
         # there is at least one dication energy available; choose the lower
@@ -527,6 +533,10 @@ if cc_neut != 0:
             mult_dicat = mult_dicat_lo
         VIE2 = hartree_eV(cc_dicat - cc_neut)
         print('VIE2 = {:.2f} eV to {:s} dication from CCSD(T)'.format(VIE2, spinname(mult_dicat)))
+        vd = VIE2 - VIE2_ept
+        if abs(vd/VIE2_ept) > worry_diff:
+            # maybe the SCF is an excited state in the CCSD(T) step
+            print('*** Warning: Large difference of {:.2f} eV between CCSD(T) and {:s} VIE2 values ***'.format(vd, VIE2_method))
         VIE2_method = 'CCSD(T)'
 #
 # done parsing Gaussian output files

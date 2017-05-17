@@ -6,7 +6,7 @@ import sys
 import re
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from chem_subs import *
 ####
 def read_g09_command(fhandl):
@@ -877,7 +877,7 @@ def get_nimag(fhandl):
         nfreq.append(len(tbl))
         negfreq = tbl[tbl.Freq < 0]
         nimag.append(len(negfreq))
-    if min(nfreq) > 1:
+    if min(nfreq) > 0:
         # there are at least some frequencies in each block
         return max(nimag)
     else:
@@ -1708,5 +1708,43 @@ def read_orbital_irreps(fhandl):
     data = list(zip(fline, fpos, otype, orbsDF))
     cols = ['line', 'byte', 'Type', 'Orbs']
     df = pd.DataFrame(data=data, columns=cols)
+    fhandl.seek(byte_start) # restore file pointer to original position
+    return df
+def read_zpe(fhandl):
+    # read harmonic or VPT2 value of ZPE
+    # return a DataFrame: (1) line numbers (base 1),
+    #   (2) byte numbers (file positions for seek/tell),
+    #   (3) the ZPE type (harmonic or VPT2)
+    #   (4) the ZPE value in hartree
+    byte_start = fhandl.tell()
+    fhandl.seek(0)  # rewind file
+    fline = []
+    fpos = []
+    vibtype = []
+    zpe = []
+    lineno = 0   
+    regx_har = re.compile(' Zero-point vibrational energy')  # in J/mol
+    regx_anh = re.compile('ZPEtot     =')   # in cm-1
+    while True:
+        line = fhandl.readline()
+        if not line:
+            break
+        lineno += 1
+        if regx_har.search(line):
+            # found harmonic ZPE
+            jmol = float(line.split()[3])  # in J/mol
+            zpe.append(jmol * 0.001 / au_kjmol)  # convert to hartree
+            vibtype.append('harmonic')
+            fline.append(lineno)
+            fpos.append(fhandl.tell())
+        if regx_anh.search(line):
+            # found VPT2 anharmonic ZPE
+            zpe.append(float(line.split()[2]) / au_wavenumber)  # convert to hartree
+            vibtype.append('VPT2')
+            fline.append(lineno)
+            fpos.append(fhandl.tell())
+    data = list(zip(fline, fpos, vibtype, zpe))
+    cols = ['line', 'byte', 'Type', 'ZPE/Eh']
+    df = pd.DataFrame(data=data, columns=cols)       
     fhandl.seek(byte_start) # restore file pointer to original position
     return df
