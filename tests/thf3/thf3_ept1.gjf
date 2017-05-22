@@ -1,0 +1,21 @@
+%chk=thf3.chk
+%nprocs=8
+%mem=2000mw
+# EPT(OVGF+P3,ReadOrbitals,window=(13,0))/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1) pseudo=read
+
+BEB step 4: EPT B for thf3; only 12 cores frozen
+
+0 2
+
+F 0
+6-311+G(d,p)
+****
+Th 0
+SDD
+****
+
+Th 0
+SDD
+
+5 17 5 16
+

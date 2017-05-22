@@ -1,0 +1,16 @@
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)
+
+BEB step 2: Hartree-Fock B and U for ZnEt2
+
+0 1
+
+C H 0
+6-311G(d,p)
+****
+Zn 0
+6-311G(d,p)
+****
+

@@ -1,0 +1,16 @@
+%chk=ch2.chk
+%nprocs=4
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for ch2
+
+0 3
+ C                  0.00000000    0.00000000    0.13236608
+ H                  0.00000000   -0.91705913   -0.39709825
+ H                 -0.00000000    0.91705913   -0.39709825
+
+C H 0
+6-31G(d)
+****
+

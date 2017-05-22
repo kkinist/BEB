@@ -1,0 +1,16 @@
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc guess=check
+
+BEB step 7: high-spin CCSD(T) for cation of ZnEt2
+
+1 4
+
+C H 0
+cc-pVTZ
+****
+Zn 0
+cc-pVTZ
+****
+

@@ -1,0 +1,19 @@
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1) int=DKH2
+
+BEB step 2: Hartree-Fock B and U for BiFClBrIAt
+
+0 1
+
+F 0
+6-311G(d,p)
+****
+Br Cl 0
+6-311G(d,p)
+****
+@dzp_dkh.gbs
+@sarc_dkh.gbs
+@ano_rcc_dz.gbs
+

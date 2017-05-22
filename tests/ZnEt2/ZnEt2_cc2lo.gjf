@@ -1,0 +1,16 @@
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 10: low-spin CCSD(T) for dication of ZnEt2
+
+2 1
+
+C H 0
+cc-pVTZ
+****
+Zn 0
+cc-pVTZ
+****
+

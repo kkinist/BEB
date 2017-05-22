@@ -1,0 +1,14 @@
+%chk=h2s.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 8: low-spin CCSD(T) for cation of h2s
+
+1 2
+
+H 0
+cc-pVTZ
+****
+@t_plusd.gbs
+

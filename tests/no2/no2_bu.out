@@ -1,0 +1,627 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-31798.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     31800.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                17-May-2017 
+ ******************************************
+ %chk=no2.chk
+ %nprocs=6
+ Will use up to    6 processors via shared memory.
+ %mem=1000mw
+ -----------------------------------------------------------------
+ # HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)
+ -----------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1/1,2,3;
+ 4//1;
+ 5/5=2,8=3,13=1,38=5/2,8;
+ 6/7=2,8=2,9=2,10=2,28=1,81=3,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ ----------------------------------------
+ BEB step 2: Hartree-Fock B and U for no2
+ ----------------------------------------
+ Structure from the checkpoint file:  "no2.chk"
+ Charge =  0 Multiplicity = 2
+ Redundant internal coordinates found in file.
+ N,0,0.,0.,-0.3309564098
+ O,0,0.,-1.1068398818,0.1406818249
+ O,0,0.,1.1068398818,0.1406818249
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          7           0        0.000000    0.000000   -0.330956
+      2          8           0        0.000000   -1.106840    0.140682
+      3          8           0        0.000000    1.106840    0.140682
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3
+     1  N    0.000000
+     2  O    1.203136   0.000000
+     3  O    1.203136   2.213680   0.000000
+ Stoichiometry    NO2(2)
+ Framework group  C2V[C2(N),SGV(O2)]
+ Deg. of freedom     2
+ Full point group                 C2V     NOp   4
+ Largest Abelian subgroup         C2V     NOp   4
+ Largest concise Abelian subgroup C2      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          7           0        0.000000    0.000000    0.328096
+      2          8           0        0.000000    1.106840   -0.143542
+      3          8           0        0.000000   -1.106840   -0.143542
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):    233.2677521     12.8954254     12.2198898
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.6293480000D+04  0.1969788147D-02
+      0.9490440000D+03  0.1496128592D-01
+      0.2187760000D+03  0.7350053084D-01
+      0.6369160000D+02  0.2489367658D+00
+      0.1882820000D+02  0.6024594331D+00
+      0.2720230000D+01  0.2562017589D+00
+ SP   3 1.00       0.000000000000
+      0.3063310000D+02  0.1119060795D+00  0.3831191864D-01
+      0.7026140000D+01  0.9216666549D+00  0.2374031155D+00
+      0.2112050000D+01 -0.2569191826D-02  0.8175923978D+00
+ SP   1 1.00       0.000000000000
+      0.6840090000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2008780000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.9130000000D+00  0.1000000000D+01
+ ****
+      2 0
+ S   6 1.00       0.000000000000
+      0.8588500000D+04  0.1895150083D-02
+      0.1297230000D+04  0.1438590063D-01
+      0.2992960000D+03  0.7073200310D-01
+      0.8737710000D+02  0.2400010105D+00
+      0.2567890000D+02  0.5947970261D+00
+      0.3740040000D+01  0.2808020123D+00
+ SP   3 1.00       0.000000000000
+      0.4211750000D+02  0.1138890124D+00  0.3651139738D-01
+      0.9628370000D+01  0.9208111006D+00  0.2371529830D+00
+      0.2853320000D+01 -0.3274470358D-02  0.8197019412D+00
+ SP   1 1.00       0.000000000000
+      0.9056610000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2556110000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1292000000D+01  0.1000000000D+01
+ ****
+      3 0
+ S   6 1.00       0.000000000000
+      0.8588500000D+04  0.1895150083D-02
+      0.1297230000D+04  0.1438590063D-01
+      0.2992960000D+03  0.7073200310D-01
+      0.8737710000D+02  0.2400010105D+00
+      0.2567890000D+02  0.5947970261D+00
+      0.3740040000D+01  0.2808020123D+00
+ SP   3 1.00       0.000000000000
+      0.4211750000D+02  0.1138890124D+00  0.3651139738D-01
+      0.9628370000D+01  0.9208111006D+00  0.2371529830D+00
+      0.2853320000D+01 -0.3274470358D-02  0.8197019412D+00
+ SP   1 1.00       0.000000000000
+      0.9056610000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2556110000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1292000000D+01  0.1000000000D+01
+ ****
+
+ There are    24 symmetry adapted cartesian basis functions of A1  symmetry.
+ There are     6 symmetry adapted cartesian basis functions of A2  symmetry.
+ There are     9 symmetry adapted cartesian basis functions of B1  symmetry.
+ There are    18 symmetry adapted cartesian basis functions of B2  symmetry.
+ There are    22 symmetry adapted basis functions of A1  symmetry.
+ There are     6 symmetry adapted basis functions of A2  symmetry.
+ There are     9 symmetry adapted basis functions of B1  symmetry.
+ There are    17 symmetry adapted basis functions of B2  symmetry.
+    54 basis functions,    96 primitive gaussians,    57 cartesian basis functions
+    12 alpha electrons       11 beta electrons
+       nuclear repulsion energy        64.5602365158 Hartrees.
+ NAtoms=    3 NActive=    3 NUniq=    2 SFac= 2.25D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=    54 RedAO= T EigKep=  1.21D-02  NBF=    22     6     9    17
+ NBsUse=    54 1.00D-06 EigRej= -1.00D+00 NBFU=    22     6     9    17
+ ExpMin= 2.01D-01 ExpMax= 8.59D+03 ExpMxC= 1.30D+03 IAcc=1 IRadAn=         1 AccDes= 0.00D+00
+ Harris functional with IExCor=  205 and IRadAn=       1 diagonalized for initial guess.
+ HarFok:  IExCor=  205 AccDes= 0.00D+00 IRadAn=         1 IDoV= 1 UseB2=F ITyADJ=14
+ ICtDFT=  3500011 ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ FoFCou: FMM=F IPFlag=           0 FMFlag=      100000 FMFlg1=           0
+         NFxFlg=           0 DoJE=T BraDBF=F KetDBF=T FulRan=T
+         wScrn=  0.000000 ICntrl=     500 IOpCl=  0 I1Cent=   200000004 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (B2) (A1) (B1) (A2)
+                 (B2) (A1)
+       Virtual   (B1) (A1) (B2) (B1) (A1) (B2) (A1) (A1) (B2) (A2)
+                 (A1) (B1) (B2) (A1) (B2) (A2) (A1) (B1) (B2) (A1)
+                 (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2) (A1)
+                 (B1) (A1) (B2) (B1) (B2) (A2) (A1) (A1) (B2) (A1)
+                 (A1) (B2)
+ Beta  Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (B2) (A1) (B1) (A2)
+                 (B2)
+       Virtual   (A1) (B1) (A1) (B2) (B1) (A1) (B2) (A1) (A1) (B2)
+                 (A2) (A1) (B1) (B2) (A1) (B2) (A2) (A1) (B1) (B2)
+                 (A1) (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2)
+                 (A1) (B1) (A1) (B2) (B1) (B2) (A2) (A1) (A1) (B2)
+                 (A1) (A1) (B2)
+ The electronic state of the initial guess is 2-A1.
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=1957216.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(UHF) =  -204.078982081     A.U. after   15 cycles
+            NFock= 15  Conv=0.10D-07     -V/T= 2.0014
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7704 S= 0.5101
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     0.7704,   after     0.7503
+ QCSCF skips out because SCF is already converged.
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (A1) (B2) (B1) (B2)
+                 (A2) (A1)
+       Virtual   (B1) (A1) (B2) (A1) (B1) (A1) (B2) (A1) (B2) (A1)
+                 (A2) (B1) (B2) (A1) (B2) (A2) (B1) (A1) (B2) (A1)
+                 (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2) (B1)
+                 (A1) (A1) (B2) (B2) (B1) (A2) (A1) (A1) (B2) (A1)
+                 (A1) (B2)
+ Beta  Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (B2) (B1) (A1) (A2)
+                 (B2)
+       Virtual   (A1) (B1) (A1) (B2) (B1) (A1) (B2) (A1) (A1) (A2)
+                 (B2) (A1) (B1) (B2) (A1) (B2) (A2) (B1) (A1) (B2)
+                 (A1) (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2)
+                 (B1) (A1) (A1) (B2) (B1) (A2) (B2) (A1) (A1) (B2)
+                 (A1) (A1) (B2)
+ The electronic state is 2-A1.
+ Alpha  occ. eigenvalues --  -20.68706 -20.68701 -15.87994  -1.67527  -1.49582
+ Alpha  occ. eigenvalues --   -0.97311  -0.83246  -0.80321  -0.76100  -0.59589
+ Alpha  occ. eigenvalues --   -0.52663  -0.50838
+ Alpha virt. eigenvalues --    0.06835   0.42192   0.53354   0.68398   0.71315
+ Alpha virt. eigenvalues --    0.77747   0.78300   0.93749   0.98430   0.99358
+ Alpha virt. eigenvalues --    1.00670   1.05610   1.06509   1.54898   1.61822
+ Alpha virt. eigenvalues --    1.96351   2.01330   2.02044   2.39663   2.61740
+ Alpha virt. eigenvalues --    3.08508   3.08908   3.10141   3.16478   3.34472
+ Alpha virt. eigenvalues --    3.55443   3.58938   3.79979   3.85795   4.08103
+ Alpha virt. eigenvalues --    4.09266   4.24937   4.81902   5.30067   5.30816
+ Alpha virt. eigenvalues --    5.32098   5.35022   5.87573   6.44167  36.58596
+ Alpha virt. eigenvalues --   51.39873  51.50438
+  Beta  occ. eigenvalues --  -20.67231 -20.67224 -15.85716  -1.63167  -1.45335
+  Beta  occ. eigenvalues --   -0.88571  -0.75138  -0.74232  -0.71197  -0.52327
+  Beta  occ. eigenvalues --   -0.49392
+  Beta virt. eigenvalues --    0.03512   0.09982   0.44149   0.57403   0.72386
+  Beta virt. eigenvalues --    0.75021   0.78613   0.79973   0.94623   1.00997
+  Beta virt. eigenvalues --    1.02951   1.03827   1.06166   1.09082   1.56239
+  Beta virt. eigenvalues --    1.63522   1.97139   2.06670   2.08918   2.42795
+  Beta virt. eigenvalues --    2.64763   3.10865   3.11225   3.13987   3.20110
+  Beta virt. eigenvalues --    3.35341   3.60098   3.62981   3.81540   3.87589
+  Beta virt. eigenvalues --    4.09471   4.13703   4.29294   4.83095   5.31366
+  Beta virt. eigenvalues --    5.32667   5.34730   5.38553   5.89849   6.45321
+  Beta virt. eigenvalues --   36.60196  51.40739  51.51293
+          Condensed to atoms (all electrons):
+               1          2          3
+     1  N    6.000507   0.239811   0.239811
+     2  O    0.239811   8.113694  -0.093569
+     3  O    0.239811  -0.093569   8.113694
+          Atomic-Atomic Spin Densities.
+               1          2          3
+     1  N    0.792111  -0.147793  -0.147793
+     2  O   -0.147793   0.364332   0.035198
+     3  O   -0.147793   0.035198   0.364332
+ Mulliken charges and spin densities:
+               1          2
+     1  N    0.519871   0.496525
+     2  O   -0.259936   0.251738
+     3  O   -0.259936   0.251738
+ Sum of Mulliken charges =   0.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  N    0.519871   0.496525
+     2  O   -0.259936   0.251738
+     3  O   -0.259936   0.251738
+ Electronic spatial extent (au):  <R**2>=            110.2344
+ Charge=              0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.7177  Tot=              0.7177
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=            -14.7746   YY=            -18.8344   ZZ=            -15.3071
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=              1.5308   YY=             -2.5290   ZZ=              0.9982
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=             -0.3930  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.0139  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=             -0.2726  XYZ=              0.0000
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=            -10.5043 YYYY=            -92.1388 ZZZZ=            -15.7799 XXXY=              0.0000
+ XXXZ=              0.0000 YYYX=              0.0000 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=            -16.7847 XXZZ=             -4.3044 YYZZ=            -17.4373
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=              0.0000
+ N-N= 6.456023651581D+01 E-N=-6.112556433230D+02  KE= 2.037982965508D+02
+ Symmetry A1   KE= 1.207449351630D+02
+ Symmetry A2   KE= 4.774321005168D+00
+ Symmetry B1   KE= 3.760287750402D+00
+ Symmetry B2   KE= 7.451875263226D+01
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-20.687 is O2-s=0.50 O3-s=0.50
+ Alpha occ 2 OE=-20.687 is O3-s=0.50 O2-s=0.50
+ Alpha occ 3 OE=-15.880 is N1-s=1.00
+ Alpha occ 4 OE=-1.675 is N1-s=0.37 O3-s=0.25 O2-s=0.25 O2-p=0.05 O3-p=0.05 N1-p=0.02
+ Alpha occ 5 OE=-1.496 is O2-s=0.37 O3-s=0.37 N1-p=0.20 O2-p=0.02 O3-p=0.02
+ Alpha occ 6 OE=-0.973 is N1-s=0.30 O2-s=0.19 O3-s=0.19 O2-p=0.11 O3-p=0.11 N1-p=0.10
+ Alpha occ 7 OE=-0.832 is N1-p=0.42 O2-p=0.24 O3-p=0.24 O3-s=0.04 O2-s=0.04
+ Alpha occ 8 OE=-0.803 is O2-p=0.29 O3-p=0.29 N1-p=0.20 O2-s=0.11 O3-s=0.11
+ Alpha occ 9 OE=-0.761 is N1-p=0.46 O2-p=0.27 O3-p=0.27
+ Alpha occ 10 OE=-0.596 is O3-p=0.48 O2-p=0.48 N1-p=0.02 N1-d=0.01
+ Alpha occ 11 OE=-0.527 is O3-p=0.49 O2-p=0.49 N1-d=0.02
+ Alpha occ 12 OE=-0.508 is O2-p=0.33 O3-p=0.33 N1-p=0.22 N1-s=0.11 N1-d=0.02
+ Alpha vir 13 OE=0.068 is N1-p=0.54 O2-p=0.23 O3-p=0.23
+ Alpha vir 14 OE=0.422 is N1-s=0.53 N1-p=0.31 O2-p=0.17 O3-p=0.17 O3-s=-0.11 O2-s=-0.11 N1-d=0.03
+ Alpha vir 15 OE=0.534 is N1-p=1.25 O2-s=-0.24 O3-s=-0.24 O2-p=0.11 O3-p=0.11 N1-d=0.01
+ Alpha vir 16 OE=0.684 is N1-p=0.90 N1-s=0.13 O3-p=-0.02 O2-p=-0.02
+ Alpha vir 17 OE=0.713 is N1-p=0.98
+ Alpha vir 18 OE=0.777 is N1-s=0.89 N1-p=0.17 O3-s=-0.06 O2-s=-0.06 O2-p=0.02 O3-p=0.02 O2-d=0.02 O3-d=0.02
+ Alpha vir 19 OE=0.783 is N1-p=0.81 O2-p=0.11 O3-p=0.11 O2-s=-0.03 O3-s=-0.03 O2-d=0.01 O3-d=0.01
+ Alpha vir 20 OE=0.937 is O3-p=0.63 O2-p=0.63 N1-s=-0.15 O3-s=-0.05 O2-s=-0.05 N1-d=0.03 N1-p=-0.02
+ Alpha vir 21 OE=0.984 is O2-p=0.47 O3-p=0.47 N1-p=0.09 O2-s=-0.02 O3-s=-0.02 N1-d=0.02
+ Alpha vir 22 OE=0.994 is O2-p=0.48 O3-p=0.48 N1-s=0.05 N1-p=-0.01
+ Alpha vir 23 OE=1.007 is O2-p=0.50 O3-p=0.50
+ Alpha vir 24 OE=1.056 is O2-p=0.49 O3-p=0.49
+ Alpha vir 25 OE=1.065 is O2-p=0.47 O3-p=0.47 N1-d=0.02 N1-p=0.01
+ Alpha vir 26 OE=1.549 is O3-s=0.70 O2-s=0.70 N1-s=-0.26 N1-p=-0.12 N1-d=0.03 O3-p=-0.03 O2-p=-0.03
+ Alpha vir 27 OE=1.618 is O2-s=0.77 O3-s=0.77 N1-p=-0.60 O3-p=0.02 O2-p=0.02
+ Alpha vir 28 OE=1.964 is N1-d=0.75 O2-d=0.11 O3-d=0.11 O3-p=0.01 O2-p=0.01
+ Alpha vir 29 OE=2.013 is N1-d=0.89 O3-d=0.05 O2-d=0.05
+ Alpha vir 30 OE=2.020 is N1-d=0.82 O2-d=0.07 O3-d=0.07 O2-s=0.02 O3-s=0.02 N1-s=-0.02 N1-p=0.01
+ Alpha vir 31 OE=2.397 is N1-d=0.63 O3-d=0.13 O2-d=0.13 N1-p=0.04 O2-p=0.03 O3-p=0.03
+ Alpha vir 32 OE=2.617 is N1-d=0.67 O3-d=0.12 O2-d=0.12 N1-s=0.04 N1-p=0.02 O3-p=0.02 O2-p=0.02
+ Alpha vir 33 OE=3.085 is O3-d=0.50 O2-d=0.50
+ Alpha vir 34 OE=3.089 is O3-d=0.50 O2-d=0.50
+ Alpha vir 35 OE=3.101 is O2-d=0.48 O3-d=0.48 N1-p=0.02
+ Alpha vir 36 OE=3.165 is O3-d=0.46 O2-d=0.46 N1-d=0.06
+ Alpha vir 37 OE=3.345 is O2-d=0.37 O3-d=0.37 N1-p=0.16 N1-d=0.09
+ Alpha vir 38 OE=3.554 is O2-d=0.41 O3-d=0.41 N1-d=0.14 O3-s=0.01 O2-s=0.01
+ Alpha vir 39 OE=3.589 is O2-d=0.31 O3-d=0.31 N1-p=0.23 N1-d=0.10 O2-s=0.02 O3-s=0.02
+ Alpha vir 40 OE=3.800 is O3-d=0.38 O2-d=0.38 N1-d=0.22
+ Alpha vir 41 OE=3.858 is O3-d=0.30 O2-d=0.30 N1-p=0.26 N1-d=0.05 O3-s=0.03 O2-s=0.03 O2-p=0.02 O3-p=0.02
+ Alpha vir 42 OE=4.081 is N1-p=0.79 O2-d=0.09 O3-d=0.09 O2-p=0.01 O3-p=0.01
+ Alpha vir 43 OE=4.093 is N1-p=0.27 O3-d=0.27 O2-d=0.27 N1-d=0.13 O3-p=0.03 O2-p=0.03
+ Alpha vir 44 OE=4.249 is N1-p=0.46 O2-d=0.20 O3-d=0.20 N1-d=0.10 O3-p=0.02 O2-p=0.02
+ Alpha vir 45 OE=4.819 is N1-p=0.57 O3-p=0.14 O2-p=0.14 O2-d=0.06 O3-d=0.06 N1-d=0.05
+ Alpha vir 46 OE=5.301 is O2-p=0.49 O3-p=0.49
+ Alpha vir 47 OE=5.308 is O3-p=0.49 O2-p=0.49 N1-p=0.03
+ Alpha vir 48 OE=5.321 is O3-p=0.49 O2-p=0.49
+ Alpha vir 49 OE=5.350 is O2-p=0.48 O3-p=0.48 N1-p=0.02
+ Alpha vir 50 OE=5.876 is O2-p=0.47 O3-p=0.47 O3-d=0.04 O2-d=0.04 N1-s=-0.01
+ Alpha vir 51 OE=6.442 is O3-p=0.35 O2-p=0.35 N1-p=0.15 O2-d=0.07 O3-d=0.07 N1-d=0.03
+ Alpha vir 52 OE=36.586 is N1-s=1.00
+ Alpha vir 53 OE=51.399 is O3-s=0.50 O2-s=0.50
+ Alpha vir 54 OE=51.504 is O2-s=0.50 O3-s=0.50
+
+ Atomic contributions to Beta  molecular orbitals:
+ Beta  occ 1 OE=-20.672 is O3-s=0.50 O2-s=0.50
+ Beta  occ 2 OE=-20.672 is O3-s=0.50 O2-s=0.50
+ Beta  occ 3 OE=-15.857 is N1-s=1.00
+ Beta  occ 4 OE=-1.632 is N1-s=0.36 O3-s=0.25 O2-s=0.25 O2-p=0.05 O3-p=0.05 N1-p=0.03
+ Beta  occ 5 OE=-1.453 is O2-s=0.37 O3-s=0.37 N1-p=0.21 O2-p=0.02 O3-p=0.02
+ Beta  occ 6 OE=-0.886 is O2-s=0.23 O3-s=0.23 N1-s=0.21 O2-p=0.17 O3-p=0.17
+ Beta  occ 7 OE=-0.751 is O3-p=0.27 O2-p=0.27 N1-p=0.22 O3-s=0.12 O2-s=0.12
+ Beta  occ 8 OE=-0.742 is N1-p=0.42 O2-p=0.28 O3-p=0.28
+ Beta  occ 9 OE=-0.712 is N1-p=0.37 O2-p=0.28 O3-p=0.28 N1-s=0.06
+ Beta  occ 10 OE=-0.523 is O3-p=0.49 O2-p=0.49 N1-d=0.02
+ Beta  occ 11 OE=-0.494 is O3-p=0.47 O2-p=0.47 N1-p=0.04 N1-d=0.02
+ Beta  vir 12 OE=0.035 is N1-p=0.32 O3-p=0.24 O2-p=0.24 N1-s=0.20
+ Beta  vir 13 OE=0.100 is N1-p=0.58 O2-p=0.21 O3-p=0.21
+ Beta  vir 14 OE=0.441 is N1-s=0.50 N1-p=0.39 O2-p=0.15 O3-p=0.15 O2-s=-0.10 O3-s=-0.10 N1-d=0.03
+ Beta  vir 15 OE=0.574 is N1-p=1.23 O3-s=-0.26 O2-s=-0.26 O3-p=0.14 O2-p=0.14
+ Beta  vir 16 OE=0.724 is N1-p=0.97 O2-p=0.01 O3-p=0.01
+ Beta  vir 17 OE=0.750 is N1-p=0.88 N1-s=0.11
+ Beta  vir 18 OE=0.786 is N1-p=0.72 O2-p=0.14 O3-p=0.14 O2-s=-0.02 O3-s=-0.02 O2-d=0.01 O3-d=0.01
+ Beta  vir 19 OE=0.800 is N1-s=0.89 N1-p=0.13 O3-s=-0.05 O2-s=-0.05 O2-p=0.02 O3-p=0.02 O2-d=0.02 O3-d=0.02
+ Beta  vir 20 OE=0.946 is O3-p=0.62 O2-p=0.62 N1-s=-0.13 O3-s=-0.06 O2-s=-0.06 N1-d=0.03 N1-p=-0.01
+ Beta  vir 21 OE=1.010 is O2-p=0.50 O3-p=0.50
+ Beta  vir 22 OE=1.030 is O3-p=0.41 O2-p=0.41 N1-p=0.09 N1-d=0.04 O3-s=0.02 O2-s=0.02
+ Beta  vir 23 OE=1.038 is O2-p=0.48 O3-p=0.48 N1-s=0.02 N1-d=0.01
+ Beta  vir 24 OE=1.062 is O2-p=0.49 O3-p=0.49 N1-p=0.02
+ Beta  vir 25 OE=1.091 is O2-p=0.49 O3-p=0.49 N1-p=0.03 O2-s=-0.02 O3-s=-0.02
+ Beta  vir 26 OE=1.562 is O3-s=0.70 O2-s=0.70 N1-s=-0.25 N1-p=-0.12 O2-p=-0.03 O3-p=-0.03 N1-d=0.03
+ Beta  vir 27 OE=1.635 is O3-s=0.76 O2-s=0.76 N1-p=-0.57 O3-p=0.02 O2-p=0.02
+ Beta  vir 28 OE=1.971 is N1-d=0.75 O2-d=0.11 O3-d=0.11 O2-p=0.01 O3-p=0.01
+ Beta  vir 29 OE=2.067 is N1-d=0.88 O3-d=0.05 O2-d=0.05
+ Beta  vir 30 OE=2.089 is N1-d=0.82 O2-d=0.07 O3-d=0.07 O3-s=0.02 O2-s=0.02 N1-p=0.01
+ Beta  vir 31 OE=2.428 is N1-d=0.63 O3-d=0.13 O2-d=0.13 N1-p=0.04 O3-p=0.03 O2-p=0.03
+ Beta  vir 32 OE=2.648 is N1-d=0.66 O3-d=0.12 O2-d=0.12 N1-s=0.03 N1-p=0.02 O3-p=0.02 O2-p=0.02
+ Beta  vir 33 OE=3.109 is O2-d=0.50 O3-d=0.50
+ Beta  vir 34 OE=3.112 is O2-d=0.50 O3-d=0.50
+ Beta  vir 35 OE=3.140 is O2-d=0.48 O3-d=0.48 N1-p=0.03
+ Beta  vir 36 OE=3.201 is O3-d=0.46 O2-d=0.46 N1-d=0.07
+ Beta  vir 37 OE=3.353 is O2-d=0.37 O3-d=0.37 N1-p=0.15 N1-d=0.10
+ Beta  vir 38 OE=3.601 is O3-d=0.41 O2-d=0.41 N1-d=0.14 O3-s=0.01 O2-s=0.01
+ Beta  vir 39 OE=3.630 is O3-d=0.32 O2-d=0.32 N1-p=0.20 N1-d=0.10 O2-s=0.02 O3-s=0.02
+ Beta  vir 40 OE=3.815 is O2-d=0.38 O3-d=0.38 N1-d=0.22
+ Beta  vir 41 OE=3.876 is O3-d=0.30 O2-d=0.30 N1-p=0.26 N1-d=0.06 O2-s=0.02 O3-s=0.02 O3-p=0.02 O2-p=0.02
+ Beta  vir 42 OE=4.095 is N1-p=0.79 O2-d=0.09 O3-d=0.09 O2-p=0.01 O3-p=0.01
+ Beta  vir 43 OE=4.137 is O3-d=0.28 O2-d=0.28 N1-p=0.23 N1-d=0.14 O3-p=0.03 O2-p=0.03
+ Beta  vir 44 OE=4.293 is N1-p=0.52 O2-d=0.17 O3-d=0.17 N1-d=0.09 O3-p=0.02 O2-p=0.02
+ Beta  vir 45 OE=4.831 is N1-p=0.57 O2-p=0.14 O3-p=0.14 O3-d=0.06 O2-d=0.06 N1-d=0.05
+ Beta  vir 46 OE=5.314 is O2-p=0.49 O3-p=0.49 N1-p=0.03
+ Beta  vir 47 OE=5.327 is O2-p=0.49 O3-p=0.49
+ Beta  vir 48 OE=5.347 is O2-p=0.49 O3-p=0.49
+ Beta  vir 49 OE=5.386 is O2-p=0.48 O3-p=0.48 N1-p=0.03
+ Beta  vir 50 OE=5.898 is O3-p=0.47 O2-p=0.47 O3-d=0.04 O2-d=0.04 N1-s=-0.01
+ Beta  vir 51 OE=6.453 is O2-p=0.35 O3-p=0.35 N1-p=0.15 O2-d=0.07 O3-d=0.07 N1-d=0.03
+ Beta  vir 52 OE=36.602 is N1-s=1.00
+ Beta  vir 53 OE=51.407 is O3-s=0.50 O2-s=0.50
+ Beta  vir 54 OE=51.513 is O3-s=0.50 O2-s=0.50
+ 
+ Orbital energies and kinetic energies (alpha):
+                                 1                 2
+   1         (B2)--O         -20.687056         29.195764
+   2         (A1)--O         -20.687009         29.195940
+   3         (A1)--O         -15.879940         22.127355
+   4         (A1)--O          -1.675272          2.675401
+   5         (B2)--O          -1.495819          2.912814
+   6         (A1)--O          -0.973110          2.912849
+   7         (A1)--O          -0.832461          2.185834
+   8         (B2)--O          -0.803213          2.647900
+   9         (B1)--O          -0.761000          1.883831
+  10         (B2)--O          -0.595891          2.649348
+  11         (A2)--O          -0.526627          2.395655
+  12         (A1)--O          -0.508379          2.784010
+  13         (B1)--V           0.068350          2.557245
+  14         (A1)--V           0.421919          3.074758
+  15         (B2)--V           0.533542          1.983122
+  16         (A1)--V           0.683976          1.811723
+  17         (B1)--V           0.713153          1.792034
+  18         (A1)--V           0.777473          2.933215
+  19         (B2)--V           0.782998          2.417655
+  20         (A1)--V           0.937492          2.640283
+  21         (B2)--V           0.984299          3.268607
+  22         (A1)--V           0.993584          2.229970
+  23         (A2)--V           1.006699          2.446297
+  24         (B1)--V           1.056101          2.459313
+  25         (B2)--V           1.065093          2.199616
+  26         (A1)--V           1.548983          3.905798
+  27         (B2)--V           1.618224          4.268350
+  28         (A2)--V           1.963506          3.417059
+  29         (B1)--V           2.013303          3.243696
+  30         (A1)--V           2.020440          3.409467
+  31         (B2)--V           2.396632          4.269528
+  32         (A1)--V           2.617396          4.416220
+  33         (A2)--V           3.085078          4.526105
+  34         (B2)--V           3.089077          4.546857
+  35         (B1)--V           3.101407          4.678940
+  36         (A1)--V           3.164779          4.626973
+  37         (B1)--V           3.344716          5.479166
+  38         (B2)--V           3.554425          5.203020
+  39         (A1)--V           3.589379          6.251714
+  40         (A2)--V           3.799788          5.358790
+  41         (B2)--V           3.857954          6.956995
+  42         (B1)--V           4.081030          8.412460
+  43         (A1)--V           4.092659          7.087724
+  44         (A1)--V           4.249369          7.889754
+  45         (B2)--V           4.819015         10.241059
+  46         (B2)--V           5.300671         11.779033
+  47         (B1)--V           5.308161         11.822085
+  48         (A2)--V           5.320979         11.791382
+  49         (A1)--V           5.350216         11.736096
+  50         (A1)--V           5.875725         12.161911
+  51         (B2)--V           6.441666         11.746833
+  52         (A1)--V          36.585963         89.085050
+  53         (A1)--V          51.398732        123.834624
+  54         (B2)--V          51.504377        123.797012
+ Orbital energies and kinetic energies (beta):
+                                 1                 2
+   1         (B2)--O         -20.672312         29.218724
+   2         (A1)--O         -20.672241         29.219202
+   3         (A1)--O         -15.857164         22.149816
+   4         (A1)--O          -1.631674          2.613947
+   5         (B2)--O          -1.453351          2.844966
+   6         (A1)--O          -0.885708          2.988326
+   7         (B2)--O          -0.751382          2.638083
+   8         (B1)--O          -0.742317          1.876457
+   9         (A1)--O          -0.711966          1.892257
+  10         (A2)--O          -0.523275          2.378666
+  11         (B2)--O          -0.493925          2.411153
+  12         (A1)--V           0.035123          2.323411
+  13         (B1)--V           0.099821          2.503911
+  14         (A1)--V           0.441492          2.971823
+  15         (B2)--V           0.574030          1.799631
+  16         (B1)--V           0.723861          1.823316
+  17         (A1)--V           0.750214          2.014020
+  18         (B2)--V           0.786127          2.422844
+  19         (A1)--V           0.799725          3.017977
+  20         (A1)--V           0.946227          2.778619
+  21         (A2)--V           1.009967          2.460170
+  22         (B2)--V           1.029514          3.334225
+  23         (A1)--V           1.038267          2.386205
+  24         (B1)--V           1.061656          2.472593
+  25         (B2)--V           1.090822          2.475630
+  26         (A1)--V           1.562386          3.952802
+  27         (B2)--V           1.635221          4.343093
+  28         (A2)--V           1.971393          3.416323
+  29         (B1)--V           2.066702          3.254202
+  30         (A1)--V           2.089176          3.388465
+  31         (B2)--V           2.427945          4.275769
+  32         (A1)--V           2.647634          4.449862
+  33         (A2)--V           3.108648          4.526124
+  34         (B2)--V           3.112251          4.539420
+  35         (B1)--V           3.139868          4.694472
+  36         (A1)--V           3.201097          4.628513
+  37         (B1)--V           3.353408          5.444475
+  38         (B2)--V           3.600984          5.210550
+  39         (A1)--V           3.629815          6.184416
+  40         (A2)--V           3.815398          5.361893
+  41         (B2)--V           3.875893          6.946729
+  42         (B1)--V           4.094708          8.434700
+  43         (A1)--V           4.137028          7.031247
+  44         (A1)--V           4.292935          8.112712
+  45         (B2)--V           4.830952         10.241950
+  46         (B1)--V           5.313656         11.824643
+  47         (A2)--V           5.326671         11.792110
+  48         (B2)--V           5.347301         11.843922
+  49         (A1)--V           5.385535         11.792388
+  50         (A1)--V           5.898487         12.166981
+  51         (B2)--V           6.453215         11.745226
+  52         (A1)--V          36.601965         89.084824
+  53         (A1)--V          51.407391        123.828856
+  54         (B2)--V          51.512928        123.791599
+ Total kinetic energy from orbitals= 2.037982965508D+02
+                          Isotropic Fermi Contact Couplings
+        Atom                 a.u.       MegaHertz       Gauss      10(-4) cm-1
+     1  N(14)              0.42250     136.51211      48.71091      45.53554
+     2  O(17)              0.08207     -49.75203     -17.75276     -16.59549
+     3  O(17)              0.08207     -49.75203     -17.75276     -16.59549
+ --------------------------------------------------------
+       Center         ----  Spin Dipole Couplings  ----
+                      3XX-RR        3YY-RR        3ZZ-RR
+ --------------------------------------------------------
+     1   Atom       -0.583972     -0.820509      1.404481
+     2   Atom       -0.839690     -0.810254      1.649944
+     3   Atom       -0.839690     -0.810254      1.649944
+ --------------------------------------------------------
+                        XY            XZ            YZ
+ --------------------------------------------------------
+     1   Atom        0.000000      0.000000      0.000000
+     2   Atom        0.000000      0.000000     -0.335534
+     3   Atom        0.000000      0.000000      0.335534
+ --------------------------------------------------------
+
+
+ ---------------------------------------------------------------------------------
+              Anisotropic Spin Dipole Couplings in Principal Axis System
+ ---------------------------------------------------------------------------------
+
+       Atom             a.u.   MegaHertz   Gauss  10(-4) cm-1        Axes
+
+              Baa    -0.8205   -31.645   -11.292   -10.556  0.0000  1.0000  0.0000
+     1 N(14)  Bbb    -0.5840   -22.522    -8.037    -7.513  1.0000  0.0000  0.0000
+              Bcc     1.4045    54.168    19.328    18.068  0.0000  0.0000  1.0000
+ 
+              Baa    -0.8552    61.881    22.081    20.641  0.0000  0.9911  0.1328
+     2 O(17)  Bbb    -0.8397    60.759    21.680    20.267  1.0000  0.0000  0.0000
+              Bcc     1.6949  -122.641   -43.761   -40.909  0.0000 -0.1328  0.9911
+ 
+              Baa    -0.8552    61.881    22.081    20.641  0.0000  0.9911 -0.1328
+     3 O(17)  Bbb    -0.8397    60.759    21.680    20.267  1.0000  0.0000  0.0000
+              Bcc     1.6949  -122.641   -43.761   -40.909  0.0000  0.1328  0.9911
+ 
+
+ ---------------------------------------------------------------------------------
+
+
+ Test job not archived.
+ 1\1\GINC-GAMBA\SP\UHF\Gen\N1O2(2)\IRIKURA\17-May-2017\0\\# HF/GEN gfin
+ put geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)\\BEB step 2: Hart
+ ree-Fock B and U for no2\\0,2\N,0,0.,0.,-0.3309564098\O,0,0.,-1.106839
+ 8818,0.1406818249\O,0,0.,1.1068398818,0.1406818249\\Version=ES64L-G09R
+ evD.01\State=2-A1\HF=-204.0789821\S2=0.770373\S2-1=0.\S2A=0.750261\RMS
+ D=9.958e-09\Dipole=0.,0.,-0.2823665\Quadrupole=1.1381009,-1.8802665,0.
+ 7421656,0.,0.,0.\PG=C02V [C2(N1),SGV(O2)]\\@
+
+
+ DESK:  A WASTEBASKET WITH DRAWERS.
+ Job cpu time:       0 days  0 hours  0 minutes 19.5 seconds.
+ File lengths (MBytes):  RWF=      5 Int=      0 D2E=      0 Chk=      1 Scr=      1
+ Normal termination of Gaussian 09 at Wed May 17 13:46:14 2017.

@@ -1,0 +1,19 @@
+%chk=thf3.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100,window=(13,0))/GEN gfinput geom=check scf=xqc pseudo=read
+
+BEB step 10: low-spin CCSD(T) for dication of thf3; only 12 cores frozen
+
+2 2
+
+F 0
+cc-pVTZ
+****
+Th 0
+SDD
+****
+
+Th 0
+SDD
+

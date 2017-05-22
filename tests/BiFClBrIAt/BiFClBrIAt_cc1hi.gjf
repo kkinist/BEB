@@ -1,0 +1,31 @@
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc pseudo=read guess=check
+
+BEB step 7: high-spin CCSD(T) for cation of BiFClBrIAt
+
+1 4
+
+F 0
+cc-pVTZ
+****
+@t_plusd.gbs
+Br 0
+cc-pVTZ
+****
+Bi 0
+SDD
+****
+I 0
+SDD
+ D   1 1.00       0.000000000000
+      3.0200000000e-01  0.1000000000D+01
+****
+At 0
+SDD
+****
+
+Bi I At 0
+SDD
+

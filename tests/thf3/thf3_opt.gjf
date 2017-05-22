@@ -1,0 +1,23 @@
+%chk=thf3.chk
+%nprocs=8
+%mem=2000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc pseudo=read
+
+BEB step 1: geom and freqs for thf3
+
+0 2
+ Th                -0.00000000   -0.00000000    0.00000000
+ F                 -1.91391614    1.10500000   -0.00000000
+ F                  0.00000000   -2.21000000   -0.00000000
+ F                  1.91391614    1.10500000   -0.00000000
+
+F 0
+6-31G(d)
+****
+Th 0
+SDD
+****
+
+Th 0
+SDD
+

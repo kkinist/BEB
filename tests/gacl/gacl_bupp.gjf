@@ -1,0 +1,24 @@
+%chk=gacl.chk
+%nprocs=4
+%mem=1000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)
+
+BEB step 3: pseudopotential B and U for gacl
+
+0 1
+
+Cl Ga 0
+SDDall
+****
+Cl 0
+ D   1 1.00       0.000000000000
+      7.5000000000e-01  0.1000000000D+01
+****
+Ga 0
+ D   1 1.00       0.000000000000
+      1.6900000000e-01  0.1000000000D+01
+****
+
+Cl Ga 0
+SDDall
+

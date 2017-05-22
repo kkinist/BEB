@@ -1,0 +1,13 @@
+%chk=h2o.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 10: low-spin CCSD(T) for dication of h2o
+
+2 1
+
+H O 0
+cc-pVTZ
+****
+

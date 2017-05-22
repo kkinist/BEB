@@ -1,0 +1,14 @@
+%chk=gacl.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 8: low-spin CCSD(T) for cation of gacl
+
+1 2
+
+@t_plusd.gbs
+Ga 0
+cc-pVTZ
+****
+

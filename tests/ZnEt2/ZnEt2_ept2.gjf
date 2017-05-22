@@ -1,0 +1,18 @@
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 5: cation EPT for VIE2 for ZnEt2
+
+1 2
+
+C H 0
+6-311+G(d,p)
+****
+Zn 0
+6-311+G(d,p)
+****
+
+19 19 18 18
+

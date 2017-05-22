@@ -1,0 +1,14 @@
+%chk=Li.chk
+%nprocs=2
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for Li
+
+0 2
+Li 
+
+Li 0
+6-31G(d)
+****
+

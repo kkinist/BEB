@@ -1,0 +1,21 @@
+%chk=cef4.chk
+%nprocs=8
+%mem=2000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1) pseudo=read
+
+BEB step 4: EPT B for cef4
+
+0 1
+
+F 0
+6-311+G(d,p)
+****
+Ce 0
+SDD
+****
+
+Ce 0
+SDD
+
+1 16 16 16
+

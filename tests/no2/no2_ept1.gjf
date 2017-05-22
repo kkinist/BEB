@@ -1,0 +1,15 @@
+%chk=no2.chk
+%nprocs=6
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 4: EPT B for no2
+
+0 2
+
+N O 0
+6-311+G(d,p)
+****
+
+1 9 1 8
+

@@ -1,0 +1,13 @@
+%chk=ch4.chk
+%nprocs=4
+%mem=1000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)
+
+BEB step 2: Hartree-Fock B and U for ch4
+
+0 1
+
+C H 0
+6-311G(d,p)
+****
+

@@ -1,0 +1,15 @@
+%chk=gacl.chk
+%nprocs=4
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 5: cation EPT for VIE2 for gacl
+
+1 2
+
+Cl Ga 0
+6-311+G(d,p)
+****
+
+10 10 9 9
+

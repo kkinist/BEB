@@ -1,0 +1,41 @@
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# HF/GEN gfinput geom=check scf=xqc pseudo=read stable=opt
+
+prepare for BEB step 10: low-spin HF for dication, stability check/follow
+
+2 1
+
+F 0
+cc-pVTZ
+****
+@t_plusd.gbs
+Br 0
+cc-pVTZ
+****
+Bi 0
+SDD
+****
+I 0
+SDD
+ D   1 1.00       0.000000000000
+      3.0200000000e-01  0.1000000000D+01
+****
+At 0
+SDD
+****
+
+Bi I At 0
+SDD
+
+--Link1--
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/chkbas geom=check guess=check scf=xqc 
+
+BEB step 10: low-spin CCSD(T) for dication of BiFClBrIAt
+
+2 1
+

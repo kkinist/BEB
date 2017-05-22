@@ -1,0 +1,15 @@
+%chk=o2.chk
+%nprocs=4
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 4: EPT B for o2
+
+0 3
+
+O 0
+6-311+G(d,p)
+****
+
+1 7 1 5
+

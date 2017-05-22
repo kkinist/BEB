@@ -1,0 +1,40 @@
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)
+
+BEB step 3: pseudopotential B and U for BiFClBrIAt
+
+0 1
+
+F 0
+6-311G(d,p)
+****
+Br Cl 0
+SDDall
+****
+Br 0
+ D   1 1.00       0.000000000000
+      4.5100000000e-01  0.1000000000D+01
+****
+Cl 0
+ D   1 1.00       0.000000000000
+      7.5000000000e-01  0.1000000000D+01
+****
+Bi 0
+SDD
+****
+I 0
+SDD
+ D   1 1.00       0.000000000000
+      3.0200000000e-01  0.1000000000D+01
+****
+At 0
+SDD
+****
+
+Br Cl 0
+SDDall
+Bi I At 0
+SDD
+

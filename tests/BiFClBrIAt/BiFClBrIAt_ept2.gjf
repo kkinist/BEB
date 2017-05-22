@@ -1,0 +1,32 @@
+%chk=BiFClBrIAt.chk
+%nprocs=8
+%mem=2000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1) pseudo=read
+
+BEB step 5: cation EPT for VIE2 for BiFClBrIAt
+
+1 2
+
+F 0
+6-311+G(d,p)
+****
+Br Cl 0
+6-311+G(d,p)
+****
+Bi 0
+SDD
+****
+I 0
+SDD
+ D   1 1.00       0.000000000000
+      3.0200000000e-01  0.1000000000D+01
+****
+At 0
+SDD
+****
+
+Bi I At 0
+SDD
+
+25 25 24 24
+

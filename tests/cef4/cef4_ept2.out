@@ -1,0 +1,1173 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-15874.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     15876.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                18-May-2017 
+ ******************************************
+ %chk=cef4.chk
+ %nprocs=8
+ Will use up to    8 processors via shared memory.
+ %mem=2000mw
+ ----------------------------------------------------------------------
+ # EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc
+  pop(all,thresh=1) pseudo=read
+ ----------------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,17=8,24=10,25=1,30=1,116=-2/1,2,3;
+ 4/5=1/1;
+ 5/5=2,8=3,13=1,38=6/2,8;
+ 8/6=4,9=120000,10=1/1,4;
+ 9/11=30100/8;
+ 6/7=2,8=2,9=2,10=2,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ ----------------------------------------
+ BEB step 5: cation EPT for VIE2 for cef4
+ ----------------------------------------
+ Structure from the checkpoint file:  "cef4.chk"
+ Charge =  1 Multiplicity = 2
+ Redundant internal coordinates found in file.
+ Ce,0,0.,-0.000000001,-0.000000001
+ F,0,0.0000000013,-0.0000000051,2.0322594419
+ F,0,0.,-1.9160325772,-0.6774198191
+ F,0,-1.6593328873,0.9580162888,-0.6774198123
+ F,0,1.659332886,0.9580162896,-0.6774198144
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1         58           0        0.000000    0.000000    0.000000
+      2          9           0        0.000000    0.000000    2.032259
+      3          9           0        0.000000   -1.916033   -0.677420
+      4          9           0       -1.659333    0.958016   -0.677420
+      5          9           0        1.659333    0.958016   -0.677420
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  Ce   0.000000
+     2  F    2.032259   0.000000
+     3  F    2.032259   3.318666   0.000000
+     4  F    2.032259   3.318666   3.318666   0.000000
+     5  F    2.032259   3.318666   3.318666   3.318666   0.000000
+ Stoichiometry    CeF4(1+,2)
+ Framework group  TD[O(Ce),4C3(F)]
+ Deg. of freedom     1
+ Full point group                 TD      NOp  24
+ Largest Abelian subgroup         D2      NOp   4
+ Largest concise Abelian subgroup D2      NOp   4
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1         58           0        0.000000    0.000000    0.000000
+      2          9           0        1.173326    1.173326    1.173326
+      3          9           0       -1.173326   -1.173326    1.173326
+      4          9           0       -1.173326    1.173326   -1.173326
+      5          9           0        1.173326   -1.173326   -1.173326
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      2.4153110      2.4153110      2.4153110
+ General basis read from cards:  (5D, 7F)
+ ======================================================================================================
+                                       Pseudopotential Parameters
+ ======================================================================================================
+  Center     Atomic      Valence      Angular      Power
+  Number     Number     Electrons     Momentum     of R      Exponent        Coefficient   SO-Coeffient
+ ======================================================================================================
+    1         58           30
+                                      H and up 
+                                                     2        1.0000000        0.00000000    0.00000000
+                                      S - H
+                                                     2       20.1378290      580.08345700    0.00000000
+                                      P - H
+                                                     2       15.9984820      310.30283300    0.00000000
+                                      D - H
+                                                     2       14.9741870      167.81394400    0.00000000
+                                      F - H
+                                                     2       23.4024550      -49.39022900    0.00000000
+                                      G - H
+                                                     2       16.5705530      -21.33187900    0.00000000
+    2          9
+                                   No pseudopotential on this center.
+    3          9
+                                   No pseudopotential on this center.
+    4          9
+                                   No pseudopotential on this center.
+    5          9
+                                   No pseudopotential on this center.
+ ======================================================================================================
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   5 1.00       0.000000000000
+      0.6692068100D+05  0.1299942581D-02
+      0.7142419000D+04  0.1611928800D-01
+      0.1149227900D+04  0.1060753146D+00
+      0.6260474000D+03  0.2079908129D-01
+      0.1372813000D+03  0.9252991289D+00
+ S   1 1.00       0.000000000000
+      0.3664340000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.2597420000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1188590000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.3028400000D+01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1566400000D+01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.5937000000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.2630000000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.4900000000D-01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.2070000000D-01  0.1000000000D+01
+ P   6 1.00       0.000000000000
+      0.3813802600D+04  0.3134141884D-04
+      0.1216944700D+04  0.3196824722D-03
+      0.4966641000D+03  0.3322190397D-03
+      0.2125431000D+03  0.4206018408D-02
+      0.2763060000D+02  0.5519223858D-01
+      0.1960400000D+02  0.9456395576D+00
+ P   1 1.00       0.000000000000
+      0.1389180000D+02  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.4438900000D+01  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.2337400000D+01  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.1106700000D+01  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.5287000000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.2305000000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.8000000000D-01  0.1000000000D+01
+ D   6 1.00       0.000000000000
+      0.3677157000D+03  0.2147566407D-03
+      0.1098798000D+03  0.1773531924D-02
+      0.3602110000D+02  0.1391980959D-01
+      0.1476370000D+02 -0.1126720715D+00
+      0.7328100000D+01  0.3227470175D+00
+      0.3944100000D+01  0.7740706253D+00
+ D   1 1.00       0.000000000000
+      0.2020200000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.9649000000D+00  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.3273000000D+00  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1032000000D+00  0.1000000000D+01
+ F   5 1.00       0.000000000000
+      0.1234821000D+03  0.2997434518D-02
+      0.4398810000D+02  0.3464659145D-01
+      0.1945180000D+02  0.1457698727D+00
+      0.8601300000D+01  0.3688088603D+00
+      0.3804900000D+01  0.6207943373D+00
+ F   1 1.00       0.000000000000
+      0.1617600000D+01  0.1000000000D+01
+ F   1 1.00       0.000000000000
+      0.6364000000D+00  0.1000000000D+01
+ F   1 1.00       0.000000000000
+      0.2164000000D+00  0.1000000000D+01
+ G   4 1.00       0.000000000000
+      0.1945180000D+02  0.5707575268D-02
+      0.8601300000D+01  0.9714557851D-01
+      0.3804900000D+01  0.7884707662D-01
+      0.1617600000D+01  0.9231373580D+00
+ G   1 1.00       0.000000000000
+      0.6364000000D+00  0.1000000000D+01
+ G   1 1.00       0.000000000000
+      0.2164000000D+00  0.1000000000D+01
+ ****
+      2 0
+ S   6 1.00       0.000000000000
+      0.1142710000D+05  0.1800930156D-02
+      0.1722350000D+04  0.1374190119D-01
+      0.3957460000D+03  0.6813340591D-01
+      0.1151390000D+03  0.2333250202D+00
+      0.3360260000D+02  0.5890860511D+00
+      0.4919010000D+01  0.2995050260D+00
+ SP   3 1.00       0.000000000000
+      0.5544410000D+02  0.1145360155D+00  0.3546088738D-01
+      0.1263230000D+02  0.9205121249D+00  0.2374509155D+00
+      0.3717560000D+01 -0.3378040458D-02  0.8204577080D+00
+ SP   1 1.00       0.000000000000
+      0.1165450000D+01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.3218920000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1076000000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1750000000D+01  0.1000000000D+01
+ ****
+      3 0
+ S   6 1.00       0.000000000000
+      0.1142710000D+05  0.1800930156D-02
+      0.1722350000D+04  0.1374190119D-01
+      0.3957460000D+03  0.6813340591D-01
+      0.1151390000D+03  0.2333250202D+00
+      0.3360260000D+02  0.5890860511D+00
+      0.4919010000D+01  0.2995050260D+00
+ SP   3 1.00       0.000000000000
+      0.5544410000D+02  0.1145360155D+00  0.3546088738D-01
+      0.1263230000D+02  0.9205121249D+00  0.2374509155D+00
+      0.3717560000D+01 -0.3378040458D-02  0.8204577080D+00
+ SP   1 1.00       0.000000000000
+      0.1165450000D+01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.3218920000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1076000000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1750000000D+01  0.1000000000D+01
+ ****
+      4 0
+ S   6 1.00       0.000000000000
+      0.1142710000D+05  0.1800930156D-02
+      0.1722350000D+04  0.1374190119D-01
+      0.3957460000D+03  0.6813340591D-01
+      0.1151390000D+03  0.2333250202D+00
+      0.3360260000D+02  0.5890860511D+00
+      0.4919010000D+01  0.2995050260D+00
+ SP   3 1.00       0.000000000000
+      0.5544410000D+02  0.1145360155D+00  0.3546088738D-01
+      0.1263230000D+02  0.9205121249D+00  0.2374509155D+00
+      0.3717560000D+01 -0.3378040458D-02  0.8204577080D+00
+ SP   1 1.00       0.000000000000
+      0.1165450000D+01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.3218920000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1076000000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1750000000D+01  0.1000000000D+01
+ ****
+      5 0
+ S   6 1.00       0.000000000000
+      0.1142710000D+05  0.1800930156D-02
+      0.1722350000D+04  0.1374190119D-01
+      0.3957460000D+03  0.6813340591D-01
+      0.1151390000D+03  0.2333250202D+00
+      0.3360260000D+02  0.5890860511D+00
+      0.4919010000D+01  0.2995050260D+00
+ SP   3 1.00       0.000000000000
+      0.5544410000D+02  0.1145360155D+00  0.3546088738D-01
+      0.1263230000D+02  0.9205121249D+00  0.2374509155D+00
+      0.3717560000D+01 -0.3378040458D-02  0.8204577080D+00
+ SP   1 1.00       0.000000000000
+      0.1165450000D+01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.3218920000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1076000000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1750000000D+01  0.1000000000D+01
+ ****
+
+ There are    70 symmetry adapted cartesian basis functions of A   symmetry.
+ There are    57 symmetry adapted cartesian basis functions of B1  symmetry.
+ There are    57 symmetry adapted cartesian basis functions of B2  symmetry.
+ There are    57 symmetry adapted cartesian basis functions of B3  symmetry.
+ There are    55 symmetry adapted basis functions of A   symmetry.
+ There are    49 symmetry adapted basis functions of B1  symmetry.
+ There are    49 symmetry adapted basis functions of B2  symmetry.
+ There are    49 symmetry adapted basis functions of B3  symmetry.
+   202 basis functions,   427 primitive gaussians,   241 cartesian basis functions
+    33 alpha electrons       32 beta electrons
+       nuclear repulsion energy       358.7147331989 Hartrees.
+ NAtoms=    5 NActive=    5 NUniq=    2 SFac= 4.00D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+  24 Symmetry operations used in ECPInt.
+ ECPInt:  NShTT=    1485 NPrTT=    5484 LenC2=    1454 LenP2D=    4126.
+ LDataN:  DoStor=T MaxTD1= 9 Len=  602
+ NBasis=   202 RedAO= T EigKep=  1.05D-03  NBF=    55    49    49    49
+ NBsUse=   202 1.00D-06 EigRej= -1.00D+00 NBFU=    55    49    49    49
+ Initial guess from the checkpoint file:  "cef4.chk"
+ B after Tr=     0.000000    0.000000    0.000000
+         Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A1) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (T2) (T2)
+                 (T2) (E) (E) (A1) (T2) (T2) (T2) (T2) (T2) (T2)
+                 (A1) (T2) (T2) (T2) (E) (E) (A1) (T1) (T1) (T1)
+                 (T2) (T2) (T2)
+       Virtual   (A1) (T2) (T2) (T2) (A1) (T1) (T1) (T1) (E) (E)
+                 (T2) (T2) (T2) (A1) (T2) (T2) (T2) (E) (E) (T2)
+                 (T2) (T2) (A1) (T1) (T1) (T1) (T2) (T2) (T2) (A1)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (E) (E) (T1) (T1)
+                 (T1) (A1) (T2) (T2) (T2) (E) (E) (A1) (T2) (T2)
+                 (T2) (T1) (T1) (T1) (T2) (T2) (T2) (A1) (E) (E)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (T1) (T1) (T1) (A1)
+                 (T2) (T2) (T2) (T1) (T1) (T1) (T2) (T2) (T2) (A1)
+                 (A1) (E) (E) (E) (E) (A1) (T1) (T1) (T1) (T2)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (T2) (T2) (T1) (T1)
+                 (T1) (T2) (T2) (T2) (E) (E) (E) (E) (T2) (T2)
+                 (T2) (A1) (T1) (T1) (T1) (T2) (T2) (T2) (E) (E)
+                 (T1) (T1) (T1) (A1) (T2) (T2) (T2) (A1) (T2) (T2)
+                 (T2) (T1) (T1) (T1) (E) (E) (T2) (T2) (T2) (T1)
+                 (T1) (T1) (A1) (T2) (T2) (T2) (A1) (E) (E) (T2)
+                 (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (T2)
+                 (T2) (T2) (A1) (A1) (T2) (T2) (T2) (A1) (A1)
+ Beta  Orbitals:
+       Occupied  (A1) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (T2) (T2)
+                 (T2) (E) (E) (A1) (T2) (T2) (T2) (T2) (T2) (T2)
+                 (A1) (T2) (T2) (T2) (E) (E) (A1) (T1) (T1) (T1)
+                 (T2) (T2)
+       Virtual   (T2) (A1) (T2) (T2) (T2) (A1) (T1) (T1) (T1) (E)
+                 (E) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (E) (E)
+                 (T2) (T2) (T2) (A1) (T1) (T1) (T1) (T2) (T2) (T2)
+                 (A1) (T2) (T2) (T2) (T2) (T2) (T2) (E) (E) (T1)
+                 (T1) (T1) (A1) (T2) (T2) (T2) (E) (E) (A1) (T2)
+                 (T2) (T2) (T1) (T1) (T1) (T2) (T2) (T2) (A1) (E)
+                 (E) (T2) (T2) (T2) (T2) (T2) (T2) (T1) (T1) (T1)
+                 (A1) (T2) (T2) (T2) (T1) (T1) (T1) (T2) (T2) (T2)
+                 (A1) (A1) (E) (E) (E) (E) (A1) (T1) (T1) (T1)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (T2) (T2) (T2) (T1)
+                 (T1) (T1) (T2) (T2) (T2) (E) (E) (E) (E) (T2)
+                 (T2) (T2) (A1) (T1) (T1) (T1) (T2) (T2) (T2) (E)
+                 (E) (T1) (T1) (T1) (A1) (T2) (T2) (T2) (A1) (T2)
+                 (T2) (T2) (T1) (T1) (T1) (E) (E) (T2) (T2) (T2)
+                 (T1) (T1) (T1) (A1) (T2) (T2) (T2) (A1) (E) (E)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2) (T2)
+                 (T2) (T2) (T2) (A1) (A1) (T2) (T2) (T2) (A1) (A1)
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=262990795.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ Density matrix breaks symmetry, PCut= 1.00D-04
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ Density matrix breaks symmetry, PCut= 1.00D-07
+ Density has only Abelian symmetry.
+ SCF Done:  E(UHF) =  -871.205503133     A.U. after   15 cycles
+            NFock= 15  Conv=0.25D-08     -V/T= 2.5168
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8741 S= 0.5603
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     0.8741,   after     0.7626
+ QCSCF skips out because SCF is already converged.
+ ExpMin= 2.07D-02 ExpMax= 6.69D+04 ExpMxC= 7.14D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor=  205 AccDes= 0.00D+00 IRadAn=         5 IDoV=-2 UseB2=F ITyADJ=14
+ ICtDFT= 12500011 ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ Defaulting to unpruned grid for atomic number  58.
+ DSYEVD-2 returned Info=         229 IAlg= 4 N=   114 NDim=   114 NE2=    18394438 trying  DSYEV.
+ Largest valence mixing into a core orbital is  1.56D-01
+ Largest core mixing into a valence orbital is  1.15D-01
+ High-energy alpha orbitals treated as core:         19      20      21
+ Low-energy alpha orbitals treated as valence:       15      16      17
+ Reordering alpha orbitals on disk:
+ Alpha orbital      15 was Aufbau orbital      19
+ Alpha orbital      16 was Aufbau orbital      20
+ Alpha orbital      17 was Aufbau orbital      21
+ Alpha orbital      18 was Aufbau orbital      15
+ Alpha orbital      19 was Aufbau orbital      16
+ Alpha orbital      20 was Aufbau orbital      17
+ Alpha orbital      21 was Aufbau orbital      18
+ Largest valence mixing into a core orbital is  1.92D-01
+ Largest core mixing into a valence orbital is  1.60D-01
+ High-energy beta  orbitals treated as core:         19      20      21
+ Low-energy beta  orbitals treated as valence:       15      16      17
+ Reordering beta  orbitals on disk:
+ Beta orbital      15 was Aufbau orbital      19
+ Beta orbital      16 was Aufbau orbital      20
+ Beta orbital      17 was Aufbau orbital      21
+ Beta orbital      18 was Aufbau orbital      15
+ Beta orbital      19 was Aufbau orbital      16
+ Beta orbital      20 was Aufbau orbital      17
+ Beta orbital      21 was Aufbau orbital      18
+ Range of M.O.s used for correlation:    18   202
+ NBasis=   202 NAE=    33 NBE=    32 NFC=    17 NFV=     0
+ NROrb=    185 NOA=    16 NOB=    15 NVA=   169 NVB=   170
+
+ **** Warning!!: The largest alpha MO coefficient is  0.13093415D+02
+
+
+ **** Warning!!: The largest beta MO coefficient is  0.13093412D+02
+
+ Semi-Direct transformation.
+ ModeAB=           4 MOrb=            16 LenV=    2095979352
+ LASXX=     11933716 LTotXX=    11933716 LenRXX=    24149896
+ LTotAB=    12216180 MaxLAS=    48108880 LenRXY=           0
+ NonZer=    36083612 LenScr=    54906880 LnRSAI=    48108880
+ LnScr1=    72947712 LExtra=           0 Total=    200113368
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=1 Pass  1:  I=   1 to  16.
+ (rs|ai) integrals will be sorted in core.
+ ModeAB=           4 MOrb=            15 LenV=    2095979352
+ LASXX=     11229127 LTotXX=    11229127 LenRXX=    20818395
+ LTotAB=     9589268 MaxLAS=    45102075 LenRXY=           0
+ NonZer=    32047522 LenScr=    48835584 LnRSAI=    45102075
+ LnScr1=    68397568 LExtra=           0 Total=    183153622
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=2 Pass  1:  I=   1 to  15.
+ (rs|ai) integrals will be sorted in core.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2664177247D-01 E2=     -0.1255341623D+00
+     alpha-beta  T2 =       0.1783380903D+00 E2=     -0.6849873815D+00
+     beta-beta   T2 =       0.5680636197D-01 E2=     -0.1569888315D+00
+ ANorm=    0.1123292582D+01
+ E2 =    -0.9675103753D+00 EUMP2 =    -0.87217301350843D+03
+ (S**2,0)=  0.87414D+00           (S**2,1)=  0.81178D+00
+ E(PUHF)=      -0.87122226118D+03        E(PMP2)=      -0.87218579801D+03
+ GREENY: Electron Propagator Program
+ FoFJK:  IHMeth= 0 ICntrl=     200 DoSepK=F KAlg= 0 I1Cent=   0 FoldK=F
+ IRaf= 990000000 NMat=   1 IRICut=       1 DoRegI=T DoRafI=F ISym2E=-1.
+ FoFCou: FMM=F IPFlag=           0 FMFlag=           0 FMFlg1=           0
+         NFxFlg=           0 DoJE=F BraDBF=F KetDBF=F FulRan=T
+         wScrn=  0.000000 ICntrl=     200 IOpCl=  1 I1Cent=           0 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+
+ Summary of results for alpha spin-orbital  16  OVGF: 
+ Koopmans theorem:            -0.88639D+00 au  -24.120 eV
+ Converged second order pole: -0.68228D+00 au  -18.566 eV  0.749 (PS)
+ Converged third  order pole: -0.86404D+00 au  -23.512 eV  1.000 (PS)
+ Outer Valence Approximation: -0.78403D+00 au  -21.335 eV  0.972 (PS)
+
+ Summary of results for alpha spin-orbital  16    P3: 
+ Koopmans theorem:            -0.88639D+00 au  -24.120 eV
+ Converged second order pole: -0.68228D+00 au  -18.566 eV  0.749 (PS)
+ Converged 3rd order P3 pole: -0.79632D+00 au  -21.669 eV  0.910 (PS)
+
+ Summary of results for beta  spin-orbital  15  OVGF: 
+ Koopmans theorem:            -0.74764D+00 au  -20.344 eV
+ Converged second order pole: -0.73583D+00 au  -20.023 eV  0.883 (PS)
+ Converged third  order pole: -0.76497D+00 au  -20.816 eV  0.918 (PS)
+ Outer Valence Approximation: -0.75870D+00 au  -20.645 eV  0.918 (PS)
+
+ Summary of results for beta  spin-orbital  15    P3: 
+ Koopmans theorem:            -0.74764D+00 au  -20.344 eV
+ Converged second order pole: -0.73583D+00 au  -20.023 eV  0.883 (PS)
+ Converged 3rd order P3 pole: -0.75772D+00 au  -20.619 eV  0.904 (PS)
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A1) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (T2) (T2)
+                 (E) (T2) (E) (A1) (?A) (?A) (?A) (T2) (T2) (T2)
+                 (A1) (?A) (?A) (?B) (?A) (?B) (?B) (?A) (?A) (?A)
+                 (?A) (?A) (?A)
+       Virtual   (A1) (?A) (?A) (?A) (?A) (?A) (?A) (?B) (?B) (?B)
+                 (?A) (?A) (?A) (A1) (T2) (T2) (T2) (T2) (T2) (?A)
+                 (?A) (?A) (T2) (?A) (?A) (?A) (?A) (?A) (?A) (A1)
+                 (?A) (?A) (?A) (?A) (?A) (?A) (E) (E) (T1) (T1)
+                 (T1) (A1) (T2) (T2) (T2) (?B) (?B) (?B) (?C) (?C)
+                 (?C) (?C) (?C) (?C) (T2) (T2) (T2) (A1) (?B) (?B)
+                 (?D) (?D) (?D) (?D) (?D) (?D) (?D) (?D) (?D) (?B)
+                 (T2) (T2) (T2) (?C) (?C) (?C) (?E) (?C) (?C) (?C)
+                 (?E) (?E) (?E) (?E) (?E) (?E) (?F) (?F) (?F) (?F)
+                 (?F) (?F) (?F) (?F) (?F) (?G) (?G) (?G) (?G) (?H)
+                 (?G) (?G) (?G) (?G) (?G) (?H) (?H) (?H) (?G) (?G)
+                 (?G) (?H) (?G) (?G) (?G) (?G) (?G) (?G) (T2) (T2)
+                 (T1) (T1) (T1) (T2) (T2) (T2) (T2) (?I) (?J) (?J)
+                 (?J) (?J) (?J) (?J) (?I) (?I) (?J) (?J) (?J) (?J)
+                 (?J) (?J) (A1) (?J) (?J) (?J) (?I) (E) (E) (T2)
+                 (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2) (T2) (T2)
+                 (T2) (T2) (A1) (A1) (T2) (T2) (T2) (A1) (A1)
+ Beta  Orbitals:
+       Occupied  (T2) (T2) (A1) (T2) (A1) (T2) (T2) (T2) (T2) (T2)
+                 (E) (T2) (E) (A1) (?A) (?A) (?A) (?A) (?A) (?A)
+                 (A1) (?A) (?B) (?A) (?A) (?B) (?A) (?A) (?A) (?A)
+                 (?A) (?B)
+       Virtual   (?A) (?B) (?A) (?A) (?A) (?A) (?A) (?A) (?B) (?B)
+                 (?B) (?A) (?A) (?A) (?B) (?A) (?A) (?A) (?B) (?B)
+                 (?A) (?A) (?A) (?B) (?A) (?A) (?A) (?A) (?A) (?A)
+                 (?B) (?A) (?A) (?A) (?A) (?A) (?A) (E) (E) (?A)
+                 (?A) (?A) (A1) (?A) (?A) (?A) (?B) (?B) (?B) (?A)
+                 (?A) (?A) (?A) (?A) (?A) (?A) (?A) (?A) (?B) (?B)
+                 (?B) (?A) (?A) (?A) (?A) (?A) (?A) (?A) (?A) (?A)
+                 (?B) (?A) (?A) (?A) (?C) (?C) (?C) (?C) (?C) (?C)
+                 (?D) (?D) (?D) (?D) (?D) (?D) (?D) (?C) (?C) (?C)
+                 (?C) (?C) (?C) (?C) (?C) (?C) (?E) (?E) (?E) (?E)
+                 (?E) (?E) (?E) (?E) (?E) (?F) (?F) (?F) (?F) (?E)
+                 (?E) (?E) (?F) (?E) (?E) (?E) (?E) (?E) (?E) (T2)
+                 (?G) (?G) (T2) (?G) (T2) (?G) (?G) (?G) (?H) (?I)
+                 (?I) (?I) (?I) (?I) (?I) (?H) (?H) (?I) (?I) (?I)
+                 (?I) (?I) (?I) (A1) (?I) (?I) (?I) (?H) (E) (E)
+                 (T2) (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2) (T2)
+                 (T2) (T2) (T2) (A1) (A1) (T2) (T2) (T2) (A1) (A1)
+ Unable to determine electronic state:  an orbital has unidentified symmetry.
+ Alpha  occ. eigenvalues --  -26.58139 -26.58139 -26.58139 -26.58139 -12.82005
+ Alpha  occ. eigenvalues --   -9.55749  -9.55604  -9.55604  -5.30579  -5.30579
+ Alpha  occ. eigenvalues --   -5.30534  -5.30468  -5.30330  -2.33301  -1.44527
+ Alpha  occ. eigenvalues --   -1.44218  -1.44218  -1.87905  -1.87889  -1.87889
+ Alpha  occ. eigenvalues --   -1.83437  -0.97732  -0.97732  -0.97234  -0.95033
+ Alpha  occ. eigenvalues --   -0.93726  -0.93437  -0.92943  -0.92943  -0.92475
+ Alpha  occ. eigenvalues --   -0.92098  -0.88639  -0.88639
+ Alpha virt. eigenvalues --   -0.17168  -0.16550  -0.16367  -0.16367  -0.15178
+ Alpha virt. eigenvalues --   -0.15172  -0.15172  -0.12695  -0.12442  -0.10772
+ Alpha virt. eigenvalues --   -0.07090  -0.07090  -0.06890  -0.01702   0.01201
+ Alpha virt. eigenvalues --    0.01201   0.01223   0.11733   0.11871   0.14069
+ Alpha virt. eigenvalues --    0.14455   0.14455   0.18212   0.19714   0.19714
+ Alpha virt. eigenvalues --    0.19899   0.23915   0.23915   0.23976   0.27205
+ Alpha virt. eigenvalues --    0.27486   0.27486   0.27537   0.41222   0.41222
+ Alpha virt. eigenvalues --    0.41344   0.41762   0.41849   0.56639   0.56639
+ Alpha virt. eigenvalues --    0.56653   0.60921   0.65731   0.65739   0.65739
+ Alpha virt. eigenvalues --    0.75828   0.75832   0.77780   0.83178   0.83178
+ Alpha virt. eigenvalues --    0.83199   0.83980   0.83980   0.84158   1.03233
+ Alpha virt. eigenvalues --    1.03392   1.03392   1.18913   1.33626   1.34649
+ Alpha virt. eigenvalues --    1.37452   1.39115   1.39115   1.42770   1.42770
+ Alpha virt. eigenvalues --    1.44187   1.44706   1.44706   1.44971   1.52553
+ Alpha virt. eigenvalues --    1.92543   1.92543   1.92561   2.10757   2.10757
+ Alpha virt. eigenvalues --    2.10832   2.18255   2.18975   2.19045   2.19045
+ Alpha virt. eigenvalues --    2.25299   2.25503   2.25669   2.34144   2.34265
+ Alpha virt. eigenvalues --    2.35467   2.37583   2.37583   2.37673   2.39495
+ Alpha virt. eigenvalues --    2.39552   2.39552   2.48610   2.48610   2.48658
+ Alpha virt. eigenvalues --    3.68457   3.68724   3.68724   3.97296   3.97333
+ Alpha virt. eigenvalues --    3.97884   3.97903   3.97903   3.98058   3.98058
+ Alpha virt. eigenvalues --    4.00568   4.08112   4.09869   4.16157   4.16617
+ Alpha virt. eigenvalues --    4.16617   4.24555   4.28587   4.28587   4.30143
+ Alpha virt. eigenvalues --    4.55815   4.56095   4.56095   5.88364   5.88407
+ Alpha virt. eigenvalues --    5.88424   5.88424   5.88763   5.90052   5.96084
+ Alpha virt. eigenvalues --    5.96224   5.96224   6.50165   6.57936   6.57936
+ Alpha virt. eigenvalues --    6.58437   6.61280   6.61280   6.61391   6.64587
+ Alpha virt. eigenvalues --    6.66237   6.67675   6.69661   6.69661   6.70504
+ Alpha virt. eigenvalues --    6.70504   6.71429   6.75720   6.85494   6.85494
+ Alpha virt. eigenvalues --    6.85784   7.11413   9.18041   9.18297   9.44813
+ Alpha virt. eigenvalues --    9.44813   9.44955  12.79770  12.80001  12.80001
+ Alpha virt. eigenvalues --   54.21951  54.75456  54.75503  54.75503  68.51600
+ Alpha virt. eigenvalues --   68.51601  68.51601  68.55377 132.62169 134.11488
+ Alpha virt. eigenvalues --  134.11496 134.11496 227.48519 436.18067
+  Beta  occ. eigenvalues --  -26.56052 -26.56052 -26.56052 -26.56051 -12.82199
+  Beta  occ. eigenvalues --   -9.55923  -9.55875  -9.55875  -5.31193  -5.31193
+  Beta  occ. eigenvalues --   -5.30891  -5.30839  -5.30526  -2.33283  -1.43816
+  Beta  occ. eigenvalues --   -1.43816  -1.42864  -1.81897  -1.81867  -1.81867
+  Beta  occ. eigenvalues --   -1.76390  -0.92970  -0.91691  -0.91536  -0.91536
+  Beta  occ. eigenvalues --   -0.91323  -0.89837  -0.86523  -0.86523  -0.75218
+  Beta  occ. eigenvalues --   -0.75218  -0.74764
+  Beta virt. eigenvalues --   -0.49922  -0.18031  -0.16903  -0.16903  -0.16850
+  Beta virt. eigenvalues --   -0.15644  -0.15644  -0.15500  -0.12688  -0.11423
+  Beta virt. eigenvalues --   -0.11057  -0.07015  -0.05982  -0.05982  -0.01640
+  Beta virt. eigenvalues --    0.01005   0.01005   0.01438   0.11866   0.12039
+  Beta virt. eigenvalues --    0.14786   0.14786   0.15513   0.18830   0.20024
+  Beta virt. eigenvalues --    0.20342   0.20342   0.23805   0.24111   0.24111
+  Beta virt. eigenvalues --    0.27205   0.27579   0.27718   0.27718   0.41321
+  Beta virt. eigenvalues --    0.41321   0.41551   0.41635   0.41745   0.56130
+  Beta virt. eigenvalues --    0.56286   0.56286   0.60698   0.65577   0.65663
+  Beta virt. eigenvalues --    0.65663   0.75363   0.75580   0.78177   0.83231
+  Beta virt. eigenvalues --    0.83319   0.83319   0.84015   0.84194   0.84194
+  Beta virt. eigenvalues --    1.03266   1.03266   1.03883   1.19111   1.35425
+  Beta virt. eigenvalues --    1.36936   1.39891   1.39891   1.42318   1.45056
+  Beta virt. eigenvalues --    1.45303   1.45303   1.45672   1.47599   1.47599
+  Beta virt. eigenvalues --    1.54855   1.93729   1.93767   1.93767   2.10542
+  Beta virt. eigenvalues --    2.10578   2.10578   2.18940   2.18947   2.18947
+  Beta virt. eigenvalues --    2.19863   2.25415   2.25575   2.25704   2.33587
+  Beta virt. eigenvalues --    2.33994   2.35101   2.37036   2.37036   2.37356
+  Beta virt. eigenvalues --    2.39120   2.39285   2.39285   2.49381   2.49434
+  Beta virt. eigenvalues --    2.49434   3.68971   3.68971   3.69247   4.00963
+  Beta virt. eigenvalues --    4.00963   4.01380   4.01380   4.01394   4.01445
+  Beta virt. eigenvalues --    4.01577   4.03712   4.12063   4.13229   4.19990
+  Beta virt. eigenvalues --    4.19990   4.20360   4.28002   4.32197   4.33133
+  Beta virt. eigenvalues --    4.33133   4.59109   4.59109   4.59276   5.88178
+  Beta virt. eigenvalues --    5.88343   5.88343   5.88348   5.88581   5.90050
+  Beta virt. eigenvalues --    5.96217   5.96352   5.96352   6.51587   6.58867
+  Beta virt. eigenvalues --    6.59157   6.59157   6.61444   6.61453   6.61453
+  Beta virt. eigenvalues --    6.67434   6.68590   6.71164   6.71164   6.72506
+  Beta virt. eigenvalues --    6.72565   6.73285   6.73285   6.75500   6.87750
+  Beta virt. eigenvalues --    6.88002   6.88002   7.13562   9.18095   9.18187
+  Beta virt. eigenvalues --    9.44746   9.44746   9.44859  12.79910  12.79910
+  Beta virt. eigenvalues --   12.79931  54.21925  54.75452  54.75459  54.75459
+  Beta virt. eigenvalues --   68.52731  68.52731  68.52731  68.56504 132.62166
+  Beta virt. eigenvalues --  134.11477 134.11484 134.11484 227.48508 436.18062
+          Condensed to atoms (all electrons):
+               1          2          3          4          5
+     1  Ce  27.518242   0.273877   0.273877   0.273877   0.273877
+     2  F    0.273877   8.825919  -0.001490  -0.001490  -0.000254
+     3  F    0.273877  -0.001490   8.825919  -0.000254  -0.001490
+     4  F    0.273877  -0.001490  -0.000254   8.825919  -0.001490
+     5  F    0.273877  -0.000254  -0.001490  -0.001490   8.825919
+          Atomic-Atomic Spin Densities.
+               1          2          3          4          5
+     1  Ce  -0.220216  -0.026817  -0.026817  -0.026817  -0.026817
+     2  F   -0.026817   0.359681  -0.000034  -0.000034  -0.000924
+     3  F   -0.026817  -0.000034   0.359681  -0.000924  -0.000034
+     4  F   -0.026817  -0.000034  -0.000924   0.359681  -0.000034
+     5  F   -0.026817  -0.000924  -0.000034  -0.000034   0.359681
+ Mulliken charges and spin densities:
+               1          2
+     1  Ce   1.386251  -0.327484
+     2  F   -0.096563   0.331871
+     3  F   -0.096563   0.331871
+     4  F   -0.096563   0.331871
+     5  F   -0.096563   0.331871
+ Sum of Mulliken charges =   1.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  Ce   1.386251  -0.327484
+     2  F   -0.096563   0.331871
+     3  F   -0.096563   0.331871
+     4  F   -0.096563   0.331871
+     5  F   -0.096563   0.331871
+ Electronic spatial extent (au):  <R**2>=            639.2710
+ Charge=              1.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.0000  Tot=              0.0000
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=            -49.1532   YY=            -48.2671   ZZ=            -48.2671
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=             -0.5908   YY=              0.2954   ZZ=              0.2954
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=              0.0000  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.0000  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=              0.0000  XYZ=             -8.3952
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=           -205.9030 YYYY=           -201.4275 ZZZZ=           -201.4275 XXXY=              0.0000
+ XXXZ=              0.0000 YYYX=              0.0000 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=            -73.7611 XXZZ=            -73.7611 YYZZ=            -70.2912
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=              0.0000
+ N-N= 3.587147331989D+02 E-N=-2.636888625266D+03  KE= 5.743649352544D+02
+ Symmetry A    KE= 1.571978797967D+02
+ Symmetry B1   KE= 1.401091648016D+02
+ Symmetry B2   KE= 1.401091648016D+02
+ Symmetry B3   KE= 1.369487258545D+02
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-26.581 is F3-s=0.25 F4-s=0.25 F2-s=0.25 F5-s=0.25
+ Alpha occ 2 OE=-26.581 is F4-s=0.25 F5-s=0.25 F3-s=0.25 F2-s=0.25
+ Alpha occ 3 OE=-26.581 is F3-s=0.25 F2-s=0.25 F4-s=0.25 F5-s=0.25
+ Alpha occ 4 OE=-26.581 is F5-s=0.25 F4-s=0.25 F2-s=0.25 F3-s=0.25
+ Alpha occ 5 OE=-12.820 is Ce1-s=1.00
+ Alpha occ 6 OE=-9.557 is Ce1-p=1.00
+ Alpha occ 7 OE=-9.556 is Ce1-p=1.00
+ Alpha occ 8 OE=-9.556 is Ce1-p=1.00
+ Alpha occ 9 OE=-5.306 is Ce1-d=1.00
+ Alpha occ 10 OE=-5.306 is Ce1-d=1.00
+ Alpha occ 11 OE=-5.305 is Ce1-d=1.00
+ Alpha occ 12 OE=-5.305 is Ce1-d=1.00
+ Alpha occ 13 OE=-5.303 is Ce1-d=1.00
+ Alpha occ 14 OE=-2.333 is Ce1-s=0.98
+ Alpha occ 15 OE=-1.445 is Ce1-p=0.86 F2-s=0.02 F4-s=0.02 F3-s=0.02 F5-s=0.02 F5-p=0.02 F3-p=0.02 F4-p=0.02 F2-p=0.02
+ Alpha occ 16 OE=-1.442 is Ce1-p=0.87 F4-s=0.02 F5-s=0.02 F2-s=0.02 F3-s=0.02 F5-p=0.01 F2-p=0.01 F3-p=0.01 F4-p=0.01
+ Alpha occ 17 OE=-1.442 is Ce1-p=0.87 F5-s=0.02 F2-s=0.02 F3-s=0.02 F4-s=0.02 F5-p=0.01 F3-p=0.01 F4-p=0.01 F2-p=0.01
+ Alpha occ 18 OE=-1.879 is F5-s=0.21 F4-s=0.21 F3-s=0.21 F2-s=0.21 Ce1-p=0.12 Ce1-d=0.03
+ Alpha occ 19 OE=-1.879 is F5-s=0.21 F4-s=0.21 F3-s=0.21 F2-s=0.21 Ce1-p=0.12 Ce1-d=0.03
+ Alpha occ 20 OE=-1.879 is F3-s=0.21 F2-s=0.21 F5-s=0.21 F4-s=0.21 Ce1-p=0.12 Ce1-d=0.03
+ Alpha occ 21 OE=-1.834 is F4-s=0.23 F5-s=0.23 F3-s=0.23 F2-s=0.23 Ce1-s=0.07
+ Alpha occ 22 OE=-0.977 is F4-p=0.22 F5-p=0.22 F3-p=0.22 F2-p=0.22 Ce1-d=0.07 Ce1-p=0.02 Ce1-f=0.02
+ Alpha occ 23 OE=-0.977 is F3-p=0.22 F4-p=0.22 F2-p=0.22 F5-p=0.22 Ce1-d=0.07 Ce1-p=0.02 Ce1-f=0.02
+ Alpha occ 24 OE=-0.972 is F4-p=0.23 F3-p=0.23 F2-p=0.23 F5-p=0.23 Ce1-d=0.04 Ce1-f=0.02
+ Alpha occ 25 OE=-0.950 is F4-p=0.22 F3-p=0.22 F2-p=0.22 F5-p=0.22 Ce1-d=0.08 Ce1-p=0.02 Ce1-f=0.01
+ Alpha occ 26 OE=-0.937 is F2-p=0.23 F5-p=0.23 F4-p=0.23 F3-p=0.23 Ce1-d=0.08
+ Alpha occ 27 OE=-0.934 is F3-p=0.23 F5-p=0.23 F4-p=0.23 F2-p=0.23 Ce1-d=0.03 Ce1-f=0.03 Ce1-s=0.02
+ Alpha occ 28 OE=-0.929 is F2-p=0.24 F4-p=0.24 F5-p=0.24 F3-p=0.24 Ce1-f=0.03 Ce1-d=0.01
+ Alpha occ 29 OE=-0.929 is F2-p=0.24 F4-p=0.24 F5-p=0.24 F3-p=0.24 Ce1-f=0.03 Ce1-d=0.01
+ Alpha occ 30 OE=-0.925 is F4-p=0.22 F3-p=0.22 F2-p=0.22 F5-p=0.22 Ce1-p=0.08 Ce1-d=0.02
+ Alpha occ 31 OE=-0.921 is F5-p=0.24 F2-p=0.24 F3-p=0.24 F4-p=0.24 Ce1-f=0.04
+ Alpha occ 32 OE=-0.886 is F5-p=0.22 F3-p=0.22 F2-p=0.22 F4-p=0.22 Ce1-p=0.08 Ce1-d=0.01 Ce1-g=0.01
+ Alpha occ 33 OE=-0.886 is F5-p=0.22 F2-p=0.22 F4-p=0.22 F3-p=0.22 Ce1-p=0.08 Ce1-d=0.01 Ce1-g=0.01
+ Alpha vir 34 OE=-0.172 is Ce1-f=0.61 Ce1-s=0.46 F2-s=-0.02 F5-s=-0.02 F3-s=-0.02 F4-s=-0.02
+ Alpha vir 35 OE=-0.166 is Ce1-f=0.89 Ce1-d=0.13
+ Alpha vir 36 OE=-0.164 is Ce1-f=0.88 Ce1-d=0.13
+ Alpha vir 37 OE=-0.164 is Ce1-f=0.88 Ce1-d=0.13
+ Alpha vir 38 OE=-0.152 is Ce1-f=0.99
+ Alpha vir 39 OE=-0.152 is Ce1-f=0.99
+ Alpha vir 40 OE=-0.152 is Ce1-f=0.99
+ Alpha vir 41 OE=-0.127 is Ce1-d=1.00
+ Alpha vir 42 OE=-0.124 is Ce1-d=1.00
+ Alpha vir 43 OE=-0.108 is Ce1-s=0.78 Ce1-f=0.30 F3-s=-0.02 F5-s=-0.02 F4-s=-0.02 F2-s=-0.02
+ Alpha vir 44 OE=-0.071 is Ce1-d=0.52 Ce1-p=0.39 Ce1-f=0.09
+ Alpha vir 45 OE=-0.071 is Ce1-d=0.52 Ce1-p=0.39 Ce1-f=0.09
+ Alpha vir 46 OE=-0.069 is Ce1-d=0.53 Ce1-p=0.38 Ce1-f=0.09
+ Alpha vir 47 OE=-0.017 is Ce1-s=1.78 F3-s=-0.12 F4-s=-0.12 F5-s=-0.12 F2-s=-0.12 F2-p=-0.09 F3-p=-0.09 F4-p=-0.09 F5-p=-0.09 Ce1-f=0.07
+ Alpha vir 48 OE=0.012 is Ce1-p=1.91 Ce1-d=0.47 F5-s=-0.46 F3-s=-0.46 F4-s=-0.46 F2-s=-0.46 F3-p=0.11 F4-p=0.11 F2-p=0.11 F5-p=0.11
+ Alpha vir 49 OE=0.012 is Ce1-p=1.91 Ce1-d=0.47 F3-s=-0.46 F2-s=-0.46 F5-s=-0.46 F4-s=-0.46 F4-p=0.11 F3-p=0.11 F5-p=0.11 F2-p=0.11
+ Alpha vir 50 OE=0.012 is Ce1-p=1.94 Ce1-d=0.46 F4-s=-0.46 F2-s=-0.46 F3-s=-0.46 F5-s=-0.46 F2-p=0.11 F3-p=0.11 F5-p=0.11 F4-p=0.11
+ Alpha vir 51 OE=0.117 is F3-p=0.30 F5-p=0.30 F4-p=0.30 F2-p=0.30 Ce1-d=-0.20
+ Alpha vir 52 OE=0.119 is F4-p=0.30 F5-p=0.30 F2-p=0.30 F3-p=0.30 Ce1-d=-0.20
+ Alpha vir 53 OE=0.141 is F3-p=0.30 F4-p=0.30 F2-p=0.30 F5-p=0.30 Ce1-p=-0.13 Ce1-d=0.08 F5-s=-0.04 F2-s=-0.04 F4-s=-0.04 F3-s=-0.04
+ Alpha vir 54 OE=0.145 is F3-p=0.30 F5-p=0.30 F4-p=0.30 F2-p=0.30 Ce1-p=-0.13 Ce1-d=0.07 F2-s=-0.03 F5-s=-0.03 F4-s=-0.03 F3-s=-0.03
+ Alpha vir 55 OE=0.145 is F5-p=0.30 F4-p=0.30 F3-p=0.30 F2-p=0.30 Ce1-p=-0.13 Ce1-d=0.07 F2-s=-0.03 F5-s=-0.03 F4-s=-0.03 F3-s=-0.03
+ Alpha vir 56 OE=0.182 is F5-p=0.38 F4-p=0.38 F3-p=0.38 F2-p=0.38 Ce1-s=-0.14 F4-s=-0.09 F2-s=-0.09 F5-s=-0.09 F3-s=-0.09 Ce1-f=-0.02
+ Alpha vir 57 OE=0.197 is F3-p=0.25 F4-p=0.25 F5-p=0.25 F2-p=0.25 Ce1-f=-0.01
+ Alpha vir 58 OE=0.197 is F5-p=0.25 F3-p=0.25 F2-p=0.25 F4-p=0.25 Ce1-f=-0.01
+ Alpha vir 59 OE=0.199 is F4-p=0.25 F2-p=0.25 F3-p=0.25 F5-p=0.25 Ce1-f=-0.01
+ Alpha vir 60 OE=0.239 is Ce1-p=0.28 F2-p=0.17 F3-p=0.17 F4-p=0.17 F5-p=0.17 Ce1-d=0.07 Ce1-f=0.03 Ce1-g=-0.03 F3-s=-0.01 F5-s=-0.01 F2-s=-0.01 F4-s=-0.01
+ Alpha vir 61 OE=0.239 is Ce1-p=0.28 F4-p=0.17 F2-p=0.17 F5-p=0.17 F3-p=0.17 Ce1-d=0.07 Ce1-f=0.03 Ce1-g=-0.03 F5-s=-0.01 F4-s=-0.01 F2-s=-0.01 F3-s=-0.01
+ Alpha vir 62 OE=0.240 is Ce1-p=0.27 F4-p=0.17 F3-p=0.17 F5-p=0.17 F2-p=0.17 Ce1-d=0.09 Ce1-g=-0.03 Ce1-f=0.03 F4-s=-0.01 F3-s=-0.01 F5-s=-0.01 F2-s=-0.01
+ Alpha vir 63 OE=0.272 is Ce1-s=-1.12 F2-s=0.47 F4-s=0.47 F5-s=0.47 F3-s=0.47 Ce1-g=0.06 F5-p=0.05 F3-p=0.05 F4-p=0.05 F2-p=0.05
+ Alpha vir 64 OE=0.275 is Ce1-d=1.21 Ce1-p=-0.36 Ce1-f=-0.06 F4-s=0.04 F3-s=0.04 F2-s=0.04 F5-s=0.04 Ce1-g=0.02
+ Alpha vir 65 OE=0.275 is Ce1-d=1.21 Ce1-p=-0.36 Ce1-f=-0.06 F2-s=0.04 F4-s=0.04 F3-s=0.04 F5-s=0.04 Ce1-g=0.02
+ Alpha vir 66 OE=0.275 is Ce1-d=1.18 Ce1-p=-0.37 Ce1-f=-0.06 F5-s=0.04 F2-s=0.04 F3-s=0.04 F4-s=0.04 Ce1-g=0.02 F2-p=0.01 F5-p=0.01 F3-p=0.01 F4-p=0.01
+ Alpha vir 67 OE=0.412 is Ce1-p=-1.46 F2-s=0.88 F4-s=0.88 F3-s=0.88 F5-s=0.88 Ce1-d=-0.81 F5-p=-0.06 F2-p=-0.06 F4-p=-0.06 F3-p=-0.06 Ce1-f=-0.04
+ Alpha vir 68 OE=0.412 is Ce1-p=-1.46 F3-s=0.88 F2-s=0.88 F5-s=0.88 F4-s=0.88 Ce1-d=-0.81 F2-p=-0.06 F5-p=-0.06 F4-p=-0.06 F3-p=-0.06 Ce1-f=-0.04
+ Alpha vir 69 OE=0.413 is Ce1-p=-1.45 F3-s=0.88 F5-s=0.88 F4-s=0.88 F2-s=0.88 Ce1-d=-0.80 F4-p=-0.06 F3-p=-0.06 F2-p=-0.06 F5-p=-0.06 Ce1-f=-0.04
+ Alpha vir 70 OE=0.418 is Ce1-d=1.09 F4-p=-0.03 F5-p=-0.03 F2-p=-0.03 F3-p=-0.03 Ce1-g=0.03
+ Alpha vir 71 OE=0.418 is Ce1-d=1.09 F5-p=-0.03 F2-p=-0.03 F3-p=-0.03 F4-p=-0.03 Ce1-g=0.03
+ Alpha vir 72 OE=0.566 is Ce1-f=0.81 Ce1-g=0.18
+ Alpha vir 73 OE=0.566 is Ce1-f=0.81 Ce1-g=0.18
+ Alpha vir 74 OE=0.567 is Ce1-f=0.81 Ce1-g=0.19
+ Alpha vir 75 OE=0.609 is Ce1-f=0.74 Ce1-s=0.16 Ce1-g=0.06 F3-s=0.02 F4-s=0.02 F5-s=0.02 F2-s=0.02
+ Alpha vir 76 OE=0.657 is Ce1-f=0.74 Ce1-d=0.13 Ce1-p=-0.11 F5-s=0.04 F2-s=0.04 F3-s=0.04 F4-s=0.04 Ce1-g=-0.03 F2-p=0.03 F5-p=0.03 F4-p=0.03 F3-p=0.03
+ Alpha vir 77 OE=0.657 is Ce1-f=0.74 Ce1-d=0.14 Ce1-p=-0.11 F2-s=0.04 F4-s=0.04 F3-s=0.04 F5-s=0.04 Ce1-g=-0.03 F3-p=0.02 F4-p=0.02 F5-p=0.02 F2-p=0.02
+ Alpha vir 78 OE=0.657 is Ce1-f=0.74 Ce1-d=0.14 Ce1-p=-0.11 F2-s=0.04 F4-s=0.04 F3-s=0.04 F5-s=0.04 Ce1-g=-0.03 F3-p=0.02 F5-p=0.02 F4-p=0.02 F2-p=0.02
+ Alpha vir 79 OE=0.758 is Ce1-g=0.99 Ce1-d=0.06 F3-p=-0.01 F4-p=-0.01 F2-p=-0.01 F5-p=-0.01
+ Alpha vir 80 OE=0.758 is Ce1-g=0.98 Ce1-d=0.06 F5-p=-0.01 F4-p=-0.01 F3-p=-0.01 F2-p=-0.01
+ Alpha vir 81 OE=0.778 is Ce1-g=0.67 Ce1-s=0.35 Ce1-f=-0.13 F2-s=0.06 F3-s=0.06 F5-s=0.06 F4-s=0.06 F5-p=-0.03 F2-p=-0.03 F3-p=-0.03 F4-p=-0.03
+ Alpha vir 82 OE=0.832 is Ce1-g=0.61 Ce1-p=0.37 Ce1-f=0.13 Ce1-d=0.08 F5-p=-0.04 F3-p=-0.04 F4-p=-0.04 F2-p=-0.04
+ Alpha vir 83 OE=0.832 is Ce1-g=0.61 Ce1-p=0.37 Ce1-f=0.13 Ce1-d=0.08 F2-p=-0.04 F5-p=-0.04 F3-p=-0.04 F4-p=-0.04
+ Alpha vir 84 OE=0.832 is Ce1-g=0.60 Ce1-p=0.38 Ce1-f=0.13 Ce1-d=0.08 F4-p=-0.04 F3-p=-0.04 F2-p=-0.04 F5-p=-0.04
+ Alpha vir 85 OE=0.840 is Ce1-g=0.84 Ce1-f=0.21 F3-p=-0.02 F5-p=-0.02 F4-p=-0.02 F2-p=-0.02
+ Alpha vir 86 OE=0.840 is Ce1-g=0.84 Ce1-f=0.21 F5-p=-0.02 F4-p=-0.02 F3-p=-0.02 F2-p=-0.02
+ Alpha vir 87 OE=0.842 is Ce1-g=0.84 Ce1-f=0.21 F3-p=-0.01 F4-p=-0.01 F2-p=-0.01 F5-p=-0.01
+ Alpha vir 88 OE=1.032 is Ce1-p=0.76 Ce1-g=0.45 Ce1-f=0.24 F5-s=-0.10 F3-s=-0.10 F4-s=-0.10 F2-s=-0.10 F4-p=-0.02 F3-p=-0.02 F2-p=-0.02 F5-p=-0.02 Ce1-d=0.02
+ Alpha vir 89 OE=1.034 is Ce1-p=0.76 Ce1-g=0.45 Ce1-f=0.23 F3-s=-0.10 F5-s=-0.10 F4-s=-0.10 F2-s=-0.10 Ce1-d=0.02 F5-p=-0.02 F4-p=-0.02 F2-p=-0.02 F3-p=-0.02
+ Alpha vir 90 OE=1.034 is Ce1-p=0.76 Ce1-g=0.45 Ce1-f=0.23 F3-s=-0.10 F5-s=-0.10 F4-s=-0.10 F2-s=-0.10 Ce1-d=0.02 F5-p=-0.02 F3-p=-0.02 F2-p=-0.02 F4-p=-0.02
+ Alpha vir 91 OE=1.189 is Ce1-f=0.51 Ce1-s=0.42 Ce1-g=0.20 F4-s=-0.05 F5-s=-0.05 F3-s=-0.05 F2-s=-0.05 F3-p=0.02 F5-p=0.02 F2-p=0.02 F4-p=0.02
+ Alpha vir 92 OE=1.336 is F4-p=0.26 F3-p=0.26 F2-p=0.26 F5-p=0.26 Ce1-g=-0.02 Ce1-d=-0.02
+ Alpha vir 93 OE=1.346 is F2-p=0.26 F4-p=0.26 F3-p=0.26 F5-p=0.26 Ce1-g=-0.02 Ce1-d=-0.01
+ Alpha vir 94 OE=1.375 is F4-p=0.25 F2-p=0.25 F3-p=0.25 F5-p=0.25 Ce1-g=-0.02
+ Alpha vir 95 OE=1.391 is F2-p=0.25 F5-p=0.25 F3-p=0.25 F4-p=0.25 Ce1-g=-0.03
+ Alpha vir 96 OE=1.391 is F2-p=0.25 F4-p=0.25 F3-p=0.25 F5-p=0.25 Ce1-g=-0.03
+ Alpha vir 97 OE=1.428 is F3-p=0.29 F2-p=0.29 F4-p=0.29 F5-p=0.29 Ce1-d=-0.05 Ce1-p=0.03 Ce1-f=-0.03 F5-s=-0.03 F4-s=-0.03 F2-s=-0.03 F3-s=-0.03
+ Alpha vir 98 OE=1.428 is F4-p=0.29 F2-p=0.29 F5-p=0.29 F3-p=0.29 Ce1-d=-0.05 Ce1-p=0.03 Ce1-f=-0.03 F3-s=-0.03 F5-s=-0.03 F4-s=-0.03 F2-s=-0.03
+ Alpha vir 99 OE=1.442 is F5-p=0.30 F3-p=0.30 F2-p=0.30 F4-p=0.30 Ce1-d=-0.07 Ce1-p=0.04 F5-s=-0.04 F4-s=-0.04 F2-s=-0.04 F3-s=-0.04 Ce1-f=-0.02
+ Alpha vir 100 OE=1.447 is F2-p=0.28 F4-p=0.28 F3-p=0.28 F5-p=0.28 Ce1-f=-0.04 Ce1-g=-0.04 Ce1-d=-0.01
+ Alpha vir 101 OE=1.447 is F3-p=0.28 F4-p=0.28 F5-p=0.28 F2-p=0.28 Ce1-f=-0.04 Ce1-g=-0.04 Ce1-d=-0.01
+ Alpha vir 102 OE=1.450 is F2-p=0.27 F4-p=0.27 F5-p=0.27 F3-p=0.27 Ce1-g=-0.05 Ce1-f=-0.04
+ Alpha vir 103 OE=1.526 is F4-p=0.21 F3-p=0.21 F2-p=0.21 F5-p=0.21 Ce1-f=0.10 Ce1-g=0.08 Ce1-s=-0.02
+ Alpha vir 104 OE=1.925 is F5-s=0.17 F2-s=0.17 F3-s=0.17 F4-s=0.17 Ce1-d=0.12 Ce1-f=0.08 Ce1-p=0.07 F4-p=0.01 F3-p=0.01 F5-p=0.01 F2-p=0.01
+ Alpha vir 105 OE=1.925 is F5-s=0.17 F4-s=0.17 F2-s=0.17 F3-s=0.17 Ce1-d=0.12 Ce1-f=0.08 Ce1-p=0.07 F3-p=0.01 F4-p=0.01 F5-p=0.01 F2-p=0.01
+ Alpha vir 106 OE=1.926 is F2-s=0.17 F5-s=0.17 F3-s=0.17 F4-s=0.17 Ce1-d=0.12 Ce1-f=0.08 Ce1-p=0.07 F5-p=0.01 F2-p=0.01 F3-p=0.01 F4-p=0.01
+ Alpha vir 107 OE=2.108 is Ce1-f=0.91 Ce1-g=0.08
+ Alpha vir 108 OE=2.108 is Ce1-f=0.91 Ce1-g=0.08
+ Alpha vir 109 OE=2.108 is Ce1-f=0.91 Ce1-g=0.08
+ Alpha vir 110 OE=2.183 is F4-s=0.27 F5-s=0.27 F2-s=0.27 F3-s=0.27 Ce1-s=0.20 Ce1-f=-0.19 Ce1-g=-0.06 F2-p=-0.01 F3-p=-0.01 F5-p=-0.01 F4-p=-0.01
+ Alpha vir 111 OE=2.190 is Ce1-f=0.90 Ce1-p=0.09 Ce1-d=0.08 Ce1-g=0.03 F3-s=-0.02 F4-s=-0.02 F5-s=-0.02 F2-s=-0.02
+ Alpha vir 112 OE=2.190 is Ce1-f=0.90 Ce1-p=0.09 Ce1-d=0.08 Ce1-g=0.03 F2-s=-0.02 F4-s=-0.02 F3-s=-0.02 F5-s=-0.02
+ Alpha vir 113 OE=2.190 is Ce1-f=0.90 Ce1-p=0.09 Ce1-d=0.08 Ce1-g=0.03 F5-s=-0.02 F3-s=-0.02 F4-s=-0.02 F2-s=-0.02
+ Alpha vir 114 OE=2.253 is Ce1-f=0.76 Ce1-g=0.21 Ce1-s=0.02 Ce1-d=0.02
+ Alpha vir 115 OE=2.255 is Ce1-d=0.93 Ce1-g=0.04 Ce1-f=0.01
+ Alpha vir 116 OE=2.257 is Ce1-d=0.93 Ce1-g=0.05
+ Alpha vir 117 OE=2.341 is Ce1-g=0.96 Ce1-d=0.03
+ Alpha vir 118 OE=2.343 is Ce1-g=0.95 Ce1-d=0.04
+ Alpha vir 119 OE=2.355 is Ce1-g=0.78 Ce1-f=0.20
+ Alpha vir 120 OE=2.376 is Ce1-g=0.92 Ce1-f=0.08
+ Alpha vir 121 OE=2.376 is Ce1-g=0.92 Ce1-f=0.08
+ Alpha vir 122 OE=2.377 is Ce1-g=0.92 Ce1-f=0.08
+ Alpha vir 123 OE=2.395 is Ce1-g=0.95 Ce1-p=0.01
+ Alpha vir 124 OE=2.396 is Ce1-g=0.95 Ce1-p=0.02
+ Alpha vir 125 OE=2.396 is Ce1-g=0.95 Ce1-p=0.02
+ Alpha vir 126 OE=2.486 is Ce1-d=0.74 F2-s=0.05 F5-s=0.05 F3-s=0.05 F4-s=0.05 Ce1-p=0.04 F3-d=0.02 F5-d=0.02 F2-d=0.02 F4-d=0.02 Ce1-f=-0.01
+ Alpha vir 127 OE=2.486 is Ce1-d=0.74 F5-s=0.05 F2-s=0.05 F4-s=0.05 F3-s=0.05 Ce1-p=0.04 F5-d=0.02 F4-d=0.02 F3-d=0.02 F2-d=0.02 Ce1-f=-0.01
+ Alpha vir 128 OE=2.487 is Ce1-d=0.74 F4-s=0.05 F2-s=0.05 F3-s=0.05 F5-s=0.05 Ce1-p=0.04 F5-d=0.02 F4-d=0.02 F3-d=0.02 F2-d=0.02 Ce1-f=-0.01
+ Alpha vir 129 OE=3.685 is Ce1-p=0.88 F4-d=0.03 F3-d=0.03 F5-d=0.03 F2-d=0.03 Ce1-d=0.02
+ Alpha vir 130 OE=3.687 is Ce1-p=0.88 F2-d=0.03 F5-d=0.03 F4-d=0.03 F3-d=0.03 Ce1-d=0.02
+ Alpha vir 131 OE=3.687 is Ce1-p=0.88 F5-d=0.03 F4-d=0.03 F2-d=0.03 F3-d=0.03 Ce1-d=0.02
+ Alpha vir 132 OE=3.973 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 133 OE=3.973 is F2-d=0.25 F4-d=0.25 F5-d=0.25 F3-d=0.25
+ Alpha vir 134 OE=3.979 is F2-d=0.25 F4-d=0.25 F5-d=0.25 F3-d=0.25
+ Alpha vir 135 OE=3.979 is F2-d=0.25 F5-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 136 OE=3.979 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 137 OE=3.981 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 138 OE=3.981 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 139 OE=4.006 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Alpha vir 140 OE=4.081 is F4-d=0.25 F5-d=0.25 F2-d=0.25 F3-d=0.25
+ Alpha vir 141 OE=4.099 is F5-d=0.25 F3-d=0.25 F4-d=0.25 F2-d=0.25
+ Alpha vir 142 OE=4.162 is F5-d=0.23 F4-d=0.23 F3-d=0.23 F2-d=0.23 Ce1-p=0.08
+ Alpha vir 143 OE=4.166 is F5-d=0.23 F3-d=0.23 F4-d=0.23 F2-d=0.23 Ce1-p=0.07
+ Alpha vir 144 OE=4.166 is F3-d=0.23 F5-d=0.23 F2-d=0.23 F4-d=0.23 Ce1-p=0.07
+ Alpha vir 145 OE=4.246 is F5-d=0.21 F4-d=0.21 F3-d=0.21 F2-d=0.21 Ce1-s=0.07 Ce1-g=0.04 Ce1-f=0.03
+ Alpha vir 146 OE=4.286 is F5-d=0.24 F4-d=0.24 F3-d=0.24 F2-d=0.24 Ce1-f=0.02
+ Alpha vir 147 OE=4.286 is F4-d=0.24 F3-d=0.24 F2-d=0.24 F5-d=0.24 Ce1-f=0.02
+ Alpha vir 148 OE=4.301 is F5-d=0.24 F2-d=0.24 F4-d=0.24 F3-d=0.24 Ce1-f=0.02
+ Alpha vir 149 OE=4.558 is F4-d=0.20 F5-d=0.20 F3-d=0.20 F2-d=0.20 Ce1-d=0.08 Ce1-g=0.05 Ce1-p=0.02
+ Alpha vir 150 OE=4.561 is F5-d=0.20 F4-d=0.20 F2-d=0.20 F3-d=0.20 Ce1-d=0.08 Ce1-g=0.05 Ce1-p=0.02
+ Alpha vir 151 OE=4.561 is F5-d=0.20 F4-d=0.20 F3-d=0.20 F2-d=0.20 Ce1-d=0.08 Ce1-g=0.05 Ce1-p=0.02
+ Alpha vir 152 OE=5.884 is Ce1-g=1.00
+ Alpha vir 153 OE=5.884 is Ce1-g=0.99
+ Alpha vir 154 OE=5.884 is Ce1-g=0.99
+ Alpha vir 155 OE=5.884 is Ce1-g=0.99
+ Alpha vir 156 OE=5.888 is Ce1-g=0.99
+ Alpha vir 157 OE=5.901 is Ce1-g=0.94 Ce1-s=0.02 Ce1-f=0.01
+ Alpha vir 158 OE=5.961 is Ce1-g=0.90 F2-p=0.01 F3-p=0.01 F4-p=0.01 F5-p=0.01
+ Alpha vir 159 OE=5.962 is Ce1-g=0.90 F3-p=0.01 F4-p=0.01 F2-p=0.01 F5-p=0.01
+ Alpha vir 160 OE=5.962 is Ce1-g=0.90 F3-p=0.01 F2-p=0.01 F5-p=0.01 F4-p=0.01
+ Alpha vir 161 OE=6.502 is Ce1-s=0.55 F5-p=0.08 F4-p=0.08 F2-p=0.08 F3-p=0.08 Ce1-f=0.06 F3-d=0.01 F5-d=0.01 F4-d=0.01 F2-d=0.01
+ Alpha vir 162 OE=6.579 is Ce1-f=0.65 F3-p=0.09 F4-p=0.09 F5-p=0.09 F2-p=0.09
+ Alpha vir 163 OE=6.579 is Ce1-f=0.65 F5-p=0.09 F3-p=0.09 F4-p=0.09 F2-p=0.09
+ Alpha vir 164 OE=6.584 is Ce1-f=0.70 F3-p=0.07 F5-p=0.07 F4-p=0.07 F2-p=0.07
+ Alpha vir 165 OE=6.613 is Ce1-f=0.87 F4-p=0.03 F2-p=0.03 F5-p=0.03 F3-p=0.03
+ Alpha vir 166 OE=6.613 is Ce1-f=0.87 F3-p=0.03 F5-p=0.03 F2-p=0.03 F4-p=0.03
+ Alpha vir 167 OE=6.614 is Ce1-f=0.89 F5-p=0.03 F2-p=0.03 F4-p=0.03 F3-p=0.03
+ Alpha vir 168 OE=6.646 is F3-p=0.25 F4-p=0.25 F2-p=0.25 F5-p=0.25
+ Alpha vir 169 OE=6.662 is F2-p=0.25 F5-p=0.25 F3-p=0.25 F4-p=0.25
+ Alpha vir 170 OE=6.677 is F3-p=0.24 F2-p=0.24 F5-p=0.24 F4-p=0.24 Ce1-f=0.03
+ Alpha vir 171 OE=6.697 is F2-p=0.22 F3-p=0.22 F5-p=0.22 F4-p=0.22 Ce1-f=0.11
+ Alpha vir 172 OE=6.697 is F4-p=0.22 F2-p=0.22 F3-p=0.22 F5-p=0.22 Ce1-f=0.11
+ Alpha vir 173 OE=6.705 is F5-p=0.22 F3-p=0.22 F2-p=0.22 F4-p=0.22 Ce1-f=0.09
+ Alpha vir 174 OE=6.705 is F2-p=0.22 F5-p=0.22 F3-p=0.22 F4-p=0.22 Ce1-f=0.09
+ Alpha vir 175 OE=6.714 is F2-p=0.22 F5-p=0.22 F3-p=0.22 F4-p=0.22 Ce1-f=0.10
+ Alpha vir 176 OE=6.757 is Ce1-f=0.88 Ce1-s=0.12
+ Alpha vir 177 OE=6.855 is Ce1-f=0.27 F3-p=0.17 F4-p=0.17 F5-p=0.17 F2-p=0.17 Ce1-g=0.05
+ Alpha vir 178 OE=6.855 is Ce1-f=0.27 F5-p=0.17 F2-p=0.17 F3-p=0.17 F4-p=0.17 Ce1-g=0.05
+ Alpha vir 179 OE=6.858 is Ce1-f=0.27 F5-p=0.17 F2-p=0.17 F3-p=0.17 F4-p=0.17 Ce1-g=0.04
+ Alpha vir 180 OE=7.114 is Ce1-s=0.27 F5-p=0.16 F3-p=0.16 F2-p=0.16 F4-p=0.16 Ce1-g=0.03 Ce1-f=0.02
+ Alpha vir 181 OE=9.180 is Ce1-d=1.00
+ Alpha vir 182 OE=9.183 is Ce1-d=1.00
+ Alpha vir 183 OE=9.448 is Ce1-d=0.98
+ Alpha vir 184 OE=9.448 is Ce1-d=0.98
+ Alpha vir 185 OE=9.450 is Ce1-d=0.98
+ Alpha vir 186 OE=12.798 is Ce1-p=1.00
+ Alpha vir 187 OE=12.800 is Ce1-p=1.00
+ Alpha vir 188 OE=12.800 is Ce1-p=1.00
+ Alpha vir 189 OE=54.220 is Ce1-s=1.00
+ Alpha vir 190 OE=54.755 is Ce1-p=1.00
+ Alpha vir 191 OE=54.755 is Ce1-p=1.00
+ Alpha vir 192 OE=54.755 is Ce1-p=1.00
+ Alpha vir 193 OE=68.516 is F2-s=0.25 F3-s=0.25 F4-s=0.25 F5-s=0.25
+ Alpha vir 194 OE=68.516 is F5-s=0.25 F2-s=0.25 F3-s=0.25 F4-s=0.25
+ Alpha vir 195 OE=68.516 is F3-s=0.25 F4-s=0.25 F5-s=0.25 F2-s=0.25
+ Alpha vir 196 OE=68.554 is F4-s=0.25 F2-s=0.25 F3-s=0.25 F5-s=0.25
+ Alpha vir 197 OE=132.622 is Ce1-s=1.00
+ Alpha vir 198 OE=134.115 is Ce1-p=1.00
+ Alpha vir 199 OE=134.115 is Ce1-p=1.00
+ Alpha vir 200 OE=134.115 is Ce1-p=1.00
+ Alpha vir 201 OE=227.485 is Ce1-s=1.00
+ Alpha vir 202 OE=436.181 is Ce1-s=1.00
+
+ Atomic contributions to Beta  molecular orbitals:
+ Beta  occ 1 OE=-26.561 is F3-s=0.25 F4-s=0.25 F5-s=0.25 F2-s=0.25
+ Beta  occ 2 OE=-26.561 is F5-s=0.25 F4-s=0.25 F3-s=0.25 F2-s=0.25
+ Beta  occ 3 OE=-26.561 is F2-s=0.25 F4-s=0.25 F3-s=0.25 F5-s=0.25
+ Beta  occ 4 OE=-26.561 is F5-s=0.25 F4-s=0.25 F2-s=0.25 F3-s=0.25
+ Beta  occ 5 OE=-12.822 is Ce1-s=1.00
+ Beta  occ 6 OE=-9.559 is Ce1-p=1.00
+ Beta  occ 7 OE=-9.559 is Ce1-p=1.00
+ Beta  occ 8 OE=-9.559 is Ce1-p=1.00
+ Beta  occ 9 OE=-5.312 is Ce1-d=1.00
+ Beta  occ 10 OE=-5.312 is Ce1-d=1.00
+ Beta  occ 11 OE=-5.309 is Ce1-d=1.00
+ Beta  occ 12 OE=-5.308 is Ce1-d=1.00
+ Beta  occ 13 OE=-5.305 is Ce1-d=1.00
+ Beta  occ 14 OE=-2.333 is Ce1-s=0.98
+ Beta  occ 15 OE=-1.438 is Ce1-p=0.85 F4-s=0.03 F3-s=0.03 F2-s=0.03 F5-s=0.03 F5-p=0.01 F3-p=0.01 F4-p=0.01 F2-p=0.01
+ Beta  occ 16 OE=-1.438 is Ce1-p=0.85 F2-s=0.03 F3-s=0.03 F4-s=0.03 F5-s=0.03 F5-p=0.01 F3-p=0.01 F2-p=0.01 F4-p=0.01
+ Beta  occ 17 OE=-1.429 is Ce1-p=0.84 F2-s=0.03 F3-s=0.03 F4-s=0.03 F5-s=0.03 F5-p=0.01 F4-p=0.01 F3-p=0.01 F2-p=0.01
+ Beta  occ 18 OE=-1.819 is F3-s=0.20 F2-s=0.20 F4-s=0.20 F5-s=0.20 Ce1-p=0.16 Ce1-d=0.03
+ Beta  occ 19 OE=-1.819 is F5-s=0.20 F4-s=0.20 F2-s=0.20 F3-s=0.20 Ce1-p=0.16 Ce1-d=0.03
+ Beta  occ 20 OE=-1.819 is F3-s=0.20 F2-s=0.20 F5-s=0.20 F4-s=0.20 Ce1-p=0.16 Ce1-d=0.03
+ Beta  occ 21 OE=-1.764 is F4-s=0.23 F3-s=0.23 F5-s=0.23 F2-s=0.23 Ce1-s=0.07
+ Beta  occ 22 OE=-0.930 is F5-p=0.22 F2-p=0.22 F3-p=0.22 F4-p=0.22 Ce1-d=0.09 Ce1-p=0.02 Ce1-f=0.01
+ Beta  occ 23 OE=-0.917 is F2-p=0.23 F5-p=0.23 F4-p=0.23 F3-p=0.23 Ce1-d=0.09
+ Beta  occ 24 OE=-0.915 is F2-p=0.23 F5-p=0.23 F4-p=0.23 F3-p=0.23 Ce1-d=0.05 Ce1-f=0.03
+ Beta  occ 25 OE=-0.915 is F5-p=0.23 F2-p=0.23 F4-p=0.23 F3-p=0.23 Ce1-d=0.05 Ce1-f=0.03
+ Beta  occ 26 OE=-0.913 is F4-p=0.23 F3-p=0.23 F5-p=0.23 F2-p=0.23 Ce1-d=0.04 Ce1-f=0.02 Ce1-s=0.01
+ Beta  occ 27 OE=-0.898 is F2-p=0.24 F5-p=0.24 F3-p=0.24 F4-p=0.24 Ce1-f=0.04
+ Beta  occ 28 OE=-0.865 is F5-p=0.23 F3-p=0.23 F2-p=0.23 F4-p=0.23 Ce1-p=0.07 Ce1-g=0.01
+ Beta  occ 29 OE=-0.865 is F5-p=0.23 F2-p=0.23 F4-p=0.23 F3-p=0.23 Ce1-p=0.07 Ce1-g=0.01
+ Beta  occ 30 OE=-0.752 is F4-p=0.20 F3-p=0.20 F2-p=0.20 F5-p=0.20 Ce1-d=0.11 Ce1-f=0.06
+ Beta  occ 31 OE=-0.752 is F3-p=0.20 F4-p=0.20 F5-p=0.20 F2-p=0.20 Ce1-d=0.11 Ce1-f=0.06
+ Beta  occ 32 OE=-0.748 is F4-p=0.20 F3-p=0.20 F2-p=0.20 F5-p=0.20 Ce1-d=0.12 Ce1-f=0.05 Ce1-s=0.02
+ Beta  vir 33 OE=-0.499 is F5-p=0.22 F4-p=0.22 F3-p=0.22 F2-p=0.22 Ce1-p=0.09 Ce1-d=0.02 Ce1-g=0.01
+ Beta  vir 34 OE=-0.180 is Ce1-f=0.64 Ce1-s=0.40 F2-s=-0.02 F5-s=-0.02 F3-s=-0.02 F4-s=-0.02 F2-p=0.01 F4-p=0.01 F3-p=0.01 F5-p=0.01
+ Beta  vir 35 OE=-0.169 is Ce1-f=0.90 Ce1-d=0.11
+ Beta  vir 36 OE=-0.169 is Ce1-f=0.90 Ce1-d=0.11
+ Beta  vir 37 OE=-0.169 is Ce1-f=0.88 Ce1-d=0.14
+ Beta  vir 38 OE=-0.156 is Ce1-f=0.97
+ Beta  vir 39 OE=-0.156 is Ce1-f=0.97
+ Beta  vir 40 OE=-0.155 is Ce1-f=0.99
+ Beta  vir 41 OE=-0.127 is Ce1-d=0.99
+ Beta  vir 42 OE=-0.114 is Ce1-d=0.81 Ce1-s=0.09 F2-p=0.02 F3-p=0.02 F4-p=0.02 F5-p=0.02 Ce1-f=0.02
+ Beta  vir 43 OE=-0.111 is Ce1-s=0.76 Ce1-f=0.23 Ce1-d=0.11 F3-s=-0.03 F4-s=-0.03 F2-s=-0.03 F5-s=-0.03
+ Beta  vir 44 OE=-0.070 is Ce1-d=0.53 Ce1-p=0.37 Ce1-f=0.09
+ Beta  vir 45 OE=-0.060 is Ce1-d=0.49 Ce1-p=0.36 Ce1-f=0.07 F4-p=0.02 F3-p=0.02 F2-p=0.02 F5-p=0.02
+ Beta  vir 46 OE=-0.060 is Ce1-d=0.49 Ce1-p=0.36 Ce1-f=0.07 F3-p=0.02 F4-p=0.02 F2-p=0.02 F5-p=0.02
+ Beta  vir 47 OE=-0.016 is Ce1-s=1.76 F5-s=-0.12 F2-s=-0.12 F3-s=-0.12 F4-s=-0.12 F2-p=-0.09 F3-p=-0.09 F5-p=-0.09 F4-p=-0.09 Ce1-f=0.06
+ Beta  vir 48 OE=0.010 is Ce1-p=1.93 F5-s=-0.45 F3-s=-0.45 F2-s=-0.45 F4-s=-0.45 Ce1-d=0.42 F3-p=0.12 F4-p=0.12 F2-p=0.12 F5-p=0.12
+ Beta  vir 49 OE=0.010 is Ce1-p=1.93 F5-s=-0.45 F3-s=-0.45 F2-s=-0.45 F4-s=-0.45 Ce1-d=0.42 F4-p=0.12 F3-p=0.12 F5-p=0.12 F2-p=0.12
+ Beta  vir 50 OE=0.014 is Ce1-p=1.94 F4-s=-0.47 F3-s=-0.47 F2-s=-0.47 F5-s=-0.47 Ce1-d=0.45 F2-p=0.12 F5-p=0.12 F3-p=0.12 F4-p=0.12
+ Beta  vir 51 OE=0.119 is F5-p=0.30 F2-p=0.30 F4-p=0.30 F3-p=0.30 Ce1-d=-0.20
+ Beta  vir 52 OE=0.120 is F5-p=0.30 F2-p=0.30 F3-p=0.30 F4-p=0.30 Ce1-d=-0.21
+ Beta  vir 53 OE=0.148 is F3-p=0.30 F2-p=0.30 F4-p=0.30 F5-p=0.30 Ce1-p=-0.11 Ce1-d=0.06 F2-s=-0.04 F3-s=-0.04 F4-s=-0.04 F5-s=-0.04
+ Beta  vir 54 OE=0.148 is F3-p=0.30 F4-p=0.30 F5-p=0.30 F2-p=0.30 Ce1-p=-0.11 Ce1-d=0.06 F2-s=-0.04 F4-s=-0.04 F5-s=-0.04 F3-s=-0.04
+ Beta  vir 55 OE=0.155 is F4-p=0.29 F3-p=0.29 F2-p=0.29 F5-p=0.29 Ce1-p=-0.11 Ce1-d=0.04 F5-s=-0.02 F2-s=-0.02 F4-s=-0.02 F3-s=-0.02
+ Beta  vir 56 OE=0.188 is F4-p=0.37 F3-p=0.37 F5-p=0.37 F2-p=0.37 Ce1-s=-0.14 F5-s=-0.08 F3-s=-0.08 F2-s=-0.08 F4-s=-0.08 Ce1-f=-0.02
+ Beta  vir 57 OE=0.200 is F5-p=0.25 F4-p=0.25 F3-p=0.25 F2-p=0.25 Ce1-f=-0.01
+ Beta  vir 58 OE=0.203 is F2-p=0.25 F4-p=0.25 F3-p=0.25 F5-p=0.25 Ce1-f=-0.02
+ Beta  vir 59 OE=0.203 is F2-p=0.25 F3-p=0.25 F5-p=0.25 F4-p=0.25 Ce1-f=-0.02
+ Beta  vir 60 OE=0.238 is Ce1-p=0.28 F5-p=0.16 F3-p=0.16 F4-p=0.16 F2-p=0.16 Ce1-d=0.15 Ce1-f=0.03 Ce1-g=-0.03 F5-s=-0.02 F4-s=-0.02 F3-s=-0.02 F2-s=-0.02
+ Beta  vir 61 OE=0.241 is Ce1-p=0.30 Ce1-d=0.23 F5-p=0.15 F2-p=0.15 F3-p=0.15 F4-p=0.15 Ce1-f=0.03 Ce1-g=-0.03 F5-s=-0.03 F3-s=-0.03 F4-s=-0.03 F2-s=-0.03
+ Beta  vir 62 OE=0.241 is Ce1-p=0.30 Ce1-d=0.23 F2-p=0.15 F5-p=0.15 F4-p=0.15 F3-p=0.15 Ce1-f=0.03 Ce1-g=-0.03 F4-s=-0.03 F2-s=-0.03 F3-s=-0.03 F5-s=-0.03
+ Beta  vir 63 OE=0.272 is Ce1-s=-1.08 F5-s=0.46 F4-s=0.46 F3-s=0.46 F2-s=0.46 Ce1-g=0.06 F4-p=0.05 F3-p=0.05 F5-p=0.05 F2-p=0.05
+ Beta  vir 64 OE=0.276 is Ce1-d=1.13 Ce1-p=-0.39 Ce1-f=-0.05 F2-s=0.05 F4-s=0.05 F3-s=0.05 F5-s=0.05 Ce1-g=0.03 F5-p=0.02 F3-p=0.02 F4-p=0.02 F2-p=0.02
+ Beta  vir 65 OE=0.277 is Ce1-d=1.07 Ce1-p=-0.41 F2-s=0.06 F3-s=0.06 F4-s=0.06 F5-s=0.06 Ce1-f=-0.05 F4-p=0.03 F3-p=0.03 F2-p=0.03 F5-p=0.03 Ce1-g=0.03
+ Beta  vir 66 OE=0.277 is Ce1-d=1.07 Ce1-p=-0.41 F3-s=0.06 F4-s=0.06 F2-s=0.06 F5-s=0.06 Ce1-f=-0.05 F4-p=0.03 F3-p=0.03 F5-p=0.03 F2-p=0.03 Ce1-g=0.03
+ Beta  vir 67 OE=0.413 is Ce1-p=-1.42 F2-s=0.87 F3-s=0.87 F5-s=0.87 F4-s=0.87 Ce1-d=-0.79 F5-p=-0.06 F2-p=-0.06 F3-p=-0.06 F4-p=-0.06 Ce1-f=-0.04
+ Beta  vir 68 OE=0.413 is Ce1-p=-1.42 F2-s=0.87 F5-s=0.87 F4-s=0.87 F3-s=0.87 Ce1-d=-0.79 F2-p=-0.06 F5-p=-0.06 F4-p=-0.06 F3-p=-0.06 Ce1-f=-0.04
+ Beta  vir 69 OE=0.416 is Ce1-p=-1.45 F3-s=0.88 F4-s=0.88 F2-s=0.88 F5-s=0.88 Ce1-d=-0.79 F2-p=-0.06 F5-p=-0.06 F4-p=-0.06 F3-p=-0.06 Ce1-f=-0.04
+ Beta  vir 70 OE=0.416 is Ce1-d=1.08 F2-p=-0.03 F3-p=-0.03 F5-p=-0.03 F4-p=-0.03 Ce1-g=0.03
+ Beta  vir 71 OE=0.417 is Ce1-d=1.09 F4-p=-0.03 F3-p=-0.03 F5-p=-0.03 F2-p=-0.03 Ce1-g=0.03
+ Beta  vir 72 OE=0.561 is Ce1-f=0.81 Ce1-g=0.19
+ Beta  vir 73 OE=0.563 is Ce1-f=0.80 Ce1-g=0.19
+ Beta  vir 74 OE=0.563 is Ce1-f=0.80 Ce1-g=0.19
+ Beta  vir 75 OE=0.607 is Ce1-f=0.73 Ce1-s=0.15 Ce1-g=0.06 F4-s=0.02 F5-s=0.02 F3-s=0.02 F2-s=0.02
+ Beta  vir 76 OE=0.656 is Ce1-f=0.75 Ce1-d=0.14 Ce1-p=-0.10 F5-s=0.04 F2-s=0.04 F4-s=0.04 F3-s=0.04 Ce1-g=-0.03 F2-p=0.02 F5-p=0.02 F3-p=0.02 F4-p=0.02
+ Beta  vir 77 OE=0.657 is Ce1-f=0.73 Ce1-d=0.13 Ce1-p=-0.11 F2-s=0.04 F4-s=0.04 F3-s=0.04 F5-s=0.04 Ce1-g=-0.03 F3-p=0.03 F5-p=0.03 F4-p=0.03 F2-p=0.03
+ Beta  vir 78 OE=0.657 is Ce1-f=0.73 Ce1-d=0.13 Ce1-p=-0.11 F2-s=0.04 F4-s=0.04 F5-s=0.04 F3-s=0.04 Ce1-g=-0.03 F3-p=0.03 F4-p=0.03 F5-p=0.03 F2-p=0.03
+ Beta  vir 79 OE=0.754 is Ce1-g=0.98 Ce1-d=0.06 F5-p=-0.01 F3-p=-0.01 F4-p=-0.01 F2-p=-0.01
+ Beta  vir 80 OE=0.756 is Ce1-g=0.98 Ce1-d=0.06 F3-p=-0.01 F4-p=-0.01 F2-p=-0.01 F5-p=-0.01
+ Beta  vir 81 OE=0.782 is Ce1-g=0.67 Ce1-s=0.33 Ce1-f=-0.12 F2-s=0.06 F5-s=0.06 F3-s=0.06 F4-s=0.06 F3-p=-0.04 F2-p=-0.04 F5-p=-0.04 F4-p=-0.04
+ Beta  vir 82 OE=0.832 is Ce1-g=0.63 Ce1-p=0.37 Ce1-f=0.12 Ce1-d=0.08 F5-p=-0.04 F4-p=-0.04 F3-p=-0.04 F2-p=-0.04
+ Beta  vir 83 OE=0.833 is Ce1-g=0.61 Ce1-p=0.37 Ce1-f=0.13 Ce1-d=0.08 F5-p=-0.04 F3-p=-0.04 F4-p=-0.04 F2-p=-0.04
+ Beta  vir 84 OE=0.833 is Ce1-g=0.61 Ce1-p=0.37 Ce1-f=0.13 Ce1-d=0.08 F2-p=-0.04 F5-p=-0.04 F4-p=-0.04 F3-p=-0.04
+ Beta  vir 85 OE=0.840 is Ce1-g=0.84 Ce1-f=0.21 F3-p=-0.01 F4-p=-0.01 F5-p=-0.01 F2-p=-0.01
+ Beta  vir 86 OE=0.842 is Ce1-g=0.82 Ce1-f=0.21 F5-p=-0.01 F4-p=-0.01 F3-p=-0.01 F2-p=-0.01
+ Beta  vir 87 OE=0.842 is Ce1-g=0.82 Ce1-f=0.21 F5-p=-0.01 F3-p=-0.01 F4-p=-0.01 F2-p=-0.01
+ Beta  vir 88 OE=1.033 is Ce1-p=0.75 Ce1-g=0.44 Ce1-f=0.23 F3-s=-0.09 F5-s=-0.09 F4-s=-0.09 F2-s=-0.09 Ce1-d=0.02 F5-p=-0.02 F2-p=-0.02 F4-p=-0.02 F3-p=-0.02
+ Beta  vir 89 OE=1.033 is Ce1-p=0.75 Ce1-g=0.44 Ce1-f=0.23 F3-s=-0.09 F5-s=-0.09 F4-s=-0.09 F2-s=-0.09 Ce1-d=0.02 F5-p=-0.02 F4-p=-0.02 F3-p=-0.02 F2-p=-0.02
+ Beta  vir 90 OE=1.039 is Ce1-p=0.76 Ce1-g=0.42 Ce1-f=0.22 F5-s=-0.10 F4-s=-0.10 F2-s=-0.10 F3-s=-0.10 Ce1-d=0.03 F2-p=-0.01 F5-p=-0.01 F3-p=-0.01 F4-p=-0.01
+ Beta  vir 91 OE=1.191 is Ce1-f=0.49 Ce1-s=0.41 Ce1-g=0.19 F5-s=-0.05 F3-s=-0.05 F4-s=-0.05 F2-s=-0.05 F5-p=0.02 F4-p=0.02 F3-p=0.02 F2-p=0.02
+ Beta  vir 92 OE=1.354 is F5-p=0.26 F2-p=0.26 F3-p=0.26 F4-p=0.26 Ce1-g=-0.02 Ce1-d=-0.01
+ Beta  vir 93 OE=1.369 is F2-p=0.26 F3-p=0.26 F4-p=0.26 F5-p=0.26 Ce1-g=-0.02 Ce1-d=-0.01
+ Beta  vir 94 OE=1.399 is F2-p=0.25 F4-p=0.25 F3-p=0.25 F5-p=0.25 Ce1-g=-0.03 Ce1-p=0.01
+ Beta  vir 95 OE=1.399 is F5-p=0.25 F2-p=0.25 F4-p=0.25 F3-p=0.25 Ce1-g=-0.03 Ce1-p=0.01
+ Beta  vir 96 OE=1.423 is F4-p=0.24 F2-p=0.24 F3-p=0.24 F5-p=0.24 Ce1-g=-0.03 Ce1-p=0.03 Ce1-d=-0.02 F2-s=0.01 F3-s=0.01 F4-s=0.01 F5-s=0.01
+ Beta  vir 97 OE=1.451 is F2-p=0.30 F5-p=0.30 F3-p=0.30 F4-p=0.30 Ce1-d=-0.05 F3-s=-0.04 F4-s=-0.04 F2-s=-0.04 F5-s=-0.04 Ce1-f=-0.02 Ce1-p=0.02 Ce1-g=0.02
+ Beta  vir 98 OE=1.453 is F2-p=0.29 F4-p=0.29 F3-p=0.29 F5-p=0.29 Ce1-d=-0.04 Ce1-f=-0.03 Ce1-p=0.02 F5-s=-0.02 F4-s=-0.02 F2-s=-0.02 F3-s=-0.02 Ce1-g=-0.02
+ Beta  vir 99 OE=1.453 is F4-p=0.29 F5-p=0.29 F2-p=0.29 F3-p=0.29 Ce1-d=-0.04 Ce1-f=-0.03 Ce1-p=0.02 F3-s=-0.02 F4-s=-0.02 F5-s=-0.02 F2-s=-0.02 Ce1-g=-0.02
+ Beta  vir 100 OE=1.457 is F4-p=0.27 F2-p=0.27 F3-p=0.27 F5-p=0.27 Ce1-g=-0.05 Ce1-f=-0.04
+ Beta  vir 101 OE=1.476 is F4-p=0.28 F3-p=0.28 F2-p=0.28 F5-p=0.28 Ce1-f=-0.03 Ce1-g=-0.03 Ce1-d=-0.02 Ce1-p=0.02 F2-s=-0.02 F3-s=-0.02 F5-s=-0.02 F4-s=-0.02
+ Beta  vir 102 OE=1.476 is F4-p=0.28 F3-p=0.28 F2-p=0.28 F5-p=0.28 Ce1-f=-0.03 Ce1-g=-0.03 Ce1-d=-0.02 Ce1-p=0.02 F3-s=-0.02 F4-s=-0.02 F2-s=-0.02 F5-s=-0.02
+ Beta  vir 103 OE=1.549 is F4-p=0.21 F5-p=0.21 F2-p=0.21 F3-p=0.21 Ce1-f=0.10 Ce1-g=0.07 Ce1-s=-0.02
+ Beta  vir 104 OE=1.937 is F4-s=0.17 F3-s=0.17 F2-s=0.17 F5-s=0.17 Ce1-d=0.12 Ce1-f=0.10 Ce1-p=0.06 F4-p=0.01 F3-p=0.01 F5-p=0.01 F2-p=0.01
+ Beta  vir 105 OE=1.938 is F3-s=0.17 F5-s=0.17 F4-s=0.17 F2-s=0.17 Ce1-d=0.12 Ce1-f=0.10 Ce1-p=0.06 F4-p=0.01 F5-p=0.01 F3-p=0.01 F2-p=0.01
+ Beta  vir 106 OE=1.938 is F5-s=0.17 F2-s=0.17 F3-s=0.17 F4-s=0.17 Ce1-d=0.12 Ce1-f=0.10 Ce1-p=0.06 F3-p=0.01 F4-p=0.01 F5-p=0.01 F2-p=0.01
+ Beta  vir 107 OE=2.105 is Ce1-f=0.91 Ce1-g=0.08
+ Beta  vir 108 OE=2.106 is Ce1-f=0.91 Ce1-g=0.08
+ Beta  vir 109 OE=2.106 is Ce1-f=0.91 Ce1-g=0.08
+ Beta  vir 110 OE=2.189 is Ce1-f=0.89 Ce1-p=0.09 Ce1-d=0.09 Ce1-g=0.03 F3-s=-0.02 F4-s=-0.02 F5-s=-0.02 F2-s=-0.02
+ Beta  vir 111 OE=2.189 is Ce1-f=0.89 Ce1-p=0.10 Ce1-d=0.09 Ce1-g=0.03 F5-s=-0.02 F3-s=-0.02 F4-s=-0.02 F2-s=-0.02
+ Beta  vir 112 OE=2.189 is Ce1-f=0.89 Ce1-p=0.10 Ce1-d=0.09 Ce1-g=0.03 F3-s=-0.02 F5-s=-0.02 F4-s=-0.02 F2-s=-0.02
+ Beta  vir 113 OE=2.199 is F4-s=0.27 F5-s=0.27 F2-s=0.27 F3-s=0.27 Ce1-s=0.19 Ce1-f=-0.17 Ce1-g=-0.05 F2-p=-0.02 F3-p=-0.02 F5-p=-0.02 F4-p=-0.02
+ Beta  vir 114 OE=2.254 is Ce1-f=0.74 Ce1-g=0.19 Ce1-s=0.02 Ce1-d=0.02
+ Beta  vir 115 OE=2.256 is Ce1-d=0.94 Ce1-g=0.04
+ Beta  vir 116 OE=2.257 is Ce1-d=0.90 Ce1-g=0.06 Ce1-f=0.02
+ Beta  vir 117 OE=2.336 is Ce1-g=0.96 Ce1-d=0.04
+ Beta  vir 118 OE=2.340 is Ce1-g=0.94 Ce1-d=0.05
+ Beta  vir 119 OE=2.351 is Ce1-g=0.79 Ce1-f=0.19
+ Beta  vir 120 OE=2.370 is Ce1-g=0.92 Ce1-f=0.08
+ Beta  vir 121 OE=2.370 is Ce1-g=0.92 Ce1-f=0.08
+ Beta  vir 122 OE=2.374 is Ce1-g=0.92 Ce1-f=0.08
+ Beta  vir 123 OE=2.391 is Ce1-g=0.95 Ce1-p=0.02 Ce1-d=0.01 Ce1-f=0.01
+ Beta  vir 124 OE=2.393 is Ce1-g=0.95 Ce1-d=0.02 Ce1-p=0.01
+ Beta  vir 125 OE=2.393 is Ce1-g=0.95 Ce1-d=0.02 Ce1-p=0.01
+ Beta  vir 126 OE=2.494 is Ce1-d=0.73 F5-s=0.05 F2-s=0.05 F4-s=0.05 F3-s=0.05 Ce1-p=0.04 F3-d=0.02 F4-d=0.02 F5-d=0.02 F2-d=0.02 Ce1-f=-0.01 Ce1-g=-0.01
+ Beta  vir 127 OE=2.494 is Ce1-d=0.72 F5-s=0.05 F2-s=0.05 F4-s=0.05 F3-s=0.05 Ce1-p=0.04 F4-d=0.02 F2-d=0.02 F3-d=0.02 F5-d=0.02 Ce1-f=-0.01 Ce1-g=-0.01
+ Beta  vir 128 OE=2.494 is Ce1-d=0.72 F5-s=0.05 F3-s=0.05 F4-s=0.05 F2-s=0.05 Ce1-p=0.04 F5-d=0.02 F4-d=0.02 F3-d=0.02 F2-d=0.02 Ce1-f=-0.01 Ce1-g=-0.01
+ Beta  vir 129 OE=3.690 is Ce1-p=0.89 F4-d=0.02 F5-d=0.02 F3-d=0.02 F2-d=0.02 Ce1-d=0.02
+ Beta  vir 130 OE=3.690 is Ce1-p=0.89 F5-d=0.02 F3-d=0.02 F2-d=0.02 F4-d=0.02 Ce1-d=0.02
+ Beta  vir 131 OE=3.692 is Ce1-p=0.89 F4-d=0.02 F3-d=0.02 F5-d=0.02 F2-d=0.02 Ce1-d=0.02
+ Beta  vir 132 OE=4.010 is F2-d=0.25 F5-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 133 OE=4.010 is F2-d=0.25 F5-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 134 OE=4.014 is F2-d=0.25 F4-d=0.25 F3-d=0.25 F5-d=0.25
+ Beta  vir 135 OE=4.014 is F2-d=0.25 F5-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 136 OE=4.014 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 137 OE=4.014 is F2-d=0.25 F5-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 138 OE=4.016 is F5-d=0.25 F2-d=0.25 F3-d=0.25 F4-d=0.25
+ Beta  vir 139 OE=4.037 is F5-d=0.25 F4-d=0.25 F2-d=0.25 F3-d=0.25
+ Beta  vir 140 OE=4.121 is F5-d=0.25 F2-d=0.25 F4-d=0.25 F3-d=0.25
+ Beta  vir 141 OE=4.132 is F5-d=0.25 F4-d=0.25 F2-d=0.25 F3-d=0.25
+ Beta  vir 142 OE=4.200 is F5-d=0.23 F2-d=0.23 F3-d=0.23 F4-d=0.23 Ce1-p=0.07
+ Beta  vir 143 OE=4.200 is F5-d=0.23 F3-d=0.23 F2-d=0.23 F4-d=0.23 Ce1-p=0.07
+ Beta  vir 144 OE=4.204 is F5-d=0.23 F3-d=0.23 F4-d=0.23 F2-d=0.23 Ce1-p=0.06
+ Beta  vir 145 OE=4.280 is F3-d=0.21 F5-d=0.21 F4-d=0.21 F2-d=0.21 Ce1-s=0.07 Ce1-g=0.04 Ce1-f=0.03
+ Beta  vir 146 OE=4.322 is F5-d=0.24 F2-d=0.24 F4-d=0.24 F3-d=0.24 Ce1-f=0.02
+ Beta  vir 147 OE=4.331 is F4-d=0.24 F3-d=0.24 F5-d=0.24 F2-d=0.24 Ce1-f=0.02
+ Beta  vir 148 OE=4.331 is F4-d=0.24 F3-d=0.24 F5-d=0.24 F2-d=0.24 Ce1-f=0.02
+ Beta  vir 149 OE=4.591 is F5-d=0.20 F2-d=0.20 F3-d=0.20 F4-d=0.20 Ce1-d=0.08 Ce1-g=0.06 Ce1-p=0.02
+ Beta  vir 150 OE=4.591 is F5-d=0.20 F4-d=0.20 F3-d=0.20 F2-d=0.20 Ce1-d=0.08 Ce1-g=0.06 Ce1-p=0.02
+ Beta  vir 151 OE=4.593 is F5-d=0.20 F4-d=0.20 F2-d=0.20 F3-d=0.20 Ce1-d=0.08 Ce1-g=0.06 Ce1-p=0.02
+ Beta  vir 152 OE=5.882 is Ce1-g=1.00
+ Beta  vir 153 OE=5.883 is Ce1-g=0.99
+ Beta  vir 154 OE=5.883 is Ce1-g=0.99
+ Beta  vir 155 OE=5.883 is Ce1-g=1.00
+ Beta  vir 156 OE=5.886 is Ce1-g=0.99
+ Beta  vir 157 OE=5.901 is Ce1-g=0.94 Ce1-s=0.02 Ce1-f=0.01
+ Beta  vir 158 OE=5.962 is Ce1-g=0.90 F2-p=0.01 F3-p=0.01 F5-p=0.01 F4-p=0.01 F4-d=0.01 F3-d=0.01 F2-d=0.01 F5-d=0.01
+ Beta  vir 159 OE=5.964 is Ce1-g=0.90 F3-p=0.01 F4-p=0.01 F2-p=0.01 F5-p=0.01 F5-d=0.01 F4-d=0.01 F3-d=0.01 F2-d=0.01
+ Beta  vir 160 OE=5.964 is Ce1-g=0.90 F2-p=0.01 F3-p=0.01 F4-p=0.01 F5-p=0.01 F5-d=0.01 F3-d=0.01 F4-d=0.01 F2-d=0.01
+ Beta  vir 161 OE=6.516 is Ce1-s=0.57 F3-p=0.08 F5-p=0.08 F4-p=0.08 F2-p=0.08 Ce1-f=0.06 F5-d=0.01 F4-d=0.01 F3-d=0.01 F2-d=0.01
+ Beta  vir 162 OE=6.589 is Ce1-f=0.71 F2-p=0.07 F5-p=0.07 F3-p=0.07 F4-p=0.07
+ Beta  vir 163 OE=6.592 is Ce1-f=0.73 F3-p=0.07 F2-p=0.07 F4-p=0.07 F5-p=0.07
+ Beta  vir 164 OE=6.592 is Ce1-f=0.73 F3-p=0.07 F5-p=0.07 F2-p=0.07 F4-p=0.07
+ Beta  vir 165 OE=6.614 is Ce1-f=0.91 F2-p=0.02 F5-p=0.02 F3-p=0.02 F4-p=0.02
+ Beta  vir 166 OE=6.615 is Ce1-f=0.93 F3-p=0.02 F2-p=0.02 F4-p=0.02 F5-p=0.02
+ Beta  vir 167 OE=6.615 is Ce1-f=0.93 F2-p=0.02 F5-p=0.02 F4-p=0.02 F3-p=0.02
+ Beta  vir 168 OE=6.674 is F2-p=0.25 F5-p=0.25 F4-p=0.25 F3-p=0.25
+ Beta  vir 169 OE=6.686 is F3-p=0.25 F5-p=0.25 F2-p=0.25 F4-p=0.25
+ Beta  vir 170 OE=6.712 is F2-p=0.24 F5-p=0.24 F3-p=0.24 F4-p=0.24 Ce1-f=0.04
+ Beta  vir 171 OE=6.712 is F2-p=0.24 F5-p=0.24 F4-p=0.24 F3-p=0.24 Ce1-f=0.04
+ Beta  vir 172 OE=6.725 is F2-p=0.23 F5-p=0.23 F3-p=0.23 F4-p=0.23 Ce1-f=0.08
+ Beta  vir 173 OE=6.726 is F3-p=0.23 F2-p=0.23 F4-p=0.23 F5-p=0.23 Ce1-f=0.06
+ Beta  vir 174 OE=6.733 is F3-p=0.23 F2-p=0.23 F5-p=0.23 F4-p=0.23 Ce1-f=0.07
+ Beta  vir 175 OE=6.733 is F2-p=0.23 F3-p=0.23 F5-p=0.23 F4-p=0.23 Ce1-f=0.07
+ Beta  vir 176 OE=6.755 is Ce1-f=0.88 Ce1-s=0.11
+ Beta  vir 177 OE=6.878 is Ce1-f=0.22 F2-p=0.18 F3-p=0.18 F4-p=0.18 F5-p=0.18 Ce1-g=0.04
+ Beta  vir 178 OE=6.880 is Ce1-f=0.22 F3-p=0.18 F5-p=0.18 F4-p=0.18 F2-p=0.18 Ce1-g=0.04
+ Beta  vir 179 OE=6.880 is Ce1-f=0.22 F3-p=0.18 F5-p=0.18 F2-p=0.18 F4-p=0.18 Ce1-g=0.04
+ Beta  vir 180 OE=7.136 is Ce1-s=0.25 F2-p=0.17 F5-p=0.17 F3-p=0.17 F4-p=0.17 Ce1-g=0.03 Ce1-f=0.02
+ Beta  vir 181 OE=9.181 is Ce1-d=1.00
+ Beta  vir 182 OE=9.182 is Ce1-d=1.00
+ Beta  vir 183 OE=9.447 is Ce1-d=0.98
+ Beta  vir 184 OE=9.447 is Ce1-d=0.98
+ Beta  vir 185 OE=9.449 is Ce1-d=0.98
+ Beta  vir 186 OE=12.799 is Ce1-p=1.00
+ Beta  vir 187 OE=12.799 is Ce1-p=1.00
+ Beta  vir 188 OE=12.799 is Ce1-p=1.00
+ Beta  vir 189 OE=54.219 is Ce1-s=1.00
+ Beta  vir 190 OE=54.755 is Ce1-p=1.00
+ Beta  vir 191 OE=54.755 is Ce1-p=1.00
+ Beta  vir 192 OE=54.755 is Ce1-p=1.00
+ Beta  vir 193 OE=68.527 is F2-s=0.25 F5-s=0.25 F4-s=0.25 F3-s=0.25
+ Beta  vir 194 OE=68.527 is F3-s=0.25 F5-s=0.25 F2-s=0.25 F4-s=0.25
+ Beta  vir 195 OE=68.527 is F2-s=0.25 F4-s=0.25 F3-s=0.25 F5-s=0.25
+ Beta  vir 196 OE=68.565 is F2-s=0.25 F3-s=0.25 F4-s=0.25 F5-s=0.25
+ Beta  vir 197 OE=132.622 is Ce1-s=1.00
+ Beta  vir 198 OE=134.115 is Ce1-p=1.00
+ Beta  vir 199 OE=134.115 is Ce1-p=1.00
+ Beta  vir 200 OE=134.115 is Ce1-p=1.00
+ Beta  vir 201 OE=227.485 is Ce1-s=1.00
+ Beta  vir 202 OE=436.181 is Ce1-s=1.00
+ 
+ 1\1\GINC-GAMBA\SP\UOVGF-FC\Gen\Ce1F4(1+,2)\IRIKURA\18-May-2017\0\\# EP
+ T(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop
+ (all,thresh=1) pseudo=read\\BEB step 5: cation EPT for VIE2 for cef4\\
+ 1,2\Ce,0,0.,-0.000000001,-0.000000001\F,0,0.0000000013,-0.0000000051,2
+ .0322594419\F,0,0.,-1.9160325772,-0.6774198191\F,0,-1.6593328873,0.958
+ 0162888,-0.6774198123\F,0,1.659332886,0.9580162896,-0.6774198144\\Vers
+ ion=ES64L-G09RevD.01\HF=-871.2055031\MP2=-872.1730135\PUHF=-871.222261
+ 2\PMP2-0=-872.185798\S2=0.874145\S2-1=0.81178\S2A=0.762598\RMSD=2.537e
+ -09\PG=TD [O(Ce1),4C3(F1)]\\@
+
+
+ TRUTH, IN SCIENCE, CAN BE DEFINED AS THE WORKING HYPOTHESIS 
+ BEST FITTED TO OPEN THE WAY TO THE NEXT BETTER ONE.
+
+                              -- KONRAD LORENZ
+ Job cpu time:       0 days  0 hours 13 minutes 49.4 seconds.
+ File lengths (MBytes):  RWF=   1613 Int=      0 D2E=      0 Chk=      5 Scr=      1
+ Normal termination of Gaussian 09 at Thu May 18 09:24:19 2017.

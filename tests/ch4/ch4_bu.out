@@ -1,0 +1,426 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-28555.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     28557.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                17-May-2017 
+ ******************************************
+ %chk=ch4.chk
+ %nprocs=4
+ Will use up to    4 processors via shared memory.
+ %mem=1000mw
+ -----------------------------------------------------------------
+ # HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)
+ -----------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1/1,2,3;
+ 4//1;
+ 5/5=2,8=3,13=1,38=5/2,8;
+ 6/7=2,8=2,9=2,10=2,28=1,81=3,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ ----------------------------------------
+ BEB step 2: Hartree-Fock B and U for ch4
+ ----------------------------------------
+ Structure from the checkpoint file:  "ch4.chk"
+ Charge =  0 Multiplicity = 1
+ Redundant internal coordinates found in file.
+ C,0,0.,0.000000001,0.000000001
+ H,0,-0.000000006,-0.0000000007,1.0935113774
+ H,0,0.,-1.0309724112,-0.3645037927
+ H,0,-0.892848297,0.5154862096,-0.3645037952
+ H,0,0.892848303,0.5154862062,-0.3645037855
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          6           0        0.000000    0.000000    0.000000
+      2          1           0        0.000000    0.000000    1.093511
+      3          1           0        0.000000   -1.030972   -0.364504
+      4          1           0       -0.892848    0.515486   -0.364504
+      5          1           0        0.892848    0.515486   -0.364504
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  H    1.093511   0.000000
+     3  H    1.093511   1.785697   0.000000
+     4  H    1.093511   1.785697   1.785697   0.000000
+     5  H    1.093511   1.785697   1.785697   1.785697   0.000000
+ Stoichiometry    CH4
+ Framework group  TD[O(C),4C3(H)]
+ Deg. of freedom     1
+ Full point group                 TD      NOp  24
+ Largest Abelian subgroup         D2      NOp   4
+ Largest concise Abelian subgroup D2      NOp   4
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          6           0        0.000000    0.000000    0.000000
+      2          1           0        0.631339    0.631339    0.631339
+      3          1           0       -0.631339   -0.631339    0.631339
+      4          1           0       -0.631339    0.631339   -0.631339
+      5          1           0        0.631339   -0.631339   -0.631339
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):    157.2594344    157.2594344    157.2594344
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.4563240000D+04  0.1966650249D-02
+      0.6820240000D+03  0.1523060193D-01
+      0.1549730000D+03  0.7612690966D-01
+      0.4445530000D+02  0.2608010331D+00
+      0.1302900000D+02  0.6164620782D+00
+      0.1827730000D+01  0.2210060280D+00
+ SP   3 1.00       0.000000000000
+      0.2096420000D+02  0.1146600807D+00  0.4024869267D-01
+      0.4803310000D+01  0.9199996477D+00  0.2375939567D+00
+      0.1459330000D+01 -0.3030682134D-02  0.8158538515D+00
+ SP   1 1.00       0.000000000000
+      0.4834560000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1455850000D+00  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.6260000000D+00  0.1000000000D+01
+ ****
+      2 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      3 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      4 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      5 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+
+ There are    13 symmetry adapted cartesian basis functions of A   symmetry.
+ There are    10 symmetry adapted cartesian basis functions of B1  symmetry.
+ There are    10 symmetry adapted cartesian basis functions of B2  symmetry.
+ There are    10 symmetry adapted cartesian basis functions of B3  symmetry.
+ There are    12 symmetry adapted basis functions of A   symmetry.
+ There are    10 symmetry adapted basis functions of B1  symmetry.
+ There are    10 symmetry adapted basis functions of B2  symmetry.
+ There are    10 symmetry adapted basis functions of B3  symmetry.
+    42 basis functions,    64 primitive gaussians,    43 cartesian basis functions
+     5 alpha electrons        5 beta electrons
+       nuclear repulsion energy        13.3922467928 Hartrees.
+ NAtoms=    5 NActive=    5 NUniq=    2 SFac= 4.00D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=    42 RedAO= T EigKep=  1.30D-02  NBF=    12    10    10    10
+ NBsUse=    42 1.00D-06 EigRej= -1.00D+00 NBFU=    12    10    10    10
+ ExpMin= 1.03D-01 ExpMax= 4.56D+03 ExpMxC= 6.82D+02 IAcc=1 IRadAn=         1 AccDes= 0.00D+00
+ Harris functional with IExCor=  205 and IRadAn=       1 diagonalized for initial guess.
+ HarFok:  IExCor=  205 AccDes= 0.00D+00 IRadAn=         1 IDoV= 1 UseB2=F ITyADJ=14
+ ICtDFT=  3500011 ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ FoFCou: FMM=F IPFlag=           0 FMFlag=      100000 FMFlg1=           0
+         NFxFlg=           0 DoJE=T BraDBF=F KetDBF=T FulRan=T
+         wScrn=  0.000000 ICntrl=     500 IOpCl=  0 I1Cent=   200000004 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+ Initial guess orbital symmetries:
+       Occupied  (A1) (A1) (T2) (T2) (T2)
+       Virtual   (A1) (T2) (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2)
+                 (T2) (A1) (E) (E) (T2) (T2) (T2) (T1) (T1) (T1)
+                 (T2) (T2) (T2) (A1) (E) (E) (T2) (T2) (T2) (T2)
+                 (T2) (T2) (A1) (T2) (T2) (T2) (A1)
+ The electronic state of the initial guess is 1-A1.
+ Keep R1 ints in memory in symmetry-blocked form, NReq=1260660.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -40.2087832798     A.U. after    8 cycles
+            NFock=  8  Conv=0.68D-08     -V/T= 2.0018
+ QCSCF skips out because SCF is already converged.
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+       Occupied  (A1) (A1) (T2) (T2) (T2)
+       Virtual   (A1) (T2) (T2) (T2) (T2) (T2) (T2) (A1) (T2) (T2)
+                 (T2) (A1) (E) (E) (T2) (T2) (T2) (T1) (T1) (T1)
+                 (T2) (T2) (T2) (A1) (E) (E) (T2) (T2) (T2) (T2)
+                 (T2) (T2) (A1) (T2) (T2) (T2) (A1)
+ The electronic state is 1-A1.
+ Alpha  occ. eigenvalues --  -11.20959  -0.94118  -0.54371  -0.54371  -0.54371
+ Alpha virt. eigenvalues --    0.16134   0.23675   0.23675   0.23675   0.42673
+ Alpha virt. eigenvalues --    0.42673   0.42673   0.74916   0.81034   0.81034
+ Alpha virt. eigenvalues --    0.81034   0.93659   1.20176   1.20176   1.72039
+ Alpha virt. eigenvalues --    1.72039   1.72039   1.72067   1.72067   1.72067
+ Alpha virt. eigenvalues --    2.17786   2.17786   2.17786   2.51497   2.61533
+ Alpha virt. eigenvalues --    2.61533   2.70307   2.70307   2.70307   2.89397
+ Alpha virt. eigenvalues --    2.89397   2.89397   3.18712   4.18320   4.18320
+ Alpha virt. eigenvalues --    4.18320  25.14614
+          Condensed to atoms (all electrons):
+               1          2          3          4          5
+     1  C    4.723812   0.409699   0.409699   0.409699   0.409699
+     2  H    0.409699   0.573496  -0.024615  -0.024615  -0.024615
+     3  H    0.409699  -0.024615   0.573496  -0.024615  -0.024615
+     4  H    0.409699  -0.024615  -0.024615   0.573496  -0.024615
+     5  H    0.409699  -0.024615  -0.024615  -0.024615   0.573496
+ Mulliken charges:
+               1
+     1  C   -0.362606
+     2  H    0.090651
+     3  H    0.090651
+     4  H    0.090651
+     5  H    0.090651
+ Sum of Mulliken charges =   0.00000
+ Mulliken charges with hydrogens summed into heavy atoms:
+               1
+     1  C    0.000000
+ Electronic spatial extent (au):  <R**2>=             35.8889
+ Charge=              0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.0000  Tot=              0.0000
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=             -8.4326   YY=             -8.4326   ZZ=             -8.4326
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=              0.0000   YY=              0.0000   ZZ=              0.0000
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=              0.0000  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.0000  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=              0.0000  XYZ=              0.7061
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=            -16.5751 YYYY=            -16.5751 ZZZZ=            -16.5751 XXXY=              0.0000
+ XXXZ=              0.0000 YYYX=              0.0000 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=             -5.0039 XXZZ=             -5.0039 YYZZ=             -5.0039
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=              0.0000
+ N-N= 1.339224679282D+01 E-N=-1.197730166623D+02  KE= 4.013478065826D+01
+ Symmetry A    KE= 3.446239361046D+01
+ Symmetry B1   KE= 1.890795682600D+00
+ Symmetry B2   KE= 1.890795682600D+00
+ Symmetry B3   KE= 1.890795682600D+00
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-11.210 is C1-s=1.00
+ Alpha occ 2 OE=-0.941 is C1-s=0.60 H5-s=0.10 H3-s=0.10 H4-s=0.10 H2-s=0.10
+ Alpha occ 3 OE=-0.544 is C1-p=0.52 H2-s=0.12 H5-s=0.12 H3-s=0.12 H4-s=0.12
+ Alpha occ 4 OE=-0.544 is C1-p=0.52 H5-s=0.12 H2-s=0.12 H4-s=0.12 H3-s=0.12
+ Alpha occ 5 OE=-0.544 is C1-p=0.52 H2-s=0.12 H5-s=0.12 H4-s=0.12 H3-s=0.12
+ Alpha vir 6 OE=0.161 is C1-s=-0.38 H5-s=0.34 H4-s=0.34 H2-s=0.34 H3-s=0.34
+ Alpha vir 7 OE=0.237 is H2-s=0.28 H4-s=0.28 H5-s=0.28 H3-s=0.28 C1-p=-0.13
+ Alpha vir 8 OE=0.237 is H2-s=0.28 H3-s=0.28 H5-s=0.28 H4-s=0.28 C1-p=-0.13
+ Alpha vir 9 OE=0.237 is H2-s=0.28 H3-s=0.28 H5-s=0.28 H4-s=0.28 C1-p=-0.13
+ Alpha vir 10 OE=0.427 is C1-p=0.68 H3-s=0.09 H4-s=0.09 H5-s=0.09 H2-s=0.09 C1-d=-0.02
+ Alpha vir 11 OE=0.427 is C1-p=0.68 H2-s=0.09 H3-s=0.09 H5-s=0.09 H4-s=0.09 C1-d=-0.02
+ Alpha vir 12 OE=0.427 is C1-p=0.68 H4-s=0.09 H3-s=0.09 H5-s=0.09 H2-s=0.09 C1-d=-0.02
+ Alpha vir 13 OE=0.749 is C1-s=0.27 H5-s=0.18 H4-s=0.18 H2-s=0.18 H3-s=0.18
+ Alpha vir 14 OE=0.810 is C1-p=0.92 C1-d=0.01 H5-p=0.01 H2-p=0.01 H4-p=0.01 H3-p=0.01
+ Alpha vir 15 OE=0.810 is C1-p=0.92 C1-d=0.01 H5-p=0.01 H4-p=0.01 H2-p=0.01 H3-p=0.01
+ Alpha vir 16 OE=0.810 is C1-p=0.92 C1-d=0.01 H5-p=0.01 H2-p=0.01 H4-p=0.01 H3-p=0.01
+ Alpha vir 17 OE=0.937 is C1-s=1.60 H4-s=-0.17 H2-s=-0.17 H5-s=-0.17 H3-s=-0.17 H4-p=0.02 H2-p=0.02 H5-p=0.02 H3-p=0.02
+ Alpha vir 18 OE=1.202 is C1-d=0.41 H3-p=0.15 H2-p=0.15 H4-p=0.15 H5-p=0.15
+ Alpha vir 19 OE=1.202 is C1-d=0.41 H4-p=0.15 H3-p=0.15 H5-p=0.15 H2-p=0.15
+ Alpha vir 20 OE=1.720 is C1-d=0.59 C1-p=-0.08 H4-p=0.07 H2-p=0.07 H5-p=0.07 H3-p=0.07 H3-s=0.06 H4-s=0.06 H2-s=0.06 H5-s=0.06
+ Alpha vir 21 OE=1.720 is C1-d=0.59 C1-p=-0.08 H4-p=0.07 H2-p=0.07 H5-p=0.07 H3-p=0.07 H4-s=0.06 H3-s=0.06 H2-s=0.06 H5-s=0.06
+ Alpha vir 22 OE=1.720 is C1-d=0.59 C1-p=-0.08 H4-p=0.07 H2-p=0.07 H5-p=0.07 H3-p=0.07 H4-s=0.06 H3-s=0.06 H2-s=0.06 H5-s=0.06
+ Alpha vir 23 OE=1.721 is H4-p=0.25 H3-p=0.25 H2-p=0.25 H5-p=0.25
+ Alpha vir 24 OE=1.721 is H2-p=0.25 H4-p=0.25 H3-p=0.25 H5-p=0.25
+ Alpha vir 25 OE=1.721 is H4-p=0.25 H3-p=0.25 H2-p=0.25 H5-p=0.25
+ Alpha vir 26 OE=2.178 is H4-p=0.16 H2-p=0.16 H3-p=0.16 H5-p=0.16 C1-d=0.15 C1-p=0.07 H2-s=0.04 H3-s=0.04 H4-s=0.04 H5-s=0.04
+ Alpha vir 27 OE=2.178 is H3-p=0.16 H4-p=0.16 H2-p=0.16 H5-p=0.16 C1-d=0.15 C1-p=0.07 H3-s=0.04 H4-s=0.04 H2-s=0.04 H5-s=0.04
+ Alpha vir 28 OE=2.178 is H3-p=0.16 H4-p=0.16 H2-p=0.16 H5-p=0.16 C1-d=0.15 C1-p=0.07 H2-s=0.04 H3-s=0.04 H4-s=0.04 H5-s=0.04
+ Alpha vir 29 OE=2.515 is H2-s=0.22 H5-s=0.22 H3-s=0.22 H4-s=0.22 H5-p=0.04 H2-p=0.04 H3-p=0.04 H4-p=0.04
+ Alpha vir 30 OE=2.615 is C1-d=0.59 H2-p=0.10 H3-p=0.10 H4-p=0.10 H5-p=0.10
+ Alpha vir 31 OE=2.615 is C1-d=0.59 H4-p=0.10 H3-p=0.10 H2-p=0.10 H5-p=0.10
+ Alpha vir 32 OE=2.703 is H5-p=0.21 H2-p=0.21 H3-p=0.21 H4-p=0.21 C1-p=-0.14 H2-s=0.11 H3-s=0.11 H4-s=0.11 H5-s=0.11 C1-d=-0.10
+ Alpha vir 33 OE=2.703 is H5-p=0.21 H2-p=0.21 H4-p=0.21 H3-p=0.21 C1-p=-0.14 H3-s=0.11 H5-s=0.11 H4-s=0.11 H2-s=0.11 C1-d=-0.10
+ Alpha vir 34 OE=2.703 is H4-p=0.21 H5-p=0.21 H2-p=0.21 H3-p=0.21 C1-p=-0.14 H3-s=0.11 H4-s=0.11 H5-s=0.11 H2-s=0.11 C1-d=-0.10
+ Alpha vir 35 OE=2.894 is C1-p=0.38 C1-d=0.21 H3-s=0.05 H2-s=0.05 H4-s=0.05 H5-s=0.05 H4-p=0.05 H2-p=0.05 H3-p=0.05 H5-p=0.05
+ Alpha vir 36 OE=2.894 is C1-p=0.38 C1-d=0.21 H3-s=0.05 H4-s=0.05 H2-s=0.05 H5-s=0.05 H4-p=0.05 H3-p=0.05 H5-p=0.05 H2-p=0.05
+ Alpha vir 37 OE=2.894 is C1-p=0.38 C1-d=0.21 H3-s=0.05 H2-s=0.05 H4-s=0.05 H5-s=0.05 H2-p=0.05 H4-p=0.05 H3-p=0.05 H5-p=0.05
+ Alpha vir 38 OE=3.187 is H5-p=0.19 H4-p=0.19 H2-p=0.19 H3-p=0.19 H4-s=0.08 H5-s=0.08 H3-s=0.08 H2-s=0.08 C1-s=-0.08
+ Alpha vir 39 OE=4.183 is C1-p=0.78 C1-d=0.15 H3-s=0.01 H2-s=0.01 H4-s=0.01 H5-s=0.01
+ Alpha vir 40 OE=4.183 is C1-p=0.78 C1-d=0.15 H3-s=0.01 H4-s=0.01 H2-s=0.01 H5-s=0.01
+ Alpha vir 41 OE=4.183 is C1-p=0.78 C1-d=0.15 H3-s=0.01 H4-s=0.01 H5-s=0.01 H2-s=0.01
+ Alpha vir 42 OE=25.146 is C1-s=0.99
+ 
+ Orbital energies and kinetic energies (alpha):
+                                 1                 2
+   1         (A1)--O         -11.209591         16.022443
+   2         (A1)--O          -0.941183          1.208753
+   3         (T2)--O          -0.543712          0.945398
+   4         (T2)--O          -0.543712          0.945398
+   5         (T2)--O          -0.543712          0.945398
+   6         (A1)--V           0.161339          0.450539
+   7         (T2)--V           0.236748          0.477232
+   8         (T2)--V           0.236748          0.477232
+   9         (T2)--V           0.236748          0.477232
+  10         (T2)--V           0.426727          0.713859
+  11         (T2)--V           0.426727          0.713859
+  12         (T2)--V           0.426727          0.713859
+  13         (A1)--V           0.749162          1.574577
+  14         (T2)--V           0.810340          1.840196
+  15         (T2)--V           0.810340          1.840196
+  16         (T2)--V           0.810340          1.840196
+  17         (A1)--V           0.936591          2.081006
+  18         (E)--V            1.201756          1.719577
+  19         (E)--V            1.201756          1.719577
+  20         (T2)--V           1.720390          2.339368
+  21         (T2)--V           1.720390          2.339368
+  22         (T2)--V           1.720390          2.339368
+  23         (T1)--V           1.720670          2.081385
+  24         (T1)--V           1.720670          2.081385
+  25         (T1)--V           1.720670          2.081385
+  26         (T2)--V           2.177856          2.834516
+  27         (T2)--V           2.177856          2.834516
+  28         (T2)--V           2.177856          2.834516
+  29         (A1)--V           2.514972          4.050735
+  30         (E)--V            2.615326          3.142136
+  31         (E)--V            2.615326          3.142136
+  32         (T2)--V           2.703066          3.409055
+  33         (T2)--V           2.703066          3.409055
+  34         (T2)--V           2.703066          3.409055
+  35         (T2)--V           2.893968          5.056046
+  36         (T2)--V           2.893968          5.056046
+  37         (T2)--V           2.893968          5.056046
+  38         (A1)--V           3.187120          4.483809
+  39         (T2)--V           4.183203          6.428168
+  40         (T2)--V           4.183203          6.428168
+  41         (T2)--V           4.183203          6.428168
+  42         (A1)--V          25.146139         60.471518
+ Total kinetic energy from orbitals= 4.013478065826D+01
+
+ Test job not archived.
+ 1\1\GINC-GAMBA\SP\RHF\Gen\C1H4\IRIKURA\17-May-2017\0\\# HF/GEN gfinput
+  geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)\\BEB step 2: Hartree
+ -Fock B and U for ch4\\0,1\C,0,0.,0.000000001,0.000000001\H,0,-0.00000
+ 0006,-0.0000000007,1.0935113774\H,0,0.,-1.0309724112,-0.3645037927\H,0
+ ,-0.892848297,0.5154862096,-0.3645037952\H,0,0.892848303,0.5154862062,
+ -0.3645037855\\Version=ES64L-G09RevD.01\State=1-A1\HF=-40.2087833\RMSD
+ =6.794e-09\Dipole=0.,0.,0.\Quadrupole=0.,0.,0.,0.,0.,0.\PG=TD [O(C1),4
+ C3(H1)]\\@
+
+
+ SCIENCE AT ITS BEST PROVIDES US WITH BETTER QUESTIONS, 
+ NOT ABSOLUTE ANSWERS
+
+                                    -- NORMAN COUSINS, 1976
+ Job cpu time:       0 days  0 hours  0 minutes 14.5 seconds.
+ File lengths (MBytes):  RWF=      5 Int=      0 D2E=      0 Chk=      1 Scr=      1
+ Normal termination of Gaussian 09 at Wed May 17 13:20:37 2017.

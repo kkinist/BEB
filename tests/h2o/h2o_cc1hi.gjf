@@ -1,0 +1,13 @@
+%chk=h2o.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc guess=check
+
+BEB step 7: high-spin CCSD(T) for cation of h2o
+
+1 4
+
+H O 0
+cc-pVTZ
+****
+

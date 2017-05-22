@@ -1,0 +1,15 @@
+%chk=Li.chk
+%nprocs=2
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals,full)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 4: EPT B for Li; active core
+
+0 2
+
+Li 0
+6-311+G(d,p)
+****
+
+2 2 1 1
+

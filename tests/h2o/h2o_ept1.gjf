@@ -1,0 +1,15 @@
+%chk=h2o.chk
+%nprocs=4
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 4: EPT B for h2o
+
+0 1
+
+H O 0
+6-311+G(d,p)
+****
+
+1 4 4 4
+

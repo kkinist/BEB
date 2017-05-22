@@ -1,0 +1,13 @@
+%chk=o2.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 8: low-spin CCSD(T) for cation of o2
+
+1 2
+
+O 0
+cc-pVTZ
+****
+

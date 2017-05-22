@@ -1,0 +1,16 @@
+%chk=no2.chk
+%nprocs=6
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for no2
+
+0 2
+ N                  0.00000000    0.00000000   -0.39673512
+ O                  0.00000000   -1.05506669    0.17357118
+ O                 -0.00000000    1.05506669    0.17357118
+
+N O 0
+6-31G(d)
+****
+

@@ -1,0 +1,19 @@
+%chk=cef4.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc pseudo=read guess=check
+
+BEB step 9: high-spin CCSD(T) for dication of cef4
+
+2 3
+
+F 0
+cc-pVTZ
+****
+Ce 0
+SDD
+****
+
+Ce 0
+SDD
+

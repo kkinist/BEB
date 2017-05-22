@@ -1,0 +1,13 @@
+%chk=no2.chk
+%nprocs=6
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc
+
+BEB step 6: CCSD(T) for neutral no2
+
+0 2
+
+N O 0
+cc-pVTZ
+****
+

@@ -1,0 +1,1481 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-18067.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     18069.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                18-May-2017 
+ ******************************************
+ %chk=ZnEt2.chk
+ %nprocs=8
+ Will use up to    8 processors via shared memory.
+ %mem=2000mw
+ ----------------------------------------------------------------------
+ # EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc
+  pop(all,thresh=1)
+ ----------------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1,116=-2/1,2,3;
+ 4/5=1/1;
+ 5/5=2,8=3,13=1,38=6/2,8;
+ 8/6=4,9=120000,10=1/1,4;
+ 9/11=30100/8;
+ 6/7=2,8=2,9=2,10=2,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ -----------------------------------------
+ BEB step 5: cation EPT for VIE2 for ZnEt2
+ -----------------------------------------
+ Structure from the checkpoint file:  "ZnEt2.chk"
+ Charge =  1 Multiplicity = 2
+ Redundant internal coordinates found in file.
+ Zn,0,0.,0.,0.092059
+ C,0,0.,1.933945,0.090127
+ C,0,1.360973,2.577345,-0.233751
+ H,0,-0.346594,2.294125,1.069841
+ H,0,-0.75069,2.294418,-0.628225
+ H,0,1.311324,3.675407,-0.22301
+ H,0,2.134924,2.28887,0.488877
+ H,0,1.727459,2.287037,-1.226622
+ C,0,0.,-1.933945,0.090127
+ C,0,-1.360973,-2.577345,-0.233751
+ H,0,0.346594,-2.294125,1.069841
+ H,0,0.75069,-2.294418,-0.628225
+ H,0,-1.311324,-3.675407,-0.22301
+ H,0,-2.134924,-2.28887,0.488877
+ H,0,-1.727459,-2.287037,-1.226622
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1         30           0        0.000000    0.000000    0.092059
+      2          6           0        0.000000    1.933945    0.090127
+      3          6           0        1.360973    2.577345   -0.233751
+      4          1           0       -0.346594    2.294125    1.069841
+      5          1           0       -0.750690    2.294418   -0.628225
+      6          1           0        1.311324    3.675407   -0.223010
+      7          1           0        2.134924    2.288870    0.488877
+      8          1           0        1.727459    2.287037   -1.226622
+      9          6           0        0.000000   -1.933945    0.090127
+     10          6           0       -1.360973   -2.577345   -0.233751
+     11          1           0        0.346594   -2.294125    1.069841
+     12          1           0        0.750690   -2.294418   -0.628225
+     13          1           0       -1.311324   -3.675407   -0.223010
+     14          1           0       -2.134924   -2.288870    0.488877
+     15          1           0       -1.727459   -2.287037   -1.226622
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  Zn   0.000000
+     2  C    1.933946   0.000000
+     3  C    2.932764   1.539840   0.000000
+     4  H    2.517776   1.099862   2.166876   0.000000
+     5  H    2.519265   1.099775   2.166744   1.745486   0.000000
+     6  H    3.915029   2.202343   1.099236   2.515571   2.514604
+     7  H    3.155042   2.200653   1.097456   2.548623   3.094304
+     8  H    3.154928   2.200595   1.097444   3.094429   2.549383
+     9  C    1.933946   3.867890   4.723228   4.353911   4.354150
+    10  C    2.932764   4.723228   5.829221   5.143883   4.925660
+    11  H    2.517776   4.353911   5.143883   4.640318   5.014199
+    12  H    2.519265   4.354150   4.925660   5.014199   4.828204
+    13  H    3.915029   5.769095   6.799867   6.183646   6.009769
+    14  H    3.155042   4.748586   6.035191   4.953735   4.916355
+    15  H    3.154928   4.747066   5.846915   5.307313   4.722487
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.762834   0.000000
+     8  H    1.762945   1.763227   0.000000
+     9  C    5.769095   4.748586   4.747066   0.000000
+    10  C    6.799867   6.035191   5.846915   1.539840   0.000000
+    11  H    6.183646   4.953735   5.307313   1.099862   2.166876
+    12  H    6.009769   4.916355   4.722487   1.099775   2.166744
+    13  H    7.804662   6.925028   6.766992   2.202343   1.099236
+    14  H    6.925028   6.259976   6.228954   2.200653   1.097456
+    15  H    6.766992   6.228954   5.732243   2.200595   1.097444
+                   11         12         13         14         15
+    11  H    0.000000
+    12  H    1.745486   0.000000
+    13  H    2.515571   2.514604   0.000000
+    14  H    2.548623   3.094304   1.762834   0.000000
+    15  H    3.094429   2.549383   1.762945   1.763227   0.000000
+ Stoichiometry    C4H10Zn(1+,2)
+ Framework group  C2[C2(Zn),X(C4H10)]
+ Deg. of freedom    20
+ Full point group                 C2      NOp   2
+ Largest Abelian subgroup         C2      NOp   2
+ Largest concise Abelian subgroup C2      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1         30           0        0.000000    0.000000    0.092059
+      2          6           0        0.000000    1.933945    0.090127
+      3          6           0        1.360973    2.577345   -0.233751
+      4          1           0       -0.346594    2.294125    1.069841
+      5          1           0       -0.750690    2.294418   -0.628225
+      6          1           0        1.311324    3.675407   -0.223010
+      7          1           0        2.134924    2.288870    0.488877
+      8          1           0        1.727459    2.287037   -1.226622
+      9          6           0        0.000000   -1.933945    0.090127
+     10          6           0       -1.360973   -2.577345   -0.233751
+     11          1           0        0.346594   -2.294125    1.069841
+     12          1           0        0.750690   -2.294418   -0.628225
+     13          1           0       -1.311324   -3.675407   -0.223010
+     14          1           0       -2.134924   -2.288870    0.488877
+     15          1           0       -1.727459   -2.287037   -1.226622
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):     14.6723335      1.3797086      1.3187032
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.3163360000D+06  0.6494033039D-03
+      0.4856100000D+05  0.4911112485D-02
+      0.1115740000D+05  0.2518467188D-01
+      0.3205010000D+04  0.9870930219D-01
+      0.1068580000D+04  0.3004910850D+00
+      0.3963940000D+03  0.6600778707D+00
+ S   1 1.00       0.000000000000
+      0.1598060000D+03  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.6858900000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.2370810000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1003720000D+02  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.2810430000D+01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1069640000D+01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1469510000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.5114200000D-01  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1534300000D-01  0.1000000000D+01
+ P   5 1.00       0.000000000000
+      0.2213180000D+04  0.3573790107D-02
+      0.5270500000D+03  0.2852211875D-01
+      0.1722930000D+03  0.1295976328D+00
+      0.6608140000D+02  0.3663134859D+00
+      0.2768630000D+02  0.5939311787D+00
+ P   1 1.00       0.000000000000
+      0.1218410000D+02  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.4987960000D+01  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.2057910000D+01  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7986090000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.1624550000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.4776900000D-01  0.1000000000D+01
+ D   3 1.00       0.000000000000
+      0.5840840000D+02  0.5696697377D-01
+      0.1644920000D+02  0.3095914479D+00
+      0.5575700000D+01  0.7624985047D+00
+ D   1 1.00       0.000000000000
+      0.1884410000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.5723050000D+00  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1620000000D+00  0.1000000000D+01
+ F   1 1.00       0.000000000000
+      0.1620000000D+01  0.1000000000D+01
+ ****
+      2 0
+ S   6 1.00       0.000000000000
+      0.4563240000D+04  0.1966650249D-02
+      0.6820240000D+03  0.1523060193D-01
+      0.1549730000D+03  0.7612690966D-01
+      0.4445530000D+02  0.2608010331D+00
+      0.1302900000D+02  0.6164620782D+00
+      0.1827730000D+01  0.2210060280D+00
+ SP   3 1.00       0.000000000000
+      0.2096420000D+02  0.1146600807D+00  0.4024869267D-01
+      0.4803310000D+01  0.9199996477D+00  0.2375939567D+00
+      0.1459330000D+01 -0.3030682134D-02  0.8158538515D+00
+ SP   1 1.00       0.000000000000
+      0.4834560000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1455850000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.4380000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.6260000000D+00  0.1000000000D+01
+ ****
+      3 0
+ S   6 1.00       0.000000000000
+      0.4563240000D+04  0.1966650249D-02
+      0.6820240000D+03  0.1523060193D-01
+      0.1549730000D+03  0.7612690966D-01
+      0.4445530000D+02  0.2608010331D+00
+      0.1302900000D+02  0.6164620782D+00
+      0.1827730000D+01  0.2210060280D+00
+ SP   3 1.00       0.000000000000
+      0.2096420000D+02  0.1146600807D+00  0.4024869267D-01
+      0.4803310000D+01  0.9199996477D+00  0.2375939567D+00
+      0.1459330000D+01 -0.3030682134D-02  0.8158538515D+00
+ SP   1 1.00       0.000000000000
+      0.4834560000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1455850000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.4380000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.6260000000D+00  0.1000000000D+01
+ ****
+      4 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      5 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      6 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      7 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      8 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+      9 0
+ S   6 1.00       0.000000000000
+      0.4563240000D+04  0.1966650249D-02
+      0.6820240000D+03  0.1523060193D-01
+      0.1549730000D+03  0.7612690966D-01
+      0.4445530000D+02  0.2608010331D+00
+      0.1302900000D+02  0.6164620782D+00
+      0.1827730000D+01  0.2210060280D+00
+ SP   3 1.00       0.000000000000
+      0.2096420000D+02  0.1146600807D+00  0.4024869267D-01
+      0.4803310000D+01  0.9199996477D+00  0.2375939567D+00
+      0.1459330000D+01 -0.3030682134D-02  0.8158538515D+00
+ SP   1 1.00       0.000000000000
+      0.4834560000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1455850000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.4380000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.6260000000D+00  0.1000000000D+01
+ ****
+     10 0
+ S   6 1.00       0.000000000000
+      0.4563240000D+04  0.1966650249D-02
+      0.6820240000D+03  0.1523060193D-01
+      0.1549730000D+03  0.7612690966D-01
+      0.4445530000D+02  0.2608010331D+00
+      0.1302900000D+02  0.6164620782D+00
+      0.1827730000D+01  0.2210060280D+00
+ SP   3 1.00       0.000000000000
+      0.2096420000D+02  0.1146600807D+00  0.4024869267D-01
+      0.4803310000D+01  0.9199996477D+00  0.2375939567D+00
+      0.1459330000D+01 -0.3030682134D-02  0.8158538515D+00
+ SP   1 1.00       0.000000000000
+      0.4834560000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.1455850000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.4380000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.6260000000D+00  0.1000000000D+01
+ ****
+     11 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+     12 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+     13 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+     14 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+     15 0
+ S   3 1.00       0.000000000000
+      0.3386500000D+02  0.2549381454D-01
+      0.5094790000D+01  0.1903731086D+00
+      0.1158790000D+01  0.8521614860D+00
+ S   1 1.00       0.000000000000
+      0.3258400000D+00  0.1000000000D+01
+ S   1 1.00       0.000000000000
+      0.1027410000D+00  0.1000000000D+01
+ P   1 1.00       0.000000000000
+      0.7500000000D+00  0.1000000000D+01
+ ****
+
+ There are   113 symmetry adapted cartesian basis functions of A   symmetry.
+ There are   104 symmetry adapted cartesian basis functions of B   symmetry.
+ There are   106 symmetry adapted basis functions of A   symmetry.
+ There are   100 symmetry adapted basis functions of B   symmetry.
+   206 basis functions,   318 primitive gaussians,   217 cartesian basis functions
+    32 alpha electrons       31 beta electrons
+       nuclear repulsion energy       320.7392817687 Hartrees.
+ NAtoms=   15 NActive=   15 NUniq=    8 SFac= 3.52D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=   206 RedAO= T EigKep=  6.07D-05  NBF=   106   100
+ NBsUse=   206 1.00D-06 EigRej= -1.00D+00 NBFU=   106   100
+ Initial guess from the checkpoint file:  "ZnEt2.chk"
+ B after Tr=     0.000000    0.000000    0.000000
+         Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A) (A) (B) (A) (B) (A) (B) (B) (A) (A) (B) (A)
+                 (B) (A) (B) (A) (B) (B) (A) (B) (A) (A) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A) (B)
+       Virtual   (A) (B) (A) (B) (A) (A) (B) (B) (A) (A) (A) (B)
+                 (B) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A)
+                 (B) (B) (B) (A) (A) (A) (A) (B) (B) (A) (A) (B)
+                 (A) (B) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (A) (A) (B) (B) (A) (B) (B) (A) (A)
+                 (B) (A) (B) (B) (A) (A) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (A) (B) (B) (A) (B) (B) (A)
+                 (B) (A) (B) (A) (A) (B) (B) (A) (A) (B) (A) (B)
+                 (B) (B) (A) (A) (B) (A) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (B) (A) (B) (A) (A) (B)
+                 (A) (B) (A) (A) (B) (B) (A) (B) (B) (B) (A) (A)
+                 (A) (B) (B) (A) (B) (A) (B) (A) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A) (B) (B) (A) (A) (B)
+                 (B) (A) (B) (A) (A) (A) (B) (B) (A) (B) (B) (A)
+                 (A) (A) (B) (B) (A) (A)
+ Beta  Orbitals:
+       Occupied  (A) (A) (B) (A) (B) (A) (B) (B) (A) (A) (B) (A)
+                 (B) (A) (B) (A) (B) (B) (A) (B) (A) (A) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A)
+       Virtual   (B) (A) (B) (A) (B) (A) (A) (B) (B) (A) (A) (A)
+                 (B) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (B) (B) (A) (A) (A) (A) (B) (B) (A) (A)
+                 (B) (A) (B) (B) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (A) (B) (A) (A) (B) (B) (A) (B) (B) (A)
+                 (A) (B) (A) (B) (B) (A) (A) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (B) (A) (A) (A) (B) (B) (A) (B) (B)
+                 (A) (B) (A) (B) (A) (A) (B) (B) (A) (A) (B) (A)
+                 (B) (B) (B) (A) (A) (B) (A) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (B) (A) (A) (B) (B) (A) (B) (A) (A)
+                 (B) (A) (B) (A) (A) (B) (B) (A) (B) (B) (B) (A)
+                 (A) (A) (B) (B) (A) (B) (A) (B) (A) (A) (B) (A)
+                 (B) (A) (B) (B) (A) (A) (B) (A) (B) (B) (A) (A)
+                 (B) (B) (A) (B) (A) (A) (A) (B) (B) (A) (B) (B)
+                 (A) (A) (A) (B) (B) (A) (A)
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=341177246.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(UHF) =  -1934.70442986     A.U. after   15 cycles
+            NFock= 15  Conv=0.80D-08     -V/T= 1.9996
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8603 S= 0.5537
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     0.8603,   after     0.7517
+ QCSCF skips out because SCF is already converged.
+ ExpMin= 1.53D-02 ExpMax= 3.16D+05 ExpMxC= 1.12D+04 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor=  205 AccDes= 0.00D+00 IRadAn=         5 IDoV=-2 UseB2=F ITyADJ=14
+ ICtDFT= 12500011 ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:    14   206
+ NBasis=   206 NAE=    32 NBE=    31 NFC=    13 NFV=     0
+ NROrb=    193 NOA=    19 NOB=    18 NVA=   174 NVB=   175
+
+ **** Warning!!: The largest alpha MO coefficient is  0.29455302D+02
+
+
+ **** Warning!!: The largest beta MO coefficient is  0.29193463D+02
+
+ Semi-Direct transformation.
+ ModeAB=           4 MOrb=            19 LenV=    2095922564
+ LASXX=     31921248 LTotXX=    31921248 LenRXX=    64646319
+ LTotAB=    32725071 MaxLAS=    45595478 LenRXY=           0
+ NonZer=    96567567 LenScr=   145626624 LnRSAI=    45595478
+ LnScr1=    69160960 LExtra=           0 Total=    325029381
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=1 Pass  1:  I=   1 to  19.
+ (rs|ai) integrals will be sorted in core.
+ ModeAB=           4 MOrb=            18 LenV=    2095922564
+ LASXX=     30352292 LTotXX=    30352292 LenRXX=    55634212
+ LTotAB=    25281920 MaxLAS=    43195716 LenRXY=           0
+ NonZer=    85986504 LenScr=   129718272 LnRSAI=    43195716
+ LnScr1=    65544192 LExtra=           0 Total=    294092392
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=2 Pass  1:  I=   1 to  18.
+ (rs|ai) integrals will be sorted in core.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.3626477430D-01 E2=     -0.1432057463D+00
+     alpha-beta  T2 =       0.2047602923D+00 E2=     -0.7258879739D+00
+     beta-beta   T2 =       0.3680668252D-01 E2=     -0.1373763923D+00
+ ANorm=    0.1130412203D+01
+ E2 =    -0.1006470112D+01 EUMP2 =    -0.19357108999688D+04
+ (S**2,0)=  0.86033D+00           (S**2,1)=  0.81196D+00
+ E(PUHF)=      -0.19347148634D+04        E(PMP2)=      -0.19357190671D+04
+ GREENY: Electron Propagator Program
+ FoFJK:  IHMeth= 0 ICntrl=     200 DoSepK=F KAlg= 0 I1Cent=   0 FoldK=F
+ IRaf= 990000000 NMat=   1 IRICut=       1 DoRegI=T DoRafI=F ISym2E=-1.
+ FoFCou: FMM=F IPFlag=           0 FMFlag=           0 FMFlg1=           0
+         NFxFlg=           0 DoJE=F BraDBF=F KetDBF=F FulRan=T
+         wScrn=  0.000000 ICntrl=     200 IOpCl=  1 I1Cent=           0 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+
+ Summary of results for alpha spin-orbital  19  OVGF: 
+ Koopmans theorem:            -0.61644D+00 au  -16.774 eV
+ Converged second order pole: -0.54743D+00 au  -14.896 eV  0.858 (PS)
+ Converged third  order pole: -0.56435D+00 au  -15.357 eV  0.842 (PS)
+ Outer Valence Approximation: -0.55759D+00 au  -15.173 eV  0.837 (PS)
+
+ Summary of results for alpha spin-orbital  19    P3: 
+ Koopmans theorem:            -0.61644D+00 au  -16.774 eV
+ Converged second order pole: -0.54743D+00 au  -14.896 eV  0.858 (PS)
+ Converged 3rd order P3 pole: -0.55301D+00 au  -15.048 eV  0.833 (PS)
+
+ Summary of results for beta  spin-orbital  18  OVGF: 
+ Koopmans theorem:            -0.53103D+00 au  -14.450 eV
+ Converged second order pole: -0.54709D+00 au  -14.887 eV  0.929 (PS)
+ Converged third  order pole: -0.55871D+00 au  -15.203 eV  0.930 (PS)
+ Outer Valence Approximation: -0.55656D+00 au  -15.145 eV  0.927 (PS)
+
+ Summary of results for beta  spin-orbital  18    P3: 
+ Koopmans theorem:            -0.53103D+00 au  -14.450 eV
+ Converged second order pole: -0.54709D+00 au  -14.887 eV  0.929 (PS)
+ Converged 3rd order P3 pole: -0.55043D+00 au  -14.978 eV  0.928 (PS)
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A) (A) (B) (A) (B) (B) (A) (A) (B) (A) (B) (B)
+                 (A) (A) (B) (A) (B) (A) (B) (A) (B) (A) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A) (B)
+       Virtual   (A) (B) (A) (B) (A) (A) (A) (B) (A) (B) (A) (B)
+                 (B) (A) (B) (B) (A) (A) (A) (B) (A) (B) (B) (B)
+                 (A) (A) (B) (A) (B) (A) (A) (B) (B) (A) (A) (B)
+                 (B) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A)
+                 (B) (B) (A) (A) (B) (A) (B) (B) (A) (A) (B) (A)
+                 (B) (B) (A) (A) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (B) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (A) (A) (B) (B) (A) (A) (B) (A) (B)
+                 (B) (B) (A) (B) (A) (A) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (A) (B) (A) (B) (B) (A) (B) (A) (A) (B)
+                 (B) (A) (A) (A) (B) (B) (A) (B) (B) (A) (B) (A)
+                 (A) (B) (B) (A) (B) (A) (B) (A) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (B) (A) (B) (A) (A) (A) (B) (B) (A) (B) (B) (A)
+                 (A) (A) (B) (B) (A) (A)
+ Beta  Orbitals:
+       Occupied  (A) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (A) (B) (B) (A) (A) (B) (A) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A)
+       Virtual   (B) (B) (A) (A) (B) (A) (A) (B) (A) (B) (A) (A)
+                 (B) (B) (A) (B) (B) (A) (A) (B) (A) (A) (B) (B)
+                 (B) (A) (A) (B) (A) (B) (A) (B) (A) (B) (A) (A)
+                 (B) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (A) (B) (A) (B) (A) (B) (A) (B) (A) (B)
+                 (A) (B) (B) (A) (A) (B) (A) (A) (B) (A) (B) (A)
+                 (B) (A) (B) (B) (A) (A) (B) (A) (B) (A) (B) (B)
+                 (A) (B) (A) (B) (A) (A) (B) (B) (A) (A) (B) (A)
+                 (B) (B) (A) (B) (B) (A) (A) (A) (B) (A) (B) (A)
+                 (B) (B) (A) (A) (B) (A) (B) (B) (A) (B) (A) (A)
+                 (B) (B) (A) (A) (A) (B) (B) (A) (B) (B) (A) (B)
+                 (A) (A) (B) (B) (A) (B) (A) (B) (A) (A) (B) (A)
+                 (B) (A) (B) (B) (A) (A) (B) (A) (B) (A) (B) (A)
+                 (B) (B) (A) (B) (A) (A) (A) (B) (B) (A) (B) (B)
+                 (A) (A) (A) (B) (B) (A) (A)
+ The electronic state is 2-B.
+ Alpha  occ. eigenvalues -- -353.55562 -44.59474 -39.18665 -39.18655 -39.18489
+ Alpha  occ. eigenvalues --  -11.44410 -11.44410 -11.38980 -11.38980  -5.87968
+ Alpha  occ. eigenvalues --   -4.09171  -4.08360  -4.08342  -1.22211  -1.21076
+ Alpha  occ. eigenvalues --   -1.06668  -1.03333  -1.03183  -1.02756  -1.02732
+ Alpha  occ. eigenvalues --   -1.02388  -0.98977  -0.79007  -0.78403  -0.76582
+ Alpha  occ. eigenvalues --   -0.76265  -0.69970  -0.69909  -0.66920  -0.66739
+ Alpha  occ. eigenvalues --   -0.64224  -0.61644
+ Alpha virt. eigenvalues --   -0.09906  -0.08471  -0.08026  -0.04067  -0.03515
+ Alpha virt. eigenvalues --   -0.01267  -0.01047  -0.00805  -0.00499  -0.00452
+ Alpha virt. eigenvalues --   -0.00251   0.00574   0.01603   0.03193   0.03207
+ Alpha virt. eigenvalues --    0.05025   0.05385   0.06483   0.07058   0.08426
+ Alpha virt. eigenvalues --    0.13436   0.13459   0.14468   0.14730   0.15756
+ Alpha virt. eigenvalues --    0.18154   0.18686   0.19865   0.20391   0.20573
+ Alpha virt. eigenvalues --    0.22194   0.22499   0.24714   0.24748   0.26435
+ Alpha virt. eigenvalues --    0.28210   0.32538   0.32754   0.35092   0.37690
+ Alpha virt. eigenvalues --    0.38720   0.40232   0.42316   0.42611   0.45315
+ Alpha virt. eigenvalues --    0.46325   0.50142   0.51072   0.59130   0.60127
+ Alpha virt. eigenvalues --    0.61344   0.63927   0.65639   0.66735   0.67262
+ Alpha virt. eigenvalues --    0.68083   0.70039   0.71342   0.72877   0.73040
+ Alpha virt. eigenvalues --    0.74831   0.78036   0.78717   0.88264   0.90335
+ Alpha virt. eigenvalues --    0.90573   0.99660   1.02040   1.08794   1.10870
+ Alpha virt. eigenvalues --    1.19424   1.24705   1.33225   1.34563   1.44273
+ Alpha virt. eigenvalues --    1.48420   1.49885   1.57152   1.57445   1.57513
+ Alpha virt. eigenvalues --    1.62463   1.62796   1.63816   1.64352   1.65496
+ Alpha virt. eigenvalues --    1.66096   1.69875   1.70899   1.73537   1.76762
+ Alpha virt. eigenvalues --    1.79037   1.82081   1.85022   1.88222   1.90699
+ Alpha virt. eigenvalues --    1.93958   1.95266   1.96729   1.97040   2.05922
+ Alpha virt. eigenvalues --    2.06456   2.11061   2.15012   2.18466   2.19251
+ Alpha virt. eigenvalues --    2.22428   2.23460   2.25964   2.26211   2.26887
+ Alpha virt. eigenvalues --    2.37332   2.38118   2.40947   2.43386   2.47930
+ Alpha virt. eigenvalues --    2.48671   2.62259   2.62738   2.63716   2.66761
+ Alpha virt. eigenvalues --    2.70215   2.71131   2.72904   2.75175   2.75407
+ Alpha virt. eigenvalues --    2.76888   2.77285   2.77735   2.79210   2.80823
+ Alpha virt. eigenvalues --    2.81877   2.82840   2.90399   2.91309   2.99533
+ Alpha virt. eigenvalues --    3.01301   3.16955   3.32900   3.45871   3.63120
+ Alpha virt. eigenvalues --    3.92159   3.93827   4.02252   4.02308   4.02416
+ Alpha virt. eigenvalues --    4.02511   4.36798   4.39902   4.52413   4.52413
+ Alpha virt. eigenvalues --    4.53064   4.53376   4.57699   4.57822   4.73408
+ Alpha virt. eigenvalues --    4.80852   8.39512   8.40595   8.48738   8.51788
+ Alpha virt. eigenvalues --    8.77847  10.91716  10.95111  11.19771  24.79071
+ Alpha virt. eigenvalues --   24.80036  24.93762  24.93942  35.65077  45.92552
+ Alpha virt. eigenvalues --   45.95082  46.13932 190.65394 986.24586
+  Beta  occ. eigenvalues -- -353.55572 -44.59537 -39.18633 -39.18624 -39.18243
+  Beta  occ. eigenvalues --  -11.42914 -11.42913 -11.39042 -11.39042  -5.88105
+  Beta  occ. eigenvalues --   -4.08555  -4.08540  -4.08189  -1.18588  -1.17833
+  Beta  occ. eigenvalues --   -1.04295  -1.03094  -1.02874  -1.02868  -1.02768
+  Beta  occ. eigenvalues --   -0.99230  -0.97290  -0.78048  -0.77499  -0.72721
+  Beta  occ. eigenvalues --   -0.72428  -0.68851  -0.68757  -0.66452  -0.66245
+  Beta  occ. eigenvalues --   -0.53103
+  Beta virt. eigenvalues --   -0.23218  -0.09468  -0.09182  -0.08902  -0.03914
+  Beta virt. eigenvalues --   -0.02350  -0.01183  -0.00986  -0.00773  -0.00396
+  Beta virt. eigenvalues --   -0.00389   0.00460   0.00590   0.01652   0.03245
+  Beta virt. eigenvalues --    0.03265   0.05001   0.05543   0.06458   0.08482
+  Beta virt. eigenvalues --    0.09718   0.13611   0.13677   0.15088   0.15578
+  Beta virt. eigenvalues --    0.16155   0.17862   0.19317   0.20171   0.20541
+  Beta virt. eigenvalues --    0.20936   0.22720   0.22934   0.25051   0.25204
+  Beta virt. eigenvalues --    0.27065   0.28712   0.32367   0.33029   0.35854
+  Beta virt. eigenvalues --    0.37933   0.40109   0.40268   0.42524   0.45570
+  Beta virt. eigenvalues --    0.46051   0.46696   0.50486   0.51346   0.59438
+  Beta virt. eigenvalues --    0.61877   0.63465   0.65095   0.66982   0.67268
+  Beta virt. eigenvalues --    0.68097   0.70558   0.70578   0.71710   0.72912
+  Beta virt. eigenvalues --    0.73691   0.76019   0.78563   0.79034   0.89583
+  Beta virt. eigenvalues --    0.90691   0.92207   1.01071   1.03689   1.10320
+  Beta virt. eigenvalues --    1.12239   1.19884   1.25132   1.33639   1.35506
+  Beta virt. eigenvalues --    1.45901   1.50164   1.53197   1.57723   1.57772
+  Beta virt. eigenvalues --    1.60004   1.63033   1.63251   1.64797   1.65538
+  Beta virt. eigenvalues --    1.66631   1.67503   1.70234   1.71241   1.73881
+  Beta virt. eigenvalues --    1.77762   1.79214   1.82808   1.85210   1.88732
+  Beta virt. eigenvalues --    1.91702   1.94442   1.95076   1.96650   1.97515
+  Beta virt. eigenvalues --    2.07143   2.07220   2.12062   2.15698   2.18418
+  Beta virt. eigenvalues --    2.19162   2.22981   2.24061   2.26430   2.27478
+  Beta virt. eigenvalues --    2.27481   2.38379   2.38999   2.41395   2.43876
+  Beta virt. eigenvalues --    2.48723   2.49419   2.62654   2.63114   2.63819
+  Beta virt. eigenvalues --    2.66880   2.71171   2.72273   2.73193   2.75433
+  Beta virt. eigenvalues --    2.75595   2.77490   2.77607   2.77963   2.79893
+  Beta virt. eigenvalues --    2.81433   2.82228   2.83453   2.90605   2.91513
+  Beta virt. eigenvalues --    2.99890   3.01625   3.20140   3.33856   3.46960
+  Beta virt. eigenvalues --    3.65931   3.93181   3.94839   4.02403   4.02429
+  Beta virt. eigenvalues --    4.02490   4.02604   4.37405   4.40548   4.52303
+  Beta virt. eigenvalues --    4.52304   4.52959   4.53272   4.57663   4.57813
+  Beta virt. eigenvalues --    4.73281   4.81202   8.39446   8.40535   8.48805
+  Beta virt. eigenvalues --    8.51852   8.78175  10.91561  10.94959  11.20325
+  Beta virt. eigenvalues --   24.80063  24.81015  24.93780  24.93948  35.64989
+  Beta virt. eigenvalues --   45.92515  45.95046  46.14291 190.65356 986.24529
+          Condensed to atoms (all electrons):
+               1          2          3          4          5          6
+     1  Zn  29.638914  -0.060802  -0.073546  -0.024642  -0.032687   0.020895
+     2  C   -0.060802   5.841731   0.170233   0.417523   0.433027  -0.056990
+     3  C   -0.073546   0.170233   5.133654  -0.042968  -0.047639   0.419255
+     4  H   -0.024642   0.417523  -0.042968   0.459227  -0.027483  -0.003127
+     5  H   -0.032687   0.433027  -0.047639  -0.027483   0.459774  -0.003140
+     6  H    0.020895  -0.056990   0.419255  -0.003127  -0.003140   0.464887
+     7  H   -0.016599  -0.019638   0.410617  -0.006085   0.005194  -0.018499
+     8  H   -0.012356  -0.032903   0.417843   0.005181  -0.006002  -0.018533
+     9  C   -0.060802  -0.255045   0.001832   0.004056  -0.001139  -0.000310
+    10  C   -0.073546   0.001832  -0.004862  -0.000271   0.001893  -0.000066
+    11  H   -0.024642   0.004056  -0.000271  -0.000041   0.000023   0.000000
+    12  H   -0.032687  -0.001139   0.001893   0.000023   0.000029   0.000000
+    13  H    0.020895  -0.000310  -0.000066   0.000000   0.000000   0.000000
+    14  H   -0.016599  -0.001530   0.000614   0.000022  -0.000001   0.000000
+    15  H   -0.012356   0.001317  -0.000265  -0.000002  -0.000009   0.000000
+               7          8          9         10         11         12
+     1  Zn  -0.016599  -0.012356  -0.060802  -0.073546  -0.024642  -0.032687
+     2  C   -0.019638  -0.032903  -0.255045   0.001832   0.004056  -0.001139
+     3  C    0.410617   0.417843   0.001832  -0.004862  -0.000271   0.001893
+     4  H   -0.006085   0.005181   0.004056  -0.000271  -0.000041   0.000023
+     5  H    0.005194  -0.006002  -0.001139   0.001893   0.000023   0.000029
+     6  H   -0.018499  -0.018533  -0.000310  -0.000066   0.000000   0.000000
+     7  H    0.521233  -0.032685  -0.001530   0.000614   0.000022  -0.000001
+     8  H   -0.032685   0.520739   0.001317  -0.000265  -0.000002  -0.000009
+     9  C   -0.001530   0.001317   5.841731   0.170233   0.417523   0.433027
+    10  C    0.000614  -0.000265   0.170233   5.133654  -0.042968  -0.047639
+    11  H    0.000022  -0.000002   0.417523  -0.042968   0.459227  -0.027483
+    12  H   -0.000001  -0.000009   0.433027  -0.047639  -0.027483   0.459774
+    13  H    0.000000   0.000000  -0.056990   0.419255  -0.003127  -0.003140
+    14  H   -0.000002   0.000000  -0.019638   0.410617  -0.006085   0.005194
+    15  H    0.000000   0.000001  -0.032903   0.417843   0.005181  -0.006002
+              13         14         15
+     1  Zn   0.020895  -0.016599  -0.012356
+     2  C   -0.000310  -0.001530   0.001317
+     3  C   -0.000066   0.000614  -0.000265
+     4  H    0.000000   0.000022  -0.000002
+     5  H    0.000000  -0.000001  -0.000009
+     6  H    0.000000   0.000000   0.000000
+     7  H    0.000000  -0.000002   0.000000
+     8  H    0.000000   0.000000   0.000001
+     9  C   -0.056990  -0.019638  -0.032903
+    10  C    0.419255   0.410617   0.417843
+    11  H   -0.003127  -0.006085   0.005181
+    12  H   -0.003140   0.005194  -0.006002
+    13  H    0.464887  -0.018499  -0.018533
+    14  H   -0.018499   0.521233  -0.032685
+    15  H   -0.018533  -0.032685   0.520739
+          Atomic-Atomic Spin Densities.
+               1          2          3          4          5          6
+     1  Zn  -0.494782   0.094758   0.024353   0.011752   0.012150  -0.008662
+     2  C    0.094758   0.760845  -0.038392  -0.014524  -0.014396  -0.005892
+     3  C    0.024353  -0.038392  -0.032731  -0.001059  -0.001256   0.018446
+     4  H    0.011752  -0.014524  -0.001059  -0.018814   0.001902  -0.000744
+     5  H    0.012150  -0.014396  -0.001256   0.001902  -0.019347  -0.000717
+     6  H   -0.008662  -0.005892   0.018446  -0.000744  -0.000717   0.046646
+     7  H    0.002643  -0.002664   0.001277   0.000314  -0.000035  -0.002156
+     8  H    0.002613  -0.002849   0.001428  -0.000024   0.000330  -0.002182
+     9  C    0.094758  -0.149513  -0.005131   0.001911   0.001964  -0.000679
+    10  C    0.024353  -0.005131  -0.000971   0.000042  -0.000042  -0.000008
+    11  H    0.011752   0.001911   0.000042  -0.000018  -0.000004   0.000001
+    12  H    0.012150   0.001964  -0.000042  -0.000004  -0.000014   0.000002
+    13  H   -0.008662  -0.000679  -0.000008   0.000001   0.000002   0.000000
+    14  H    0.002643   0.000463   0.000020  -0.000003  -0.000006   0.000000
+    15  H    0.002613   0.000497   0.000023  -0.000003  -0.000003   0.000000
+               7          8          9         10         11         12
+     1  Zn   0.002643   0.002613   0.094758   0.024353   0.011752   0.012150
+     2  C   -0.002664  -0.002849  -0.149513  -0.005131   0.001911   0.001964
+     3  C    0.001277   0.001428  -0.005131  -0.000971   0.000042  -0.000042
+     4  H    0.000314  -0.000024   0.001911   0.000042  -0.000018  -0.000004
+     5  H   -0.000035   0.000330   0.001964  -0.000042  -0.000004  -0.000014
+     6  H   -0.002156  -0.002182  -0.000679  -0.000008   0.000001   0.000002
+     7  H    0.004943   0.000225   0.000463   0.000020  -0.000003  -0.000006
+     8  H    0.000225   0.005001   0.000497   0.000023  -0.000003  -0.000003
+     9  C    0.000463   0.000497   0.760845  -0.038392  -0.014524  -0.014396
+    10  C    0.000020   0.000023  -0.038392  -0.032731  -0.001059  -0.001256
+    11  H   -0.000003  -0.000003  -0.014524  -0.001059  -0.018814   0.001902
+    12  H   -0.000006  -0.000003  -0.014396  -0.001256   0.001902  -0.019347
+    13  H    0.000000   0.000000  -0.005892   0.018446  -0.000744  -0.000717
+    14  H    0.000000   0.000000  -0.002664   0.001277   0.000314  -0.000035
+    15  H    0.000000  -0.000001  -0.002849   0.001428  -0.000024   0.000330
+              13         14         15
+     1  Zn  -0.008662   0.002643   0.002613
+     2  C   -0.000679   0.000463   0.000497
+     3  C   -0.000008   0.000020   0.000023
+     4  H    0.000001  -0.000003  -0.000003
+     5  H    0.000002  -0.000006  -0.000003
+     6  H    0.000000   0.000000   0.000000
+     7  H    0.000000   0.000000   0.000000
+     8  H    0.000000   0.000000  -0.000001
+     9  C   -0.005892  -0.002664  -0.002849
+    10  C    0.018446   0.001277   0.001428
+    11  H   -0.000744   0.000314  -0.000024
+    12  H   -0.000717  -0.000035   0.000330
+    13  H    0.046646  -0.002156  -0.002182
+    14  H   -0.002156   0.004943   0.000225
+    15  H   -0.002182   0.000225   0.005001
+ Mulliken charges and spin densities:
+               1          2
+     1  Zn   0.760561  -0.215569
+     2  C   -0.441362   0.626397
+     3  C   -0.386325  -0.034001
+     4  H    0.218587  -0.019270
+     5  H    0.218160  -0.019473
+     6  H    0.195627   0.044054
+     7  H    0.157359   0.005022
+     8  H    0.157673   0.005056
+     9  C   -0.441362   0.626397
+    10  C   -0.386325  -0.034001
+    11  H    0.218587  -0.019270
+    12  H    0.218160  -0.019473
+    13  H    0.195627   0.044054
+    14  H    0.157359   0.005022
+    15  H    0.157673   0.005056
+ Sum of Mulliken charges =   1.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  Zn   0.760561  -0.215569
+     2  C   -0.004615   0.587654
+     3  C    0.124334   0.020131
+     9  C   -0.004615   0.587654
+    10  C    0.124334   0.020131
+ Electronic spatial extent (au):  <R**2>=            937.3346
+ Charge=              1.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.1737  Tot=              0.1737
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=            -35.0838   YY=            -19.7641   ZZ=            -36.8229
+   XY=              3.6348   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=             -4.5269   YY=             10.7929   ZZ=             -6.2659
+   XY=              3.6348   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=              3.7808  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.4357  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=             -0.0538  XYZ=             -1.1079
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=           -227.3510 YYYY=           -757.1937 ZZZZ=            -66.4595 XXXY=           -141.5993
+ XXXZ=              0.0000 YYYX=           -108.8261 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=           -171.5455 XXZZ=            -46.6978 YYZZ=           -163.7124
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=            -51.9632
+ N-N= 3.207392817687D+02 E-N=-5.254908293395D+03  KE= 1.935473917733D+03
+ Symmetry A    KE= 1.417956956899D+03
+ Symmetry B    KE= 5.175169608340D+02
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-353.556 is Zn1-s=1.00
+ Alpha occ 2 OE=-44.595 is Zn1-s=1.00
+ Alpha occ 3 OE=-39.187 is Zn1-p=1.00
+ Alpha occ 4 OE=-39.187 is Zn1-p=1.00
+ Alpha occ 5 OE=-39.185 is Zn1-p=1.00
+ Alpha occ 6 OE=-11.444 is C2-s=0.50 C9-s=0.50
+ Alpha occ 7 OE=-11.444 is C2-s=0.50 C9-s=0.50
+ Alpha occ 8 OE=-11.390 is C10-s=0.50 C3-s=0.50
+ Alpha occ 9 OE=-11.390 is C10-s=0.50 C3-s=0.50
+ Alpha occ 10 OE=-5.880 is Zn1-s=1.00
+ Alpha occ 11 OE=-4.092 is Zn1-p=1.00
+ Alpha occ 12 OE=-4.084 is Zn1-p=1.00
+ Alpha occ 13 OE=-4.083 is Zn1-p=1.00
+ Alpha occ 14 OE=-1.222 is C2-s=0.24 C9-s=0.24 C3-s=0.13 C10-s=0.13 Zn1-d=0.07 H11-s=0.02 H4-s=0.02 H5-s=0.02 H12-s=0.02 Zn1-s=0.02
+ Alpha occ 15 OE=-1.211 is C9-s=0.28 C2-s=0.28 C10-s=0.18 C3-s=0.18 Zn1-p=-0.08 H5-s=0.02 H12-s=0.02 H11-s=0.02 H4-s=0.02 H6-s=0.01 H13-s=0.01 C10-p=0.01 C3-p=0.01 H7-s=0.01 H14-s=0.01 H15-s=0.01 H8-s=
+ 0.01
+ Alpha occ 16 OE=-1.067 is Zn1-d=0.48 C10-s=0.13 C3-s=0.13 C9-p=0.03 C2-p=0.03 H13-s=0.02 H6-s=0.02 H15-s=0.02 H8-s=0.02 H14-s=0.02 H7-s=0.02 C9-s=0.02 C2-s=0.02
+ Alpha occ 17 OE=-1.033 is Zn1-d=0.90 C3-s=0.01 C10-s=0.01 C2-s=0.01 C9-s=0.01
+ Alpha occ 18 OE=-1.032 is Zn1-d=0.97
+ Alpha occ 19 OE=-1.028 is Zn1-d=0.95
+ Alpha occ 20 OE=-1.027 is Zn1-d=1.00
+ Alpha occ 21 OE=-1.024 is C3-s=0.15 C10-s=0.15 Zn1-d=0.13 C2-s=0.10 C9-s=0.10 H7-s=0.03 H14-s=0.03 H6-s=0.03 H13-s=0.03 C2-p=0.03 C9-p=0.03 H8-s=0.03 H15-s=0.03 H5-s=0.03 H12-s=0.03 H11-s=0.02 H4-s=0.
+ 02 C3-p=0.01 C10-p=0.01
+ Alpha occ 22 OE=-0.990 is Zn1-d=0.43 C2-s=0.08 C9-s=0.08 C10-s=0.06 C3-s=0.06 H11-s=0.03 H4-s=0.03 H12-s=0.03 H5-s=0.03 C2-p=0.02 C9-p=0.02 H8-s=0.02 H15-s=0.02 H7-s=0.02 H14-s=0.02 Zn1-s=0.01 H6-s=0.
+ 01 H13-s=0.01 C10-p=0.01 C3-p=0.01
+ Alpha occ 23 OE=-0.790 is C2-p=0.23 C9-p=0.23 C10-p=0.09 C3-p=0.09 H11-s=0.06 H4-s=0.06 H12-s=0.06 H5-s=0.06 H8-s=0.03 H15-s=0.03 H14-s=0.03 H7-s=0.03
+ Alpha occ 24 OE=-0.784 is C2-p=0.21 C9-p=0.21 C3-p=0.10 C10-p=0.10 H5-s=0.06 H12-s=0.06 H4-s=0.05 H11-s=0.05 H7-s=0.03 H14-s=0.03 H8-s=0.03 H15-s=0.03 Zn1-d=0.02
+ Alpha occ 25 OE=-0.766 is C3-p=0.17 C10-p=0.17 C9-p=0.14 C2-p=0.14 Zn1-s=0.11 H6-s=0.08 H13-s=0.08 Zn1-d=0.04 H5-s=0.01 H12-s=0.01 H14-s=0.01 H7-s=0.01
+ Alpha occ 26 OE=-0.763 is C10-p=0.19 C3-p=0.19 C9-p=0.17 C2-p=0.17 H13-s=0.09 H6-s=0.09 Zn1-p=0.03 H11-s=0.01 H4-s=0.01 H15-s=0.01 H8-s=0.01
+ Alpha occ 27 OE=-0.700 is C2-p=0.20 C9-p=0.20 C10-p=0.19 C3-p=0.19 H14-s=0.04 H7-s=0.04 H8-s=0.03 H15-s=0.03 C2-s=0.02 C9-s=0.02 H4-s=0.01 H11-s=0.01 H5-s=0.01 H12-s=0.01
+ Alpha occ 28 OE=-0.699 is C2-p=0.21 C9-p=0.21 C10-p=0.18 C3-p=0.18 H8-s=0.03 H15-s=0.03 Zn1-s=0.03 H14-s=0.02 H7-s=0.02 H12-s=0.01 H5-s=0.01 H11-s=0.01 H4-s=0.01 Zn1-d=0.01
+ Alpha occ 29 OE=-0.669 is C10-p=0.17 C3-p=0.17 H7-s=0.08 H14-s=0.08 H8-s=0.08 H15-s=0.08 C2-p=0.07 C9-p=0.07 H12-s=0.04 H5-s=0.04 H11-s=0.04 H4-s=0.04
+ Alpha occ 30 OE=-0.667 is C3-p=0.16 C10-p=0.16 H8-s=0.08 H15-s=0.08 H14-s=0.08 H7-s=0.08 C2-p=0.08 C9-p=0.08 H11-s=0.04 H4-s=0.04 H12-s=0.04 H5-s=0.04
+ Alpha occ 31 OE=-0.642 is Zn1-s=0.24 C2-p=0.14 C9-p=0.14 C10-p=0.11 C3-p=0.11 H6-s=0.08 H13-s=0.08 Zn1-d=0.02 H8-s=0.01 H15-s=0.01 H14-s=0.01 H7-s=0.01 C2-s=-0.01 C9-s=-0.01 H4-s=0.01 H11-s=0.01 H12-s
+ =0.01 H5-s=0.01
+ Alpha occ 32 OE=-0.616 is C9-p=0.24 C2-p=0.24 Zn1-p=0.12 C10-p=0.08 C3-p=0.08 H13-s=0.07 H6-s=0.07 H5-s=0.01 H12-s=0.01 H11-s=0.01 H4-s=0.01
+ Alpha vir 33 OE=-0.099 is Zn1-s=1.27 C9-s=-0.08 C2-s=-0.08 C10-s=-0.08 C3-s=-0.08 C3-p=0.01 C10-p=0.01 Zn1-d=0.01 C9-p=-0.01 C2-p=-0.01
+ Alpha vir 34 OE=-0.085 is Zn1-p=0.51 C9-p=0.29 C2-p=0.29 C3-p=0.11 C10-p=0.11 C10-s=-0.08 C3-s=-0.08 H7-s=-0.03 H14-s=-0.03 H15-s=-0.03 H8-s=-0.03 H12-s=-0.01 H5-s=-0.01
+ Alpha vir 35 OE=-0.080 is Zn1-p=0.82 C2-p=0.15 C9-p=0.15 H11-s=-0.03 H4-s=-0.03 C3-s=-0.02 C10-s=-0.02 H5-s=-0.02 H12-s=-0.02
+ Alpha vir 36 OE=-0.041 is C2-s=0.71 C9-s=0.71 Zn1-p=-0.64 C10-s=0.35 C3-s=0.35 C10-p=0.17 C3-p=0.17 H12-s=-0.11 H5-s=-0.11 C9-p=-0.10 C2-p=-0.10 H11-s=-0.09 H4-s=-0.09 H13-s=-0.09 H6-s=-0.09 H14-s=-0.
+ 01 H7-s=-0.01
+ Alpha vir 37 OE=-0.035 is C3-p=0.53 C10-p=0.53 C2-p=0.49 C9-p=0.49 C3-s=-0.28 C10-s=-0.28 Zn1-s=-0.22 C2-s=-0.09 C9-s=-0.09 H12-s=-0.03 H5-s=-0.03 H13-s=-0.02 H6-s=-0.02 H4-s=-0.01 H11-s=-0.01 H7-s=0.
+ 01 H14-s=0.01 Zn1-d=0.01 H8-s=0.01 H15-s=0.01
+ Alpha vir 38 OE=-0.013 is C2-p=0.74 C9-p=0.74 C10-p=0.34 C3-p=0.34 C2-s=-0.34 C9-s=-0.34 Zn1-s=-0.16 H8-s=-0.05 H15-s=-0.05 C3-s=-0.05 C10-s=-0.05 H4-s=-0.03 H11-s=-0.03 Zn1-p=-0.03 H14-s=-0.01 H7-s=-
+ 0.01
+ Alpha vir 39 OE=-0.010 is C2-p=0.84 C9-p=0.84 Zn1-s=-0.36 C10-s=-0.33 C3-s=-0.33 C9-s=0.25 C2-s=0.25 Zn1-p=-0.09 H11-s=-0.04 H4-s=-0.04 H14-s=-0.03 H7-s=-0.03 C10-p=0.03 C3-p=0.03
+ Alpha vir 40 OE=-0.008 is C10-p=0.70 C3-p=0.70 C3-s=-0.48 C10-s=-0.48 C9-p=0.29 C2-p=0.29 Zn1-p=0.15 H8-s=-0.07 H15-s=-0.07 C2-s=0.05 C9-s=0.05 H13-s=-0.05 H6-s=-0.05 H7-s=-0.04 H14-s=-0.04
+ Alpha vir 41 OE=-0.005 is C2-s=0.82 C9-s=0.82 C3-s=-0.48 C10-s=-0.48 C3-p=0.26 C10-p=0.26 C2-p=0.18 C9-p=0.18 Zn1-s=-0.14 H13-s=-0.10 H6-s=-0.10 H5-s=-0.06 H12-s=-0.06 H15-s=-0.03 H8-s=-0.03 H11-s=-0.
+ 02 H4-s=-0.02
+ Alpha vir 42 OE=-0.005 is C3-p=0.39 C10-p=0.39 C9-p=0.26 C2-p=0.26 Zn1-p=-0.09 C2-s=0.07 C9-s=0.07 H14-s=-0.07 H7-s=-0.07 H4-s=-0.05 H11-s=-0.05 H8-s=-0.03 H15-s=-0.03 C10-s=-0.01 C3-s=-0.01 H5-s=-0.0
+ 1 H12-s=-0.01
+ Alpha vir 43 OE=-0.003 is C10-s=1.53 C3-s=1.53 C2-s=-0.59 C9-s=-0.59 Zn1-s=0.25 C2-p=-0.19 C9-p=-0.19 C3-p=-0.16 C10-p=-0.16 H14-s=-0.14 H7-s=-0.14 H13-s=-0.05 H6-s=-0.05 H8-s=-0.04 H15-s=-0.04
+ Alpha vir 44 OE=0.006 is C9-p=0.52 C2-p=0.52 Zn1-p=-0.18 C10-p=0.10 C3-p=0.10 H12-s=-0.04 H5-s=-0.04 H8-s=-0.03 H15-s=-0.03 Zn1-d=0.01 C10-s=0.01 C3-s=0.01
+ Alpha vir 45 OE=0.016 is Zn1-p=-2.91 C9-s=1.47 C2-s=1.47 C9-p=0.43 C2-p=0.43 C10-p=0.30 C3-p=0.30 C3-s=-0.07 C10-s=-0.07 H15-s=-0.06 H8-s=-0.06 H11-s=-0.04 H4-s=-0.04 H6-s=-0.03 H13-s=-0.03 H12-s=-0.0
+ 3 H5-s=-0.03 H14-s=-0.02 H7-s=-0.02
+ Alpha vir 46 OE=0.032 is C3-p=0.51 C10-p=0.51 C2-p=0.15 C9-p=0.15 Zn1-p=-0.09 H8-s=-0.05 H15-s=-0.05 H14-s=-0.03 H7-s=-0.03 H11-s=-0.03 H4-s=-0.03 H12-s=-0.02 H5-s=-0.02 Zn1-s=0.01
+ Alpha vir 47 OE=0.032 is C3-p=0.44 C10-p=0.44 C10-s=0.09 C3-s=0.09 C2-p=0.07 C9-p=0.07 H13-s=-0.06 H6-s=-0.06 H12-s=-0.03 H5-s=-0.03 Zn1-p=-0.02
+ Alpha vir 48 OE=0.050 is C2-s=-0.82 C9-s=-0.82 C9-p=0.62 C2-p=0.62 C10-s=0.33 C3-s=0.33 Zn1-p=0.29 C3-p=0.25 C10-p=0.25 H6-s=-0.01 H13-s=-0.01
+ Alpha vir 49 OE=0.054 is C9-s=0.70 C2-s=0.70 C10-p=0.21 C3-p=0.21 Zn1-s=-0.19 C9-p=-0.12 C2-p=-0.12 H5-s=-0.10 H12-s=-0.10 C10-s=-0.06 C3-s=-0.06 H11-s=-0.04 H4-s=-0.04 Zn1-d=-0.01
+ Alpha vir 50 OE=0.065 is C10-s=0.56 C3-s=0.56 C9-s=0.39 C2-s=0.39 C3-p=-0.18 C10-p=-0.18 C2-p=-0.13 C9-p=-0.13 H6-s=-0.07 H13-s=-0.07 H12-s=-0.04 H5-s=-0.04 H11-s=-0.03 H4-s=-0.03 H15-s=-0.01 H8-s=-0.
+ 01
+ Alpha vir 51 OE=0.071 is C10-s=0.66 C3-s=0.66 Zn1-s=0.53 C9-p=-0.31 C2-p=-0.31 C10-p=0.14 C3-p=0.14 H8-s=-0.10 H15-s=-0.10 H14-s=-0.08 H7-s=-0.08 Zn1-d=-0.06 H4-s=-0.04 H11-s=-0.04 C9-s=0.02 C2-s=0.02
+  H12-s=-0.02 H5-s=-0.02
+ Alpha vir 52 OE=0.084 is C10-s=1.78 C3-s=1.78 C3-p=-0.72 C10-p=-0.72 C2-p=-0.54 C9-p=-0.54 C9-s=0.15 C2-s=0.15 Zn1-p=0.12 H7-s=-0.09 H14-s=-0.09 H4-s=-0.07 H11-s=-0.07 H13-s=-0.03 H6-s=-0.03 H15-s=-0.
+ 03 H8-s=-0.03 H5-s=-0.02 H12-s=-0.02 Zn1-d=0.01
+ Alpha vir 53 OE=0.134 is Zn1-p=0.29 H8-s=0.11 H15-s=0.11 H7-s=0.10 H14-s=0.10 H5-s=0.09 H12-s=0.09 H11-s=0.08 H4-s=0.08 C9-p=-0.05 C2-p=-0.05 C10-p=0.01 C3-p=0.01
+ Alpha vir 54 OE=0.135 is H7-s=0.19 H14-s=0.19 H15-s=0.14 H8-s=0.14 Zn1-p=0.07 C10-p=-0.07 C3-p=-0.07 C9-p=0.06 C2-p=0.06 H11-s=0.06 H4-s=0.06 Zn1-d=0.04 C9-s=0.03 C2-s=0.03 H13-s=0.01 H6-s=0.01
+ Alpha vir 55 OE=0.145 is Zn1-p=1.09 C2-s=-0.47 C9-s=-0.47 H11-s=0.32 H4-s=0.32 C3-s=-0.07 C10-s=-0.07 H14-s=0.06 H7-s=0.06 H6-s=0.06 H13-s=0.06 H15-s=0.04 H8-s=0.04 H5-s=-0.01 H12-s=-0.01 Zn1-d=0.01 C
+ 2-p=-0.01 C9-p=-0.01
+ Alpha vir 56 OE=0.147 is Zn1-p=2.38 C2-s=-1.16 C9-s=-1.16 H5-s=0.35 H12-s=0.35 H13-s=0.08 H6-s=0.08 C9-p=-0.05 C2-p=-0.05 C3-p=0.04 C10-p=0.04 C10-s=0.03 C3-s=0.03 H8-s=0.02 H15-s=0.02 H4-s=-0.01 H11-
+ s=-0.01
+ Alpha vir 57 OE=0.158 is H13-s=0.34 H6-s=0.34 C10-s=-0.17 C3-s=-0.17 C2-p=0.09 C9-p=0.09 C9-s=0.09 C2-s=0.09 Zn1-s=0.07 H5-s=0.04 H12-s=0.04 Zn1-d=0.04 Zn1-p=0.01 H15-s=0.01 H8-s=0.01
+ Alpha vir 58 OE=0.182 is Zn1-p=0.37 H5-s=0.18 H12-s=0.18 H11-s=0.15 H4-s=0.15 C9-p=-0.11 C2-p=-0.11 Zn1-s=0.03 H14-s=0.02 H7-s=0.02 H6-s=0.02 H13-s=0.02 C10-p=0.02 C3-p=0.02 C2-s=0.01 C9-s=0.01
+ Alpha vir 59 OE=0.187 is Zn1-p=0.71 C10-p=-0.21 C3-p=-0.21 C10-s=0.19 C3-s=0.19 H12-s=0.08 H5-s=0.08 H13-s=0.08 H6-s=0.08 C9-s=-0.08 C2-s=-0.08 C2-p=0.03 C9-p=0.03 H8-s=0.02 H15-s=0.02
+ Alpha vir 60 OE=0.199 is Zn1-p=0.44 H8-s=0.23 H15-s=0.23 C10-p=-0.09 C3-p=-0.09 H14-s=0.09 H7-s=0.09 H12-s=0.05 H5-s=0.05 C2-p=-0.04 C9-p=-0.04 H4-s=0.02 H11-s=0.02 Zn1-d=0.02
+ Alpha vir 61 OE=0.204 is Zn1-p=1.70 C10-s=-0.55 C3-s=-0.55 C9-s=-0.42 C2-s=-0.42 H8-s=0.35 H15-s=0.35 H7-s=0.33 H14-s=0.33 C10-p=-0.06 C3-p=-0.06 C2-p=-0.03 C9-p=-0.03 Zn1-d=0.02
+ Alpha vir 62 OE=0.206 is C2-s=-0.53 C9-s=-0.53 H4-s=0.42 H11-s=0.42 H5-s=0.29 H12-s=0.29 C10-p=0.18 C3-p=0.18 C10-s=-0.11 C3-s=-0.11 H14-s=0.08 H7-s=0.08 Zn1-s=0.07 C2-p=0.07 C9-p=0.07 H8-s=0.03 H15-s
+ =0.03 H13-s=0.02 H6-s=0.02 Zn1-d=0.01 Zn1-p=0.01
+ Alpha vir 63 OE=0.222 is H7-s=0.19 H14-s=0.19 C2-s=-0.14 C9-s=-0.14 H15-s=0.11 H8-s=0.11 Zn1-p=0.09 H6-s=0.08 H13-s=0.08 Zn1-s=0.08 C3-s=0.08 C10-s=0.08 Zn1-d=0.05 H11-s=0.04 H4-s=0.04
+ Alpha vir 64 OE=0.225 is C3-s=-1.19 C10-s=-1.19 H13-s=0.52 H6-s=0.52 C9-s=0.32 C2-s=0.32 C9-p=0.26 C2-p=0.26 Zn1-p=0.17 C10-p=0.14 C3-p=0.14 H4-s=0.11 H11-s=0.11 H12-s=0.10 H5-s=0.10 H14-s=0.07 H7-s=0
+ .07 H8-s=0.07 H15-s=0.07 Zn1-d=0.01
+ Alpha vir 65 OE=0.247 is Zn1-p=0.55 C2-p=-0.46 C9-p=-0.46 C3-s=0.19 C10-s=0.19 H4-s=0.16 H11-s=0.16 H5-s=0.15 H12-s=0.15 H8-s=0.07 H15-s=0.07 H6-s=0.03 H13-s=0.03 C3-p=0.03 C10-p=0.03 H7-s=0.03 H14-s=
+ 0.03 C9-s=0.02 C2-s=0.02
+ Alpha vir 66 OE=0.247 is C10-s=-0.81 C3-s=-0.81 C2-s=0.42 C9-s=0.42 C2-p=0.19 C9-p=0.19 C10-p=0.19 C3-p=0.19 H13-s=0.17 H6-s=0.17 H15-s=0.16 H8-s=0.16 H14-s=0.16 H7-s=0.16 Zn1-d=0.01 Zn1-s=-0.01
+ Alpha vir 67 OE=0.264 is Zn1-s=1.59 C9-s=-0.37 C2-s=-0.37 C9-p=-0.24 C2-p=-0.24 H5-s=0.09 H12-s=0.09 H7-s=0.09 H14-s=0.09 H15-s=0.08 H8-s=0.08 C10-p=-0.07 C3-p=-0.07 Zn1-d=0.05 H11-s=0.05 H4-s=0.05 H6
+ -s=0.03 H13-s=0.03 C3-s=0.01 C10-s=0.01
+ Alpha vir 68 OE=0.282 is C2-s=0.43 C9-s=0.43 C3-s=-0.23 C10-s=-0.23 C3-p=0.17 C10-p=0.17 Zn1-d=0.14 C9-p=-0.04 C2-p=-0.04 H8-s=0.03 H15-s=0.03 H7-s=0.03 H14-s=0.03 H5-s=0.02 H12-s=0.02 H4-s=0.01 H11-s
+ =0.01
+ Alpha vir 69 OE=0.325 is Zn1-d=0.65 C10-s=-0.11 C3-s=-0.11 Zn1-p=0.10 C9-s=0.05 C2-s=0.05 C3-p=0.05 C10-p=0.05 H8-s=0.05 H15-s=0.05 H4-s=0.04 H11-s=0.04 C9-p=0.03 C2-p=0.03
+ Alpha vir 70 OE=0.328 is Zn1-d=0.59 H6-s=0.13 H13-s=0.13 C3-p=-0.07 C10-p=-0.07 H7-s=0.06 H14-s=0.06 H5-s=0.04 H12-s=0.04 H15-s=0.03 H8-s=0.03 C9-p=-0.02 C2-p=-0.02 Zn1-s=-0.01
+ Alpha vir 71 OE=0.351 is Zn1-d=0.47 C2-p=-0.20 C9-p=-0.20 H5-s=0.19 H12-s=0.19 H11-s=0.18 H4-s=0.18 C3-p=0.06 C10-p=0.06 H15-s=0.01 H8-s=0.01 H13-s=0.01 H6-s=0.01
+ Alpha vir 72 OE=0.377 is Zn1-d=0.49 C3-s=-0.20 C10-s=-0.20 C3-p=0.14 C10-p=0.14 C9-s=0.10 C2-s=0.10 H13-s=0.08 H6-s=0.08 Zn1-s=0.06 H14-s=0.05 H7-s=0.05 H8-s=0.03 H15-s=0.03 H11-s=0.03 H4-s=0.03 C9-p=
+ -0.03 C2-p=-0.03 Zn1-p=0.02
+ Alpha vir 73 OE=0.387 is Zn1-p=0.32 C10-s=0.20 C3-s=0.20 C9-s=-0.12 C2-s=-0.12 C3-p=0.11 C10-p=0.11 C2-p=0.08 C9-p=0.08 H4-s=0.06 H11-s=0.06
+ Alpha vir 74 OE=0.402 is Zn1-d=0.17 H15-s=0.15 H8-s=0.15 C3-s=-0.10 C10-s=-0.10 C10-p=0.08 C3-p=0.08 H5-s=0.07 H12-s=0.07 C2-s=0.07 C9-s=0.07 H14-s=0.07 H7-s=0.07 C9-p=0.03 C2-p=0.03 Zn1-p=0.02 Zn1-s=
+ 0.02 H4-s=0.01 H11-s=0.01
+ Alpha vir 75 OE=0.423 is H14-s=0.21 H7-s=0.21 Zn1-d=0.16 C2-s=-0.09 C9-s=-0.09 C10-p=0.08 C3-p=0.08 C9-p=0.07 C2-p=0.07 H15-s=0.06 H8-s=0.06 Zn1-p=0.05 C3-s=0.02 C10-s=0.02 H5-s=0.01 H12-s=0.01
+ Alpha vir 76 OE=0.426 is C9-p=0.50 C2-p=0.50 Zn1-s=-0.28 Zn1-d=0.21 C2-s=-0.18 C9-s=-0.18 H4-s=0.07 H11-s=0.07 C3-p=0.05 C10-p=0.05 H12-s=0.05 H5-s=0.05 H8-s=0.01 H15-s=0.01
+ Alpha vir 77 OE=0.453 is C10-p=0.19 C3-p=0.19 C9-p=0.18 C2-p=0.18 H8-s=0.10 H15-s=0.10 C3-s=-0.07 C10-s=-0.07 H13-s=0.06 H6-s=0.06 H7-s=0.04 H14-s=0.04 C9-s=-0.02 C2-s=-0.02 Zn1-p=-0.01 C2-d=0.01 C9-d
+ =0.01
+ Alpha vir 78 OE=0.463 is C9-p=0.21 C2-p=0.21 C10-p=0.16 C3-p=0.16 C10-s=0.12 C3-s=0.12 C9-s=-0.10 C2-s=-0.10 Zn1-d=0.10 Zn1-s=-0.05 H7-s=0.03 H14-s=0.03 H13-s=0.02 H6-s=0.02 H4-s=0.01 H11-s=0.01
+ Alpha vir 79 OE=0.501 is C9-p=0.17 C2-p=0.17 H6-s=0.14 H13-s=0.14 Zn1-p=0.14 C10-p=0.14 C3-p=0.14 C10-s=-0.12 C3-s=-0.12 C9-s=0.06 C2-s=0.06 H5-s=0.04 H12-s=0.04
+ Alpha vir 80 OE=0.511 is C9-p=0.15 C2-p=0.15 C10-p=0.11 C3-p=0.11 H11-s=0.11 H4-s=0.11 Zn1-p=0.11 H12-s=0.06 H5-s=0.06 C3-s=-0.02 C10-s=-0.02
+ Alpha vir 81 OE=0.591 is Zn1-d=0.32 C10-p=0.18 C3-p=0.18 C2-p=0.17 C9-p=0.17 Zn1-p=0.04 H7-s=-0.03 H14-s=-0.03 H11-s=-0.02 H4-s=-0.02 C3-d=0.02 C10-d=0.02 H15-s=-0.01 H8-s=-0.01 C9-s=-0.01 C2-s=-0.01
+ Alpha vir 82 OE=0.601 is C2-p=0.29 C9-p=0.29 Zn1-p=0.09 C2-s=0.06 C9-s=0.06 C10-s=0.05 C3-s=0.05 H7-s=0.04 H14-s=0.04 H15-s=0.03 H8-s=0.03
+ Alpha vir 83 OE=0.613 is Zn1-d=0.35 C3-p=0.10 C10-p=0.10 H6-s=0.09 H13-s=0.09 Zn1-s=0.07 C9-s=0.07 C2-s=0.07 C9-p=0.02 C2-p=0.02 C9-d=0.01 C2-d=0.01
+ Alpha vir 84 OE=0.639 is C2-p=0.22 C9-p=0.22 C3-p=0.13 C10-p=0.13 H6-s=0.08 H13-s=0.08 C3-s=0.04 C10-s=0.04 Zn1-d=-0.03 H15-s=0.02 H8-s=0.02 Zn1-s=-0.02 C2-s=0.01 C9-s=0.01 H7-s=0.01 H14-s=0.01 H5-s=-
+ 0.01 H12-s=-0.01 H4-s=0.01 H11-s=0.01
+ Alpha vir 85 OE=0.656 is C2-p=0.40 C9-p=0.40 H11-s=0.03 H4-s=0.03 H12-s=0.03 H5-s=0.03 C10-p=0.03 C3-p=0.03 C3-s=0.01 C10-s=0.01 H8-s=-0.01 H15-s=-0.01 C2-d=0.01 C9-d=0.01 Zn1-d=-0.01
+ Alpha vir 86 OE=0.667 is C9-p=0.37 C2-p=0.37 C10-p=0.16 C3-p=0.16 H4-s=-0.03 H11-s=-0.03 H14-s=0.02 H7-s=0.02 Zn1-p=-0.02 H15-s=-0.02 H8-s=-0.02 H12-s=-0.01 H5-s=-0.01
+ Alpha vir 87 OE=0.673 is C2-p=0.44 C9-p=0.44 C9-s=-0.11 C2-s=-0.11 C10-s=0.06 C3-s=0.06 H13-s=0.04 H6-s=0.04 C10-p=0.03 C3-p=0.03 Zn1-p=0.03 H8-s=0.01 H15-s=0.01
+ Alpha vir 88 OE=0.681 is C10-p=0.28 C3-p=0.28 H7-s=0.06 H14-s=0.06 H15-s=0.04 H8-s=0.04 C9-p=0.04 C2-p=0.04 Zn1-d=0.03 H5-s=0.02 H12-s=0.02 H11-s=0.01 H4-s=0.01
+ Alpha vir 89 OE=0.700 is C10-p=0.26 C3-p=0.26 C9-p=0.10 C2-p=0.10 H15-s=0.07 H8-s=0.07 H12-s=0.05 H5-s=0.05 Zn1-s=-0.02
+ Alpha vir 90 OE=0.713 is C10-p=0.37 C3-p=0.37 C2-p=0.10 C9-p=0.10 H14-s=0.06 H7-s=0.06 H6-s=-0.04 H13-s=-0.04 Zn1-s=-0.04 Zn1-d=-0.01 H15-s=0.01 H8-s=0.01
+ Alpha vir 91 OE=0.729 is C10-p=0.42 C3-p=0.42 Zn1-p=0.29 C9-s=-0.14 C2-s=-0.14 H15-s=0.07 H8-s=0.07 C3-s=-0.07 C10-s=-0.07 H6-s=-0.06 H13-s=-0.06 H14-s=0.06 H7-s=0.06 C2-p=0.06 C9-p=0.06 H12-s=-0.01 H
+ 5-s=-0.01 H11-s=0.01 H4-s=0.01
+ Alpha vir 92 OE=0.730 is C2-s=-0.55 C9-s=-0.55 C3-s=0.26 C10-s=0.26 Zn1-s=0.24 H4-s=0.22 H11-s=0.22 H5-s=0.19 H12-s=0.19 C2-p=0.17 C9-p=0.17 C3-p=0.06 C10-p=0.06 Zn1-d=-0.03 H8-s=0.02 H15-s=0.02 H14-s
+ =0.02 H7-s=0.02
+ Alpha vir 93 OE=0.748 is C2-p=0.30 C9-p=0.30 C2-s=-0.13 C9-s=-0.13 H11-s=0.11 H4-s=0.11 H12-s=0.09 H5-s=0.09 Zn1-p=0.06 H6-s=0.04 H13-s=0.04 C10-p=0.04 C3-p=0.04 C3-s=-0.02 C10-s=-0.02
+ Alpha vir 94 OE=0.780 is Zn1-p=-0.38 C10-p=0.34 C3-p=0.34 C2-s=0.32 C9-s=0.32 C3-s=-0.22 C10-s=-0.22 H13-s=0.08 H6-s=0.08 H14-s=0.06 H7-s=0.06 H8-s=0.06 H15-s=0.06 H12-s=0.02 H5-s=0.02
+ Alpha vir 95 OE=0.787 is C9-s=0.33 C2-s=0.33 C3-s=-0.30 C10-s=-0.30 C3-p=0.26 C10-p=0.26 Zn1-s=-0.15 H7-s=0.09 H14-s=0.09 H15-s=0.08 H8-s=0.08 H6-s=0.07 H13-s=0.07 C2-p=0.05 C9-p=0.05 H11-s=-0.03 H4-s
+ =-0.03 Zn1-d=0.03 H5-s=-0.02 H12-s=-0.02
+ Alpha vir 96 OE=0.883 is Zn1-d=0.59 C2-s=0.24 C9-s=0.24 Zn1-s=-0.06 C2-p=0.04 C9-p=0.04 H4-s=-0.04 H11-s=-0.04 H5-s=-0.04 H12-s=-0.04 C10-s=0.03 C3-s=0.03 C9-d=0.01 C2-d=0.01
+ Alpha vir 97 OE=0.903 is C3-s=0.54 C10-s=0.54 Zn1-d=0.32 Zn1-s=0.08 H8-s=-0.07 H15-s=-0.07 H7-s=-0.07 H14-s=-0.07 H13-s=-0.06 H6-s=-0.06 H11-s=-0.04 H4-s=-0.04 H5-s=-0.03 H12-s=-0.03 C9-s=0.01 C2-s=0.
+ 01
+ Alpha vir 98 OE=0.906 is C3-s=1.00 C10-s=1.00 C2-s=-0.12 C9-s=-0.12 H14-s=-0.11 H7-s=-0.11 H8-s=-0.11 H15-s=-0.11 H13-s=-0.10 H6-s=-0.10 C2-p=-0.09 C9-p=-0.09 C10-p=0.02 C3-p=0.02 H12-s=-0.01 H5-s=-0.
+ 01
+ Alpha vir 99 OE=0.997 is C9-s=0.44 C2-s=0.44 C3-s=0.29 C10-s=0.29 C10-p=-0.08 C3-p=-0.08 C9-p=-0.05 C2-p=-0.05 H5-s=-0.03 H12-s=-0.03 Zn1-s=-0.03 H6-s=-0.02 H13-s=-0.02 H8-s=-0.02 H15-s=-0.02 H7-s=-0.
+ 02 H14-s=-0.02 H4-s=-0.02 H11-s=-0.02 C3-d=0.01 C10-d=0.01
+ Alpha vir 100 OE=1.020 is C2-s=0.60 C9-s=0.60 Zn1-p=-0.41 C2-d=0.06 C9-d=0.06 C10-d=0.06 C3-d=0.06 H4-s=-0.03 H11-s=-0.03 C3-s=0.02 C10-s=0.02 C3-p=-0.02 C10-p=-0.02 H5-s=-0.02 H12-s=-0.02 H7-p=0.02 H
+ 14-p=0.02 H15-p=0.02 H8-p=0.02 H6-s=-0.02 H13-s=-0.02 H6-p=0.01 H13-p=0.01
+ Alpha vir 101 OE=1.088 is C9-d=0.15 C2-d=0.15 C3-d=0.10 C10-d=0.10 H11-p=0.07 H4-p=0.07 H12-p=0.05 H5-p=0.05 H6-p=0.04 H13-p=0.04 H14-p=0.03 H7-p=0.03 H15-p=0.03 H8-p=0.03 Zn1-p=0.01 C9-s=0.01 C2-s=0.
+ 01 C3-s=0.01 C10-s=0.01
+ Alpha vir 102 OE=1.109 is C9-s=0.42 C2-s=0.42 Zn1-p=-0.37 C2-d=0.10 C9-d=0.10 C3-d=0.08 C10-d=0.08 H12-p=0.04 H5-p=0.04 H11-p=0.03 H4-p=0.03 H6-p=0.03 H13-p=0.03 H14-p=0.03 H7-p=0.03 H8-p=0.02 H15-p=0
+ .02 H11-s=-0.02 H4-s=-0.02 H5-s=-0.02 H12-s=-0.02 C10-p=-0.01 C3-p=-0.01 C9-p=-0.01 C2-p=-0.01
+ Alpha vir 103 OE=1.194 is C3-d=0.16 C10-d=0.16 Zn1-d=0.08 H13-p=0.08 H6-p=0.08 H8-p=0.05 H15-p=0.05 H14-p=0.04 H7-p=0.04 H5-p=0.04 H12-p=0.04 C2-d=0.04 C9-d=0.04 C10-p=0.03 C3-p=0.03 C9-p=0.01 C2-p=0.
+ 01
+ Alpha vir 104 OE=1.247 is C3-d=0.15 C10-d=0.15 H14-p=0.07 H7-p=0.07 Zn1-d=0.06 H8-p=0.05 H15-p=0.05 H4-p=0.05 H11-p=0.05 C2-d=0.05 C9-d=0.05 C2-p=0.04 C9-p=0.04 H5-p=0.03 H12-p=0.03 H6-p=0.03 H13-p=0.
+ 03
+ Alpha vir 105 OE=1.332 is H14-p=0.10 H7-p=0.10 H12-p=0.09 H5-p=0.09 H15-p=0.08 H8-p=0.08 C10-d=0.08 C3-d=0.08 H11-p=0.07 H4-p=0.07 C9-d=0.05 C2-d=0.05 C9-p=0.02 C2-p=0.02 C3-p=0.01 C10-p=0.01
+ Alpha vir 106 OE=1.346 is H11-p=0.12 H4-p=0.12 C9-d=0.11 C2-d=0.11 H5-p=0.09 H12-p=0.09 H15-p=0.07 H8-p=0.07 H7-p=0.04 H14-p=0.04 Zn1-d=0.04 C10-d=0.03 C3-d=0.03
+ Alpha vir 107 OE=1.443 is C2-d=0.16 C9-d=0.16 H13-p=0.13 H6-p=0.13 C10-d=0.06 C3-d=0.06 H4-p=0.04 H11-p=0.04 H5-p=0.04 H12-p=0.04 H14-p=0.03 H7-p=0.03 C9-p=0.02 C2-p=0.02 H8-p=0.02 H15-p=0.02
+ Alpha vir 108 OE=1.484 is C9-d=0.22 C2-d=0.22 H13-p=0.08 H6-p=0.08 C10-d=0.07 C3-d=0.07 H5-p=0.04 H12-p=0.04 C9-p=0.03 C2-p=0.03 Zn1-d=0.03 H11-p=0.02 H4-p=0.02 H8-p=0.02 H15-p=0.02 H13-s=0.01 H6-s=0.
+ 01
+ Alpha vir 109 OE=1.499 is C9-d=0.26 C2-d=0.26 Zn1-d=0.17 Zn1-s=0.05 H12-p=0.03 H5-p=0.03 H4-p=0.03 H11-p=0.03 C3-d=0.03 C10-d=0.03 C2-s=0.01 C9-s=0.01 H13-p=0.01 H6-p=0.01
+ Alpha vir 110 OE=1.572 is C2-d=0.26 C9-d=0.26 Zn1-p=0.09 C2-s=0.05 C9-s=0.05 H8-p=0.05 H15-p=0.05 C3-d=0.04 C10-d=0.04 C2-p=-0.02 C9-p=-0.02 H4-p=0.02 H11-p=0.02 H14-p=0.02 H7-p=0.02 H13-p=0.02 H6-p=0
+ .02 H5-p=0.01 H12-p=0.01 C3-s=-0.01 C10-s=-0.01
+ Alpha vir 111 OE=1.574 is H14-p=0.17 H7-p=0.17 H13-p=0.16 H6-p=0.16 H8-p=0.14 H15-p=0.14 Zn1-d=0.01
+ Alpha vir 112 OE=1.575 is H14-p=0.17 H7-p=0.17 H8-p=0.16 H15-p=0.16 H6-p=0.16 H13-p=0.16
+ Alpha vir 113 OE=1.625 is C9-d=0.26 C2-d=0.26 C3-d=0.06 C10-d=0.06 H4-s=0.04 H11-s=0.04 H4-p=0.04 H11-p=0.04 Zn1-d=0.03 H5-s=0.03 H12-s=0.03 H5-p=0.02 H12-p=0.02 H7-p=0.02 H14-p=0.02 C2-p=-0.01 C9-p=-
+ 0.01
+ Alpha vir 114 OE=1.628 is C10-d=0.19 C3-d=0.19 C2-d=0.11 C9-d=0.11 H8-s=0.03 H15-s=0.03 H14-s=0.03 H7-s=0.03 H14-p=0.03 H7-p=0.03 H8-p=0.03 H15-p=0.03 H12-p=0.03 H5-p=0.03 H4-p=0.02 H11-p=0.02 H6-p=0.
+ 02 H13-p=0.02 C10-p=-0.01 C3-p=-0.01 H11-s=0.01 H4-s=0.01 H12-s=0.01 H5-s=0.01
+ Alpha vir 115 OE=1.638 is C3-d=0.22 C10-d=0.22 C9-d=0.08 C2-d=0.08 Zn1-d=0.04 H8-s=0.04 H15-s=0.04 H7-p=0.04 H14-p=0.04 H15-p=0.03 H8-p=0.03 H12-p=0.03 H5-p=0.03 H6-p=0.02 H13-p=0.02 C3-p=-0.02 C10-p=
+ -0.02 H14-s=0.02 H7-s=0.02 H4-p=0.02 H11-p=0.02
+ Alpha vir 116 OE=1.644 is C9-d=0.18 C2-d=0.18 C10-d=0.15 C3-d=0.15 H8-p=0.03 H15-p=0.03 Zn1-d=0.03 H6-p=0.03 H13-p=0.03 H12-p=0.02 H5-p=0.02 H5-s=0.02 H12-s=0.02 H14-p=0.02 H7-p=0.02 H7-s=0.01 H14-s=0
+ .01
+ Alpha vir 117 OE=1.655 is C10-d=0.17 C3-d=0.17 C9-d=0.15 C2-d=0.15 H13-p=0.05 H6-p=0.05 C2-s=-0.03 C9-s=-0.03 H15-p=0.03 H8-p=0.03 Zn1-p=0.02 C3-s=0.02 C10-s=0.02 H14-p=0.02 H7-p=0.02 H7-s=0.02 H14-s=
+ 0.02 H5-s=0.02 H12-s=0.02 H12-p=0.01 H5-p=0.01
+ Alpha vir 118 OE=1.661 is C9-d=0.22 C2-d=0.22 C3-d=0.11 C10-d=0.11 H11-s=0.04 H4-s=0.04 H13-p=0.03 H6-p=0.03 H14-p=0.03 H7-p=0.03 H15-p=0.02 H8-p=0.02 H4-p=0.02 H11-p=0.02 C9-p=-0.02 C2-p=-0.02 H15-s=
+ 0.02 H8-s=0.02 H12-s=0.02 H5-s=0.02 H12-p=0.01 H5-p=0.01
+ Alpha vir 119 OE=1.699 is C3-d=0.23 C10-d=0.23 H13-p=0.07 H6-p=0.07 H13-s=0.05 H6-s=0.05 H14-p=0.04 H7-p=0.04 H15-p=0.04 H8-p=0.04 H11-p=0.03 H4-p=0.03 C9-d=0.02 C2-d=0.02 H5-p=0.02 H12-p=0.02 C10-p=-
+ 0.02 C3-p=-0.02 H15-s=0.01 H8-s=0.01
+ Alpha vir 120 OE=1.709 is C10-d=0.16 C3-d=0.16 H6-p=0.09 H13-p=0.09 H12-p=0.08 H5-p=0.08 H8-p=0.05 H15-p=0.05 H13-s=0.03 H6-s=0.03 H14-p=0.03 H7-p=0.03 H11-p=0.03 H4-p=0.03 C3-p=-0.01 C10-p=-0.01 C2-d
+ =0.01 C9-d=0.01
+ Alpha vir 121 OE=1.735 is H11-p=0.24 H4-p=0.24 H12-p=0.14 H5-p=0.14 C10-d=0.04 C3-d=0.04 H7-p=0.02 H14-p=0.02 H13-p=0.02 H6-p=0.02 C2-p=0.02 C9-p=0.02 C2-d=0.01 C9-d=0.01 H8-p=0.01 H15-p=0.01
+ Alpha vir 122 OE=1.768 is Zn1-d=0.16 H5-p=0.13 H12-p=0.13 H11-p=0.11 H4-p=0.11 C2-d=0.07 C9-d=0.07 C3-d=0.04 C10-d=0.04 H6-p=0.04 H13-p=0.04 C2-p=0.01 C9-p=0.01 H15-p=0.01 H8-p=0.01
+ Alpha vir 123 OE=1.790 is H5-p=0.13 H12-p=0.13 H4-p=0.11 H11-p=0.11 H7-p=0.09 H14-p=0.09 H15-p=0.09 H8-p=0.09 Zn1-d=0.06 H6-p=0.02 H13-p=0.02 C2-p=0.02 C9-p=0.02
+ Alpha vir 124 OE=1.821 is H7-p=0.10 H14-p=0.10 H8-p=0.09 H15-p=0.09 H5-p=0.08 H12-p=0.08 H13-p=0.07 H6-p=0.07 H11-p=0.06 H4-p=0.06 C2-d=0.04 C9-d=0.04 C10-d=0.03 C3-d=0.03 Zn1-d=0.03 Zn1-p=0.01 C3-p=0
+ .01 C10-p=0.01
+ Alpha vir 125 OE=1.850 is H8-p=0.11 H15-p=0.11 H7-p=0.10 H14-p=0.10 Zn1-d=0.09 H4-p=0.09 H11-p=0.09 H12-p=0.07 H5-p=0.07 C10-d=0.03 C3-d=0.03 C9-d=0.01 C2-d=0.01
+ Alpha vir 126 OE=1.882 is H5-p=0.11 H12-p=0.11 H4-p=0.11 H11-p=0.11 H15-p=0.09 H8-p=0.09 H7-p=0.08 H14-p=0.08 C9-d=0.04 C2-d=0.04 C2-p=0.02 C9-p=0.02 C2-s=0.02 C9-s=0.02 Zn1-p=-0.01 H13-p=0.01 H6-p=0.
+ 01
+ Alpha vir 127 OE=1.907 is Zn1-d=0.28 H13-p=0.09 H6-p=0.09 C10-d=0.08 C3-d=0.08 C2-d=0.06 C9-d=0.06 H7-p=0.05 H14-p=0.05 H13-s=0.02 H6-s=0.02 C2-p=0.02 C9-p=0.02 H15-p=0.02 H8-p=0.02
+ Alpha vir 128 OE=1.940 is Zn1-d=0.29 H15-p=0.08 H8-p=0.08 C2-d=0.08 C9-d=0.08 H13-p=0.07 H6-p=0.07 C3-d=0.07 C10-d=0.07 C10-p=0.01 C3-p=0.01
+ Alpha vir 129 OE=1.953 is Zn1-d=0.67 C3-d=0.04 C10-d=0.04 H13-p=0.03 H6-p=0.03 H14-p=0.03 H7-p=0.03 H5-p=0.03 H12-p=0.03 C2-d=0.02 C9-d=0.02
+ Alpha vir 130 OE=1.967 is Zn1-d=0.26 H14-p=0.08 H7-p=0.08 C2-d=0.07 C9-d=0.07 C3-d=0.06 C10-d=0.06 H6-p=0.05 H13-p=0.05 H4-p=0.03 H11-p=0.03 C3-p=0.02 C10-p=0.02 H12-p=0.02 H5-p=0.02 H15-p=0.02 H8-p=0
+ .02 Zn1-p=0.01
+ Alpha vir 131 OE=1.970 is Zn1-d=0.86 H4-p=0.02 H11-p=0.02 H8-p=0.01 H15-p=0.01
+ Alpha vir 132 OE=2.059 is C9-d=0.12 C2-d=0.12 H12-p=0.12 H5-p=0.12 H4-p=0.10 H11-p=0.10 Zn1-p=0.06 H6-p=0.03 H13-p=0.03 C10-d=0.02 C3-d=0.02 H15-p=0.02 H8-p=0.02 H14-p=0.01 H7-p=0.01
+ Alpha vir 133 OE=2.065 is Zn1-d=0.26 C9-d=0.08 C2-d=0.08 H5-p=0.07 H12-p=0.07 H15-p=0.05 H8-p=0.05 C10-d=0.04 C3-d=0.04 Zn1-p=0.03 H11-p=0.03 H4-p=0.03 H6-p=0.02 H13-p=0.02 C10-p=0.02 C3-p=0.02 Zn1-s=
+ -0.01 C2-s=0.01 C9-s=0.01
+ Alpha vir 134 OE=2.111 is C9-d=0.11 C2-d=0.11 H4-p=0.11 H11-p=0.11 Zn1-d=0.06 Zn1-p=0.06 C3-d=0.05 C10-d=0.05 H6-p=0.05 H13-p=0.05 H14-p=0.03 H7-p=0.03 H5-p=0.02 H12-p=0.02 C3-p=0.02 C10-p=0.02 H15-s=
+ 0.02 H8-s=0.02
+ Alpha vir 135 OE=2.150 is Zn1-d=0.23 C9-d=0.12 C2-d=0.12 H12-p=0.08 H5-p=0.08 Zn1-p=0.07 H4-p=0.05 H11-p=0.05 C3-d=0.03 C10-d=0.03 H5-s=0.02 H12-s=0.02 H13-p=0.01 H6-p=0.01 H7-s=0.01 H14-s=0.01
+ Alpha vir 136 OE=2.185 is Zn1-p=0.60 C3-d=0.06 C10-d=0.06 H13-p=0.05 H6-p=0.05 C9-d=0.01 C2-d=0.01 H11-p=0.01 H4-p=0.01 H12-p=0.01 H5-p=0.01 H14-p=0.01 H7-p=0.01 C10-s=0.01 C3-s=0.01
+ Alpha vir 137 OE=2.193 is Zn1-p=0.77 Zn1-d=0.02 C2-d=0.02 C9-d=0.02 C10-d=0.02 C3-d=0.02 H12-p=0.02 H5-p=0.02 H6-p=0.01 H13-p=0.01
+ Alpha vir 138 OE=2.224 is C10-d=0.11 C3-d=0.11 C2-d=0.10 C9-d=0.10 H5-p=0.05 H12-p=0.05 Zn1-p=0.04 Zn1-d=0.03 H6-p=0.03 H13-p=0.03 H8-s=0.03 H15-s=0.03 H11-p=0.03 H4-p=0.03 C10-s=0.03 C3-s=0.03 H8-p=0
+ .02 H15-p=0.02 H14-p=0.02 H7-p=0.02 H11-s=0.02 H4-s=0.02
+ Alpha vir 139 OE=2.235 is Zn1-d=0.17 C10-d=0.10 C3-d=0.10 H6-p=0.08 H13-p=0.08 H15-p=0.07 H8-p=0.07 H7-p=0.05 H14-p=0.05 Zn1-p=0.04 H12-p=0.02 H5-p=0.02 C2-d=0.02 C9-d=0.02 C2-p=0.01 C9-p=0.01 H4-s=0.
+ 01 H11-s=0.01
+ Alpha vir 140 OE=2.260 is Zn1-d=0.23 Zn1-p=0.18 C10-d=0.05 C3-d=0.05 H13-p=0.05 H6-p=0.05 H4-p=0.04 H11-p=0.04 C9-d=0.04 C2-d=0.04 H7-p=0.04 H14-p=0.04 C3-p=0.02 C10-p=0.02 H14-s=0.01 H7-s=0.01 H5-s=0
+ .01 H12-s=0.01 H8-s=0.01 H15-s=0.01
+ Alpha vir 141 OE=2.262 is Zn1-d=0.21 C10-d=0.11 C3-d=0.11 H14-p=0.05 H7-p=0.05 H8-p=0.05 H15-p=0.05 C2-p=0.05 C9-p=0.05 C2-d=0.04 C9-d=0.04 C3-s=0.02 C10-s=0.02 H8-s=0.02 H15-s=0.02 H7-s=0.02 H14-s=0.
+ 02 H12-p=0.01 H5-p=0.01 H4-p=0.01 H11-p=0.01 H6-p=0.01 H13-p=0.01
+ Alpha vir 142 OE=2.269 is Zn1-p=0.31 Zn1-d=0.08 C10-d=0.07 C3-d=0.07 H8-p=0.05 H15-p=0.05 C9-d=0.03 C2-d=0.03 H5-p=0.03 H12-p=0.03 C2-p=0.03 C9-p=0.03 H13-p=0.02 H6-p=0.02 H7-p=0.02 H14-p=0.02 H11-p=0
+ .02 H4-p=0.02 H14-s=0.02 H7-s=0.02 C3-p=0.02 C10-p=0.02
+ Alpha vir 143 OE=2.373 is Zn1-d=0.19 C2-d=0.11 C9-d=0.11 H12-p=0.07 H5-p=0.07 H4-p=0.07 H11-p=0.07 H13-s=0.05 H6-s=0.05 C3-p=0.02 C10-p=0.02 H7-p=0.02 H14-p=0.02 C10-d=0.02 C3-d=0.02 C9-p=0.01 C2-p=0.
+ 01 C3-s=0.01 C10-s=0.01
+ Alpha vir 144 OE=2.381 is Zn1-p=0.18 C2-d=0.07 C9-d=0.07 C10-d=0.07 C3-d=0.07 H8-p=0.05 H15-p=0.05 H11-p=0.05 H4-p=0.05 H12-p=0.05 H5-p=0.05 H7-p=0.05 H14-p=0.05 H13-s=0.03 H6-s=0.03 C9-p=0.02 C2-p=0.
+ 02
+ Alpha vir 145 OE=2.409 is C10-d=0.16 C3-d=0.16 C2-p=0.06 C9-p=0.06 H15-p=0.05 H8-p=0.05 H7-p=0.04 H14-p=0.04 C2-d=0.04 C9-d=0.04 H13-p=0.04 H6-p=0.04 H12-p=0.03 H5-p=0.03 H4-p=0.02 H11-p=0.02 H11-s=0.
+ 02 H4-s=0.02 H12-s=0.02 H5-s=0.02 Zn1-d=0.02
+ Alpha vir 146 OE=2.434 is C3-d=0.13 C10-d=0.13 Zn1-d=0.07 C2-d=0.06 C9-d=0.06 H7-p=0.05 H14-p=0.05 H15-p=0.05 H8-p=0.05 C2-p=0.04 C9-p=0.04 H4-p=0.04 H11-p=0.04 H5-p=0.03 H12-p=0.03 H13-p=0.03 H6-p=0.
+ 03 H12-s=0.01 H5-s=0.01
+ Alpha vir 147 OE=2.479 is Zn1-p=0.16 C10-d=0.06 C3-d=0.06 C2-s=0.05 C9-s=0.05 C2-d=0.05 C9-d=0.05 H4-p=0.04 H11-p=0.04 H5-p=0.04 H12-p=0.04 H13-s=0.04 H6-s=0.04 H15-p=0.03 H8-p=0.03 H14-p=0.03 H7-p=0.
+ 03 H13-p=0.02 H6-p=0.02 H12-s=0.01 H5-s=0.01 C9-p=0.01 C2-p=0.01 H11-s=0.01 H4-s=0.01
+ Alpha vir 148 OE=2.487 is C10-d=0.10 C3-d=0.10 C2-d=0.07 C9-d=0.07 C9-s=0.06 C2-s=0.06 Zn1-d=0.06 H11-p=0.04 H4-p=0.04 H5-p=0.04 H12-p=0.04 H7-p=0.04 H14-p=0.04 H8-p=0.03 H15-p=0.03 H13-p=0.03 H6-p=0.
+ 03 C2-p=0.02 C9-p=0.02 H12-s=0.02 H5-s=0.02 Zn1-s=-0.02 H11-s=0.02 H4-s=0.02
+ Alpha vir 149 OE=2.623 is Zn1-p=0.10 C3-s=0.10 C10-s=0.10 C3-d=0.08 C10-d=0.08 C2-s=-0.07 C9-s=-0.07 C3-p=0.06 C10-p=0.06 H13-s=0.05 H6-s=0.05 H7-p=0.05 H14-p=0.05 H13-p=0.04 H6-p=0.04 H15-p=0.04 H8-p
+ =0.04 H15-s=0.04 H8-s=0.04 H7-s=0.03 H14-s=0.03 C2-d=0.02 C9-d=0.02
+ Alpha vir 150 OE=2.627 is C10-s=0.09 C3-s=0.09 C10-d=0.08 C3-d=0.08 H8-p=0.07 H15-p=0.07 C3-p=0.06 C10-p=0.06 H13-s=0.06 H6-s=0.06 H6-p=0.04 H13-p=0.04 H14-s=0.04 H7-s=0.04 H7-p=0.03 H14-p=0.03 C9-s=-
+ 0.02 C2-s=-0.02 H15-s=0.02 H8-s=0.02 Zn1-d=0.01 C2-d=0.01 C9-d=0.01
+ Alpha vir 151 OE=2.637 is H14-p=0.13 H7-p=0.13 H4-s=0.09 H11-s=0.09 H12-s=0.07 H5-s=0.07 H8-p=0.07 H15-p=0.07 H5-p=0.06 H12-p=0.06 H15-s=0.06 H8-s=0.06 H7-s=0.05 H14-s=0.05 C10-p=-0.05 C3-p=-0.05 H11-
+ p=0.04 H4-p=0.04 C2-p=-0.03 C9-p=-0.03 C2-d=-0.01 C9-d=-0.01 C10-d=-0.01 C3-d=-0.01
+ Alpha vir 152 OE=2.668 is H8-p=0.13 H15-p=0.13 H14-p=0.12 H7-p=0.12 H12-s=0.08 H5-s=0.08 H8-s=0.08 H15-s=0.08 C10-p=-0.06 C3-p=-0.06 H14-s=0.06 H7-s=0.06 H4-s=0.05 H11-s=0.05 H4-p=0.05 H11-p=0.05 C9-p
+ =-0.02 C2-p=-0.02 H12-p=0.02 H5-p=0.02 H13-p=0.02 H6-p=0.02 C10-d=-0.01 C3-d=-0.01
+ Alpha vir 153 OE=2.702 is Zn1-p=0.10 C9-p=0.08 C2-p=0.08 C2-d=0.07 C9-d=0.07 H12-p=0.05 H5-p=0.05 C2-s=0.05 C9-s=0.05 H4-p=0.04 H11-p=0.04 C3-d=0.04 C10-d=0.04 H4-s=0.04 H11-s=0.04 H15-p=0.03 H8-p=0.0
+ 3 H5-s=0.02 H12-s=0.02 H6-p=0.01 H13-p=0.01 C10-s=-0.01 C3-s=-0.01 H7-s=0.01 H14-s=0.01
+ Alpha vir 154 OE=2.711 is C2-p=0.09 C9-p=0.09 H12-p=0.08 H5-p=0.08 C9-d=0.07 C2-d=0.07 C3-d=0.05 C10-d=0.05 H11-p=0.05 H4-p=0.05 C9-s=0.04 C2-s=0.04 Zn1-d=0.04 H14-p=0.03 H7-p=0.03 H8-s=0.02 H15-s=0.0
+ 2 Zn1-s=-0.02 H4-s=0.02 H11-s=0.02 H6-p=0.02 H13-p=0.02 H15-p=0.01 H8-p=0.01
+ Alpha vir 155 OE=2.729 is H15-s=0.10 H8-s=0.10 H14-s=0.09 H7-s=0.09 H5-s=0.07 H12-s=0.07 H8-p=0.05 H15-p=0.05 H4-s=0.04 H11-s=0.04 C9-p=0.04 C2-p=0.04 C3-p=0.03 C10-p=0.03 H4-p=0.03 H11-p=0.03 H6-p=0.
+ 02 H13-p=0.02 C3-d=0.01 C10-d=0.01
+ Alpha vir 156 OE=2.752 is H13-p=0.25 H6-p=0.25 H15-p=0.07 H8-p=0.07 H13-s=0.07 H6-s=0.07 H14-s=0.03 H7-s=0.03 H14-p=0.02 H7-p=0.02 C10-d=0.02 C3-d=0.02 H4-s=0.01 H11-s=0.01 C9-p=0.01 C2-p=0.01
+ Alpha vir 157 OE=2.754 is H4-s=0.09 H11-s=0.09 H7-s=0.08 H14-s=0.08 H5-s=0.08 H12-s=0.08 H8-s=0.06 H15-s=0.06 H7-p=0.05 H14-p=0.05 H5-p=0.05 H12-p=0.05 H4-p=0.03 H11-p=0.03 H13-p=0.02 H6-p=0.02 C10-p=
+ 0.02 C3-p=0.02 C2-d=-0.02 C9-d=-0.02 Zn1-d=0.02 C2-p=0.01 C9-p=0.01
+ Alpha vir 158 OE=2.769 is H12-p=0.11 H5-p=0.11 H11-p=0.11 H4-p=0.11 C2-d=0.06 C9-d=0.06 C2-p=0.05 C9-p=0.05 C3-p=0.04 C10-p=0.04 H8-p=0.03 H15-p=0.03 C3-d=0.03 C10-d=0.03 H14-p=0.03 H7-p=0.03 H4-s=0.0
+ 2 H11-s=0.02 H12-s=0.01 H5-s=0.01
+ Alpha vir 159 OE=2.773 is H4-p=0.10 H11-p=0.10 H14-p=0.08 H7-p=0.08 H12-p=0.07 H5-p=0.07 C10-p=0.06 C3-p=0.06 H15-p=0.04 H8-p=0.04 C10-d=0.03 C3-d=0.03 H11-s=0.03 H4-s=0.03 H12-s=0.03 H5-s=0.03 H13-p=
+ 0.02 H6-p=0.02 C2-d=0.01 C9-d=0.01
+ Alpha vir 160 OE=2.777 is H6-p=0.22 H13-p=0.22 H14-p=0.06 H7-p=0.06 H15-s=0.05 H8-s=0.05 H8-p=0.04 H15-p=0.04 Zn1-p=0.04 H13-s=0.04 H6-s=0.04 C3-d=0.03 C10-d=0.03
+ Alpha vir 161 OE=2.792 is H13-s=0.17 H6-s=0.17 C3-p=0.10 C10-p=0.10 C3-d=0.04 C10-d=0.04 H8-s=0.04 H15-s=0.04 C9-d=0.03 C2-d=0.03 C9-p=0.03 C2-p=0.03 H4-s=0.03 H11-s=0.03 H8-p=0.02 H15-p=0.02 H7-s=0.0
+ 1 H14-s=0.01 H6-p=0.01 H13-p=0.01
+ Alpha vir 162 OE=2.808 is C9-d=0.10 C2-d=0.10 C10-d=0.08 C3-d=0.08 C9-p=0.06 C2-p=0.06 C3-p=0.05 C10-p=0.05 H14-s=0.04 H7-s=0.04 H5-p=0.04 H12-p=0.04 H11-p=0.03 H4-p=0.03 H4-s=0.03 H11-s=0.03 H12-s=0.
+ 03 H5-s=0.03 H8-s=0.02 H15-s=0.02 H7-p=0.02 H14-p=0.02
+ Alpha vir 163 OE=2.819 is C10-d=0.08 C3-d=0.08 H5-s=0.08 H12-s=0.08 C3-p=0.08 C10-p=0.08 H14-s=0.07 H7-s=0.07 C2-d=0.04 C9-d=0.04 H13-s=0.03 H6-s=0.03 H11-s=0.03 H4-s=0.03 H13-p=0.02 H6-p=0.02 H8-p=0.
+ 02 H15-p=0.02 H14-p=0.02 H7-p=0.02 H8-s=0.02 H15-s=0.02 Zn1-d=0.01
+ Alpha vir 164 OE=2.828 is H13-s=0.15 H6-s=0.15 C10-p=0.08 C3-p=0.08 H11-s=0.05 H4-s=0.05 Zn1-d=0.05 C3-d=0.05 C10-d=0.05 C2-d=0.03 C9-d=0.03 H15-s=0.03 H8-s=0.03 H5-s=0.03 H12-s=0.03 H15-p=0.02 H8-p=0
+ .02 H11-p=0.02 H4-p=0.02 C2-s=0.01 C9-s=0.01
+ Alpha vir 165 OE=2.904 is H12-s=0.13 H5-s=0.13 H12-p=0.10 H5-p=0.10 H4-s=0.09 H11-s=0.09 H11-p=0.08 H4-p=0.08 H8-s=0.05 H15-s=0.05 H14-s=0.04 H7-s=0.04 C9-p=-0.03 C2-p=-0.03 H7-p=0.03 H14-p=0.03 H8-p=
+ 0.02 H15-p=0.02 C2-s=-0.02 C9-s=-0.02 H13-s=0.02 H6-s=0.02 C10-s=-0.01 C3-s=-0.01 Zn1-d=0.01
+ Alpha vir 166 OE=2.913 is H4-s=0.14 H11-s=0.14 H5-s=0.10 H12-s=0.10 H4-p=0.10 H11-p=0.10 H12-p=0.09 H5-p=0.09 H14-s=0.04 H7-s=0.04 C9-s=-0.04 C2-s=-0.04 H15-s=0.04 H8-s=0.04 H8-p=0.03 H15-p=0.03 H7-p=
+ 0.02 H14-p=0.02 C2-p=-0.02 C9-p=-0.02 Zn1-p=0.02 C10-s=-0.02 C3-s=-0.02 H6-p=0.02 H13-p=0.02
+ Alpha vir 167 OE=2.995 is H15-s=0.07 H8-s=0.07 H14-s=0.07 H7-s=0.07 H6-s=0.05 H13-s=0.05 H13-p=0.05 H6-p=0.05 C9-p=0.05 C2-p=0.05 H5-s=0.04 H12-s=0.04 H15-p=0.04 H8-p=0.04 H14-p=0.04 H7-p=0.04 H4-s=0.
+ 04 H11-s=0.04 C10-p=0.03 C3-p=0.03 Zn1-p=0.03 H5-p=0.02 H12-p=0.02 C9-s=-0.02 C2-s=-0.02 H11-p=0.02 H4-p=0.02
+ Alpha vir 168 OE=3.013 is H14-s=0.09 H7-s=0.09 H15-s=0.08 H8-s=0.08 H13-s=0.07 H6-s=0.07 H14-p=0.06 H7-p=0.06 H15-p=0.06 H8-p=0.06 H13-p=0.05 H6-p=0.05 C9-p=0.05 C2-p=0.05 C10-s=-0.03 C3-s=-0.03 C10-p
+ =0.03 C3-p=0.03 H11-s=0.03 H4-s=0.03 H12-s=0.02 H5-s=0.02 Zn1-s=-0.01 H11-p=0.01 H4-p=0.01
+ Alpha vir 169 OE=3.170 is C9-p=0.34 C2-p=0.34 Zn1-p=0.04 Zn1-f=0.03 C3-p=0.03 C10-p=0.03 H15-p=0.02 H8-p=0.02 H7-p=0.02 H14-p=0.02 H6-p=0.02 H13-p=0.02 C2-s=0.02 C9-s=0.02 H13-s=0.02 H6-s=0.02 C10-d=0
+ .01 C3-d=0.01 C3-s=-0.01 C10-s=-0.01
+ Alpha vir 170 OE=3.329 is C2-p=0.21 C9-p=0.21 C10-p=0.16 C3-p=0.16 Zn1-d=0.04 H14-p=0.03 H7-p=0.03 H15-p=0.03 H8-p=0.03 Zn1-s=0.02 H6-p=0.02 H13-p=0.02
+ Alpha vir 171 OE=3.459 is C9-p=0.23 C2-p=0.23 C10-p=0.15 C3-p=0.15 Zn1-p=0.07 H5-p=0.02 H12-p=0.02 H4-p=0.02 H11-p=0.02 H8-p=0.02 H15-p=0.02 H14-p=0.02 H7-p=0.02 Zn1-f=0.01 C2-d=0.01 C9-d=0.01 H5-s=-0
+ .01 H12-s=-0.01
+ Alpha vir 172 OE=3.631 is C9-p=0.33 C2-p=0.33 Zn1-d=0.10 Zn1-s=0.06 C9-d=0.03 C2-d=0.03 C10-p=0.03 C3-p=0.03 H5-p=0.01 H12-p=0.01 H4-p=0.01 H11-p=0.01
+ Alpha vir 173 OE=3.922 is C2-p=0.36 C9-p=0.36 C9-d=0.09 C2-d=0.09 H11-s=0.01 H4-s=0.01 H5-s=0.01 H12-s=0.01 C3-p=0.01 C10-p=0.01 Zn1-f=0.01
+ Alpha vir 174 OE=3.938 is C9-p=0.38 C2-p=0.38 C2-d=0.08 C9-d=0.08 C3-p=0.01 C10-p=0.01
+ Alpha vir 175 OE=4.023 is C3-p=0.39 C10-p=0.39 C10-d=0.08 C3-d=0.08
+ Alpha vir 176 OE=4.023 is C10-p=0.39 C3-p=0.39 C10-d=0.08 C3-d=0.08
+ Alpha vir 177 OE=4.024 is C3-p=0.38 C10-p=0.38 C10-d=0.08 C3-d=0.08 H14-s=0.01 H7-s=0.01
+ Alpha vir 178 OE=4.025 is C10-p=0.39 C3-p=0.39 C10-d=0.08 C3-d=0.08 H8-s=0.01 H15-s=0.01
+ Alpha vir 179 OE=4.368 is C10-p=0.22 C3-p=0.22 C9-p=0.17 C2-p=0.17 Zn1-f=0.08 C2-d=0.04 C9-d=0.04 C3-d=0.03 C10-d=0.03
+ Alpha vir 180 OE=4.399 is C10-p=0.24 C3-p=0.24 C2-p=0.19 C9-p=0.19 C2-d=0.03 C9-d=0.03 C3-d=0.03 C10-d=0.03 Zn1-f=0.01
+ Alpha vir 181 OE=4.524 is Zn1-f=1.00
+ Alpha vir 182 OE=4.524 is Zn1-f=1.00
+ Alpha vir 183 OE=4.531 is Zn1-f=0.99
+ Alpha vir 184 OE=4.534 is Zn1-f=0.99
+ Alpha vir 185 OE=4.577 is Zn1-f=0.98
+ Alpha vir 186 OE=4.578 is Zn1-f=0.93 C9-p=0.02 C2-p=0.02 C10-p=0.01 C3-p=0.01
+ Alpha vir 187 OE=4.734 is Zn1-s=0.88 C2-p=0.04 C9-p=0.04
+ Alpha vir 188 OE=4.809 is Zn1-f=0.92 C2-p=0.03 C9-p=0.03
+ Alpha vir 189 OE=8.395 is Zn1-d=1.00
+ Alpha vir 190 OE=8.406 is Zn1-d=1.00
+ Alpha vir 191 OE=8.487 is Zn1-d=1.00
+ Alpha vir 192 OE=8.518 is Zn1-d=1.00
+ Alpha vir 193 OE=8.778 is Zn1-d=0.99
+ Alpha vir 194 OE=10.917 is Zn1-p=1.00
+ Alpha vir 195 OE=10.951 is Zn1-p=1.00
+ Alpha vir 196 OE=11.198 is Zn1-p=1.00
+ Alpha vir 197 OE=24.791 is C2-s=0.48 C9-s=0.48 C10-s=0.02 C3-s=0.02
+ Alpha vir 198 OE=24.800 is C9-s=0.47 C2-s=0.47 C10-s=0.03 C3-s=0.03
+ Alpha vir 199 OE=24.938 is C3-s=0.47 C10-s=0.47 C2-s=0.03 C9-s=0.03
+ Alpha vir 200 OE=24.939 is C3-s=0.48 C10-s=0.48 C2-s=0.02 C9-s=0.02
+ Alpha vir 201 OE=35.651 is Zn1-s=1.00
+ Alpha vir 202 OE=45.926 is Zn1-p=1.00
+ Alpha vir 203 OE=45.951 is Zn1-p=1.00
+ Alpha vir 204 OE=46.139 is Zn1-p=1.00
+ Alpha vir 205 OE=190.654 is Zn1-s=1.00
+ Alpha vir 206 OE=986.246 is Zn1-s=1.00
+
+ Atomic contributions to Beta  molecular orbitals:
+ Beta  occ 1 OE=-353.556 is Zn1-s=1.00
+ Beta  occ 2 OE=-44.595 is Zn1-s=1.00
+ Beta  occ 3 OE=-39.186 is Zn1-p=1.00
+ Beta  occ 4 OE=-39.186 is Zn1-p=1.00
+ Beta  occ 5 OE=-39.182 is Zn1-p=1.00
+ Beta  occ 6 OE=-11.429 is C2-s=0.50 C9-s=0.50
+ Beta  occ 7 OE=-11.429 is C9-s=0.50 C2-s=0.50
+ Beta  occ 8 OE=-11.390 is C10-s=0.50 C3-s=0.50
+ Beta  occ 9 OE=-11.390 is C10-s=0.50 C3-s=0.50
+ Beta  occ 10 OE=-5.881 is Zn1-s=1.00
+ Beta  occ 11 OE=-4.086 is Zn1-p=1.00
+ Beta  occ 12 OE=-4.085 is Zn1-p=1.00
+ Beta  occ 13 OE=-4.082 is Zn1-p=1.00
+ Beta  occ 14 OE=-1.186 is C3-s=0.20 C10-s=0.20 C9-s=0.18 C2-s=0.18 Zn1-d=0.04 H4-s=0.02 H11-s=0.02 H12-s=0.02 H5-s=0.02 H7-s=0.01 H14-s=0.01 H6-s=0.01 H13-s=0.01 H15-s=0.01 H8-s=0.01
+ Beta  occ 15 OE=-1.178 is C3-s=0.24 C10-s=0.24 C2-s=0.18 C9-s=0.18 Zn1-p=-0.05 H6-s=0.02 H13-s=0.02 H12-s=0.02 H5-s=0.02 H4-s=0.02 H11-s=0.02 H7-s=0.02 H14-s=0.02 H8-s=0.02 H15-s=0.02
+ Beta  occ 16 OE=-1.043 is Zn1-d=0.68 C10-s=0.06 C3-s=0.06 C2-s=0.03 C9-s=0.03 C2-p=0.02 C9-p=0.02 H7-s=0.01 H14-s=0.01 H15-s=0.01 H8-s=0.01
+ Beta  occ 17 OE=-1.031 is Zn1-d=0.98
+ Beta  occ 18 OE=-1.029 is Zn1-d=1.00
+ Beta  occ 19 OE=-1.029 is Zn1-d=1.00
+ Beta  occ 20 OE=-1.028 is Zn1-d=0.95 C3-s=0.01 C10-s=0.01
+ Beta  occ 21 OE=-0.992 is C2-s=0.16 C9-s=0.16 C3-s=0.11 C10-s=0.11 H5-s=0.05 H12-s=0.05 H11-s=0.05 H4-s=0.05 C9-p=0.03 C2-p=0.03 H7-s=0.03 H14-s=0.03 H15-s=0.03 H8-s=0.03 C3-p=0.02 C10-p=0.02 H13-s=0.
+ 02 H6-s=0.02 Zn1-p=-0.02
+ Beta  occ 22 OE=-0.973 is Zn1-d=0.32 C2-s=0.11 C9-s=0.11 C3-s=0.05 C10-s=0.05 H11-s=0.04 H4-s=0.04 H12-s=0.04 H5-s=0.04 C2-p=0.02 C9-p=0.02 C3-p=0.02 C10-p=0.02 H15-s=0.02 H8-s=0.02 H7-s=0.02 H14-s=0.
+ 02 Zn1-s=0.01 H6-s=0.01 H13-s=0.01
+ Beta  occ 23 OE=-0.780 is C9-p=0.21 C2-p=0.21 C3-p=0.10 C10-p=0.10 H11-s=0.06 H4-s=0.06 H5-s=0.06 H12-s=0.06 H7-s=0.03 H14-s=0.03 H8-s=0.03 H15-s=0.03
+ Beta  occ 24 OE=-0.775 is C9-p=0.19 C2-p=0.19 C3-p=0.11 C10-p=0.11 H5-s=0.06 H12-s=0.06 H4-s=0.05 H11-s=0.05 H8-s=0.04 H15-s=0.04 H7-s=0.04 H14-s=0.04 Zn1-d=0.01
+ Beta  occ 25 OE=-0.727 is C10-p=0.24 C3-p=0.24 H6-s=0.12 H13-s=0.12 C2-p=0.07 C9-p=0.07 Zn1-s=0.03 H7-s=0.01 H14-s=0.01
+ Beta  occ 26 OE=-0.724 is C10-p=0.25 C3-p=0.25 H13-s=0.12 H6-s=0.12 C2-p=0.09 C9-p=0.09
+ Beta  occ 27 OE=-0.689 is C3-p=0.20 C10-p=0.20 C9-p=0.15 C2-p=0.15 H14-s=0.04 H7-s=0.04 H15-s=0.04 H8-s=0.04 H5-s=0.02 H12-s=0.02 H4-s=0.02 H11-s=0.02 H6-s=0.01 H13-s=0.01 C9-s=0.01 C2-s=0.01
+ Beta  occ 28 OE=-0.688 is C10-p=0.19 C3-p=0.19 C9-p=0.18 C2-p=0.18 H8-s=0.04 H15-s=0.04 H7-s=0.03 H14-s=0.03 H11-s=0.02 H4-s=0.02 H5-s=0.02 H12-s=0.02
+ Beta  occ 29 OE=-0.665 is C3-p=0.16 C10-p=0.16 C9-p=0.08 C2-p=0.08 H14-s=0.08 H7-s=0.08 H8-s=0.07 H15-s=0.07 H12-s=0.05 H5-s=0.05 H4-s=0.04 H11-s=0.04
+ Beta  occ 30 OE=-0.662 is C10-p=0.15 C3-p=0.15 C9-p=0.09 C2-p=0.09 H8-s=0.08 H15-s=0.08 H7-s=0.07 H14-s=0.07 H4-s=0.05 H11-s=0.05 H12-s=0.05 H5-s=0.05
+ Beta  occ 31 OE=-0.531 is Zn1-s=0.72 C9-p=0.10 C2-p=0.10 C2-s=-0.04 C9-s=-0.04 H13-s=0.03 H6-s=0.03 C10-p=0.02 C3-p=0.02
+ Beta  vir 32 OE=-0.232 is C9-p=0.30 C2-p=0.30 Zn1-p=0.25 H6-s=0.02 H13-s=0.02 C2-s=0.01 C9-s=0.01
+ Beta  vir 33 OE=-0.095 is Zn1-p=0.67 C9-p=0.21 C2-p=0.21 C3-p=0.07 C10-p=0.07 C10-s=-0.06 C3-s=-0.06 H7-s=-0.03 H14-s=-0.03 H8-s=-0.02 H15-s=-0.02
+ Beta  vir 34 OE=-0.092 is Zn1-p=0.91 C2-p=0.09 C9-p=0.09 H4-s=-0.02 H11-s=-0.02 C3-s=-0.02 C10-s=-0.02 H12-s=-0.01 H5-s=-0.01
+ Beta  vir 35 OE=-0.089 is Zn1-s=1.37 C10-s=-0.15 C3-s=-0.15 C2-s=-0.08 C9-s=-0.08 H12-s=0.01 H5-s=0.01 C2-p=-0.01 C9-p=-0.01
+ Beta  vir 36 OE=-0.039 is C9-s=0.69 C2-s=0.69 Zn1-p=-0.64 C10-s=0.36 C3-s=0.36 C3-p=0.19 C10-p=0.19 H12-s=-0.12 H5-s=-0.12 H11-s=-0.10 H4-s=-0.10 C9-p=-0.09 C2-p=-0.09 H6-s=-0.09 H13-s=-0.09 H14-s=-0.
+ 01 H7-s=-0.01
+ Beta  vir 37 OE=-0.024 is C10-p=0.84 C3-p=0.84 C2-p=0.74 C9-p=0.74 C3-s=-0.66 C10-s=-0.66 C2-s=-0.33 C9-s=-0.33 Zn1-s=-0.09 H13-s=-0.05 H6-s=-0.05 H12-s=-0.03 H5-s=-0.03 H15-s=0.01 H8-s=0.01 H14-s=0.0
+ 1 H7-s=0.01 Zn1-d=0.01 H4-s=-0.01 H11-s=-0.01
+ Beta  vir 38 OE=-0.012 is C9-p=0.55 C2-p=0.55 C3-p=0.26 C10-p=0.26 Zn1-p=-0.13 C2-s=-0.11 C9-s=-0.11 H11-s=-0.07 H4-s=-0.07 Zn1-s=-0.05 H15-s=-0.04 H8-s=-0.04 H6-s=-0.03 H13-s=-0.03 C10-s=0.01 C3-s=0.
+ 01
+ Beta  vir 39 OE=-0.010 is C10-p=0.68 C3-p=0.68 C3-s=-0.50 C10-s=-0.50 C9-p=0.37 C2-p=0.37 Zn1-p=0.08 C2-s=0.07 C9-s=0.07 H8-s=-0.07 H15-s=-0.07 H7-s=-0.05 H14-s=-0.05 H6-s=-0.05 H13-s=-0.05
+ Beta  vir 40 OE=-0.008 is C9-p=0.86 C2-p=0.86 Zn1-s=-0.39 C9-s=-0.33 C2-s=-0.33 C3-s=0.26 C10-s=0.26 Zn1-p=-0.06 H6-s=-0.04 H13-s=-0.04 H12-s=-0.03 H5-s=-0.03 H7-s=-0.01 H14-s=-0.01 C3-p=0.01 C10-p=0.
+ 01
+ Beta  vir 41 OE=-0.004 is C10-p=0.43 C3-p=0.43 C9-p=0.21 C2-p=0.21 Zn1-p=-0.10 C9-s=0.07 C2-s=0.07 H7-s=-0.06 H14-s=-0.06 H11-s=-0.05 H4-s=-0.05 H8-s=-0.05 H15-s=-0.05 H5-s=-0.01 H12-s=-0.01
+ Beta  vir 42 OE=-0.004 is C2-s=0.56 C9-s=0.56 C10-s=0.30 C3-s=0.30 Zn1-s=-0.29 H7-s=-0.07 H14-s=-0.07 C10-p=-0.05 C3-p=-0.05 C2-p=-0.05 C9-p=-0.05 H12-s=-0.03 H5-s=-0.03 H11-s=-0.02 H4-s=-0.02 Zn1-d=0
+ .01
+ Beta  vir 43 OE=0.005 is Zn1-s=-0.88 C10-s=0.73 C3-s=0.73 C9-s=0.55 C2-s=0.55 H14-s=-0.14 H7-s=-0.14 H8-s=-0.11 H15-s=-0.11 H6-s=-0.09 H13-s=-0.09 C2-p=0.06 C9-p=0.06 H11-s=-0.04 H4-s=-0.04 H5-s=-0.04
+  H12-s=-0.04 C10-p=0.02 C3-p=0.02 Zn1-d=-0.02
+ Beta  vir 44 OE=0.006 is C2-p=0.56 C9-p=0.56 C10-p=0.09 C3-p=0.09 Zn1-p=-0.08 C9-s=-0.08 C2-s=-0.08 H5-s=-0.04 H12-s=-0.04 H8-s=-0.02 H15-s=-0.02 Zn1-d=0.02 C3-s=0.01 C10-s=0.01
+ Beta  vir 45 OE=0.017 is Zn1-p=-2.92 C9-s=1.49 C2-s=1.49 C9-p=0.43 C2-p=0.43 C3-p=0.28 C10-p=0.28 C10-s=-0.07 C3-s=-0.07 H8-s=-0.06 H15-s=-0.06 H11-s=-0.04 H4-s=-0.04 H13-s=-0.04 H6-s=-0.04 H12-s=-0.0
+ 3 H5-s=-0.03 H7-s=-0.02 H14-s=-0.02
+ Beta  vir 46 OE=0.032 is C3-p=0.50 C10-p=0.50 C2-p=0.17 C9-p=0.17 Zn1-p=-0.09 H8-s=-0.06 H15-s=-0.06 H4-s=-0.03 H11-s=-0.03 H7-s=-0.02 H14-s=-0.02 H5-s=-0.02 H12-s=-0.02
+ Beta  vir 47 OE=0.033 is C10-p=0.43 C3-p=0.43 C10-s=0.08 C3-s=0.08 C2-p=0.08 C9-p=0.08 H13-s=-0.06 H6-s=-0.06 H5-s=-0.03 H12-s=-0.03
+ Beta  vir 48 OE=0.050 is C9-s=-0.96 C2-s=-0.96 C2-p=0.61 C9-p=0.61 Zn1-p=0.38 C10-s=0.37 C3-s=0.37 C3-p=0.32 C10-p=0.32 H7-s=-0.01 H14-s=-0.01
+ Beta  vir 49 OE=0.055 is C9-s=0.39 C2-s=0.39 C10-p=0.28 C3-p=0.28 Zn1-s=-0.26 C10-s=0.15 C3-s=0.15 C9-p=-0.09 C2-p=-0.09 H5-s=-0.07 H12-s=-0.07 H4-s=-0.02 H11-s=-0.02 H8-s=-0.01 H15-s=-0.01
+ Beta  vir 50 OE=0.065 is C3-s=0.51 C10-s=0.51 C2-s=0.36 C9-s=0.36 C10-p=-0.15 C3-p=-0.15 C9-p=-0.08 C2-p=-0.08 H6-s=-0.07 H13-s=-0.07 H5-s=-0.04 H12-s=-0.04 H11-s=-0.03 H4-s=-0.03 H8-s=-0.01 H15-s=-0.
+ 01
+ Beta  vir 51 OE=0.085 is C3-s=1.67 C10-s=1.67 C10-p=-0.78 C3-p=-0.78 C2-p=-0.51 C9-p=-0.51 C2-s=0.32 C9-s=0.32 H14-s=-0.09 H7-s=-0.09 Zn1-p=0.07 H11-s=-0.07 H4-s=-0.07 H13-s=-0.04 H6-s=-0.04 H15-s=-0.
+ 03 H8-s=-0.03 H5-s=-0.02 H12-s=-0.02 Zn1-d=0.01
+ Beta  vir 52 OE=0.097 is Zn1-s=1.11 C10-s=0.36 C3-s=0.36 C9-p=-0.29 C2-p=-0.29 Zn1-d=-0.16 C2-s=0.09 C9-s=0.09 H8-s=-0.06 H15-s=-0.06 H14-s=-0.04 H7-s=-0.04 H11-s=-0.03 H4-s=-0.03 H5-s=-0.02 H12-s=-0.
+ 02 C10-p=0.02 C3-p=0.02
+ Beta  vir 53 OE=0.136 is Zn1-p=0.33 H15-s=0.12 H8-s=0.12 H7-s=0.11 H14-s=0.11 H5-s=0.06 H12-s=0.06 H11-s=0.06 H4-s=0.06 C9-p=-0.04 C2-p=-0.04
+ Beta  vir 54 OE=0.137 is H14-s=0.25 H7-s=0.25 H8-s=0.18 H15-s=0.18 Zn1-p=0.10 C10-p=-0.07 C3-p=-0.07 Zn1-d=0.02 C10-s=0.02 C3-s=0.02 C2-p=0.02 C9-p=0.02 H4-s=0.01 H11-s=0.01
+ Beta  vir 55 OE=0.151 is H4-s=0.35 H11-s=0.35 Zn1-p=0.31 C2-s=-0.09 C9-s=-0.09 C3-s=-0.07 C10-s=-0.07 H6-s=0.05 H13-s=0.05 Zn1-d=0.03 C2-p=0.03 C9-p=0.03 H15-s=0.02 H8-s=0.02 H12-s=0.02 H5-s=0.02 H7-s
+ =0.02 H14-s=0.02
+ Beta  vir 56 OE=0.156 is Zn1-p=2.64 C9-s=-1.38 C2-s=-1.38 H12-s=0.34 H5-s=0.34 H13-s=0.12 H6-s=0.12 C3-s=0.05 C10-s=0.05 C3-p=0.04 C10-p=0.04 C2-p=-0.02 C9-p=-0.02 H11-s=0.01 H4-s=0.01
+ Beta  vir 57 OE=0.162 is H13-s=0.37 H6-s=0.37 C10-s=-0.23 C3-s=-0.23 C9-s=0.16 C2-s=0.16 C2-p=0.10 C9-p=0.10 Zn1-s=0.05 Zn1-d=0.05 H12-s=0.04 H5-s=0.04 C10-p=-0.02 C3-p=-0.02 Zn1-p=0.02
+ Beta  vir 58 OE=0.179 is Zn1-p=0.38 H12-s=0.18 H5-s=0.18 H11-s=0.14 H4-s=0.14 C9-p=-0.08 C2-p=-0.08 H13-s=0.03 H6-s=0.03 Zn1-s=0.02 C9-s=0.01 C2-s=0.01 Zn1-d=0.01 C10-s=-0.01 C3-s=-0.01
+ Beta  vir 59 OE=0.193 is Zn1-p=0.90 C3-p=-0.23 C10-p=-0.23 C3-s=0.14 C10-s=0.14 H6-s=0.08 H13-s=0.08 H5-s=0.07 H12-s=0.07 H15-s=0.04 H8-s=0.04 C2-s=-0.02 C9-s=-0.02 C2-p=-0.02 C9-p=-0.02
+ Beta  vir 60 OE=0.202 is Zn1-p=0.43 H15-s=0.22 H8-s=0.22 H5-s=0.10 H12-s=0.10 C3-p=-0.08 C10-p=-0.08 H7-s=0.08 H14-s=0.08 C9-p=-0.08 C2-p=-0.08 H11-s=0.03 H4-s=0.03 Zn1-d=0.02 C10-s=-0.02 C3-s=-0.02 H
+ 13-s=0.01 H6-s=0.01
+ Beta  vir 61 OE=0.205 is Zn1-p=1.56 C10-s=-0.54 C3-s=-0.54 C9-s=-0.43 C2-s=-0.43 H14-s=0.34 H7-s=0.34 H15-s=0.34 H8-s=0.34 C10-p=-0.03 C3-p=-0.03 Zn1-d=0.01 H11-s=0.01 H4-s=0.01 C9-p=0.01 C2-p=0.01
+ Beta  vir 62 OE=0.209 is H4-s=0.43 H11-s=0.43 C2-s=-0.40 C9-s=-0.40 H5-s=0.24 H12-s=0.24 C10-s=-0.16 C3-s=-0.16 C10-p=0.16 C3-p=0.16 H7-s=0.11 H14-s=0.11 H15-s=0.04 H8-s=0.04 C2-p=0.03 C9-p=0.03 Zn1-s
+ =0.03 Zn1-p=0.02 Zn1-d=0.02
+ Beta  vir 63 OE=0.227 is C3-s=-1.25 C10-s=-1.25 H6-s=0.54 H13-s=0.54 C9-s=0.35 C2-s=0.35 Zn1-p=0.28 C9-p=0.22 C2-p=0.22 C10-p=0.15 C3-p=0.15 H8-s=0.09 H15-s=0.09 H12-s=0.09 H5-s=0.09 H14-s=0.08 H7-s=0
+ .08 H11-s=0.08 H4-s=0.08 Zn1-d=0.02
+ Beta  vir 64 OE=0.229 is H14-s=0.28 H7-s=0.28 H15-s=0.19 H8-s=0.19 C9-s=-0.17 C2-s=-0.17 H13-s=0.15 H6-s=0.15 C3-s=-0.10 C10-s=-0.10 Zn1-s=0.08 Zn1-d=0.05 H11-s=0.05 H4-s=0.05 Zn1-p=0.05 H5-s=0.04 H12
+ -s=0.04 C3-p=-0.02 C10-p=-0.02 C2-p=-0.01 C9-p=-0.01
+ Beta  vir 65 OE=0.251 is Zn1-p=0.49 C2-p=-0.37 C9-p=-0.37 C10-s=0.30 C3-s=0.30 H11-s=0.18 H4-s=0.18 H5-s=0.16 H12-s=0.16 C2-s=-0.10 C9-s=-0.10 H15-s=0.04 H8-s=0.04 C3-p=0.03 C10-p=0.03 H14-s=0.01 H7-s
+ =0.01
+ Beta  vir 66 OE=0.252 is C10-s=-0.57 C3-s=-0.57 C2-s=0.37 C9-s=0.37 C2-p=0.20 C9-p=0.20 C10-p=0.19 C3-p=0.19 H6-s=0.11 H13-s=0.11 H8-s=0.09 H15-s=0.09 H14-s=0.07 H7-s=0.07 Zn1-d=0.04 Zn1-s=0.02 H5-s=-
+ 0.01 H12-s=-0.01
+ Beta  vir 67 OE=0.271 is Zn1-s=1.69 C9-s=-0.44 C2-s=-0.44 C2-p=-0.23 C9-p=-0.23 H12-s=0.10 H5-s=0.10 Zn1-d=0.09 H7-s=0.08 H14-s=0.08 H15-s=0.07 H8-s=0.07 C3-p=-0.05 C10-p=-0.05 H4-s=0.05 H11-s=0.05 H1
+ 3-s=0.03 H6-s=0.03
+ Beta  vir 68 OE=0.287 is C2-s=0.52 C9-s=0.52 C3-s=-0.27 C10-s=-0.27 Zn1-d=0.19 C10-p=0.14 C3-p=0.14 Zn1-p=-0.13 C2-p=-0.07 C9-p=-0.07 H12-s=0.05 H5-s=0.05 H8-s=0.04 H15-s=0.04 H7-s=0.03 H14-s=0.03 H4-
+ s=0.02 H11-s=0.02
+ Beta  vir 69 OE=0.324 is Zn1-d=0.57 Zn1-p=0.12 C10-s=-0.09 C3-s=-0.09 C3-p=0.07 C10-p=0.07 H4-s=0.07 H11-s=0.07 H8-s=0.04 H15-s=0.04 C9-p=0.03 C2-p=0.03 C2-s=0.01 C9-s=0.01
+ Beta  vir 70 OE=0.330 is Zn1-d=0.58 H13-s=0.11 H6-s=0.11 H7-s=0.07 H14-s=0.07 C3-p=-0.06 C10-p=-0.06 H5-s=0.04 H12-s=0.04 C9-s=0.03 C2-s=0.03 H15-s=0.03 H8-s=0.03 C10-s=-0.02 C3-s=-0.02 Zn1-s=0.02 C9-
+ p=-0.01 C2-p=-0.01 Zn1-p=0.01 H11-s=0.01 H4-s=0.01
+ Beta  vir 71 OE=0.359 is Zn1-d=0.48 H12-s=0.18 H5-s=0.18 C9-p=-0.17 C2-p=-0.17 H4-s=0.16 H11-s=0.16 C10-p=0.06 C3-p=0.06 H15-s=0.02 H8-s=0.02 H6-s=0.01 H13-s=0.01
+ Beta  vir 72 OE=0.379 is Zn1-d=0.50 C10-s=-0.18 C3-s=-0.18 C3-p=0.13 C10-p=0.13 H6-s=0.10 H13-s=0.10 C9-s=0.09 C2-s=0.09 Zn1-s=0.05 H15-s=0.04 H8-s=0.04 H7-s=0.04 H14-s=0.04 C9-p=-0.03 C2-p=-0.03 H4-s
+ =0.03 H11-s=0.03 Zn1-p=0.02
+ Beta  vir 73 OE=0.401 is Zn1-p=0.18 C10-s=0.14 C3-s=0.14 C10-p=0.12 C3-p=0.12 C2-p=0.07 C9-p=0.07 H11-s=0.03 H4-s=0.03 H7-s=0.02 H14-s=0.02 C9-s=0.02 C2-s=0.02
+ Beta  vir 74 OE=0.403 is Zn1-d=0.18 H8-s=0.15 H15-s=0.15 C3-s=-0.11 C10-s=-0.11 C3-p=0.09 C10-p=0.09 C9-s=0.08 C2-s=0.08 H7-s=0.07 H14-s=0.07 H12-s=0.06 H5-s=0.06 Zn1-p=0.02 H4-s=0.02 H11-s=0.02 Zn1-s
+ =0.01 C9-p=0.01 C2-p=0.01
+ Beta  vir 75 OE=0.425 is H7-s=0.17 H14-s=0.17 Zn1-d=0.16 C9-s=-0.14 C2-s=-0.14 C10-p=0.09 C3-p=0.09 C10-s=0.08 C3-s=0.08 H15-s=0.08 H8-s=0.08 C2-p=0.07 C9-p=0.07 Zn1-p=0.07 H12-s=0.01 H5-s=0.01 H11-s=
+ 0.01 H4-s=0.01
+ Beta  vir 76 OE=0.456 is C2-p=0.38 C9-p=0.38 C2-s=-0.33 C9-s=-0.33 Zn1-d=0.28 C10-s=0.09 C3-s=0.09 H4-s=0.08 H11-s=0.08 H5-s=0.07 H12-s=0.07 C10-p=0.07 C3-p=0.07 Zn1-s=-0.03
+ Beta  vir 77 OE=0.461 is C2-p=0.20 C9-p=0.20 C10-p=0.18 C3-p=0.18 Zn1-p=0.14 C9-s=-0.12 C2-s=-0.12 H15-s=0.09 H8-s=0.09 H13-s=0.06 H6-s=0.06 C10-s=-0.05 C3-s=-0.05 H14-s=0.05 H7-s=0.05 C9-d=0.01 C2-d=
+ 0.01
+ Beta  vir 78 OE=0.467 is C2-p=0.26 C9-p=0.26 Zn1-d=0.20 Zn1-s=-0.16 C10-p=0.14 C3-p=0.14 C9-s=-0.06 C2-s=-0.06 C10-s=0.05 C3-s=0.05 H7-s=0.03 H14-s=0.03 H6-s=0.02 H13-s=0.02
+ Beta  vir 79 OE=0.505 is Zn1-p=0.17 C9-p=0.16 C2-p=0.16 H13-s=0.15 H6-s=0.15 C10-p=0.14 C3-p=0.14 C3-s=-0.11 C10-s=-0.11 C9-s=0.04 C2-s=0.04 H5-s=0.03 H12-s=0.03
+ Beta  vir 80 OE=0.513 is C9-p=0.16 C2-p=0.16 C10-p=0.11 C3-p=0.11 H4-s=0.11 H11-s=0.11 Zn1-p=0.09 H5-s=0.05 H12-s=0.05 C3-s=-0.01 C10-s=-0.01
+ Beta  vir 81 OE=0.594 is Zn1-d=0.37 C10-p=0.19 C3-p=0.19 C2-p=0.13 C9-p=0.13 H7-s=-0.03 H14-s=-0.03 Zn1-p=0.03 H15-s=-0.02 H8-s=-0.02 C3-d=0.02 C10-d=0.02 C9-s=-0.02 C2-s=-0.02
+ Beta  vir 82 OE=0.619 is Zn1-d=0.37 C3-p=0.10 C10-p=0.10 H13-s=0.09 H6-s=0.09 Zn1-s=0.09 C2-s=0.05 C9-s=0.05 C3-s=0.01 C10-s=0.01 C2-d=0.01 C9-d=0.01
+ Beta  vir 83 OE=0.635 is C9-p=0.16 C2-p=0.16 Zn1-p=0.13 C9-s=0.07 C2-s=0.07 C3-s=0.06 C10-s=0.06 H7-s=0.04 H14-s=0.04 H8-s=0.04 H15-s=0.04 C3-p=0.03 C10-p=0.03 H13-s=0.02 H6-s=0.02 H12-s=0.01 H5-s=0.0
+ 1
+ Beta  vir 84 OE=0.651 is C2-p=0.22 C9-p=0.22 C10-p=0.14 C3-p=0.14 H6-s=0.09 H13-s=0.09 C3-s=0.03 C10-s=0.03 Zn1-s=-0.02 C2-s=0.02 C9-s=0.02 Zn1-d=-0.02 H8-s=0.01 H15-s=0.01 H12-s=-0.01 H5-s=-0.01 H11-
+ s=0.01 H4-s=0.01
+ Beta  vir 85 OE=0.670 is C9-p=0.45 C2-p=0.45 C10-p=0.03 C3-p=0.03 Zn1-d=-0.03 H11-s=0.02 H4-s=0.02 C9-d=0.01 C2-d=0.01
+ Beta  vir 86 OE=0.673 is C9-p=0.28 C2-p=0.28 C10-p=0.24 C3-p=0.24 H7-s=0.03 H14-s=0.03 H4-s=-0.03 H11-s=-0.03 H12-s=-0.02 H5-s=-0.02 H15-s=-0.02 H8-s=-0.02
+ Beta  vir 87 OE=0.681 is C10-p=0.27 C3-p=0.27 H7-s=0.05 H14-s=0.05 H15-s=0.05 H8-s=0.05 Zn1-d=0.04 H11-s=0.03 H4-s=0.03 H5-s=0.02 H12-s=0.02 C2-p=0.02 C9-p=0.02
+ Beta  vir 88 OE=0.706 is C10-p=0.22 C3-p=0.22 C9-p=0.15 C2-p=0.15 H15-s=0.09 H8-s=0.09 H12-s=0.05 H5-s=0.05 Zn1-s=-0.03 H6-s=-0.02 H13-s=-0.02
+ Beta  vir 89 OE=0.706 is C2-p=0.49 C9-p=0.49 C2-s=-0.13 C9-s=-0.13 Zn1-p=0.08 C10-s=0.06 C3-s=0.06 H13-s=0.03 H6-s=0.03 C3-p=0.02 C10-p=0.02 H8-s=-0.01 H15-s=-0.01
+ Beta  vir 90 OE=0.717 is C3-p=0.32 C10-p=0.32 C2-p=0.13 C9-p=0.13 H14-s=0.08 H7-s=0.08 H6-s=-0.04 H13-s=-0.04 C9-s=-0.04 C2-s=-0.04 H12-s=0.02 H5-s=0.02 H8-s=0.01 H15-s=0.01 H11-s=-0.01 H4-s=-0.01
+ Beta  vir 91 OE=0.729 is C10-p=0.39 C3-p=0.39 Zn1-p=0.35 C9-s=-0.19 C2-s=-0.19 H15-s=0.08 H8-s=0.08 C2-p=0.07 C9-p=0.07 H7-s=0.06 H14-s=0.06 H13-s=-0.06 H6-s=-0.06 C10-s=-0.06 C3-s=-0.06 H11-s=0.02 H4
+ -s=0.02
+ Beta  vir 92 OE=0.737 is C2-s=-0.50 C9-s=-0.50 C3-s=0.25 C10-s=0.25 H4-s=0.22 H11-s=0.22 C2-p=0.19 C9-p=0.19 H12-s=0.17 H5-s=0.17 Zn1-s=0.17 C10-p=0.06 C3-p=0.06 Zn1-d=-0.03 H15-s=0.02 H8-s=0.02 H14-s
+ =0.01 H7-s=0.01
+ Beta  vir 93 OE=0.760 is C2-p=0.31 C9-p=0.31 H11-s=0.09 H4-s=0.09 C9-s=-0.08 C2-s=-0.08 H12-s=0.08 H5-s=0.08 C3-s=-0.06 C10-s=-0.06 C10-p=0.06 C3-p=0.06 H6-s=0.06 H13-s=0.06 Zn1-p=0.02
+ Beta  vir 94 OE=0.786 is Zn1-p=-0.36 C10-p=0.33 C3-p=0.33 C2-s=0.28 C9-s=0.28 C10-s=-0.17 C3-s=-0.17 H13-s=0.06 H6-s=0.06 H14-s=0.05 H7-s=0.05 H15-s=0.05 H8-s=0.05 C9-p=0.02 C2-p=0.02 H12-s=0.02 H5-s=
+ 0.02 H11-s=0.01 H4-s=0.01
+ Beta  vir 95 OE=0.790 is C9-s=0.31 C2-s=0.31 C10-s=-0.28 C3-s=-0.28 C10-p=0.26 C3-p=0.26 Zn1-s=-0.14 H14-s=0.08 H7-s=0.08 H8-s=0.08 H15-s=0.08 H6-s=0.07 H13-s=0.07 C2-p=0.05 C9-p=0.05 Zn1-d=0.03 H4-s=
+ -0.03 H11-s=-0.03 H12-s=-0.02 H5-s=-0.02
+ Beta  vir 96 OE=0.896 is C9-s=0.52 C2-s=0.52 Zn1-s=-0.30 C10-s=0.26 C3-s=0.26 Zn1-d=0.10 H4-s=-0.08 H11-s=-0.08 H5-s=-0.07 H12-s=-0.07 H8-s=-0.05 H15-s=-0.05 H14-s=-0.05 H7-s=-0.05 C2-p=0.03 C9-p=0.03
+  H6-s=-0.02 H13-s=-0.02 C9-d=0.01 C2-d=0.01
+ Beta  vir 97 OE=0.907 is C10-s=0.99 C3-s=0.99 C9-s=-0.12 C2-s=-0.12 H7-s=-0.11 H14-s=-0.11 H15-s=-0.11 H8-s=-0.11 H13-s=-0.10 H6-s=-0.10 C2-p=-0.09 C9-p=-0.09 Zn1-p=0.02 H5-s=-0.01 H12-s=-0.01 C3-p=0.
+ 01 C10-p=0.01
+ Beta  vir 98 OE=0.922 is Zn1-d=0.61 C3-s=0.38 C10-s=0.38 Zn1-s=0.28 C9-s=-0.26 C2-s=-0.26 C9-p=0.06 C2-p=0.06 H6-s=-0.05 H13-s=-0.05 H8-s=-0.04 H15-s=-0.04 H7-s=-0.04 H14-s=-0.04 C3-p=-0.01 C10-p=-0.0
+ 1
+ Beta  vir 99 OE=1.011 is C2-s=0.45 C9-s=0.45 C10-s=0.20 C3-s=0.20 C3-p=-0.07 C10-p=-0.07 Zn1-d=0.05 H12-s=-0.03 H5-s=-0.03 C2-p=-0.03 C9-p=-0.03 H4-s=-0.02 H11-s=-0.02 H15-s=-0.02 H8-s=-0.02 H6-s=-0.0
+ 2 H13-s=-0.02 H7-s=-0.01 H14-s=-0.01 Zn1-s=-0.01
+ Beta  vir 100 OE=1.037 is C9-s=0.57 C2-s=0.57 Zn1-p=-0.38 C10-d=0.06 C3-d=0.06 C2-d=0.06 C9-d=0.06 H11-s=-0.03 H4-s=-0.03 H5-s=-0.02 H12-s=-0.02 H8-p=0.02 H15-p=0.02 H7-p=0.02 H14-p=0.02 C3-s=0.02 C10
+ -s=0.02 H13-p=0.02 H6-p=0.02 C3-p=-0.02 C10-p=-0.02 H13-s=-0.01 H6-s=-0.01
+ Beta  vir 101 OE=1.103 is C2-d=0.14 C9-d=0.14 C3-d=0.11 C10-d=0.11 H4-p=0.07 H11-p=0.07 H5-p=0.05 H12-p=0.05 H6-p=0.04 H13-p=0.04 H14-p=0.03 H7-p=0.03 H8-p=0.03 H15-p=0.03 Zn1-p=0.01 C9-s=0.01 C2-s=0.
+ 01 C10-s=0.01 C3-s=0.01
+ Beta  vir 102 OE=1.122 is C2-s=0.42 C9-s=0.42 Zn1-p=-0.36 C9-d=0.09 C2-d=0.09 C3-d=0.08 C10-d=0.08 H5-p=0.04 H12-p=0.04 H11-p=0.03 H4-p=0.03 H6-p=0.03 H13-p=0.03 H14-p=0.03 H7-p=0.03 H15-p=0.02 H8-p=0
+ .02 H11-s=-0.01 H4-s=-0.01 C3-p=-0.01 C10-p=-0.01 H5-s=-0.01 H12-s=-0.01
+ Beta  vir 103 OE=1.199 is C3-d=0.16 C10-d=0.16 Zn1-d=0.08 H13-p=0.08 H6-p=0.08 H8-p=0.05 H15-p=0.05 H7-p=0.04 H14-p=0.04 H12-p=0.04 H5-p=0.04 C9-d=0.03 C2-d=0.03 C3-p=0.03 C10-p=0.03 C2-p=0.01 C9-p=0.
+ 01
+ Beta  vir 104 OE=1.251 is C10-d=0.16 C3-d=0.16 H7-p=0.07 H14-p=0.07 H8-p=0.06 H15-p=0.06 H11-p=0.05 H4-p=0.05 Zn1-d=0.04 C2-d=0.04 C9-d=0.04 C2-p=0.03 C9-p=0.03 H5-p=0.03 H12-p=0.03 H6-p=0.03 H13-p=0.
+ 03
+ Beta  vir 105 OE=1.336 is H7-p=0.09 H14-p=0.09 H5-p=0.09 H12-p=0.09 H15-p=0.08 H8-p=0.08 H11-p=0.08 H4-p=0.08 C3-d=0.07 C10-d=0.07 C2-d=0.06 C9-d=0.06 C9-p=0.02 C2-p=0.02 C10-p=0.01 C3-p=0.01
+ Beta  vir 106 OE=1.355 is H4-p=0.13 H11-p=0.13 C2-d=0.11 C9-d=0.11 H12-p=0.10 H5-p=0.10 H8-p=0.06 H15-p=0.06 Zn1-d=0.04 H7-p=0.04 H14-p=0.04 C3-d=0.02 C10-d=0.02
+ Beta  vir 107 OE=1.459 is C9-d=0.16 C2-d=0.16 H6-p=0.12 H13-p=0.12 C3-d=0.06 C10-d=0.06 H11-p=0.04 H4-p=0.04 H12-p=0.04 H5-p=0.04 H7-p=0.03 H14-p=0.03 C2-p=0.02 C9-p=0.02 H15-p=0.02 H8-p=0.02
+ Beta  vir 108 OE=1.502 is C2-d=0.21 C9-d=0.21 C10-d=0.08 C3-d=0.08 H13-p=0.07 H6-p=0.07 H12-p=0.05 H5-p=0.05 C9-p=0.03 C2-p=0.03 H4-p=0.03 H11-p=0.03 H8-p=0.02 H15-p=0.02 H13-s=0.01 H6-s=0.01 Zn1-d=0.
+ 01
+ Beta  vir 109 OE=1.532 is C9-d=0.25 C2-d=0.25 Zn1-d=0.15 C2-s=0.04 C9-s=0.04 H4-p=0.03 H11-p=0.03 H5-p=0.03 H12-p=0.03 C3-d=0.03 C10-d=0.03 Zn1-s=-0.02 H6-p=0.02 H13-p=0.02
+ Beta  vir 110 OE=1.577 is H8-p=0.17 H15-p=0.17 H6-p=0.16 H13-p=0.16 H14-p=0.15 H7-p=0.15 Zn1-d=0.01
+ Beta  vir 111 OE=1.578 is H7-p=0.18 H14-p=0.18 H8-p=0.16 H15-p=0.16 H13-p=0.16 H6-p=0.16
+ Beta  vir 112 OE=1.600 is C2-d=0.26 C9-d=0.26 C2-s=0.06 C9-s=0.06 Zn1-p=0.05 C10-d=0.04 C3-d=0.04 H7-p=0.04 H14-p=0.04 H8-p=0.03 H15-p=0.03 H13-p=0.02 H6-p=0.02 H12-p=0.02 H5-p=0.02 H11-p=0.02 H4-p=0.
+ 02 C2-p=-0.02 C9-p=-0.02 C10-s=-0.02 C3-s=-0.02
+ Beta  vir 113 OE=1.630 is C3-d=0.22 C10-d=0.22 C9-d=0.08 C2-d=0.08 H7-s=0.04 H14-s=0.04 H15-s=0.03 H8-s=0.03 H14-p=0.03 H7-p=0.03 H13-p=0.03 H6-p=0.03 H8-p=0.03 H15-p=0.03 H11-p=0.02 H4-p=0.02 H12-p=0
+ .02 H5-p=0.02 C10-p=-0.02 C3-p=-0.02
+ Beta  vir 114 OE=1.633 is C10-d=0.16 C3-d=0.16 C2-d=0.14 C9-d=0.14 H4-p=0.03 H11-p=0.03 H7-s=0.03 H14-s=0.03 H12-p=0.03 H5-p=0.03 H14-p=0.02 H7-p=0.02 H8-s=0.02 H15-s=0.02 H8-p=0.02 H15-p=0.02 H6-p=0.
+ 02 H13-p=0.02 H5-s=0.02 H12-s=0.02 H11-s=0.02 H4-s=0.02
+ Beta  vir 115 OE=1.648 is C2-d=0.18 C9-d=0.18 C10-d=0.13 C3-d=0.13 Zn1-d=0.05 H14-p=0.04 H7-p=0.04 H4-s=0.03 H11-s=0.03 H4-p=0.03 H11-p=0.03 H5-p=0.02 H12-p=0.02 H8-s=0.02 H15-s=0.02 H15-p=0.02 H8-p=0
+ .02 H6-p=0.02 H13-p=0.02 C9-p=-0.01 C2-p=-0.01
+ Beta  vir 116 OE=1.655 is C9-d=0.17 C2-d=0.17 C3-d=0.16 C10-d=0.16 H8-p=0.03 H15-p=0.03 H6-p=0.03 H13-p=0.03 Zn1-d=0.03 H12-p=0.02 H5-p=0.02 H5-s=0.02 H12-s=0.02 H14-p=0.02 H7-p=0.02 H14-s=0.01 H7-s=0
+ .01
+ Beta  vir 117 OE=1.666 is C3-d=0.16 C10-d=0.16 C2-d=0.15 C9-d=0.15 H6-p=0.06 H13-p=0.06 H15-p=0.04 H8-p=0.04 C9-s=-0.03 C2-s=-0.03 C10-s=0.02 C3-s=0.02 H14-p=0.02 H7-p=0.02 H14-s=0.02 H7-s=0.02 Zn1-p=
+ 0.02 H12-s=0.02 H5-s=0.02 H12-p=0.01 H5-p=0.01
+ Beta  vir 118 OE=1.675 is C9-d=0.24 C2-d=0.24 C3-d=0.09 C10-d=0.09 H4-s=0.04 H11-s=0.04 H7-p=0.03 H14-p=0.03 H6-p=0.03 H13-p=0.03 H11-p=0.03 H4-p=0.03 H15-p=0.03 H8-p=0.03 C9-p=-0.02 C2-p=-0.02 H5-s=0
+ .02 H12-s=0.02 H12-p=0.02 H5-p=0.02 H8-s=0.01 H15-s=0.01
+ Beta  vir 119 OE=1.702 is C10-d=0.23 C3-d=0.23 H13-p=0.06 H6-p=0.06 H6-s=0.05 H13-s=0.05 H14-p=0.03 H7-p=0.03 H8-p=0.03 H15-p=0.03 H11-p=0.03 H4-p=0.03 C2-d=0.02 C9-d=0.02 H12-p=0.02 H5-p=0.02 C3-p=-0
+ .01 C10-p=-0.01 Zn1-p=-0.01 H15-s=0.01 H8-s=0.01
+ Beta  vir 120 OE=1.712 is C10-d=0.16 C3-d=0.16 H6-p=0.09 H13-p=0.09 H12-p=0.09 H5-p=0.09 H15-p=0.05 H8-p=0.05 H7-p=0.03 H14-p=0.03 H6-s=0.03 H13-s=0.03 H4-p=0.03 H11-p=0.03 C10-p=-0.01 C3-p=-0.01 C2-d
+ =0.01 C9-d=0.01
+ Beta  vir 121 OE=1.739 is H11-p=0.23 H4-p=0.23 H5-p=0.13 H12-p=0.13 C10-d=0.03 C3-d=0.03 H7-p=0.03 H14-p=0.03 C2-p=0.02 C9-p=0.02 H13-p=0.02 H6-p=0.02 H8-p=0.01 H15-p=0.01 C2-d=0.01 C9-d=0.01
+ Beta  vir 122 OE=1.778 is H5-p=0.15 H12-p=0.15 Zn1-d=0.14 H4-p=0.12 H11-p=0.12 C2-d=0.07 C9-d=0.07 C3-d=0.04 C10-d=0.04 C2-p=0.03 C9-p=0.03 H6-p=0.03 H13-p=0.03
+ Beta  vir 123 OE=1.792 is H12-p=0.10 H5-p=0.10 H7-p=0.10 H14-p=0.10 H15-p=0.10 H8-p=0.10 Zn1-d=0.10 H4-p=0.09 H11-p=0.09 H13-p=0.03 H6-p=0.03 C9-d=0.01 C2-d=0.01
+ Beta  vir 124 OE=1.828 is H7-p=0.10 H14-p=0.10 H15-p=0.09 H8-p=0.09 H13-p=0.07 H6-p=0.07 H5-p=0.07 H12-p=0.07 H4-p=0.05 H11-p=0.05 C2-d=0.05 C9-d=0.05 C10-d=0.03 C3-d=0.03 Zn1-d=0.03 Zn1-p=0.01 C3-p=0
+ .01 C10-p=0.01
+ Beta  vir 125 OE=1.852 is H8-p=0.11 H15-p=0.11 H14-p=0.10 H7-p=0.10 Zn1-d=0.09 H4-p=0.09 H11-p=0.09 H12-p=0.07 H5-p=0.07 C3-d=0.03 C10-d=0.03 C2-d=0.02 C9-d=0.02
+ Beta  vir 126 OE=1.887 is H5-p=0.12 H12-p=0.12 H4-p=0.11 H11-p=0.11 H8-p=0.09 H15-p=0.09 H7-p=0.08 H14-p=0.08 C2-d=0.05 C9-d=0.05 Zn1-p=-0.03 C2-s=0.02 C9-s=0.02 C9-p=0.02 C2-p=0.02 H13-p=0.01 H6-p=0.
+ 01
+ Beta  vir 127 OE=1.917 is Zn1-d=0.31 H6-p=0.08 H13-p=0.08 C3-d=0.07 C10-d=0.07 C9-d=0.06 C2-d=0.06 H14-p=0.05 H7-p=0.05 H6-s=0.02 H13-s=0.02 C2-p=0.02 C9-p=0.02 H15-p=0.02 H8-p=0.02
+ Beta  vir 128 OE=1.944 is Zn1-d=0.52 C9-d=0.06 C2-d=0.06 H15-p=0.06 H8-p=0.06 H13-p=0.04 H6-p=0.04 C10-d=0.04 C3-d=0.04 H5-p=0.01 H12-p=0.01
+ Beta  vir 129 OE=1.951 is Zn1-d=0.57 C10-d=0.05 C3-d=0.05 H13-p=0.05 H6-p=0.05 C9-d=0.03 C2-d=0.03 H5-p=0.02 H12-p=0.02 H7-p=0.02 H14-p=0.02 H8-p=0.01 H15-p=0.01 C3-p=0.01 C10-p=0.01
+ Beta  vir 130 OE=1.966 is Zn1-d=0.84 H11-p=0.02 H4-p=0.02 H15-p=0.02 H8-p=0.02
+ Beta  vir 131 OE=1.975 is Zn1-d=0.12 H14-p=0.09 H7-p=0.09 C2-d=0.08 C9-d=0.08 C3-d=0.06 C10-d=0.06 H13-p=0.06 H6-p=0.06 H11-p=0.03 H4-p=0.03 H8-p=0.02 H15-p=0.02 H5-p=0.02 H12-p=0.02 C10-p=0.02 C3-p=0
+ .02 Zn1-p=0.02 H13-s=0.01 H6-s=0.01
+ Beta  vir 132 OE=2.071 is C2-d=0.14 C9-d=0.14 H12-p=0.11 H5-p=0.11 H11-p=0.09 H4-p=0.09 Zn1-p=0.07 H6-p=0.03 H13-p=0.03 C3-d=0.02 C10-d=0.02 H15-p=0.02 H8-p=0.02 H7-p=0.01 H14-p=0.01
+ Beta  vir 133 OE=2.072 is Zn1-d=0.27 C9-d=0.09 C2-d=0.09 H5-p=0.07 H12-p=0.07 H8-p=0.05 H15-p=0.05 Zn1-p=0.04 C10-d=0.03 C3-d=0.03 H11-p=0.03 H4-p=0.03 H6-p=0.02 H13-p=0.02 C10-p=0.02 C3-p=0.02 Zn1-s=
+ -0.02 C9-s=0.02 C2-s=0.02
+ Beta  vir 134 OE=2.121 is C2-d=0.11 C9-d=0.11 Zn1-p=0.10 H4-p=0.10 H11-p=0.10 Zn1-d=0.07 H13-p=0.05 H6-p=0.05 C3-d=0.05 C10-d=0.05 H14-p=0.03 H7-p=0.03 C3-p=0.02 C10-p=0.02 H12-p=0.02 H5-p=0.02 H15-s=
+ 0.02 H8-s=0.02
+ Beta  vir 135 OE=2.157 is Zn1-d=0.20 C9-d=0.12 C2-d=0.12 Zn1-p=0.11 H12-p=0.07 H5-p=0.07 H11-p=0.06 H4-p=0.06 C3-d=0.02 C10-d=0.02 H5-s=0.02 H12-s=0.02 H13-p=0.01 H6-p=0.01 H11-s=0.01 H4-s=0.01
+ Beta  vir 136 OE=2.184 is Zn1-p=0.64 C3-d=0.06 C10-d=0.06 H6-p=0.04 H13-p=0.04 C2-d=0.01 C9-d=0.01 C10-s=0.01 C3-s=0.01 H5-p=0.01 H12-p=0.01 H11-p=0.01 H4-p=0.01
+ Beta  vir 137 OE=2.192 is Zn1-p=0.69 C2-d=0.04 C9-d=0.04 Zn1-d=0.03 H12-p=0.03 H5-p=0.03 C10-d=0.02 C3-d=0.02 H7-s=0.01 H14-s=0.01 H6-p=0.01 H13-p=0.01
+ Beta  vir 138 OE=2.230 is C3-d=0.11 C10-d=0.11 C2-d=0.10 C9-d=0.10 Zn1-p=0.05 H5-p=0.04 H12-p=0.04 H6-p=0.03 H13-p=0.03 H8-s=0.03 H15-s=0.03 H11-p=0.03 H4-p=0.03 Zn1-d=0.03 H15-p=0.03 H8-p=0.03 C10-s=
+ 0.03 C3-s=0.03 H7-p=0.02 H14-p=0.02 H11-s=0.02 H4-s=0.02
+ Beta  vir 139 OE=2.241 is C10-d=0.12 C3-d=0.12 Zn1-d=0.11 H6-p=0.08 H13-p=0.08 H8-p=0.07 H15-p=0.07 H14-p=0.06 H7-p=0.06 Zn1-p=0.03 H5-p=0.02 H12-p=0.02 C2-d=0.01 C9-d=0.01 H11-s=0.01 H4-s=0.01 C3-s=0
+ .01 C10-s=0.01 H4-p=0.01 H11-p=0.01
+ Beta  vir 140 OE=2.264 is Zn1-p=0.20 Zn1-d=0.19 C10-d=0.05 C3-d=0.05 H6-p=0.05 H13-p=0.05 H14-p=0.05 H7-p=0.05 H11-p=0.04 H4-p=0.04 C2-d=0.04 C9-d=0.04 C3-p=0.02 C10-p=0.02 H8-s=0.01 H15-s=0.01 H14-s=
+ 0.01 H7-s=0.01
+ Beta  vir 141 OE=2.275 is Zn1-p=0.23 Zn1-d=0.11 C3-d=0.07 C10-d=0.07 H15-p=0.05 H8-p=0.05 C9-d=0.04 C2-d=0.04 H5-p=0.03 H12-p=0.03 H6-p=0.03 H13-p=0.03 C2-p=0.02 C9-p=0.02 H11-p=0.02 H4-p=0.02 H7-s=0.
+ 02 H14-s=0.02 C3-p=0.02 C10-p=0.02 H14-p=0.02 H7-p=0.02
+ Beta  vir 142 OE=2.275 is Zn1-d=0.25 C10-d=0.10 C3-d=0.10 C9-p=0.05 C2-p=0.05 H14-p=0.05 H7-p=0.05 H15-p=0.05 H8-p=0.05 C2-d=0.04 C9-d=0.04 H15-s=0.02 H8-s=0.02 H14-s=0.01 H7-s=0.01 H12-p=0.01 H5-p=0.
+ 01 C3-s=0.01 C10-s=0.01 H11-p=0.01 H4-p=0.01
+ Beta  vir 143 OE=2.384 is Zn1-d=0.19 C9-d=0.11 C2-d=0.11 H12-p=0.07 H5-p=0.07 H4-p=0.07 H11-p=0.07 H6-s=0.05 H13-s=0.05 C10-p=0.02 C3-p=0.02 H7-p=0.02 H14-p=0.02 C3-d=0.02 C10-d=0.02 C9-p=0.01 C2-p=0.
+ 01 C10-s=0.01 C3-s=0.01
+ Beta  vir 144 OE=2.390 is Zn1-p=0.18 C2-d=0.08 C9-d=0.08 C10-d=0.07 C3-d=0.07 H8-p=0.05 H15-p=0.05 H11-p=0.05 H4-p=0.05 H12-p=0.05 H5-p=0.05 H7-p=0.04 H14-p=0.04 H6-s=0.03 H13-s=0.03 C2-p=0.02 C9-p=0.
+ 02
+ Beta  vir 145 OE=2.414 is C10-d=0.15 C3-d=0.15 C2-p=0.06 C9-p=0.06 H8-p=0.05 H15-p=0.05 C9-d=0.05 C2-d=0.05 H7-p=0.04 H14-p=0.04 H6-p=0.04 H13-p=0.04 H5-p=0.03 H12-p=0.03 H11-p=0.02 H4-p=0.02 Zn1-d=0.
+ 02 H11-s=0.02 H4-s=0.02 H12-s=0.02 H5-s=0.02
+ Beta  vir 146 OE=2.439 is C10-d=0.13 C3-d=0.13 Zn1-d=0.07 C2-d=0.07 C9-d=0.07 H7-p=0.05 H14-p=0.05 H15-p=0.05 H8-p=0.05 H4-p=0.04 H11-p=0.04 C2-p=0.04 C9-p=0.04 H12-p=0.03 H5-p=0.03 H6-p=0.03 H13-p=0.
+ 03 H12-s=0.01 H5-s=0.01
+ Beta  vir 147 OE=2.487 is Zn1-p=0.15 C2-s=0.06 C9-s=0.06 C3-d=0.06 C10-d=0.06 C2-d=0.05 C9-d=0.05 H4-p=0.04 H11-p=0.04 H6-s=0.04 H13-s=0.04 H12-p=0.04 H5-p=0.04 H8-p=0.03 H15-p=0.03 H7-p=0.03 H14-p=0.
+ 03 H13-p=0.02 H6-p=0.02 H12-s=0.01 H5-s=0.01 C2-p=0.01 C9-p=0.01 H4-s=0.01 H11-s=0.01
+ Beta  vir 148 OE=2.494 is C10-d=0.09 C3-d=0.09 C2-d=0.07 C9-d=0.07 C9-s=0.06 C2-s=0.06 Zn1-d=0.06 H4-p=0.04 H11-p=0.04 H5-p=0.04 H12-p=0.04 H7-p=0.03 H14-p=0.03 H15-p=0.03 H8-p=0.03 H6-p=0.02 H13-p=0.
+ 02 Zn1-s=-0.02 C2-p=0.02 C9-p=0.02 H5-s=0.02 H12-s=0.02 H4-s=0.02 H11-s=0.02
+ Beta  vir 149 OE=2.627 is Zn1-p=0.10 C3-s=0.09 C10-s=0.09 C3-d=0.08 C10-d=0.08 C9-s=-0.07 C2-s=-0.07 C3-p=0.06 C10-p=0.06 H7-p=0.05 H14-p=0.05 H6-s=0.05 H13-s=0.05 H13-p=0.04 H6-p=0.04 H15-s=0.04 H8-s
+ =0.04 H8-p=0.04 H15-p=0.04 H14-s=0.03 H7-s=0.03 C2-d=0.02 C9-d=0.02
+ Beta  vir 150 OE=2.631 is H15-p=0.09 H8-p=0.09 C3-s=0.08 C10-s=0.08 C3-d=0.07 C10-d=0.07 C10-p=0.06 C3-p=0.06 H6-s=0.05 H13-s=0.05 H7-s=0.05 H14-s=0.05 H13-p=0.04 H6-p=0.04 H14-p=0.02 H7-p=0.02 C9-s=-
+ 0.02 C2-s=-0.02 Zn1-d=0.01 C9-d=0.01 C2-d=0.01 H5-p=0.01 H12-p=0.01
+ Beta  vir 151 OE=2.638 is H14-p=0.15 H7-p=0.15 H4-s=0.08 H11-s=0.08 H12-s=0.07 H5-s=0.07 H15-s=0.07 H8-s=0.07 H15-p=0.06 H8-p=0.06 H5-p=0.05 H12-p=0.05 H11-p=0.05 H4-p=0.05 H14-s=0.04 H7-s=0.04 C10-p=
+ -0.04 C3-p=-0.04 C2-p=-0.03 C9-p=-0.03 C9-d=-0.01 C2-d=-0.01
+ Beta  vir 152 OE=2.669 is H15-p=0.14 H8-p=0.14 H14-p=0.12 H7-p=0.12 H15-s=0.08 H8-s=0.08 H5-s=0.08 H12-s=0.08 C10-p=-0.06 C3-p=-0.06 H7-s=0.06 H14-s=0.06 H4-s=0.05 H11-s=0.05 H4-p=0.04 H11-p=0.04 C2-p
+ =-0.03 C9-p=-0.03 H12-p=0.02 H5-p=0.02 H13-p=0.02 H6-p=0.02 C3-d=-0.01 C10-d=-0.01
+ Beta  vir 153 OE=2.712 is Zn1-p=0.12 C9-d=0.08 C2-d=0.08 C9-p=0.08 C2-p=0.08 H4-p=0.05 H11-p=0.05 C3-d=0.04 C10-d=0.04 C9-s=0.04 C2-s=0.04 H5-p=0.04 H12-p=0.04 H4-s=0.04 H11-s=0.04 H5-s=0.03 H12-s=0.0
+ 3 H15-p=0.03 H8-p=0.03 H6-p=0.01 H13-p=0.01 C10-s=-0.01 C3-s=-0.01
+ Beta  vir 154 OE=2.723 is H5-p=0.09 H12-p=0.09 C2-p=0.07 C9-p=0.07 C9-d=0.06 C2-d=0.06 H8-s=0.05 H15-s=0.05 H7-p=0.04 H14-p=0.04 Zn1-d=0.04 C3-d=0.04 C10-d=0.04 H11-s=0.03 H4-s=0.03 C2-s=0.03 C9-s=0.0
+ 3 H11-p=0.02 H4-p=0.02 H13-p=0.02 H6-p=0.02 H8-p=0.02 H15-p=0.02 Zn1-s=-0.01
+ Beta  vir 155 OE=2.732 is H7-s=0.08 H14-s=0.08 H12-s=0.08 H5-s=0.08 H8-s=0.07 H15-s=0.07 H4-p=0.05 H11-p=0.05 C2-p=0.05 C9-p=0.05 H15-p=0.04 H8-p=0.04 C10-p=0.04 C3-p=0.04 H11-s=0.03 H4-s=0.03 H13-p=0
+ .02 H6-p=0.02 C10-d=0.02 C3-d=0.02
+ Beta  vir 156 OE=2.754 is H13-p=0.24 H6-p=0.24 H15-p=0.07 H8-p=0.07 H13-s=0.06 H6-s=0.06 H14-s=0.03 H7-s=0.03 H7-p=0.02 H14-p=0.02 C3-d=0.02 C10-d=0.02 H4-s=0.02 H11-s=0.02 C9-p=0.01 C2-p=0.01
+ Beta  vir 157 OE=2.756 is H11-s=0.09 H4-s=0.09 H7-s=0.08 H14-s=0.08 H5-s=0.08 H12-s=0.08 H5-p=0.06 H12-p=0.06 H8-s=0.06 H15-s=0.06 H7-p=0.06 H14-p=0.06 H11-p=0.04 H4-p=0.04 C2-d=-0.02 C9-d=-0.02 H6-p=
+ 0.02 H13-p=0.02 Zn1-d=0.02 C3-p=0.02 C10-p=0.02
+ Beta  vir 158 OE=2.775 is H4-p=0.10 H11-p=0.10 H5-p=0.09 H12-p=0.09 C9-d=0.06 C2-d=0.06 C2-p=0.05 C9-p=0.05 C10-p=0.05 C3-p=0.05 H15-p=0.04 H8-p=0.04 C10-d=0.04 C3-d=0.04 H4-s=0.02 H11-s=0.02 H7-p=0.0
+ 2 H14-p=0.02 H13-p=0.01 H6-p=0.01 H5-s=0.01 H12-s=0.01
+ Beta  vir 159 OE=2.776 is H11-p=0.10 H4-p=0.10 H14-p=0.08 H7-p=0.08 C10-p=0.07 C3-p=0.07 H12-p=0.06 H5-p=0.06 H8-p=0.04 H15-p=0.04 C10-d=0.04 C3-d=0.04 H11-s=0.03 H4-s=0.03 H12-s=0.03 H5-s=0.03 H13-p=
+ 0.02 H6-p=0.02 C2-d=0.02 C9-d=0.02
+ Beta  vir 160 OE=2.780 is H6-p=0.22 H13-p=0.22 H14-p=0.07 H7-p=0.07 H8-s=0.05 H15-s=0.05 Zn1-p=0.04 H13-s=0.04 H6-s=0.04 H8-p=0.03 H15-p=0.03 C3-d=0.03 C10-d=0.03 C3-p=0.01 C10-p=0.01
+ Beta  vir 161 OE=2.799 is H6-s=0.16 H13-s=0.16 C10-p=0.09 C3-p=0.09 C10-d=0.04 C3-d=0.04 C9-d=0.04 C2-d=0.04 H15-s=0.04 H8-s=0.04 C2-p=0.03 C9-p=0.03 H11-s=0.03 H4-s=0.03 H15-p=0.02 H8-p=0.02 H7-s=0.0
+ 1 H14-s=0.01 H13-p=0.01 H6-p=0.01
+ Beta  vir 162 OE=2.814 is C9-d=0.11 C2-d=0.11 C3-d=0.08 C10-d=0.08 C9-p=0.07 C2-p=0.07 H12-p=0.04 H5-p=0.04 C10-p=0.04 C3-p=0.04 H14-s=0.03 H7-s=0.03 H11-p=0.03 H4-p=0.03 H4-s=0.03 H11-s=0.03 H12-s=0.
+ 02 H5-s=0.02 H8-s=0.02 H15-s=0.02 H14-p=0.01 H7-p=0.01
+ Beta  vir 163 OE=2.822 is C10-d=0.08 C3-d=0.08 H5-s=0.07 H12-s=0.07 C10-p=0.07 C3-p=0.07 H14-s=0.07 H7-s=0.07 C2-d=0.05 C9-d=0.05 H6-s=0.04 H13-s=0.04 H13-p=0.02 H6-p=0.02 H11-s=0.02 H4-s=0.02 H8-p=0.
+ 02 H15-p=0.02 H7-p=0.02 H14-p=0.02 H8-s=0.01 H15-s=0.01 Zn1-d=0.01
+ Beta  vir 164 OE=2.835 is H13-s=0.15 H6-s=0.15 C3-p=0.08 C10-p=0.08 H4-s=0.05 H11-s=0.05 Zn1-d=0.05 C10-d=0.05 C3-d=0.05 C9-d=0.03 C2-d=0.03 H12-s=0.03 H5-s=0.03 H15-s=0.02 H8-s=0.02 H8-p=0.02 H15-p=0
+ .02 H4-p=0.01 H11-p=0.01 C9-s=0.01 C2-s=0.01
+ Beta  vir 165 OE=2.906 is H5-s=0.12 H12-s=0.12 H5-p=0.10 H12-p=0.10 H11-p=0.08 H4-p=0.08 H4-s=0.08 H11-s=0.08 H15-s=0.05 H8-s=0.05 H7-s=0.04 H14-s=0.04 C9-p=-0.03 C2-p=-0.03 H7-p=0.03 H14-p=0.03 H8-p=
+ 0.02 H15-p=0.02 C9-s=-0.02 C2-s=-0.02 H6-s=0.02 H13-s=0.02 C3-s=-0.01 C10-s=-0.01 Zn1-d=0.01
+ Beta  vir 166 OE=2.915 is H11-s=0.14 H4-s=0.14 H5-s=0.10 H12-s=0.10 H11-p=0.10 H4-p=0.10 H12-p=0.09 H5-p=0.09 H7-s=0.04 H14-s=0.04 C9-s=-0.04 C2-s=-0.04 H15-s=0.03 H8-s=0.03 H8-p=0.03 H15-p=0.03 H14-p
+ =0.02 H7-p=0.02 C9-p=-0.02 C2-p=-0.02 C3-s=-0.02 C10-s=-0.02 Zn1-p=0.02 H6-p=0.02 H13-p=0.02
+ Beta  vir 167 OE=2.999 is H15-s=0.07 H8-s=0.07 H7-s=0.07 H14-s=0.07 H13-s=0.05 H6-s=0.05 H6-p=0.05 H13-p=0.05 C9-p=0.04 C2-p=0.04 H15-p=0.04 H8-p=0.04 H5-s=0.04 H12-s=0.04 H7-p=0.04 H14-p=0.04 H4-s=0.
+ 04 H11-s=0.04 C3-p=0.03 C10-p=0.03 Zn1-p=0.03 H5-p=0.02 H12-p=0.02 C2-s=-0.02 C9-s=-0.02 H4-p=0.02 H11-p=0.02
+ Beta  vir 168 OE=3.016 is H14-s=0.09 H7-s=0.09 H15-s=0.08 H8-s=0.08 H6-s=0.07 H13-s=0.07 H14-p=0.06 H7-p=0.06 H15-p=0.06 H8-p=0.06 H13-p=0.05 H6-p=0.05 C9-p=0.05 C2-p=0.05 C10-s=-0.03 C3-s=-0.03 H11-s
+ =0.03 H4-s=0.03 C10-p=0.03 C3-p=0.03 H12-s=0.02 H5-s=0.02 Zn1-s=-0.01 H11-p=0.01 H4-p=0.01
+ Beta  vir 169 OE=3.201 is C9-p=0.34 C2-p=0.34 C10-p=0.04 C3-p=0.04 Zn1-f=0.03 Zn1-p=0.03 H15-p=0.02 H8-p=0.02 H7-p=0.02 H14-p=0.02 H6-p=0.02 H13-p=0.02 C2-s=0.01 C9-s=0.01 H6-s=0.01 H13-s=0.01 C10-d=0
+ .01 C3-d=0.01
+ Beta  vir 170 OE=3.339 is C2-p=0.21 C9-p=0.21 C10-p=0.17 C3-p=0.17 Zn1-d=0.03 H7-p=0.03 H14-p=0.03 H8-p=0.03 H15-p=0.03 Zn1-s=0.02 H6-p=0.02 H13-p=0.02
+ Beta  vir 171 OE=3.470 is C9-p=0.24 C2-p=0.24 C10-p=0.14 C3-p=0.14 Zn1-p=0.08 H12-p=0.02 H5-p=0.02 H11-p=0.02 H4-p=0.02 Zn1-f=0.02 H8-p=0.01 H15-p=0.01 H7-p=0.01 H14-p=0.01 C9-d=0.01 C2-d=0.01 H5-s=-0
+ .01 H12-s=-0.01 H11-s=-0.01 H4-s=-0.01
+ Beta  vir 172 OE=3.659 is C2-p=0.34 C9-p=0.34 Zn1-d=0.09 Zn1-s=0.06 C9-d=0.03 C2-d=0.03 C10-p=0.02 C3-p=0.02 H12-p=0.01 H5-p=0.01 H4-p=0.01 H11-p=0.01
+ Beta  vir 173 OE=3.932 is C2-p=0.36 C9-p=0.36 C9-d=0.09 C2-d=0.09 H4-s=0.01 H11-s=0.01 C10-p=0.01 C3-p=0.01 Zn1-f=0.01 H5-s=0.01 H12-s=0.01
+ Beta  vir 174 OE=3.948 is C2-p=0.38 C9-p=0.38 C2-d=0.09 C9-d=0.09 C10-p=0.01 C3-p=0.01
+ Beta  vir 175 OE=4.024 is C10-p=0.38 C3-p=0.38 C10-d=0.08 C3-d=0.08 H8-s=0.01 H15-s=0.01
+ Beta  vir 176 OE=4.024 is C3-p=0.38 C10-p=0.38 C3-d=0.08 C10-d=0.08
+ Beta  vir 177 OE=4.025 is C3-p=0.38 C10-p=0.38 C3-d=0.08 C10-d=0.08
+ Beta  vir 178 OE=4.026 is C3-p=0.39 C10-p=0.39 C3-d=0.08 C10-d=0.08
+ Beta  vir 179 OE=4.374 is C10-p=0.22 C3-p=0.22 C9-p=0.17 C2-p=0.17 Zn1-f=0.09 C9-d=0.04 C2-d=0.04 C3-d=0.03 C10-d=0.03
+ Beta  vir 180 OE=4.405 is C3-p=0.24 C10-p=0.24 C9-p=0.19 C2-p=0.19 C2-d=0.03 C9-d=0.03 C3-d=0.03 C10-d=0.03 Zn1-f=0.01
+ Beta  vir 181 OE=4.523 is Zn1-f=1.00
+ Beta  vir 182 OE=4.523 is Zn1-f=1.00
+ Beta  vir 183 OE=4.530 is Zn1-f=0.99
+ Beta  vir 184 OE=4.533 is Zn1-f=0.99
+ Beta  vir 185 OE=4.577 is Zn1-f=0.98
+ Beta  vir 186 OE=4.578 is Zn1-f=0.93 C9-p=0.02 C2-p=0.02 C3-p=0.01 C10-p=0.01
+ Beta  vir 187 OE=4.733 is Zn1-s=0.87 C9-p=0.05 C2-p=0.05
+ Beta  vir 188 OE=4.812 is Zn1-f=0.91 C9-p=0.03 C2-p=0.03
+ Beta  vir 189 OE=8.394 is Zn1-d=1.00
+ Beta  vir 190 OE=8.405 is Zn1-d=1.00
+ Beta  vir 191 OE=8.488 is Zn1-d=1.00
+ Beta  vir 192 OE=8.519 is Zn1-d=1.00
+ Beta  vir 193 OE=8.782 is Zn1-d=0.99
+ Beta  vir 194 OE=10.916 is Zn1-p=1.00
+ Beta  vir 195 OE=10.950 is Zn1-p=1.00
+ Beta  vir 196 OE=11.203 is Zn1-p=1.00
+ Beta  vir 197 OE=24.801 is C9-s=0.47 C2-s=0.47 C10-s=0.03 C3-s=0.03
+ Beta  vir 198 OE=24.810 is C9-s=0.47 C2-s=0.47 C10-s=0.03 C3-s=0.03
+ Beta  vir 199 OE=24.938 is C3-s=0.47 C10-s=0.47 C2-s=0.03 C9-s=0.03
+ Beta  vir 200 OE=24.939 is C10-s=0.47 C3-s=0.47 C2-s=0.03 C9-s=0.03
+ Beta  vir 201 OE=35.650 is Zn1-s=1.00
+ Beta  vir 202 OE=45.925 is Zn1-p=1.00
+ Beta  vir 203 OE=45.950 is Zn1-p=1.00
+ Beta  vir 204 OE=46.143 is Zn1-p=1.00
+ Beta  vir 205 OE=190.654 is Zn1-s=1.00
+ Beta  vir 206 OE=986.245 is Zn1-s=1.00
+ 
+ 1\1\GINC-GAMBA\SP\UOVGF-FC\Gen\C4H10Zn1(1+,2)\IRIKURA\18-May-2017\0\\#
+  EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc 
+ pop(all,thresh=1)\\BEB step 5: cation EPT for VIE2 for ZnEt2\\1,2\Zn,0
+ ,0.,0.,0.092059\C,0,0.,1.933945,0.090127\C,0,1.360973,2.577345,-0.2337
+ 51\H,0,-0.346594,2.294125,1.069841\H,0,-0.75069,2.294418,-0.628225\H,0
+ ,1.311324,3.675407,-0.22301\H,0,2.134924,2.28887,0.488877\H,0,1.727459
+ ,2.287037,-1.226622\C,0,0.,-1.933945,0.090127\C,0,-1.360973,-2.577345,
+ -0.233751\H,0,0.346594,-2.294125,1.069841\H,0,0.75069,-2.294418,-0.628
+ 225\H,0,-1.311324,-3.675407,-0.22301\H,0,-2.134924,-2.28887,0.488877\H
+ ,0,-1.727459,-2.287037,-1.226622\\Version=ES64L-G09RevD.01\State=2-B\H
+ F=-1934.7044299\MP2=-1935.7109\PUHF=-1934.7148634\PMP2-0=-1935.7190671
+ \S2=0.86033\S2-1=0.811958\S2A=0.751694\RMSD=8.043e-09\PG=C02 [C2(Zn1),
+ X(C4H10)]\\@
+
+
+ MY GROUP MEETINGS AREN'T VERY STRUCTURED.
+     -- PROF. M. S. GORDON, OCT. 5, 1984
+ Job cpu time:       0 days  0 hours  7 minutes 48.8 seconds.
+ File lengths (MBytes):  RWF=   2770 Int=      0 D2E=      0 Chk=      5 Scr=      1
+ Normal termination of Gaussian 09 at Thu May 18 11:42:20 2017.

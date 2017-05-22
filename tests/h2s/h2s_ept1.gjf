@@ -1,0 +1,18 @@
+%chk=h2s.chk
+%nprocs=4
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 4: EPT B for h2s
+
+0 1
+
+H 0
+6-311+G(d,p)
+****
+S 0
+6-311+G(d,p)
+****
+
+1 4 4 4
+

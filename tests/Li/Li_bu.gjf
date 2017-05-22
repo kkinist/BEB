@@ -1,0 +1,13 @@
+%chk=Li.chk
+%nprocs=2
+%mem=1000mw
+# HF/GEN gfinput geom=check IOP(6/81=3) scf=xqc pop(all,thresh=1)
+
+BEB step 2: Hartree-Fock B and U for Li
+
+0 2
+
+Li 0
+6-311G(d,p)
+****
+

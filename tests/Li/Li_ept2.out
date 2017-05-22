@@ -1,0 +1,418 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-30020.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     30022.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                19-May-2017 
+ ******************************************
+ %chk=Li.chk
+ %nprocs=2
+ Will use up to    2 processors via shared memory.
+ %mem=1000mw
+ ----------------------------------------------------------------------
+ # EPT(OVGF+P3,ReadOrbitals,full)/GEN gfinput geom=check guess=check sc
+ f=xqc pop(all,thresh=1)
+ ----------------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1,116=-2/1,2,3;
+ 4/5=1/1;
+ 5/5=2,8=3,13=1,38=6/2,8;
+ 8/6=4,9=120000,10=90/1,4;
+ 9/11=30100/8;
+ 6/7=2,8=2,9=2,10=2,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ ---------------------------------------------------
+ BEB step 5: cation EPT for VIE2 for Li; active core
+ ---------------------------------------------------
+ Structure from the checkpoint file:  "Li.chk"
+ Charge =  1 Multiplicity = 3
+ No Z-Matrix found in file; cartesian coordinates used.
+  Li                                                0.000000000000      0.000000000000      0.000000000000
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          3           0        0.000000    0.000000    0.000000
+ ---------------------------------------------------------------------
+ Stoichiometry    Li(1+,3)
+ Framework group  OH[O(Li)]
+ Deg. of freedom     0
+ Full point group                 OH      NOp  48
+ Largest Abelian subgroup         D2H     NOp   8
+ Largest concise Abelian subgroup C1      NOp   1
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          3           0        0.000000    0.000000    0.000000
+ ---------------------------------------------------------------------
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.9004600000D+03  0.2287040374D-02
+      0.1344330000D+03  0.1763500289D-01
+      0.3043650000D+02  0.8734341430D-01
+      0.8626390000D+01  0.2809770460D+00
+      0.2483320000D+01  0.6587411078D+00
+      0.3031790000D+00  0.1187120194D+00
+ SP   3 1.00       0.000000000000
+      0.4868900000D+01  0.9332929951D-01  0.3276609658D-01
+      0.8569240000D+00  0.9430449951D+00  0.1597919833D+00
+      0.2432270000D+00 -0.2798269985D-02  0.8856669076D+00
+ SP   1 1.00       0.000000000000
+      0.6350700000D-01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2436830000D-01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.7400000000D-02  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.2000000000D+00  0.1000000000D+01
+ ****
+
+ There are     8 symmetry adapted cartesian basis functions of AG  symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B1G symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B2G symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B3G symmetry.
+ There are     0 symmetry adapted cartesian basis functions of AU  symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B1U symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B2U symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B3U symmetry.
+ There are     7 symmetry adapted basis functions of AG  symmetry.
+ There are     1 symmetry adapted basis functions of B1G symmetry.
+ There are     1 symmetry adapted basis functions of B2G symmetry.
+ There are     1 symmetry adapted basis functions of B3G symmetry.
+ There are     0 symmetry adapted basis functions of AU  symmetry.
+ There are     4 symmetry adapted basis functions of B1U symmetry.
+ There are     4 symmetry adapted basis functions of B2U symmetry.
+ There are     4 symmetry adapted basis functions of B3U symmetry.
+    22 basis functions,    36 primitive gaussians,    23 cartesian basis functions
+     2 alpha electrons        0 beta electrons
+       nuclear repulsion energy         0.0000000000 Hartrees.
+ NAtoms=    1 NActive=    1 NUniq=    1 SFac= 1.00D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=    22 RedAO= T EigKep=  1.58D-01  NBF=     7     1     1     1     0     4     4     4
+ NBsUse=    22 1.00D-06 EigRej= -1.00D+00 NBFU=     7     1     1     1     0     4     4     4
+ Initial guess from the checkpoint file:  "Li.chk"
+ B after Tr=     0.000000    0.000000    0.000000
+         Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A1G) (A1G)
+       Virtual   (T1U) (T1U) (T1U) (A1G) (T1U) (T1U) (T1U) (A1G)
+                 (T1U) (T1U) (T1U) (EG) (EG) (T2G) (T2G) (T2G)
+                 (T1U) (T1U) (T1U) (A1G)
+ Beta  Orbitals:
+       Virtual   (A1G) (A1G) (T1U) (T1U) (T1U) (A1G) (T1U) (T1U)
+                 (T1U) (A1G) (T1U) (T1U) (T1U) (EG) (T2G) (T2G)
+                 (T2G) (EG) (T1U) (T1U) (T1U) (A1G)
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 1.0000 <S**2>= 2.0000 S= 1.0000
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=867688.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(UHF) =  -5.06627041296     A.U. after    8 cycles
+            NFock=  8  Conv=0.10D-08     -V/T= 2.0309
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 1.0000 <S**2>= 2.0000 S= 1.0000
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     2.0000,   after     2.0000
+ QCSCF skips out because SCF is already converged.
+ Range of M.O.s used for correlation:     1    22
+ NBasis=    22 NAE=     2 NBE=     0 NFC=     0 NFV=     0
+ NROrb=     22 NOA=     2 NOB=     0 NVA=    20 NVB=    22
+ Semi-Direct transformation.
+ ModeAB=           2 MOrb=             2 LenV=    1048406259
+ LASXX=         1427 LTotXX=        1427 LenRXX=        1427
+ LTotAB=        1801 MaxLAS=       12144 LenRXY=       12144
+ NonZer=       13860 LenScr=      785920 LnRSAI=           0
+ LnScr1=           0 LExtra=           0 Total=       799491
+ MaxDsk=          -1 SrtSym=           F ITran=            4
+ JobTyp=1 Pass  1:  I=   1 to   2.
+ (rs|ai) integrals will be sorted in core.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.1762999005D-04 E2=     -0.8044645337D-04
+     alpha-beta  T2 =       0.0000000000D+00 E2=      0.0000000000D+00
+     beta-beta   T2 =       0.0000000000D+00 E2=      0.0000000000D+00
+ ANorm=    0.1000008815D+01
+ E2 =    -0.8044645337D-04 EUMP2 =    -0.50663508594171D+01
+ GREENY: Electron Propagator Program
+ Illegal file or unit passed to FileIO.
+ FileIO: IOper=25 IFilNo(1)=     0 Len=           0 IPos=           0 Q=         17504632
+
+
+ dumping /fiocom/, unit = 1 NFiles =    81 SizExt =    524288 WInBlk =       512
+                   defal = T LstWrd =     1556992 FType=2 FMxFil=10000
+
+ Number              0             0             1             4             5             7
+ Base           229888        246711        227851        227840        227879        215552
+ End            245187       1556992        227879        227841        228183        215735
+ End1           245187       1556992        227879        227841        228183        215735
+ Wr Pntr        229888        246711        227851        227840        227879        215552
+ Rd Pntr        229888        246711        227851        227840        227879        215552
+ Length          15299       1310281            28             1           304           183
+
+ Number             11            15            16            22            25           110
+ Base           227841        228183        215735        229376        214528        215040
+ End            227851        229267        217353        229404        214568        215080
+ End1           227851        229267        217353        229888        215040        215552
+ Wr Pntr        227841        228183        215735        229376        214528        215040
+ Rd Pntr        227841        228183        215735        229376        214528        215040
+ Length             10          1084          1618            28            40            40
+
+ Number            201           203           501           502           503           508
+ Base           227840        215552         43520         72192        180224        198144
+ End            229267        227696         44520         76330        180228        198174
+ End1           229376        227840         44544         76800        180736        198656
+ Wr Pntr        227840        215552         43520         72192        180224        198144
+ Rd Pntr        227840        215552         43520         72192        180224        198174
+ Length           1427         12144          1000          4138             4            30
+
+ Number            514           515           516           517           518           520
+ Base           200704        199680        198656        202752        201728        196608
+ End            200957        200692        199415        202774        202487        196618
+ End1           201216        200704        199680        203264        202752        197120
+ Wr Pntr        200704        199680        198656        202752        201728        196608
+ Rd Pntr        200704        199680        198656        202752        201728        196608
+ Length            253          1012           759            22           759            10
+
+ Number            521           522           523           524           526           528
+ Base           190464        203776        203264        206848        207360        207872
+ End            190499        203820        203308        207332        207844        208125
+ End1           190976        204288        203776        207360        207872        208384
+ Wr Pntr        190464        203776        203264        206848        207360        207872
+ Rd Pntr        190464        203776        203264        206848        207360        207872
+ Length             35            44            44           484           484           253
+
+ Number            530           532           534           536           538           540
+ Base           208384        209920        206336        205312        205824        210432
+ End            208637        210173        206589        205565        206077        210916
+ End1           208896        210432        206848        205824        206336        210944
+ Wr Pntr        208384        209920        206336        205312        205824        210432
+ Rd Pntr        208384        209920        206336        205312        205824        210432
+ Length            253           253           253           253           253           484
+
+ Number            545           547           548           549           551           552
+ Base           210944        211968        212480        213504        181248        187904
+ End            210972        212012        213448        213988        181286        187928
+ End1           211456        212480        213504        214016        181760        188416
+ Wr Pntr        210944        211968        212480        213504        181248        187904
+ Rd Pntr        210972        212012        212480        213504        181286        187904
+ Length             28            44           968           484            38            24
+
+ Number            559           561           562           563           564           565
+ Base           192512        188928        181760        208896        209408        194560
+ End            192514        188929        187866        208918        209430        194848
+ End1           193024        189440        187904        209408        209920        195072
+ Wr Pntr        192512        188928        181760        208896        209408        194560
+ Rd Pntr        192512        188928        187866        208896        209408        194560
+ Length              2             1          6106            22            22           288
+
+ Number            569           571           577           579           580           581
+ Base           204288        246458        194048        188416        191488        192000
+ End            204290        246711        194100        188424        191848        192432
+ End1           204800        246711        194560        188928        192000        192512
+ Wr Pntr        204288        246458        194048        188416        191488        192000
+ Rd Pntr        204288        246458        194048        188416        191488        192000
+ Length              2           253            52             8           360           432
+
+ Number            582           583           584           598           603           605
+ Base           193536        193024        195072         76800        197120        197632
+ End            193602        193026        195078         76802        197121        197633
+ End1           194048        193536        195584         77312        197632        198144
+ Wr Pntr        193536        193024        195072         76800        197120        197632
+ Rd Pntr        193536        193024        195072         76800        197120        197632
+ Length             66             2             6             2             1             1
+
+ Number            606           607           619           634           670           674
+ Base           204800        211456        195584        245187        190976        180736
+ End            204844        211500        195781        246458        191127        180777
+ End1           205312        211968        196096        246458        191488        181248
+ Wr Pntr        204800        211456        195584        245187        190976        180736
+ Rd Pntr        204800        211500        195584        245187        191127        180736
+ Length             44            44           197          1271           151            41
+
+ Number            685           694           695           698           761           989
+ Base           201216        214016        196096        189952        189440         44544
+ End            201700        214060        196155        189958        189441         64544
+ End1           201728        214528        196608        190464        189952         65024
+ Wr Pntr        201216        214016        196096        189952        189440         44544
+ Rd Pntr        201216        214060        196096        189952        189440         44544
+ Length            484            44            59             6             1         20000
+
+ Number            991           992           993           994           995           996
+ Base            65536         65024         43008         40448         42496         41472
+ End             72098         65033         43208         40478         42516         41672
+ End1            72192         65536         43520         40960         43008         41984
+ Wr Pntr         65536         65024         43008         40448         42496         41472
+ Rd Pntr         72098         65033         43208         40478         42516         41672
+ Length           6562             9           200            30            20           200
+
+ Number            997           998           999
+ Base            41984         40960         77312
+ End             42076         41160        179816
+ End1            42496         41472        180224
+ Wr Pntr         41984         40960         77312
+ Rd Pntr         42076         41160         79816
+ Length             92           200        102504
+
+
+ dumping /fiocom/, unit = 2 NFiles =    48 SizExt =         0 WInBlk =       512
+                   defal = F LstWrd =       82432 FType=2 FMxFil=10000
+
+ Number              0             0             0             0             0             0
+ Base            76731         41649         76387         41566         45885         74794
+ End             77100         41655         76504         41605         46901         75244
+ End1            77100         41655         76504         41605         46901         75244
+ Wr Pntr         76731         41649         76387         41566         45885         74794
+ Rd Pntr         76731         41649         76387         41566         45885         74794
+ Length            369             6           117            39          1016           450
+
+ Number              0             0             0             0           501           502
+ Base            75443         73498         75791         81945         41655         77807
+ End             75684         74759         76134         82432         42655         81945
+ End1            75684         74759         76134         82432         42655         81945
+ Wr Pntr         75443         73498         75791         81945         41655         77807
+ Rd Pntr         75443         73498         75791         81945         41655         77807
+ Length            241          1261           343           487          1000          4138
+
+ Number            503           508           511           520           521           522
+ Base            75781         40448         46901         73429         74759         41605
+ End             75785         40478         46913         73439         74794         41649
+ End1            75785         40478         46913         73439         74794         41649
+ Wr Pntr         75781         40448         46901         73429         74759         41605
+ Rd Pntr         75781         40448         46901         73429         74759         41605
+ Length              4            30            12            10            35            44
+
+ Number            524           526           536           538           545           548
+ Base            41082         43926         76134         40678         76615         44410
+ End             41566         44410         76387         40931         76643         45378
+ End1            41566         44410         76387         40931         76643         45378
+ Wr Pntr         41082         43926         76134         40678         76615         44410
+ Rd Pntr         41082         43926         76134         40678         76615         44410
+ Length            484           484           253           253            28           968
+
+ Number            551           552           561           562           569           575
+ Base            73460         73439         67270         67271         76504         76506
+ End             73498         73460         67271         73377         76506         76615
+ End1            73498         73460         67271         73377         76506         76615
+ Wr Pntr         73460         73439         67270         67271         76504         76506
+ Rd Pntr         73460         73439         67270         67271         76504         76506
+ Length             38            21             1          6106             2           109
+
+ Number            577           584           603           605           607           619
+ Base            73377         46913         45378         75441         76643         75244
+ End             73429         46919         45885         75443         76687         75441
+ End1            73429         46919         45885         75443         76687         75441
+ Wr Pntr         73377         46913         45378         75441         76643         75244
+ Rd Pntr         73377         46913         45378         75441         76643         75244
+ Length             52             6           507             2            44           197
+
+ Number            634           670           672           674           694           695
+ Base            42655         40931         75684         75740         76687         46919
+ End             43926         41082         75740         75781         76731         46978
+ End1            43926         41082         75740         75781         76731         46978
+ Wr Pntr         42655         40931         75684         75740         76687         46919
+ Rd Pntr         42655         40931         75684         75740         76687         46919
+ Length           1271           151            56            41            44            59
+
+ Number            698           780           989           993           997           998
+ Base            75785         77100         46978         66978         67178         40478
+ End             75791         77807         66978         67178         67270         40678
+ End1            75791         77807         66978         67178         67270         40678
+ Wr Pntr         75785         77100         46978         66978         67178         40478
+ Rd Pntr         75785         77100         46978         66978         67178         40478
+ Length              6           707         20000           200            92           200
+
+
+ dumping /fiocom/, unit = 3 NFiles =     1 SizExt =    524288 WInBlk =       512
+                   defal = T LstWrd =       65536 FType=2 FMxFil=10000
+
+ Number              0
+ Base            40448
+ End             65536
+ End1            65536
+ Wr Pntr         40448
+ Rd Pntr         40448
+ Length          25088
+ Error termination in NtrErr:
+ NtrErr Called from FileIO.

@@ -1,0 +1,391 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-30003.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     30005.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                19-May-2017 
+ ******************************************
+ %chk=Li.chk
+ %nprocs=2
+ Will use up to    2 processors via shared memory.
+ %mem=1000mw
+ ----------------------------------------------------------------------
+ # EPT(OVGF+P3,ReadOrbitals,full)/GEN gfinput geom=check guess=check sc
+ f=xqc pop(all,thresh=1)
+ ----------------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1,116=-2/1,2,3;
+ 4/5=1/1;
+ 5/5=2,8=3,13=1,38=6/2,8;
+ 8/6=4,9=120000,10=90/1,4;
+ 9/11=30100/8;
+ 6/7=2,8=2,9=2,10=2,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ -------------------------------------
+ BEB step 4: EPT B for Li; active core
+ -------------------------------------
+ Structure from the checkpoint file:  "Li.chk"
+ Charge =  0 Multiplicity = 2
+ No Z-Matrix found in file; cartesian coordinates used.
+  Li                                                0.000000000000      0.000000000000      0.000000000000
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          3           0        0.000000    0.000000    0.000000
+ ---------------------------------------------------------------------
+ Stoichiometry    Li(2)
+ Framework group  OH[O(Li)]
+ Deg. of freedom     0
+ Full point group                 OH      NOp  48
+ Largest Abelian subgroup         D2H     NOp   8
+ Largest concise Abelian subgroup C1      NOp   1
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          3           0        0.000000    0.000000    0.000000
+ ---------------------------------------------------------------------
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.9004600000D+03  0.2287040374D-02
+      0.1344330000D+03  0.1763500289D-01
+      0.3043650000D+02  0.8734341430D-01
+      0.8626390000D+01  0.2809770460D+00
+      0.2483320000D+01  0.6587411078D+00
+      0.3031790000D+00  0.1187120194D+00
+ SP   3 1.00       0.000000000000
+      0.4868900000D+01  0.9332929951D-01  0.3276609658D-01
+      0.8569240000D+00  0.9430449951D+00  0.1597919833D+00
+      0.2432270000D+00 -0.2798269985D-02  0.8856669076D+00
+ SP   1 1.00       0.000000000000
+      0.6350700000D-01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2436830000D-01  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.7400000000D-02  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.2000000000D+00  0.1000000000D+01
+ ****
+
+ There are     8 symmetry adapted cartesian basis functions of AG  symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B1G symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B2G symmetry.
+ There are     1 symmetry adapted cartesian basis functions of B3G symmetry.
+ There are     0 symmetry adapted cartesian basis functions of AU  symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B1U symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B2U symmetry.
+ There are     4 symmetry adapted cartesian basis functions of B3U symmetry.
+ There are     7 symmetry adapted basis functions of AG  symmetry.
+ There are     1 symmetry adapted basis functions of B1G symmetry.
+ There are     1 symmetry adapted basis functions of B2G symmetry.
+ There are     1 symmetry adapted basis functions of B3G symmetry.
+ There are     0 symmetry adapted basis functions of AU  symmetry.
+ There are     4 symmetry adapted basis functions of B1U symmetry.
+ There are     4 symmetry adapted basis functions of B2U symmetry.
+ There are     4 symmetry adapted basis functions of B3U symmetry.
+    22 basis functions,    36 primitive gaussians,    23 cartesian basis functions
+     2 alpha electrons        1 beta electrons
+       nuclear repulsion energy         0.0000000000 Hartrees.
+ NAtoms=    1 NActive=    1 NUniq=    1 SFac= 1.00D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=    22 RedAO= T EigKep=  1.58D-01  NBF=     7     1     1     1     0     4     4     4
+ NBsUse=    22 1.00D-06 EigRej= -1.00D+00 NBFU=     7     1     1     1     0     4     4     4
+ Initial guess from the checkpoint file:  "Li.chk"
+ B after Tr=     0.000000    0.000000    0.000000
+         Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A1G) (A1G)
+       Virtual   (T1U) (T1U) (T1U) (A1G) (T1U) (T1U) (T1U) (T2G)
+                 (T2G) (T2G) (EG) (EG) (T1U) (T1U) (T1U) (A1G)
+                 (A1G) (T1U) (T1U) (T1U)
+ Beta  Orbitals:
+       Occupied  (A1G)
+       Virtual   (A1G) (T1U) (T1U) (T1U) (A1G) (T1U) (T1U) (T1U)
+                 (T1U) (T1U) (T1U) (T2G) (T2G) (T2G) (EG) (EG)
+                 (A1G) (A1G) (T1U) (T1U) (T1U)
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=867688.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(UHF) =  -7.43202688483     A.U. after    6 cycles
+            NFock=  6  Conv=0.40D-08     -V/T= 2.0000
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     0.7500,   after     0.7500
+ QCSCF skips out because SCF is already converged.
+ Range of M.O.s used for correlation:     1    22
+ NBasis=    22 NAE=     2 NBE=     1 NFC=     0 NFV=     0
+ NROrb=     22 NOA=     2 NOB=     1 NVA=    20 NVB=    21
+ Semi-Direct transformation.
+ ModeAB=           2 MOrb=             2 LenV=    1048406471
+ LASXX=         1427 LTotXX=        1427 LenRXX=        1427
+ LTotAB=        1801 MaxLAS=       12144 LenRXY=       12144
+ NonZer=       13860 LenScr=      785920 LnRSAI=           0
+ LnScr1=           0 LExtra=           0 Total=       799491
+ MaxDsk=          -1 SrtSym=           F ITran=            4
+ JobTyp=1 Pass  1:  I=   1 to   2.
+ (rs|ai) integrals will be sorted in core.
+ ModeAB=           2 MOrb=             1 LenV=    1048406471
+ LASXX=          738 LTotXX=         738 LenRXX=         738
+ LTotAB=         738 MaxLAS=        6072 LenRXY=        6072
+ NonZer=        6930 LenScr=      785920 LnRSAI=           0
+ LnScr1=           0 LExtra=           0 Total=       792730
+ MaxDsk=          -1 SrtSym=           F ITran=            4
+ JobTyp=2 Pass  1:  I=   1 to   1.
+ (rs|ai) integrals will be sorted in core.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.3867982597D-04 E2=     -0.1303843405D-03
+     alpha-beta  T2 =       0.1219747525D-02 E2=     -0.1278188883D-01
+     beta-beta   T2 =       0.0000000000D+00 E2=      0.0000000000D+00
+ ANorm=    0.1000629016D+01
+ E2 =    -0.1291227317D-01 EUMP2 =    -0.74449391579993D+01
+ (S**2,0)=  0.75001D+00           (S**2,1)=  0.75000D+00
+ E(PUHF)=      -0.74320423314D+01        E(PMP2)=      -0.74449437918D+01
+ GREENY: Electron Propagator Program
+ FoFJK:  IHMeth= 0 ICntrl=     200 DoSepK=F KAlg= 0 I1Cent=   0 FoldK=F
+ IRaf= 990000000 NMat=   1 IRICut=       1 DoRegI=T DoRafI=F ISym2E=-1.
+ FoFCou: FMM=F IPFlag=           0 FMFlag=           0 FMFlg1=           0
+         NFxFlg=           0 DoJE=F BraDBF=F KetDBF=F FulRan=T
+         wScrn=  0.000000 ICntrl=     200 IOpCl=  1 I1Cent=           0 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+
+ Summary of results for alpha spin-orbital   2  OVGF: 
+ Koopmans theorem:            -0.19622D+00 au   -5.339 eV
+ Converged second order pole: -0.19653D+00 au   -5.348 eV  1.000 (PS)
+ Converged third  order pole: -0.19666D+00 au   -5.351 eV  1.000 (PS)
+ Outer Valence Approximation: -0.19668D+00 au   -5.352 eV  1.000 (PS)
+
+ Summary of results for alpha spin-orbital   2    P3: 
+ Koopmans theorem:            -0.19622D+00 au   -5.339 eV
+ Converged second order pole: -0.19653D+00 au   -5.348 eV  1.000 (PS)
+ Converged 3rd order P3 pole: -0.19645D+00 au   -5.346 eV  1.000 (PS)
+
+ Summary of results for beta  spin-orbital   1  OVGF: 
+ Koopmans theorem:            -0.24681D+01 au  -67.159 eV
+ Converged second order pole: -0.23997D+01 au  -65.299 eV  0.903 (PS)
+ Converged third  order pole: -0.23906D+01 au  -65.052 eV  0.880 (PS)
+ Outer Valence Approximation: -0.23908D+01 au  -65.056 eV  0.880 (PS)
+
+ Summary of results for beta  spin-orbital   1    P3: 
+ Koopmans theorem:            -0.24681D+01 au  -67.159 eV
+ Converged second order pole: -0.23997D+01 au  -65.299 eV  0.903 (PS)
+ Converged 3rd order P3 pole: -0.23887D+01 au  -65.001 eV  0.881 (PS)
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A1G) (A1G)
+       Virtual   (T1U) (T1U) (T1U) (A1G) (T1U) (T1U) (T1U) (A1G)
+                 (T1U) (T1U) (T1U) (EG) (EG) (T2G) (T2G) (T2G)
+                 (T1U) (T1U) (T1U) (A1G)
+ Beta  Orbitals:
+       Occupied  (A1G)
+       Virtual   (A1G) (T1U) (T1U) (T1U) (A1G) (T1U) (T1U) (T1U)
+                 (A1G) (T1U) (T1U) (T1U) (EG) (T2G) (T2G) (T2G)
+                 (EG) (T1U) (T1U) (T1U) (A1G)
+ The electronic state is 2-A1G.
+ Alpha  occ. eigenvalues --   -2.48585  -0.19622
+ Alpha virt. eigenvalues --    0.01145   0.01145   0.01145   0.01830   0.04034
+ Alpha virt. eigenvalues --    0.04034   0.04034   0.13506   0.15041   0.15041
+ Alpha virt. eigenvalues --    0.15041   0.55931   0.55931   0.55931   0.55931
+ Alpha virt. eigenvalues --    0.55931   0.57986   0.57986   0.57986   3.94467
+  Beta  occ. eigenvalues --   -2.46806
+  Beta virt. eigenvalues --    0.00542   0.01641   0.01641   0.01641   0.03886
+  Beta virt. eigenvalues --    0.06433   0.06433   0.06433   0.17405   0.17907
+  Beta virt. eigenvalues --    0.17907   0.17907   0.58453   0.58453   0.58453
+  Beta virt. eigenvalues --    0.58453   0.58453   0.59225   0.59225   0.59225
+  Beta virt. eigenvalues --    3.96544
+          Condensed to atoms (all electrons):
+               1
+     1  Li   3.000000
+          Atomic-Atomic Spin Densities.
+               1
+     1  Li   1.000000
+ Mulliken charges and spin densities:
+               1          2
+     1  Li   0.000000   1.000000
+ Sum of Mulliken charges =   0.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  Li   0.000000   1.000000
+ Electronic spatial extent (au):  <R**2>=             18.6594
+ Charge=              0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.0000  Tot=              0.0000
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=             -8.3659   YY=             -8.3659   ZZ=             -8.3659
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=              0.0000   YY=              0.0000   ZZ=              0.0000
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=              0.0000  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.0000  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=              0.0000  XYZ=              0.0000
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=            -42.8653 YYYY=            -42.8653 ZZZZ=            -42.8653 XXXY=              0.0000
+ XXXZ=              0.0000 YYYX=              0.0000 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=            -14.2884 XXZZ=            -14.2884 YYZZ=            -14.2884
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=              0.0000
+ N-N= 0.000000000000D+00 E-N=-1.714621035929D+01  KE= 7.432279246545D+00
+ Symmetry AG   KE= 7.432279246545D+00
+ Symmetry B1G  KE= 2.131547187163D-62
+ Symmetry B2G  KE= 2.434499809955D-62
+ Symmetry B3G  KE= 1.562441244443D-62
+ Symmetry AU   KE= 0.000000000000D+00
+ Symmetry B1U  KE= 0.000000000000D+00
+ Symmetry B2U  KE= 0.000000000000D+00
+ Symmetry B3U  KE= 0.000000000000D+00
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-2.486 is Li1-s=1.00
+ Alpha occ 2 OE=-0.196 is Li1-s=1.00
+ Alpha vir 3 OE=0.011 is Li1-p=1.00
+ Alpha vir 4 OE=0.011 is Li1-p=1.00
+ Alpha vir 5 OE=0.011 is Li1-p=1.00
+ Alpha vir 6 OE=0.018 is Li1-s=1.00
+ Alpha vir 7 OE=0.040 is Li1-p=1.00
+ Alpha vir 8 OE=0.040 is Li1-p=1.00
+ Alpha vir 9 OE=0.040 is Li1-p=1.00
+ Alpha vir 10 OE=0.135 is Li1-s=1.00
+ Alpha vir 11 OE=0.150 is Li1-p=1.00
+ Alpha vir 12 OE=0.150 is Li1-p=1.00
+ Alpha vir 13 OE=0.150 is Li1-p=1.00
+ Alpha vir 14 OE=0.559 is Li1-d=1.00
+ Alpha vir 15 OE=0.559 is Li1-d=1.00
+ Alpha vir 16 OE=0.559 is Li1-d=1.00
+ Alpha vir 17 OE=0.559 is Li1-d=1.00
+ Alpha vir 18 OE=0.559 is Li1-d=1.00
+ Alpha vir 19 OE=0.580 is Li1-p=1.00
+ Alpha vir 20 OE=0.580 is Li1-p=1.00
+ Alpha vir 21 OE=0.580 is Li1-p=1.00
+ Alpha vir 22 OE=3.945 is Li1-s=1.00
+
+ Atomic contributions to Beta  molecular orbitals:
+ Beta  occ 1 OE=-2.468 is Li1-s=1.00
+ Beta  vir 2 OE=0.005 is Li1-s=1.00
+ Beta  vir 3 OE=0.016 is Li1-p=1.00
+ Beta  vir 4 OE=0.016 is Li1-p=1.00
+ Beta  vir 5 OE=0.016 is Li1-p=1.00
+ Beta  vir 6 OE=0.039 is Li1-s=1.00
+ Beta  vir 7 OE=0.064 is Li1-p=1.00
+ Beta  vir 8 OE=0.064 is Li1-p=1.00
+ Beta  vir 9 OE=0.064 is Li1-p=1.00
+ Beta  vir 10 OE=0.174 is Li1-s=1.00
+ Beta  vir 11 OE=0.179 is Li1-p=1.00
+ Beta  vir 12 OE=0.179 is Li1-p=1.00
+ Beta  vir 13 OE=0.179 is Li1-p=1.00
+ Beta  vir 14 OE=0.585 is Li1-d=1.00
+ Beta  vir 15 OE=0.585 is Li1-d=1.00
+ Beta  vir 16 OE=0.585 is Li1-d=1.00
+ Beta  vir 17 OE=0.585 is Li1-d=1.00
+ Beta  vir 18 OE=0.585 is Li1-d=1.00
+ Beta  vir 19 OE=0.592 is Li1-p=1.00
+ Beta  vir 20 OE=0.592 is Li1-p=1.00
+ Beta  vir 21 OE=0.592 is Li1-p=1.00
+ Beta  vir 22 OE=3.965 is Li1-s=1.00
+ 
+ 1\1\GINC-GAMBA\SP\UOVGF-Full\Gen\Li1(2)\IRIKURA\19-May-2017\0\\# EPT(O
+ VGF+P3,ReadOrbitals,full)/GEN gfinput geom=check guess=check scf=xqc p
+ op(all,thresh=1)\\BEB step 4: EPT B for Li; active core\\0,2\Li,0.,0.,
+ 0.\\Version=ES64L-G09RevD.01\State=2-A1G\HF=-7.4320269\MP2=-7.4449392\
+ PUHF=-7.4320423\PMP2-0=-7.4449438\S2=0.750011\S2-1=0.749996\S2A=0.75\R
+ MSD=4.031e-09\PG=OH [O(Li1)]\\@
+
+
+ I take a simple view of life: keep your eyes open and get on with it.
+ -- Laurence Olivier
+ Job cpu time:       0 days  0 hours  0 minutes  2.5 seconds.
+ File lengths (MBytes):  RWF=     12 Int=      0 D2E=      0 Chk=      1 Scr=      1
+ Normal termination of Gaussian 09 at Fri May 19 15:32:04 2017.

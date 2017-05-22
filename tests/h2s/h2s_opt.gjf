@@ -1,0 +1,19 @@
+%chk=h2s.chk
+%nprocs=4
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for h2s
+
+0 1
+ S                  0.00000000    0.00000000   -0.08400669
+ H                  0.00000000   -1.06980044    0.67205351
+ H                 -0.00000000    1.06980044    0.67205351
+
+H 0
+6-31G(d)
+****
+S 0
+6-31G(d)
+****
+

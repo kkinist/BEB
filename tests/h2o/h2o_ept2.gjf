@@ -1,0 +1,15 @@
+%chk=h2o.chk
+%nprocs=4
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 5: cation EPT for VIE2 for h2o
+
+1 2
+
+H O 0
+6-311+G(d,p)
+****
+
+4 4 3 3
+

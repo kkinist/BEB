@@ -1,0 +1,15 @@
+%chk=o2.chk
+%nprocs=4
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for o2
+
+0 3
+ O                 -2.05066348    1.50180939    0.00000000
+ O                 -3.21226348    1.50180939    0.00000000
+
+O 0
+6-31G(d)
+****
+

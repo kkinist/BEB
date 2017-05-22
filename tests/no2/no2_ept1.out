@@ -1,0 +1,770 @@
+ Entering Gaussian System, Link 0=g09
+ Initial command:
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-31856.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     31858.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
+            Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 09 program.  It is based on
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 09, Revision D.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, B. Mennucci, 
+ G. A. Petersson, H. Nakatsuji, M. Caricato, X. Li, H. P. Hratchian, 
+ A. F. Izmaylov, J. Bloino, G. Zheng, J. L. Sonnenberg, M. Hada, 
+ M. Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, 
+ Y. Honda, O. Kitao, H. Nakai, T. Vreven, J. A. Montgomery, Jr., 
+ J. E. Peralta, F. Ogliaro, M. Bearpark, J. J. Heyd, E. Brothers, 
+ K. N. Kudin, V. N. Staroverov, T. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, 
+ M. Cossi, N. Rega, J. M. Millam, M. Klene, J. E. Knox, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ R. L. Martin, K. Morokuma, V. G. Zakrzewski, G. A. Voth, 
+ P. Salvador, J. J. Dannenberg, S. Dapprich, A. D. Daniels, 
+ O. Farkas, J. B. Foresman, J. V. Ortiz, J. Cioslowski, 
+ and D. J. Fox, Gaussian, Inc., Wallingford CT, 2013.
+ 
+ ******************************************
+ Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
+                17-May-2017 
+ ******************************************
+ %chk=no2.chk
+ %nprocs=6
+ Will use up to    6 processors via shared memory.
+ %mem=1000mw
+ ----------------------------------------------------------------------
+ # EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc
+  pop(all,thresh=1)
+ ----------------------------------------------------------------------
+ 1/29=2,38=1/1;
+ 2/12=2,40=1/2;
+ 3/5=7,11=9,14=-4,16=1,24=10,25=1,30=1,116=-2/1,2,3;
+ 4/5=1/1;
+ 5/5=2,8=3,13=1,38=6/2,8;
+ 8/6=4,9=120000,10=1/1,4;
+ 9/11=30100/8;
+ 6/7=2,8=2,9=2,10=2,87=-1,88=1/1;
+ 99/5=1,9=1/99;
+ -------------------------
+ BEB step 4: EPT B for no2
+ -------------------------
+ Structure from the checkpoint file:  "no2.chk"
+ Charge =  0 Multiplicity = 2
+ Redundant internal coordinates found in file.
+ N,0,0.,0.,-0.3309564098
+ O,0,0.,-1.1068398818,0.1406818249
+ O,0,0.,1.1068398818,0.1406818249
+ Recover connectivity data from disk.
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          7           0        0.000000    0.000000   -0.330956
+      2          8           0        0.000000   -1.106840    0.140682
+      3          8           0        0.000000    1.106840    0.140682
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3
+     1  N    0.000000
+     2  O    1.203136   0.000000
+     3  O    1.203136   2.213680   0.000000
+ Stoichiometry    NO2(2)
+ Framework group  C2V[C2(N),SGV(O2)]
+ Deg. of freedom     2
+ Full point group                 C2V     NOp   4
+ Largest Abelian subgroup         C2V     NOp   4
+ Largest concise Abelian subgroup C2      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          7           0        0.000000    0.000000    0.328096
+      2          8           0        0.000000    1.106840   -0.143542
+      3          8           0        0.000000   -1.106840   -0.143542
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):    233.2677521     12.8954254     12.2198898
+ General basis read from cards:  (5D, 7F)
+ AO basis set in the form of general basis input (Overlap normalization):
+      1 0
+ S   6 1.00       0.000000000000
+      0.6293480000D+04  0.1969788147D-02
+      0.9490440000D+03  0.1496128592D-01
+      0.2187760000D+03  0.7350053084D-01
+      0.6369160000D+02  0.2489367658D+00
+      0.1882820000D+02  0.6024594331D+00
+      0.2720230000D+01  0.2562017589D+00
+ SP   3 1.00       0.000000000000
+      0.3063310000D+02  0.1119060795D+00  0.3831191864D-01
+      0.7026140000D+01  0.9216666549D+00  0.2374031155D+00
+      0.2112050000D+01 -0.2569191826D-02  0.8175923978D+00
+ SP   1 1.00       0.000000000000
+      0.6840090000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2008780000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.6390000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.9130000000D+00  0.1000000000D+01
+ ****
+      2 0
+ S   6 1.00       0.000000000000
+      0.8588500000D+04  0.1895150083D-02
+      0.1297230000D+04  0.1438590063D-01
+      0.2992960000D+03  0.7073200310D-01
+      0.8737710000D+02  0.2400010105D+00
+      0.2567890000D+02  0.5947970261D+00
+      0.3740040000D+01  0.2808020123D+00
+ SP   3 1.00       0.000000000000
+      0.4211750000D+02  0.1138890124D+00  0.3651139738D-01
+      0.9628370000D+01  0.9208111006D+00  0.2371529830D+00
+      0.2853320000D+01 -0.3274470358D-02  0.8197019412D+00
+ SP   1 1.00       0.000000000000
+      0.9056610000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2556110000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.8450000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1292000000D+01  0.1000000000D+01
+ ****
+      3 0
+ S   6 1.00       0.000000000000
+      0.8588500000D+04  0.1895150083D-02
+      0.1297230000D+04  0.1438590063D-01
+      0.2992960000D+03  0.7073200310D-01
+      0.8737710000D+02  0.2400010105D+00
+      0.2567890000D+02  0.5947970261D+00
+      0.3740040000D+01  0.2808020123D+00
+ SP   3 1.00       0.000000000000
+      0.4211750000D+02  0.1138890124D+00  0.3651139738D-01
+      0.9628370000D+01  0.9208111006D+00  0.2371529830D+00
+      0.2853320000D+01 -0.3274470358D-02  0.8197019412D+00
+ SP   1 1.00       0.000000000000
+      0.9056610000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.2556110000D+00  0.1000000000D+01  0.1000000000D+01
+ SP   1 1.00       0.000000000000
+      0.8450000000D-01  0.1000000000D+01  0.1000000000D+01
+ D   1 1.00       0.000000000000
+      0.1292000000D+01  0.1000000000D+01
+ ****
+
+ There are    29 symmetry adapted cartesian basis functions of A1  symmetry.
+ There are     7 symmetry adapted cartesian basis functions of A2  symmetry.
+ There are    11 symmetry adapted cartesian basis functions of B1  symmetry.
+ There are    22 symmetry adapted cartesian basis functions of B2  symmetry.
+ There are    27 symmetry adapted basis functions of A1  symmetry.
+ There are     7 symmetry adapted basis functions of A2  symmetry.
+ There are    11 symmetry adapted basis functions of B1  symmetry.
+ There are    21 symmetry adapted basis functions of B2  symmetry.
+    66 basis functions,   108 primitive gaussians,    69 cartesian basis functions
+    12 alpha electrons       11 beta electrons
+       nuclear repulsion energy        64.5602365158 Hartrees.
+ NAtoms=    3 NActive=    3 NUniq=    2 SFac= 2.25D+00 NAtFMM=   60 NAOKFM=F Big=F
+ Integral buffers will be    131072 words long.
+ Raffenetti 2 integral format.
+ Two-electron integral symmetry is turned on.
+ One-electron integrals computed using PRISM.
+ NBasis=    66 RedAO= T EigKep=  2.20D-03  NBF=    27     7    11    21
+ NBsUse=    66 1.00D-06 EigRej= -1.00D+00 NBFU=    27     7    11    21
+ Initial guess from the checkpoint file:  "no2.chk"
+ B after Tr=     0.000000    0.000000    0.000000
+         Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
+ Initial guess orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (A1) (B2) (B1) (B2)
+                 (A2) (A1)
+       Virtual   (B1) (A1) (B2) (A1) (B1) (A1) (B2) (A1) (B2) (A1)
+                 (A2) (B1) (B2) (A1) (B2) (A2) (B1) (A1) (B2) (A1)
+                 (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2) (B1)
+                 (A1) (A1) (B2) (B2) (B1) (A2) (A1) (A1) (B2) (A1)
+                 (A1) (B2) (A1) (A1) (A1) (A1) (A1) (A2) (B1) (B1)
+                 (B2) (B2) (B2) (B2)
+ Beta  Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (B2) (B1) (A1) (A2)
+                 (B2)
+       Virtual   (A1) (B1) (A1) (B2) (B1) (A1) (B2) (A1) (A1) (A2)
+                 (B2) (A1) (B1) (B2) (A1) (B2) (A2) (B1) (A1) (B2)
+                 (A1) (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2) (B2)
+                 (B1) (A1) (A1) (B2) (B1) (A2) (B2) (A1) (A1) (B2)
+                 (A1) (A1) (B2) (A1) (A1) (A1) (A1) (A1) (A2) (B1)
+                 (B1) (B2) (B2) (B2) (B2)
+ Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7704 S= 0.5101
+ Keep R1 and R2 ints in memory in symmetry-blocked form, NReq=3308273.
+ Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(UHF) =  -204.084457366     A.U. after   14 cycles
+            NFock= 14  Conv=0.69D-08     -V/T= 2.0018
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7711 S= 0.5105
+ <L.S>= 0.000000000000E+00
+ Annihilation of the first spin contaminant:
+ S**2 before annihilation     0.7711,   after     0.7503
+ QCSCF skips out because SCF is already converged.
+ ExpMin= 6.39D-02 ExpMax= 8.59D+03 ExpMxC= 1.30D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor=  205 AccDes= 0.00D+00 IRadAn=         5 IDoV=-2 UseB2=F ITyADJ=14
+ ICtDFT= 12500011 ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     4    66
+ NBasis=    66 NAE=    12 NBE=    11 NFC=     3 NFV=     0
+ NROrb=     63 NOA=     9 NOB=     8 NVA=    54 NVB=    55
+
+ **** Warning!!: The largest alpha MO coefficient is  0.10767849D+02
+
+
+ **** Warning!!: The largest beta MO coefficient is  0.10805475D+02
+
+ Semi-Direct transformation.
+ ModeAB=           4 MOrb=             9 LenV=    1048341429
+ LASXX=       259988 LTotXX=      259988 LenRXX=      540459
+ LTotAB=      280471 MaxLAS=      835191 LenRXY=           0
+ NonZer=      800447 LenScr=     1800192 LnRSAI=      835191
+ LnScr1=     1878528 LExtra=           0 Total=      5054370
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=1 Pass  1:  I=   1 to   9.
+ (rs|ai) integrals will be sorted in core.
+ ModeAB=           4 MOrb=             8 LenV=    1048341429
+ LASXX=       233253 LTotXX=      233253 LenRXX=      417048
+ LTotAB=      183795 MaxLAS=      742392 LenRXY=           0
+ NonZer=      650301 LenScr=     1571840 LnRSAI=      742392
+ LnScr1=     1669632 LExtra=           0 Total=      4400912
+ MaxDsk=          -1 SrtSym=           T ITran=            4
+ JobTyp=2 Pass  1:  I=   1 to   8.
+ (rs|ai) integrals will be sorted in core.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2215649801D-01 E2=     -0.8073994663D-01
+     alpha-beta  T2 =       0.1258609156D+00 E2=     -0.4167037326D+00
+     beta-beta   T2 =       0.2999173230D-01 E2=     -0.8591480066D-01
+ ANorm=    0.1085361297D+01
+ E2 =    -0.5833584799D+00 EUMP2 =    -0.20466781584595D+03
+ (S**2,0)=  0.77107D+00           (S**2,1)=  0.75526D+00
+ E(PUHF)=      -0.20409055543D+03        E(PMP2)=      -0.20467164359D+03
+ GREENY: Electron Propagator Program
+ FoFJK:  IHMeth= 0 ICntrl=     200 DoSepK=F KAlg= 0 I1Cent=   0 FoldK=F
+ IRaf= 990000000 NMat=   1 IRICut=       1 DoRegI=T DoRafI=F ISym2E=-1.
+ FoFCou: FMM=F IPFlag=           0 FMFlag=           0 FMFlg1=           0
+         NFxFlg=           0 DoJE=F BraDBF=F KetDBF=F FulRan=T
+         wScrn=  0.000000 ICntrl=     200 IOpCl=  1 I1Cent=           0 NGrid=           0
+         NMat0=    1 NMatS0=      1 NMatT0=    0 NMatD0=    1 NMtDS0=    0 NMtDT0=    0
+ Petite list used in FoFCou.
+ WARNING: Pole strength too low for present methods
+ WARNING: Pole strength too low for present methods
+  ****WARNING**** : Pole strengh too small - OVGF does not work!!!
+
+ Summary of results for alpha spin-orbital   1  OVGF: 
+ Koopmans theorem:            -0.16822D+01 au  -45.776 eV
+ Converged second order pole: -0.15154D+01 au  -41.237 eV  0.000 (PS)
+ Converged third  order pole: -0.16389D+01 au  -44.598 eV  0.000 (PS)
+ Outer Valence Approximation: -0.16386D+01 au  -44.589 eV  0.000 (PS)
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Pole strength too low for present methods
+
+ Summary of results for alpha spin-orbital   1    P3: 
+ Koopmans theorem:            -0.16822D+01 au  -45.776 eV
+ Converged second order pole: -0.15154D+01 au  -41.237 eV  0.000 (PS)
+ Converged 3rd order P3 pole: -0.16423D+01 au  -44.688 eV  0.000 (PS)
+ WARNING: Pole strength too low for present methods
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Pole strength too low for present methods
+  ****WARNING**** : Pole strengh too small - OVGF does not work!!!
+
+ Summary of results for alpha spin-orbital   2  OVGF: 
+ Koopmans theorem:            -0.15024D+01 au  -40.881 eV
+ Converged second order pole: -0.15026D+01 au  -40.887 eV  0.002 (PS)
+ Converged third  order pole: -0.15364D+01 au  -41.807 eV  0.000 (PS)
+ Outer Valence Approximation: -0.15363D+01 au  -41.806 eV  0.000 (PS)
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+
+ Summary of results for alpha spin-orbital   2    P3: 
+ Koopmans theorem:            -0.15024D+01 au  -40.881 eV
+ Converged second order pole: -0.15026D+01 au  -40.887 eV  0.002 (PS)
+ Converged 3rd order P3 pole: -0.15389D+01 au  -41.876 eV  1.000 (PS)
+
+ Summary of results for alpha spin-orbital   3  OVGF: 
+ Koopmans theorem:            -0.97847D+00 au  -26.626 eV
+ Converged second order pole: -0.77136D+00 au  -20.990 eV  0.783 (PS)
+ Converged third  order pole: -0.87603D+00 au  -23.838 eV  0.884 (PS)
+ Outer Valence Approximation: -0.83204D+00 au  -22.641 eV  0.834 (PS)
+
+ Summary of results for alpha spin-orbital   3    P3: 
+ Koopmans theorem:            -0.97847D+00 au  -26.626 eV
+ Converged second order pole: -0.77136D+00 au  -20.990 eV  0.783 (PS)
+ Converged 3rd order P3 pole: -0.83911D+00 au  -22.833 eV  0.827 (PS)
+
+ Summary of results for alpha spin-orbital   4  OVGF: 
+ Koopmans theorem:            -0.83836D+00 au  -22.813 eV
+ Converged second order pole: -0.65780D+00 au  -17.900 eV  0.782 (PS)
+ Converged third  order pole: -0.76188D+00 au  -20.732 eV  0.938 (PS)
+ Outer Valence Approximation: -0.71468D+00 au  -19.447 eV  0.870 (PS)
+
+ Summary of results for alpha spin-orbital   4    P3: 
+ Koopmans theorem:            -0.83836D+00 au  -22.813 eV
+ Converged second order pole: -0.65780D+00 au  -17.900 eV  0.782 (PS)
+ Converged 3rd order P3 pole: -0.73214D+00 au  -19.923 eV  0.856 (PS)
+
+ Summary of results for alpha spin-orbital   5  OVGF: 
+ Koopmans theorem:            -0.80827D+00 au  -21.994 eV
+ Converged second order pole: -0.65487D+00 au  -17.820 eV  0.802 (PS)
+ Converged third  order pole: -0.76803D+00 au  -20.899 eV  0.911 (PS)
+ Outer Valence Approximation: -0.71699D+00 au  -19.510 eV  0.863 (PS)
+
+ Summary of results for alpha spin-orbital   5    P3: 
+ Koopmans theorem:            -0.80827D+00 au  -21.994 eV
+ Converged second order pole: -0.65487D+00 au  -17.820 eV  0.802 (PS)
+ Converged 3rd order P3 pole: -0.73089D+00 au  -19.889 eV  0.857 (PS)
+
+ Summary of results for alpha spin-orbital   6  OVGF: 
+ Koopmans theorem:            -0.76647D+00 au  -20.857 eV
+ Converged second order pole: -0.67276D+00 au  -18.307 eV  0.801 (PS)
+ Converged third  order pole: -0.69961D+00 au  -19.037 eV  0.831 (PS)
+ Outer Valence Approximation: -0.68771D+00 au  -18.713 eV  0.814 (PS)
+
+ Summary of results for alpha spin-orbital   6    P3: 
+ Koopmans theorem:            -0.76647D+00 au  -20.857 eV
+ Converged second order pole: -0.67276D+00 au  -18.307 eV  0.801 (PS)
+ Converged 3rd order P3 pole: -0.70019D+00 au  -19.053 eV  0.789 (PS)
+
+ Summary of results for alpha spin-orbital   7  OVGF: 
+ Koopmans theorem:            -0.60163D+00 au  -16.371 eV
+ Converged second order pole: -0.44838D+00 au  -12.201 eV  0.824 (PS)
+ Converged third  order pole: -0.56702D+00 au  -15.430 eV  0.954 (PS)
+ Outer Valence Approximation: -0.51855D+00 au  -14.110 eV  0.912 (PS)
+
+ Summary of results for alpha spin-orbital   7    P3: 
+ Koopmans theorem:            -0.60163D+00 au  -16.371 eV
+ Converged second order pole: -0.44838D+00 au  -12.201 eV  0.824 (PS)
+ Converged 3rd order P3 pole: -0.52454D+00 au  -14.273 eV  0.895 (PS)
+
+ Summary of results for alpha spin-orbital   8  OVGF: 
+ Koopmans theorem:            -0.53239D+00 au  -14.487 eV
+ Converged second order pole: -0.48003D+00 au  -13.062 eV  0.861 (PS)
+ Converged third  order pole: -0.50703D+00 au  -13.797 eV  0.910 (PS)
+ Outer Valence Approximation: -0.49399D+00 au  -13.442 eV  0.899 (PS)
+
+ Summary of results for alpha spin-orbital   8    P3: 
+ Koopmans theorem:            -0.53239D+00 au  -14.487 eV
+ Converged second order pole: -0.48003D+00 au  -13.062 eV  0.861 (PS)
+ Converged 3rd order P3 pole: -0.51078D+00 au  -13.899 eV  0.884 (PS)
+
+ Summary of results for alpha spin-orbital   9  OVGF: 
+ Koopmans theorem:            -0.51316D+00 au  -13.964 eV
+ Converged second order pole: -0.38070D+00 au  -10.359 eV  0.857 (PS)
+ Converged third  order pole: -0.44320D+00 au  -12.060 eV  0.940 (PS)
+ Outer Valence Approximation: -0.40929D+00 au  -11.137 eV  0.914 (PS)
+
+ Summary of results for alpha spin-orbital   9    P3: 
+ Koopmans theorem:            -0.51316D+00 au  -13.964 eV
+ Converged second order pole: -0.38070D+00 au  -10.359 eV  0.857 (PS)
+ Converged 3rd order P3 pole: -0.43690D+00 au  -11.889 eV  0.902 (PS)
+ WARNING: Pole strength too low for present methods
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+  ****WARNING**** : Pole strengh too small - OVGF does not work!!!
+
+ Summary of results for beta  spin-orbital   1  OVGF: 
+ Koopmans theorem:            -0.16386D+01 au  -44.589 eV
+ Converged second order pole: -0.16297D+01 au  -44.346 eV  0.001 (PS)
+ Converged third  order pole: -0.16389D+01 au  -44.596 eV  1.000 (PS)
+ Outer Valence Approximation: -0.16389D+01 au  -44.596 eV  0.000 (PS)
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+
+ Summary of results for beta  spin-orbital   1    P3: 
+ Koopmans theorem:            -0.16386D+01 au  -44.589 eV
+ Converged second order pole: -0.16297D+01 au  -44.346 eV  0.001 (PS)
+ Converged 3rd order P3 pole: -0.16389D+01 au  -44.597 eV  1.000 (PS)
+ WARNING: Pole strength too low for present methods
+ WARNING: Pole strength too low for present methods
+  ****WARNING**** : Pole strengh too small - OVGF does not work!!!
+
+ Summary of results for beta  spin-orbital   2  OVGF: 
+ Koopmans theorem:            -0.14599D+01 au  -39.726 eV
+ Converged second order pole: -0.13312D+01 au  -36.223 eV  0.000 (PS)
+ Converged third  order pole: -0.14302D+01 au  -38.918 eV  0.000 (PS)
+ Outer Valence Approximation: -0.14302D+01 au  -38.919 eV  0.000 (PS)
+ WARNING: Wrong sign for derivative of propagator
+ WARNING: Wrong sign for derivative of propagator
+
+ Summary of results for beta  spin-orbital   2    P3: 
+ Koopmans theorem:            -0.14599D+01 au  -39.726 eV
+ Converged second order pole: -0.13312D+01 au  -36.223 eV  0.000 (PS)
+ Converged 3rd order P3 pole: -0.14331D+01 au  -38.996 eV  1.000 (PS)
+
+ Summary of results for beta  spin-orbital   3  OVGF: 
+ Koopmans theorem:            -0.89209D+00 au  -24.275 eV
+ Converged second order pole: -0.73326D+00 au  -19.953 eV  0.810 (PS)
+ Converged third  order pole: -0.85874D+00 au  -23.367 eV  0.961 (PS)
+ Outer Valence Approximation: -0.80120D+00 au  -21.802 eV  0.906 (PS)
+
+ Summary of results for beta  spin-orbital   3    P3: 
+ Koopmans theorem:            -0.89209D+00 au  -24.275 eV
+ Converged second order pole: -0.73326D+00 au  -19.953 eV  0.810 (PS)
+ Converged 3rd order P3 pole: -0.81017D+00 au  -22.046 eV  0.888 (PS)
+
+ Summary of results for beta  spin-orbital   4  OVGF: 
+ Koopmans theorem:            -0.75801D+00 au  -20.626 eV
+ Converged second order pole: -0.65230D+00 au  -17.750 eV  0.852 (PS)
+ Converged third  order pole: -0.72896D+00 au  -19.836 eV  0.952 (PS)
+ Outer Valence Approximation: -0.69340D+00 au  -18.868 eV  0.924 (PS)
+
+ Summary of results for beta  spin-orbital   4    P3: 
+ Koopmans theorem:            -0.75801D+00 au  -20.626 eV
+ Converged second order pole: -0.65230D+00 au  -17.750 eV  0.852 (PS)
+ Converged 3rd order P3 pole: -0.71337D+00 au  -19.412 eV  0.909 (PS)
+
+ Summary of results for beta  spin-orbital   5  OVGF: 
+ Koopmans theorem:            -0.74756D+00 au  -20.342 eV
+ Converged second order pole: -0.65068D+00 au  -17.706 eV  0.802 (PS)
+ Converged third  order pole: -0.68659D+00 au  -18.683 eV  0.845 (PS)
+ Outer Valence Approximation: -0.67058D+00 au  -18.247 eV  0.824 (PS)
+
+ Summary of results for beta  spin-orbital   5    P3: 
+ Koopmans theorem:            -0.74756D+00 au  -20.342 eV
+ Converged second order pole: -0.65068D+00 au  -17.706 eV  0.802 (PS)
+ Converged 3rd order P3 pole: -0.68323D+00 au  -18.592 eV  0.802 (PS)
+
+ Summary of results for beta  spin-orbital   6  OVGF: 
+ Koopmans theorem:            -0.71692D+00 au  -19.508 eV
+ Converged second order pole: -0.62807D+00 au  -17.091 eV  0.821 (PS)
+ Converged third  order pole: -0.67019D+00 au  -18.237 eV  0.891 (PS)
+ Outer Valence Approximation: -0.65057D+00 au  -17.703 eV  0.864 (PS)
+
+ Summary of results for beta  spin-orbital   6    P3: 
+ Koopmans theorem:            -0.71692D+00 au  -19.508 eV
+ Converged second order pole: -0.62807D+00 au  -17.091 eV  0.821 (PS)
+ Converged 3rd order P3 pole: -0.66667D+00 au  -18.141 eV  0.844 (PS)
+
+ Summary of results for beta  spin-orbital   7  OVGF: 
+ Koopmans theorem:            -0.52912D+00 au  -14.398 eV
+ Converged second order pole: -0.46979D+00 au  -12.784 eV  0.861 (PS)
+ Converged third  order pole: -0.50149D+00 au  -13.646 eV  0.917 (PS)
+ Outer Valence Approximation: -0.48644D+00 au  -13.237 eV  0.904 (PS)
+
+ Summary of results for beta  spin-orbital   7    P3: 
+ Koopmans theorem:            -0.52912D+00 au  -14.398 eV
+ Converged second order pole: -0.46979D+00 au  -12.784 eV  0.861 (PS)
+ Converged 3rd order P3 pole: -0.50395D+00 au  -13.713 eV  0.889 (PS)
+
+ Summary of results for beta  spin-orbital   8  OVGF: 
+ Koopmans theorem:            -0.49960D+00 au  -13.595 eV
+ Converged second order pole: -0.44497D+00 au  -12.108 eV  0.870 (PS)
+ Converged third  order pole: -0.48010D+00 au  -13.064 eV  0.931 (PS)
+ Outer Valence Approximation: -0.46379D+00 au  -12.620 eV  0.917 (PS)
+
+ Summary of results for beta  spin-orbital   8    P3: 
+ Koopmans theorem:            -0.49960D+00 au  -13.595 eV
+ Converged second order pole: -0.44497D+00 au  -12.108 eV  0.870 (PS)
+ Converged 3rd order P3 pole: -0.48090D+00 au  -13.086 eV  0.902 (PS)
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (A1) (B2) (B1) (B2)
+                 (A2) (A1)
+       Virtual   (B1) (A1) (B2) (A1) (B1) (A1) (B2) (A2) (A1) (B1)
+                 (B2) (A1) (B2) (A1) (B2) (A1) (B1) (B2) (A1) (A1)
+                 (A2) (A1) (B2) (B1) (B2) (A1) (B2) (A2) (B1) (A1)
+                 (B2) (A1) (A2) (B2) (B1) (A1) (B1) (B2) (A1) (A2)
+                 (B2) (A1) (B1) (A1) (B2) (B2) (A2) (B1) (A1) (A1)
+                 (B2) (A1) (A1) (B2)
+ Beta  Orbitals:
+       Occupied  (B2) (A1) (A1) (A1) (B2) (A1) (B2) (B1) (A1) (A2)
+                 (B2)
+       Virtual   (A1) (B1) (A1) (B2) (A1) (B1) (A1) (B2) (A2) (A1)
+                 (B1) (B2) (A1) (B2) (A1) (B2) (B1) (A1) (B2) (A1)
+                 (A2) (A1) (A1) (B1) (B2) (B2) (A1) (B2) (A2) (B1)
+                 (A1) (B2) (A1) (A2) (B2) (B1) (A1) (B1) (B2) (A1)
+                 (A2) (B2) (A1) (B1) (A1) (B2) (A2) (B1) (B2) (A1)
+                 (A1) (B2) (A1) (A1) (B2)
+ The electronic state is 2-A1.
+ Alpha  occ. eigenvalues --  -20.69684 -20.69679 -15.88829  -1.68222  -1.50237
+ Alpha  occ. eigenvalues --   -0.97847  -0.83836  -0.80827  -0.76647  -0.60163
+ Alpha  occ. eigenvalues --   -0.53239  -0.51316
+ Alpha virt. eigenvalues --    0.05561   0.10026   0.13820   0.15015   0.15564
+ Alpha virt. eigenvalues --    0.25380   0.25701   0.27520   0.28798   0.31252
+ Alpha virt. eigenvalues --    0.33420   0.40414   0.46674   0.47957   0.63758
+ Alpha virt. eigenvalues --    0.86158   0.88642   0.96153   1.15487   1.21955
+ Alpha virt. eigenvalues --    1.23771   1.24950   1.25214   1.29452   1.32794
+ Alpha virt. eigenvalues --    1.76607   1.79863   1.96710   2.00901   2.02419
+ Alpha virt. eigenvalues --    2.45397   2.65787   3.07923   3.08380   3.09800
+ Alpha virt. eigenvalues --    3.16338   3.36663   3.56385   3.64380   3.80770
+ Alpha virt. eigenvalues --    3.90993   4.14481   4.17751   4.33916   4.93946
+ Alpha virt. eigenvalues --    5.47063   5.47073   5.47936   5.50165   6.02074
+ Alpha virt. eigenvalues --    6.67184  36.71095  51.48453  51.53945
+  Beta  occ. eigenvalues --  -20.68224 -20.68217 -15.86549  -1.63861  -1.45991
+  Beta  occ. eigenvalues --   -0.89209  -0.75801  -0.74756  -0.71692  -0.52912
+  Beta  occ. eigenvalues --   -0.49960
+  Beta virt. eigenvalues --    0.00736   0.08552   0.12100   0.14011   0.15580
+  Beta virt. eigenvalues --    0.15729   0.25922   0.25956   0.27548   0.29942
+  Beta virt. eigenvalues --    0.31509   0.33551   0.41258   0.47106   0.49806
+  Beta virt. eigenvalues --    0.69525   0.89769   0.92088   0.96297   1.16354
+  Beta virt. eigenvalues --    1.24088   1.24198   1.28534   1.29853   1.29873
+  Beta virt. eigenvalues --    1.33378   1.77689   1.81244   1.97523   2.06217
+  Beta virt. eigenvalues --    2.09095   2.48609   2.68771   3.10262   3.10715
+  Beta virt. eigenvalues --    3.13632   3.19935   3.37468   3.60989   3.68142
+  Beta virt. eigenvalues --    3.82312   3.92744   4.18519   4.19127   4.38613
+  Beta virt. eigenvalues --    4.95089   5.47620   5.48457   5.51513   5.53416
+  Beta virt. eigenvalues --    6.04437   6.68255  36.72681  51.49306  51.54790
+          Condensed to atoms (all electrons):
+               1          2          3
+     1  N    6.537335   0.173340   0.173340
+     2  O    0.173340   8.026927  -0.142275
+     3  O    0.173340  -0.142275   8.026927
+          Atomic-Atomic Spin Densities.
+               1          2          3
+     1  N    0.725763  -0.120681  -0.120681
+     2  O   -0.120681   0.296372   0.082109
+     3  O   -0.120681   0.082109   0.296372
+ Mulliken charges and spin densities:
+               1          2
+     1  N    0.115985   0.484400
+     2  O   -0.057992   0.257800
+     3  O   -0.057992   0.257800
+ Sum of Mulliken charges =   0.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  N    0.115985   0.484400
+     2  O   -0.057992   0.257800
+     3  O   -0.057992   0.257800
+ Electronic spatial extent (au):  <R**2>=            110.7067
+ Charge=              0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0000    Y=              0.0000    Z=              0.7165  Tot=              0.7165
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=            -14.9817   YY=            -19.0280   ZZ=            -15.5416
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=              1.5354   YY=             -2.5109   ZZ=              0.9755
+   XY=              0.0000   XZ=              0.0000   YZ=              0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=              0.0000  YYY=              0.0000  ZZZ=             -0.3286  XYY=              0.0000
+  XXY=              0.0000  XXZ=              0.0387  XZZ=              0.0000  YZZ=              0.0000
+  YYZ=             -0.3895  XYZ=              0.0000
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=            -11.2273 YYYY=            -93.7529 ZZZZ=            -16.7411 XXXY=              0.0000
+ XXXZ=              0.0000 YYYX=              0.0000 YYYZ=              0.0000 ZZZX=              0.0000
+ ZZZY=              0.0000 XXYY=            -17.3836 XXZZ=             -4.5832 YYZZ=            -17.9968
+ XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=              0.0000
+ N-N= 6.456023651581D+01 E-N=-6.110204060641D+02  KE= 2.037080080893D+02
+ Symmetry A1   KE= 1.206885343139D+02
+ Symmetry A2   KE= 4.756889328012D+00
+ Symmetry B1   KE= 3.768579827075D+00
+ Symmetry B2   KE= 7.449400462037D+01
+
+ Atomic contributions to Alpha molecular orbitals:
+ Alpha occ 1 OE=-20.697 is O2-s=0.50 O3-s=0.50
+ Alpha occ 2 OE=-20.697 is O3-s=0.50 O2-s=0.50
+ Alpha occ 3 OE=-15.888 is N1-s=1.00
+ Alpha occ 4 OE=-1.682 is N1-s=0.50 O2-s=0.20 O3-s=0.20 O2-p=0.03 O3-p=0.03 N1-p=0.02
+ Alpha occ 5 OE=-1.502 is O3-s=0.35 O2-s=0.35 N1-p=0.24 O2-p=0.03 O3-p=0.03
+ Alpha occ 6 OE=-0.978 is N1-s=0.31 O2-s=0.19 O3-s=0.19 N1-p=0.10 O2-p=0.10 O3-p=0.10
+ Alpha occ 7 OE=-0.838 is N1-p=0.43 O3-p=0.24 O2-p=0.24 O3-s=0.05 O2-s=0.05
+ Alpha occ 8 OE=-0.808 is O2-p=0.28 O3-p=0.28 N1-p=0.20 O2-s=0.12 O3-s=0.12
+ Alpha occ 9 OE=-0.766 is N1-p=0.46 O2-p=0.26 O3-p=0.26
+ Alpha occ 10 OE=-0.602 is O3-p=0.48 O2-p=0.48 N1-p=0.03 N1-d=0.01
+ Alpha occ 11 OE=-0.532 is O3-p=0.49 O2-p=0.49 N1-d=0.02
+ Alpha occ 12 OE=-0.513 is O3-p=0.33 O2-p=0.33 N1-p=0.22 N1-s=0.11 N1-d=0.02
+ Alpha vir 13 OE=0.056 is N1-p=0.53 O2-p=0.23 O3-p=0.23
+ Alpha vir 14 OE=0.100 is N1-s=4.09 O2-s=-1.47 O3-s=-1.47 O2-p=-0.06 O3-p=-0.06 N1-p=-0.04
+ Alpha vir 15 OE=0.138 is N1-p=3.08 O3-s=-1.37 O2-s=-1.37 O3-p=0.33 O2-p=0.33
+ Alpha vir 16 OE=0.150 is N1-p=1.94 N1-s=-0.32 O2-p=-0.19 O3-p=-0.19 O2-s=-0.12 O3-s=-0.12
+ Alpha vir 17 OE=0.156 is N1-p=1.50 O3-p=-0.25 O2-p=-0.25
+ Alpha vir 18 OE=0.254 is O3-p=0.35 O2-p=0.35 N1-s=0.13 O3-s=0.07 O2-s=0.07 N1-p=0.03
+ Alpha vir 19 OE=0.257 is O3-p=0.43 O2-p=0.43 O2-s=0.05 O3-s=0.05 N1-p=0.03
+ Alpha vir 20 OE=0.275 is O3-p=0.50 O2-p=0.50
+ Alpha vir 21 OE=0.288 is O2-p=0.71 O3-p=0.71 N1-p=-0.53 N1-s=0.16 O2-s=-0.03 O3-s=-0.03
+ Alpha vir 22 OE=0.313 is O3-p=0.77 O2-p=0.77 N1-p=-0.54
+ Alpha vir 23 OE=0.334 is O2-p=0.50 O3-p=0.50
+ Alpha vir 24 OE=0.404 is N1-s=-3.85 O3-s=2.29 O2-s=2.29 N1-p=-0.47 O2-p=0.36 O3-p=0.36
+ Alpha vir 25 OE=0.467 is N1-p=-2.75 O3-s=2.14 O2-s=2.14 O2-p=-0.27 O3-p=-0.27
+ Alpha vir 26 OE=0.480 is O2-s=0.23 O3-s=0.23 N1-p=0.21 O3-p=0.17 O2-p=0.17 N1-s=-0.03 N1-d=0.02
+ Alpha vir 27 OE=0.638 is N1-p=0.71 O3-p=0.12 O2-p=0.12 N1-d=0.03
+ Alpha vir 28 OE=0.862 is N1-p=1.12 N1-s=-0.06 O2-p=-0.02 O3-p=-0.02
+ Alpha vir 29 OE=0.886 is N1-p=1.04 O2-p=-0.02 O3-p=-0.02
+ Alpha vir 30 OE=0.962 is N1-p=1.36 O2-p=-0.12 O3-p=-0.12 O3-s=-0.07 O2-s=-0.07 O2-d=0.01 O3-d=0.01
+ Alpha vir 31 OE=1.155 is O2-p=0.37 O3-p=0.37 N1-s=0.23 N1-p=-0.02 N1-d=0.02
+ Alpha vir 32 OE=1.220 is N1-s=1.03 O3-s=-0.27 O2-s=-0.27 O2-p=0.23 O3-p=0.23 N1-p=0.04
+ Alpha vir 33 OE=1.238 is O3-p=0.50 O2-p=0.50
+ Alpha vir 34 OE=1.249 is O2-p=0.40 O3-p=0.40 N1-s=0.30 N1-p=-0.05 O2-s=-0.03 O3-s=-0.03 N1-d=0.01
+ Alpha vir 35 OE=1.252 is O2-p=0.67 O3-p=0.67 O2-s=-0.16 O3-s=-0.16
+ Alpha vir 36 OE=1.295 is O2-p=0.50 O3-p=0.50
+ Alpha vir 37 OE=1.328 is O2-p=0.50 O3-p=0.50 N1-p=0.13 O3-s=-0.09 O2-s=-0.09 N1-d=0.03
+ Alpha vir 38 OE=1.766 is O3-s=0.38 O2-s=0.38 N1-s=0.28 N1-d=0.04 O3-p=-0.04 O2-p=-0.04 N1-p=-0.01
+ Alpha vir 39 OE=1.799 is O2-s=0.50 O3-s=0.50 N1-p=-0.07 O3-p=0.02 O2-p=0.02 N1-d=0.01
+ Alpha vir 40 OE=1.967 is N1-d=0.74 O2-d=0.12 O3-d=0.12 O3-p=0.01 O2-p=0.01
+ Alpha vir 41 OE=2.009 is N1-d=0.89 O3-d=0.05 O2-d=0.05
+ Alpha vir 42 OE=2.024 is N1-d=0.80 O3-d=0.07 O2-d=0.07 O2-s=0.03 O3-s=0.03 N1-s=-0.02
+ Alpha vir 43 OE=2.454 is N1-d=0.61 O3-d=0.14 O2-d=0.14 N1-p=0.09 O3-p=0.02 O2-p=0.02
+ Alpha vir 44 OE=2.658 is N1-d=0.64 O2-d=0.12 O3-d=0.12 N1-s=0.12 N1-p=0.02 O3-s=-0.01 O2-s=-0.01
+ Alpha vir 45 OE=3.079 is O3-d=0.50 O2-d=0.50
+ Alpha vir 46 OE=3.084 is O3-d=0.50 O2-d=0.50
+ Alpha vir 47 OE=3.098 is O2-d=0.49 O3-d=0.49 N1-p=0.02
+ Alpha vir 48 OE=3.163 is O2-d=0.46 O3-d=0.46 N1-d=0.07
+ Alpha vir 49 OE=3.367 is O2-d=0.39 O3-d=0.39 N1-p=0.13 N1-d=0.09
+ Alpha vir 50 OE=3.564 is O2-d=0.40 O3-d=0.40 N1-d=0.16 O3-s=0.01 O2-s=0.01
+ Alpha vir 51 OE=3.644 is O3-d=0.33 O2-d=0.33 N1-p=0.19 N1-d=0.10 O2-s=0.02 O3-s=0.02
+ Alpha vir 52 OE=3.808 is O3-d=0.38 O2-d=0.38 N1-d=0.23
+ Alpha vir 53 OE=3.910 is O3-d=0.31 O2-d=0.31 N1-p=0.23 N1-d=0.07 O2-s=0.03 O3-s=0.03 O3-p=0.02 O2-p=0.02
+ Alpha vir 54 OE=4.145 is O2-d=0.29 O3-d=0.29 N1-p=0.21 N1-d=0.16 O2-p=0.02 O3-p=0.02 N1-s=0.01
+ Alpha vir 55 OE=4.178 is N1-p=0.85 O2-d=0.07 O3-d=0.07
+ Alpha vir 56 OE=4.339 is N1-p=0.58 O2-d=0.17 O3-d=0.17 N1-d=0.07
+ Alpha vir 57 OE=4.939 is N1-p=0.58 O3-p=0.13 O2-p=0.13 O2-d=0.06 O3-d=0.06 N1-d=0.04
+ Alpha vir 58 OE=5.471 is O2-p=0.49 O3-p=0.49
+ Alpha vir 59 OE=5.471 is O2-p=0.50 O3-p=0.50
+ Alpha vir 60 OE=5.479 is O3-p=0.49 O2-p=0.49 N1-p=0.01
+ Alpha vir 61 OE=5.502 is O2-p=0.49 O3-p=0.49 N1-p=0.01
+ Alpha vir 62 OE=6.021 is O2-p=0.48 O3-p=0.48 O3-d=0.03 O2-d=0.03
+ Alpha vir 63 OE=6.672 is O3-p=0.35 O2-p=0.35 N1-p=0.16 O2-d=0.06 O3-d=0.06 N1-d=0.02
+ Alpha vir 64 OE=36.711 is N1-s=1.00
+ Alpha vir 65 OE=51.485 is O2-s=0.50 O3-s=0.50
+ Alpha vir 66 OE=51.539 is O2-s=0.50 O3-s=0.50
+
+ Atomic contributions to Beta  molecular orbitals:
+ Beta  occ 1 OE=-20.682 is O2-s=0.50 O3-s=0.50
+ Beta  occ 2 OE=-20.682 is O3-s=0.50 O2-s=0.50
+ Beta  occ 3 OE=-15.865 is N1-s=1.00
+ Beta  occ 4 OE=-1.639 is N1-s=0.49 O3-s=0.20 O2-s=0.20 N1-p=0.04 O3-p=0.03 O2-p=0.03
+ Beta  occ 5 OE=-1.460 is O2-s=0.34 O3-s=0.34 N1-p=0.26 O2-p=0.03 O3-p=0.03
+ Beta  occ 6 OE=-0.892 is O3-s=0.23 O2-s=0.23 N1-s=0.22 O2-p=0.16 O3-p=0.16
+ Beta  occ 7 OE=-0.758 is O2-p=0.26 O3-p=0.26 N1-p=0.21 O2-s=0.13 O3-s=0.13
+ Beta  occ 8 OE=-0.748 is N1-p=0.43 O2-p=0.28 O3-p=0.28
+ Beta  occ 9 OE=-0.717 is N1-p=0.37 O3-p=0.28 O2-p=0.28 N1-s=0.05
+ Beta  occ 10 OE=-0.529 is O3-p=0.49 O2-p=0.49 N1-d=0.02
+ Beta  occ 11 OE=-0.500 is O3-p=0.47 O2-p=0.47 N1-p=0.06 N1-d=0.02 O3-s=-0.01 O2-s=-0.01
+ Beta  vir 12 OE=0.007 is N1-s=0.98 O2-s=-0.26 O3-s=-0.26 N1-p=0.23 O2-p=0.15 O3-p=0.15 N1-d=0.01
+ Beta  vir 13 OE=0.086 is N1-p=0.59 O3-p=0.20 O2-p=0.20
+ Beta  vir 14 OE=0.121 is N1-s=3.04 O2-s=-1.23 O3-s=-1.23 N1-p=0.22 O2-p=0.10 O3-p=0.10
+ Beta  vir 15 OE=0.140 is N1-p=3.05 O3-s=-1.36 O2-s=-1.36 O2-p=0.33 O3-p=0.33
+ Beta  vir 16 OE=0.156 is N1-p=1.76 N1-s=-0.27 O3-p=-0.20 O2-p=-0.20 O2-s=-0.05 O3-s=-0.05
+ Beta  vir 17 OE=0.157 is N1-p=1.47 O2-p=-0.24 O3-p=-0.24
+ Beta  vir 18 OE=0.259 is O2-p=0.29 O3-p=0.29 N1-s=0.21 O3-s=0.10 O2-s=0.10 N1-p=0.02
+ Beta  vir 19 OE=0.260 is O2-p=0.43 O3-p=0.43 O2-s=0.06 O3-s=0.06 N1-p=0.03
+ Beta  vir 20 OE=0.275 is O3-p=0.50 O2-p=0.50
+ Beta  vir 21 OE=0.299 is O3-p=0.72 O2-p=0.72 N1-p=-0.46 N1-s=0.08 O2-s=-0.03 O3-s=-0.03
+ Beta  vir 22 OE=0.315 is O2-p=0.76 O3-p=0.76 N1-p=-0.53
+ Beta  vir 23 OE=0.336 is O2-p=0.50 O3-p=0.50
+ Beta  vir 24 OE=0.413 is N1-s=-3.77 O3-s=2.28 O2-s=2.28 N1-p=-0.50 O3-p=0.35 O2-p=0.35
+ Beta  vir 25 OE=0.471 is N1-p=-2.82 O3-s=2.19 O2-s=2.19 O3-p=-0.28 O2-p=-0.28
+ Beta  vir 26 OE=0.498 is N1-p=0.25 O2-p=0.15 O3-p=0.15 O3-s=0.15 O2-s=0.15 N1-s=0.11 N1-d=0.03
+ Beta  vir 27 OE=0.695 is N1-p=0.71 O3-p=0.19 O2-p=0.19 O2-s=-0.06 O3-s=-0.06 N1-d=0.02
+ Beta  vir 28 OE=0.898 is N1-p=1.04 O3-p=-0.02 O2-p=-0.02
+ Beta  vir 29 OE=0.921 is N1-p=1.12 N1-s=-0.07 O3-p=-0.02 O2-p=-0.02
+ Beta  vir 30 OE=0.963 is N1-p=1.35 O3-p=-0.12 O2-p=-0.12 O3-s=-0.07 O2-s=-0.07 O2-d=0.01 O3-d=0.01
+ Beta  vir 31 OE=1.164 is O3-p=0.45 O2-p=0.45 N1-s=0.09 N1-d=0.03 N1-p=-0.02
+ Beta  vir 32 OE=1.241 is O2-p=0.50 O3-p=0.50
+ Beta  vir 33 OE=1.242 is N1-s=1.46 O3-s=-0.28 O2-s=-0.28 O2-p=0.08 O3-p=0.08 N1-p=-0.06
+ Beta  vir 34 OE=1.285 is O2-p=0.49 O3-p=0.49 N1-p=0.02 N1-s=-0.01 N1-d=0.01
+ Beta  vir 35 OE=1.299 is O2-p=0.50 O3-p=0.50
+ Beta  vir 36 OE=1.299 is O2-p=0.66 O3-p=0.66 O3-s=-0.19 O2-s=-0.19 N1-p=0.05
+ Beta  vir 37 OE=1.334 is O2-p=0.48 O3-p=0.48 N1-p=0.09 O2-s=-0.04 O3-s=-0.04 N1-d=0.02
+ Beta  vir 38 OE=1.777 is O3-s=0.38 O2-s=0.38 N1-s=0.28 O3-p=-0.04 O2-p=-0.04 N1-d=0.04 N1-p=-0.01
+ Beta  vir 39 OE=1.812 is O3-s=0.51 O2-s=0.51 N1-p=-0.07 O2-p=0.02 O3-p=0.02 N1-d=0.02
+ Beta  vir 40 OE=1.975 is N1-d=0.75 O2-d=0.12 O3-d=0.12 O2-p=0.01 O3-p=0.01
+ Beta  vir 41 OE=2.062 is N1-d=0.88 O3-d=0.05 O2-d=0.05
+ Beta  vir 42 OE=2.091 is N1-d=0.81 O3-d=0.07 O2-d=0.07 O3-s=0.02 O2-s=0.02
+ Beta  vir 43 OE=2.486 is N1-d=0.61 O3-d=0.14 O2-d=0.14 N1-p=0.08 O3-p=0.02 O2-p=0.02
+ Beta  vir 44 OE=2.688 is N1-d=0.64 O2-d=0.13 O3-d=0.13 N1-s=0.10 N1-p=0.03 O3-s=-0.01 O2-s=-0.01
+ Beta  vir 45 OE=3.103 is O3-d=0.50 O2-d=0.50
+ Beta  vir 46 OE=3.107 is O2-d=0.50 O3-d=0.50
+ Beta  vir 47 OE=3.136 is O2-d=0.49 O3-d=0.49 N1-p=0.02
+ Beta  vir 48 OE=3.199 is O2-d=0.46 O3-d=0.46 N1-d=0.07
+ Beta  vir 49 OE=3.375 is O2-d=0.38 O3-d=0.38 N1-p=0.12 N1-d=0.10
+ Beta  vir 50 OE=3.610 is O2-d=0.41 O3-d=0.41 N1-d=0.15 O2-s=0.01 O3-s=0.01
+ Beta  vir 51 OE=3.681 is O2-d=0.34 O3-d=0.34 N1-p=0.17 N1-d=0.10 O2-s=0.02 O3-s=0.02
+ Beta  vir 52 OE=3.823 is O3-d=0.38 O2-d=0.38 N1-d=0.23
+ Beta  vir 53 OE=3.927 is O3-d=0.30 O2-d=0.30 N1-p=0.23 N1-d=0.08 O3-s=0.02 O2-s=0.02 O2-p=0.02 O3-p=0.02
+ Beta  vir 54 OE=4.185 is O2-d=0.30 O3-d=0.30 N1-p=0.17 N1-d=0.17 O2-p=0.02 O3-p=0.02
+ Beta  vir 55 OE=4.191 is N1-p=0.85 O3-d=0.07 O2-d=0.07
+ Beta  vir 56 OE=4.386 is N1-p=0.63 O2-d=0.14 O3-d=0.14 N1-d=0.06
+ Beta  vir 57 OE=4.951 is N1-p=0.58 O2-p=0.13 O3-p=0.13 O2-d=0.06 O3-d=0.06 N1-d=0.04
+ Beta  vir 58 OE=5.476 is O3-p=0.50 O2-p=0.50
+ Beta  vir 59 OE=5.485 is O2-p=0.49 O3-p=0.49 N1-p=0.01
+ Beta  vir 60 OE=5.515 is O2-p=0.49 O3-p=0.49
+ Beta  vir 61 OE=5.534 is O2-p=0.49 O3-p=0.49 N1-p=0.01
+ Beta  vir 62 OE=6.044 is O3-p=0.47 O2-p=0.47 O2-d=0.03 O3-d=0.03
+ Beta  vir 63 OE=6.683 is O2-p=0.35 O3-p=0.35 N1-p=0.16 O2-d=0.06 O3-d=0.06 N1-d=0.02
+ Beta  vir 64 OE=36.727 is N1-s=1.00
+ Beta  vir 65 OE=51.493 is O3-s=0.50 O2-s=0.50
+ Beta  vir 66 OE=51.548 is O2-s=0.50 O3-s=0.50
+ 
+ 1\1\GINC-GAMBA\SP\UOVGF-FC\Gen\N1O2(2)\IRIKURA\17-May-2017\0\\# EPT(OV
+ GF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all
+ ,thresh=1)\\BEB step 4: EPT B for no2\\0,2\N,0,0.,0.,-0.3309564098\O,0
+ ,0.,-1.1068398818,0.1406818249\O,0,0.,1.1068398818,0.1406818249\\Versi
+ on=ES64L-G09RevD.01\State=2-A1\HF=-204.0844574\MP2=-204.6678158\PUHF=-
+ 204.0905554\PMP2-0=-204.6716436\S2=0.771069\S2-1=0.755256\S2A=0.75028\
+ RMSD=6.856e-09\PG=C02V [C2(N1),SGV(O2)]\\@
+
+
+ WE MIGHT AS WELL ATTEMPT TO INTRODUCE A NEW PLANET 
+ INTO THE SOLAR SYSTEM, OR TO ANNIHILATE ONE ALREADYIN EXISTENCE, 
+ AS TO CREATE OR DESTROY A PARTICLE OF HYDROGEN.
+ ALL THE CHANGES WE CAN PRODUCE CONSIST IN SEPARATING PARTICLES
+ THAT ARE IN A STATE OF ... COMBINATION, AND JOINING 
+ THOSE THAT WERE PREVIOUSLY AT A DISTANCE.
+
+                                    -- JOHN DALTON, 1810
+ Job cpu time:       0 days  0 hours  1 minutes  0.5 seconds.
+ File lengths (MBytes):  RWF=     47 Int=      0 D2E=      0 Chk=      1 Scr=      1
+ Normal termination of Gaussian 09 at Wed May 17 13:46:25 2017.

@@ -1,0 +1,26 @@
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# HF/GEN gfinput geom=check scf=xqc stable=opt
+
+preamble to BEB step 8: low-spin UHF for cation of ZnEt2, stability check/follow
+
+1 2
+
+C H 0
+cc-pVTZ
+****
+Zn 0
+cc-pVTZ
+****
+
+--Link1--
+%chk=ZnEt2.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/chkbas gfinput geom=check scf=xqc guess=check
+
+BEB step 8: low-spin CCSD(T) for cation of ZnEt2, using stabilized UHF reference
+
+1 2
+

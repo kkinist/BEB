@@ -1,0 +1,16 @@
+%chk=h2o.chk
+%nprocs=4
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for h2o
+
+0 1
+O                  0.00000000    0.00000000   -0.11081188
+H                  0.00000000   -0.78397589    0.44324751
+H                 -0.00000000    0.78397589    0.44324751
+
+H O 0
+6-31G(d)
+****
+

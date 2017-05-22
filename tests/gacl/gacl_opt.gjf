@@ -1,0 +1,15 @@
+%chk=gacl.chk
+%nprocs=4
+%mem=1000mw
+# B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
+
+BEB step 1: geom and freqs for gacl
+
+0 1
+Ga  0. 0. 0.
+Cl  0. 0. 2.2
+
+Cl Ga 0
+6-31G(d)
+****
+

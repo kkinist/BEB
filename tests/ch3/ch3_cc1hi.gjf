@@ -1,0 +1,13 @@
+%chk=ch3.chk
+%nprocs=4
+%mem=1000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc guess=check
+
+BEB step 7: high-spin CCSD(T) for cation of ch3
+
+1 3
+
+C H 0
+cc-pVTZ
+****
+

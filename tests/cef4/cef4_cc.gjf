@@ -1,0 +1,19 @@
+%chk=cef4.chk
+%nprocs=8
+%mem=2000mw
+# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc pseudo=read
+
+BEB step 6: CCSD(T) for neutral cef4
+
+0 1
+
+F 0
+cc-pVTZ
+****
+Ce 0
+SDD
+****
+
+Ce 0
+SDD
+

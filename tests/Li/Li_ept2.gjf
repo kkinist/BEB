@@ -1,0 +1,15 @@
+%chk=Li.chk
+%nprocs=2
+%mem=1000mw
+# EPT(OVGF+P3,ReadOrbitals,full)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)
+
+BEB step 5: cation EPT for VIE2 for Li; active core
+
+1 3
+
+Li 0
+6-311+G(d,p)
+****
+
+2 2 0 0
+
