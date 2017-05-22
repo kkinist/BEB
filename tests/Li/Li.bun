@@ -1,0 +1,7 @@
+# Results from automated beb_g09build.py and beb_g09parse.py
+# Molecule is 'Li' (doublet Li)
+# Double-ionization threshold = 80.95 eV from CCSD(T) (to doublet dication)
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1a	67.64	98.67	1	1	No	none	Koopmans
+1b	65.00	97.87	1	1	No	none	P3-3rd
+2a	5.38	5.70	1	1	No	none	CCSD(T)

@@ -52,13 +52,12 @@
 #   BiFClBrIAt.inp (singlet; ECP; special n>2; heavy atoms)
 #   cef4.inp (singlet; f-element; symmetry)
 #   thf3.inp (doublet; 5f; symmetry)
+#   Li.inp (atom with one valence electron--pathological case with manual workaround)
 #
 import sys
 import os
 import re
-#sys.path.append('/media/sf_bin3')
-from g09_subs3 import *
-from chem_subs import *
+from beb_subs import *
 ##
 def get_elements( coords ):
     # parse the list of lines from the input file

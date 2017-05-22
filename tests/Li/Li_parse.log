@@ -1,0 +1,49 @@
+
+>>> Reading file Li_opt.out <<<
+Geometry optimization converged: No vibrational frequencies found
+
+>>> Reading file Li_bu.out <<<
+HF orbital and kinetic energies (hartree):
+MO    Energy        KE
+1a -2.485856  3.626154
+2a -0.196216  0.209367
+1b -2.468086  3.596644
+Crude VIE = 5.34 eV to singlet cation.
+
+>>> Reading file Li_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy  Method     PS
+2a -0.19645  P3-3rd  1.000
+1b -2.38870  P3-3rd  0.881
+VIE = 5.35 eV to the singlet cation from P3-3rd theory.
+
+>>> Reading file Li_ept2.out <<<
+*** Calculation did not complete successfully
+
+>>> Reading file Li_cc.out <<<
+CCSD(T) = -7.474248 for neutral molecule
+
+>>> Reading file Li_cc1hi.out <<<
+CCSD(T) = -5.103928 for triplet ion
+
+>>> Reading file Li_cc1lo.out <<<
+CCSD(T) = -7.276560 for singlet ion
+
+>>> Reading file Li_cc2hi.out <<<
+*** Calculation did not complete successfully
+
+>>> Reading file Li_cc2lo.out <<<
+CCSD(T) = -4.499401 for doublet dication
+
+VIE = 5.38 eV to singlet cation from CCSD(T)
+VIE2 = 80.95 eV to doublet dication from CCSD(T)
+No EPT value for VIE2 is available for comparison.
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1a	67.64	98.67	1	1	No	none	Koopmans
+1b	65.00	97.87	1	1	No	none	P3-3rd
+2a	5.38	5.70	1	1	No	none	CCSD(T)
+
+BUN data file Li.bun written and closed.

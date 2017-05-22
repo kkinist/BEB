@@ -6,10 +6,7 @@
 import sys
 import os
 import re
-#from beb_subs import *
-sys.path.append('/media/sf_bin3')
-from g09_subs3 import *
-from chem_subs import *
+from beb_subs import *
 import pandas as pd
 ###
 def weakest_binding(df_orbitals):
@@ -449,7 +446,8 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
             if mult_ion == nalpion - nbetion - 1:
                 # was high-spin; choose the highest beta orbital energy from ept1
                 VIE_exc, iespin, exc_method = weakest_binding(ept.loc[ept['Spin'] == 'beta'])
-                VIE2 = VIE_exc + IEcat
+                VIE2_ept = VIE_exc + IEcat
+                VIE2 = VIE2_ept
                 VIE2_method = '({:s} + {:s})'.format(exc_method, ie2meth)
             else:
                 print('--- I am confused about the EPT spin states to combine for VIE2 ---')
@@ -533,10 +531,13 @@ if cc_neut != 0:
             mult_dicat = mult_dicat_lo
         VIE2 = hartree_eV(cc_dicat - cc_neut)
         print('VIE2 = {:.2f} eV to {:s} dication from CCSD(T)'.format(VIE2, spinname(mult_dicat)))
-        vd = VIE2 - VIE2_ept
-        if abs(vd/VIE2_ept) > worry_diff:
-            # maybe the SCF is an excited state in the CCSD(T) step
-            print('*** Warning: Large difference of {:.2f} eV between CCSD(T) and {:s} VIE2 values ***'.format(vd, VIE2_method))
+        try:
+            vd = VIE2 - VIE2_ept
+            if abs(vd/VIE2_ept) > worry_diff:
+                # maybe the SCF is an excited state in the CCSD(T) step
+                print('*** Warning: Large difference of {:.2f} eV between CCSD(T) and {:s} VIE2 values ***'.format(vd, VIE2_method))
+        except:
+            print('No EPT value for VIE2 is available for comparison.')
         VIE2_method = 'CCSD(T)'
 #
 # done parsing Gaussian output files

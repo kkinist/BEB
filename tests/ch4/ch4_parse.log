@@ -1,0 +1,57 @@
+
+>>> Reading file ch4_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file ch4_bu.out <<<
+HF orbital and kinetic energies (hartree):
+MO     Energy         KE
+1 -11.209591  16.022443
+2  -0.941183   1.208753
+3  -0.543712   0.945398
+4  -0.543712   0.945398
+5  -0.543712   0.945398
+Crude VIE = 14.80 eV to doublet cation.
+
+>>> Reading file ch4_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy  Method     PS
+2 -0.85234  P3-3rd  0.868
+3 -0.51703  P3-3rd  0.927
+4 -0.51703  P3-3rd  0.927
+5 -0.51703  P3-3rd  0.927
+VIE = 14.07 eV to the doublet cation from P3-3rd theory.
+
+>>> Reading file ch4_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+      5  alpha  P3-3rd -0.89230  0.907
+      4   beta  P3-3rd -0.85997  0.936
+Second IE = 23.40 eV to the triplet dication from P3-3rd theory.
+Estimated VIE2 = 37.47 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file ch4_cc.out <<<
+CCSD(T) = -40.438049 for neutral molecule
+
+>>> Reading file ch4_cc1hi.out <<<
+CCSD(T) = -39.436465 for quartet ion
+
+>>> Reading file ch4_cc1lo.out <<<
+CCSD(T) = -39.911498 for doublet ion
+
+>>> Reading file ch4_cc2hi.out <<<
+CCSD(T) = -39.036564 for triplet dication
+
+>>> Reading file ch4_cc2lo.out <<<
+CCSD(T) = -39.005405 for singlet dication
+
+VIE = 14.33 eV to doublet cation from CCSD(T)
+VIE2 = 38.14 eV to triplet dication from CCSD(T)
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	305.03	435.99	2	1	Yes	none	Koopmans
+2	23.19	32.89	2	1	No	none	P3-3rd
+3	14.33	25.73	6	1	No	none	CCSD(T)
+
+BUN data file ch4.bun written and closed.

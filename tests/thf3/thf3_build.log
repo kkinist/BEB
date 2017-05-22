@@ -1,0 +1,91 @@
+>>>>>>>>>>>>>>>>>>>>>>
+EPT and CCSD(T) calculations modified by hand to freeze only 12 core orbitals
+instead of (Gaussian default) 16.
+The EPT orbital window (bottom of files) was increased to match (all values += 4).
+
+I should have done this for CeF4 also (freezing 13 orbitals instead of 17),
+but did not. 
+>>>>>>>>>>>>>>>>>>>>>>
+
+Descriptions of the Gaussian calculations are below.
+See corresponding *.txt files for descriptions of non-standard basis sets.
+
+thf3_opt.gjf (step 1)
+---------------------
+Optimize geometry to a local minimum (no imaginary vibrational frequencies)
+Theoretical method: B3LYP
+Elem	Basis
+F	6-31G(d)
+Th	SDD
+
+thf3_bu.gjf (step 2)
+--------------------
+All-electron calculation of binding energies and kinetic energies
+Theoretical method: HF-DKH2
+Elem	Basis
+F	6-311G(d,p)
+Th	SARC-DKH
+
+thf3_bupp.gjf (step 3)
+----------------------
+Orbital kinetic energies with effective core potentials (pseudopotentials)
+Theoretical method: HF
+Elem	Basis
+F	6-311G(d,p)
+Th	SDD
+
+thf3_ept1.gjf (step 4)
+----------------------
+Correlated binding energies for outer orbitals
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+F	6-311+G(d,p)
+Th	SDD
+
+thf3_ept2.gjf (step 5)
+----------------------
+Doubly vertical ionization energy of cation
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+F	6-311+G(d,p)
+Th	SDD
+
+thf3_cc.gjf (step 6)
+--------------------
+Correlated total ground-state energy
+Theoretical method: CCSD(T)
+Elem	Basis
+F	cc-pVTZ
+Th	SDD
+
+thf3_cc1hi.gjf (step 7)
+-----------------------
+Correlated total energy of high-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+F	cc-pVTZ
+Th	SDD
+
+thf3_cc1lo.gjf (step 8)
+-----------------------
+Correlated total energy of low-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+F	cc-pVTZ
+Th	SDD
+
+thf3_cc2hi.gjf (step 9)
+-----------------------
+Correlated total energy of high-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+F	cc-pVTZ
+Th	SDD
+
+thf3_cc2lo.gjf (step 10)
+------------------------
+Correlated total energy of low-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+F	cc-pVTZ
+Th	SDD

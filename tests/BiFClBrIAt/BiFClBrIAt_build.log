@@ -1,0 +1,129 @@
+>>>>>>>>>>>>>>>>>>>>
+Manual modification to BiFClBrIAt_cc2lo.gjf because the CCSD did not converge.
+
+To fix the problem, I added a preparatory step to to follow any HF instability.
+This improved solution (UHF) was then read from the checkpoint file for CCSD(T). 
+>>>>>>>>>>>>>>>>>>>>
+
+Descriptions of the Gaussian calculations are below.
+See corresponding *.txt files for descriptions of non-standard basis sets.
+
+BiFClBrIAt_opt.gjf (step 1)
+---------------------------
+Optimize geometry to a local minimum (no imaginary vibrational frequencies)
+Theoretical method: B3LYP
+Elem	Basis
+I	SDD+d
+Br	6-31G(d)
+Cl	6-31G(d)
+At	SDD
+Bi	SDD
+F	6-31G(d)
+
+BiFClBrIAt_bu.gjf (step 2)
+--------------------------
+All-electron calculation of binding energies and kinetic energies
+Theoretical method: HF-DKH2
+Elem	Basis
+I	DZP-DKH
+Br	6-311G(d,p)
+Cl	6-311G(d,p)
+At	DZP-DKH
+Bi	DZP-DKH
+F	6-311G(d,p)
+
+BiFClBrIAt_bupp.gjf (step 3)
+----------------------------
+Orbital kinetic energies with effective core potentials (pseudopotentials)
+Theoretical method: HF
+Elem	Basis
+I	SDD+d
+Br	SDDall+d
+Cl	SDDall+d
+At	SDD
+Bi	SDD
+F	6-311G(d,p)
+
+BiFClBrIAt_ept1.gjf (step 4)
+----------------------------
+Correlated binding energies for outer orbitals
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+I	SDD+d
+Br	6-311+G(d,p)
+Cl	6-311+G(d,p)
+At	SDD
+Bi	SDD
+F	6-311+G(d,p)
+
+BiFClBrIAt_ept2.gjf (step 5)
+----------------------------
+Doubly vertical ionization energy of cation
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+I	SDD+d
+Br	6-311+G(d,p)
+Cl	6-311+G(d,p)
+At	SDD
+Bi	SDD
+F	6-311+G(d,p)
+
+BiFClBrIAt_cc.gjf (step 6)
+--------------------------
+Correlated total ground-state energy
+Theoretical method: CCSD(T)
+Elem	Basis
+I	SDD+d
+Br	cc-pVTZ
+Cl	cc-pV(T+d)Z
+At	SDD
+Bi	SDD
+F	cc-pVTZ
+
+BiFClBrIAt_cc1hi.gjf (step 7)
+-----------------------------
+Correlated total energy of high-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+I	SDD+d
+Br	cc-pVTZ
+Cl	cc-pV(T+d)Z
+At	SDD
+Bi	SDD
+F	cc-pVTZ
+
+BiFClBrIAt_cc1lo.gjf (step 8)
+-----------------------------
+Correlated total energy of low-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+I	SDD+d
+Br	cc-pVTZ
+Cl	cc-pV(T+d)Z
+At	SDD
+Bi	SDD
+F	cc-pVTZ
+
+BiFClBrIAt_cc2hi.gjf (step 9)
+-----------------------------
+Correlated total energy of high-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+I	SDD+d
+Br	cc-pVTZ
+Cl	cc-pV(T+d)Z
+At	SDD
+Bi	SDD
+F	cc-pVTZ
+
+BiFClBrIAt_cc2lo.gjf (step 10)
+------------------------------
+Correlated total energy of low-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+I	SDD+d
+Br	cc-pVTZ
+Cl	cc-pV(T+d)Z
+At	SDD
+Bi	SDD
+F	cc-pVTZ

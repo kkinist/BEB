@@ -1,0 +1,81 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Li atom has only one valence electron.  In the frozen-core
+approximation, it has only one electron and no correlation energy. 
+Some post-HF calculations fail or give trivial results:
+  * Li_cc1hi.gjf and Li_ept2.gjf are silly because triplet Li+ has no
+    beta electrons, therefore no electron correlation (only exchange). 
+
+One option is to parse only the Li_bu.out file (by deleting the others). 
+
+Another option, taken here, is to include the core orbitals in the 
+post-HF correlation treatments.  The basis set for CCSD(T) was changed
+to cc-pCVTZ to accomodate core correlation. This basis set was obtained
+from the PNNL/EMSL basis set library at https://bse.pnl.gov/bse/portal.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Descriptions of the Gaussian calculations are below.
+See corresponding *.txt files for descriptions of non-standard basis sets.
+
+Li_opt.gjf (step 1)
+-------------------
+Optimize geometry to a local minimum (no imaginary vibrational frequencies)
+Theoretical method: B3LYP
+Elem	Basis
+Li	6-31G(d)
+d-functions used in sets of 6
+
+Li_bu.gjf (step 2)
+------------------
+All-electron calculation of binding energies and kinetic energies
+Theoretical method: HF
+Elem	Basis
+Li	6-311G(d,p)
+
+Li_ept1.gjf (step 4)
+--------------------
+Correlated binding energies for outer orbitals
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+Li	6-311+G(d,p)
+
+Li_ept2.gjf (step 5)
+--------------------
+Doubly vertical ionization energy of cation
+Theoretical method: EPT(OVGF+P3)
+Elem	Basis
+Li	6-311+G(d,p)
+
+Li_cc.gjf (step 6)
+------------------
+Correlated total ground-state energy
+Theoretical method: CCSD(T)
+Elem	Basis
+Li	cc-pVTZ
+
+Li_cc1hi.gjf (step 7)
+---------------------
+Correlated total energy of high-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+Li	cc-pVTZ
+
+Li_cc1lo.gjf (step 8)
+---------------------
+Correlated total energy of low-spin, vertical cation
+Theoretical method: CCSD(T)
+Elem	Basis
+Li	cc-pVTZ
+
+Li_cc2hi.gjf (step 9)
+---------------------
+Correlated total energy of high-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+Li	cc-pVTZ
+
+Li_cc2lo.gjf (step 10)
+----------------------
+Correlated total energy of low-spin, doubly vertical dication
+Theoretical method: CCSD(T)
+Elem	Basis
+Li	cc-pVTZ

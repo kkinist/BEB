@@ -1,0 +1,107 @@
+
+>>> Reading file no2_opt.out <<<
+Geometry optimization converged: local minimum with nimag = 0
+
+>>> Reading file no2_bu.out <<<
+HF orbital and kinetic energies (hartree):
+MO     Energy         KE
+ 1a -20.687056  29.195764
+ 2a -20.687009  29.195940
+ 3a -15.879940  22.127355
+ 4a  -1.675272   2.675401
+ 5a  -1.495819   2.912814
+ 6a  -0.973110   2.912849
+ 7a  -0.832461   2.185834
+ 8a  -0.803213   2.647900
+ 9a  -0.761000   1.883831
+10a  -0.595891   2.649348
+11a  -0.526627   2.395655
+12a  -0.508379   2.784010
+ 1b -20.672312  29.218724
+ 2b -20.672241  29.219202
+ 3b -15.857164  22.149816
+ 4b  -1.631674   2.613947
+ 5b  -1.453351   2.844966
+ 6b  -0.885708   2.988326
+ 7b  -0.751382   2.638083
+ 8b  -0.742317   1.876457
+ 9b  -0.711966   1.892257
+10b  -0.523275   2.378666
+11b  -0.493925   2.411153
+Crude VIE = 13.44 eV to triplet cation.
+
+>>> Reading file no2_ept1.out <<<
+(minimum acceptable pole strength = 0.75)
+MO   Energy    Method     PS
+ 4a -1.68220  Koopmans  0.000
+ 5a -1.50240  Koopmans  0.000
+ 6a -0.83911    P3-3rd  0.827
+ 7a -0.73214    P3-3rd  0.856
+ 8a -0.73089    P3-3rd  0.857
+ 9a -0.70019    P3-3rd  0.789
+10a -0.52454    P3-3rd  0.895
+11a -0.51078    P3-3rd  0.884
+12a -0.43690    P3-3rd  0.902
+ 4b -1.63860  Koopmans  0.000
+ 5b -1.45990  Koopmans  0.000
+ 6b -0.81017    P3-3rd  0.888
+ 7b -0.71337    P3-3rd  0.909
+ 8b -0.68323    P3-3rd  0.802
+ 9b -0.66667    P3-3rd  0.844
+10b -0.50395    P3-3rd  0.889
+11b -0.48090    P3-3rd  0.902
+VIE = 11.89 eV to the singlet cation from P3-3rd theory.
+*** Warning: Large difference of -1.55 eV between Koopmans and EPT VIE values ***
+
+>>> Reading file no2_ept2.out <<<
+(minimum acceptable pole strength = 0.75)
+Orbital   Spin  Method   Energy     PS
+     12  alpha  P3-3rd -0.80553  0.903
+     10   beta  P3-3rd -0.86329  0.900
+Second IE = 21.92 eV to the doublet dication from P3-3rd theory.
+Estimated VIE2 = 35.01 eV from (P3-3rd + P3-3rd) theory.
+
+>>> Reading file no2_cc.out <<<
+CCSD(T) = -204.800213 for neutral molecule
+
+>>> Reading file no2_cc1hi.out <<<
+CCSD(T) = -204.328089 for triplet ion
+
+>>> Reading file no2_cc1lo.out <<<
+CCSD(T) = -204.394237 for singlet ion
+
+>>> Reading file no2_cc2hi.out <<<
+CCSD(T) = -203.458357 for quartet dication
+
+>>> Reading file no2_cc2lo.out <<<
+CCSD(T) = -203.529021 for doublet dication
+
+VIE = 11.05 eV to singlet cation from CCSD(T)
+*** Warning: Large difference of -0.84 eV between CCSD(T) and P3-3rd VIE values ***
+VIE2 = 34.59 eV to doublet dication from CCSD(T)
+Taking binding energies from EPT calculation.
+Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
+Taking threshold energy from CCSD(T) calculation.
+#MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
+1	562.72	794.77	4	1	Yes	none	Koopmans
+3a	432.12	602.12	1	1	Yes	none	Koopmans
+3b	431.50	602.73	1	1	Yes	none	Koopmans
+4a	45.77	72.80	1	1	Yes	none	Koopmans
+4b	44.59	71.13	1	1	Yes	none	Koopmans
+5a	40.88	79.26	1	1	Yes	none	Koopmans
+5b	39.73	77.42	1	1	Yes	none	Koopmans
+6a	22.83	79.26	1	1	No	none	P3-3rd
+6b	22.05	81.32	1	1	No	none	P3-3rd
+7a	19.92	59.48	1	1	No	none	P3-3rd
+7b	19.41	71.79	1	1	No	none	P3-3rd
+8a	19.89	72.05	1	1	No	none	P3-3rd
+8b	18.59	51.06	1	1	No	none	P3-3rd
+9a	19.05	51.26	1	1	No	none	P3-3rd
+9b	18.14	51.49	1	1	No	none	P3-3rd
+10a	14.27	72.09	1	1	No	none	P3-3rd
+10b	13.71	64.73	1	1	No	none	P3-3rd
+11a	13.90	65.19	1	1	No	none	P3-3rd
+11b	13.09	65.61	1	1	No	none	P3-3rd
+12a	11.05	75.76	1	1	No	none	CCSD(T)
+
+BUN data file no2.bun written and closed.
