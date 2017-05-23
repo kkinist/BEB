@@ -2,6 +2,7 @@
 #
 # Create Gaussian09 input files needed for BEB calculation on a neutral target.
 # Basic method:  G. E. Scott and K. K. Irikura, Surf. Interf. Anal. 37, 973-977 (2005)
+#     (DOI: 10.1002/sia.2091)
 #
 # BEB is defined for neutral and singly-positive targets but only neutrals are
 #   handled by this software.  
@@ -53,6 +54,7 @@
 #   cef4.inp (singlet; f-element; symmetry)
 #   thf3.inp (doublet; 5f; symmetry)
 #   Li.inp (atom with one valence electron--pathological case with manual workaround)
+#       --suggested by Prof. K. N. Joshipura (Sardar Patel Univ.)
 #
 import sys
 import os
@@ -463,26 +465,29 @@ nalp -= ncore   # number of valence alpha electrons
 nbet -= ncore
 if mult > 1:
     fgjf.write('1 {:d} 1 {:d}\n\n'.format(nalp, nbet))
-    #fgjf.write( "1 %d 1 %d\n\n" % (nalp, nbet) )
 else:
     fgjf.write('1 {:d} {:d} {:d}\n\n'.format(nalp, nbet, nbet))
-    #fgjf.write( "1 %d %d %d\n\n" % (nalp, nbet, nbet) )
 fgjf.close()
 directive_ept = directive
 update_log()
 #
-# For ions, assume minimal values for 'high' and 'low' spin.
+# For ions, assume 'high' and 'low' spin value close to neutral.
 # [0] is for even spin multiplicities (i.e., odd number of electrons)
 # [1] is for odd spin multiplicities (i.e., even number of electrons)
 ion_mult = [{}] * 2
-ion_mult[0] = { 'hi' : 4, 'lo' : 2 }
-ion_mult[1] = { 'hi' : 3, 'lo' : 1 }
+if mult > 1:
+    ion_mult[0] = { 'hi' : mult+1, 'lo' : mult-1 }  # for cation
+else:
+    ion_mult[0] = { 'hi' : 4, 'lo' : 2 }
+if mult > 2:
+    ion_mult[1] = { 'hi' : mult, 'lo' : mult-2 }  # for dication
+else:
+    ion_mult[1] = { 'hi' : mult+2, 'lo' : mult }
 #
 # create input file for EPT VIE2 (step 5)
 #
-i = (mult + 2) % 2  # for +2 ion
-# cation multiplicity must be between dication options
-ref_mult = (ion_mult[i]['hi'] + ion_mult[i]['lo']) // 2
+# reference cation multiplicity must be between dication options
+ref_mult = (ion_mult[1]['hi'] + ion_mult[1]['lo']) // 2
 step = 5
 fgjf, fname = newfile(froot, filext[step])
 basis, nopp, basdescr = specify_basis( elem, step )
@@ -522,8 +527,7 @@ basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
 directive_ch = directive.rstrip() + ' guess=check\n'  # avoid excited states
 fgjf.write( header + directive_ch + comment )
-i = (mult + 1) % 2
-fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
+fgjf.write('1 {:d}\n\n'.format(ion_mult[0]['hi']) + basis)
 fgjf.close()
 update_log()
 #
@@ -535,8 +539,7 @@ basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
 # not using 'guess=check' here:  it gave a bad result for CS molecule
 fgjf.write( header + directive + comment )
-i = (mult + 1) % 2
-fgjf.write('1 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
+fgjf.write('1 {:d}\n\n'.format(ion_mult[0]['lo']) + basis)
 fgjf.close()
 update_log()
 #
@@ -547,8 +550,7 @@ fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive_ch + comment )
-i = (mult + 2) % 2
-fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['hi']) + basis)
+fgjf.write('2 {:d}\n\n'.format(ion_mult[1]['hi']) + basis)
 fgjf.close()
 update_log()
 #
@@ -559,8 +561,7 @@ fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
 fgjf.write( header + directive + comment )  # no 'guess=check' for low-spin
-i = (mult + 2) % 2
-fgjf.write('2 {:d}\n\n'.format(ion_mult[i]['lo']) + basis)
+fgjf.write('2 {:d}\n\n'.format(ion_mult[1]['lo']) + basis)
 fgjf.close()
 update_log()
 #

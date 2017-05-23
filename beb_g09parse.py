@@ -160,14 +160,13 @@ def special_n(fgau, Nthresh):
         elem = group['Elem'].iloc[0]
         nstart = starting_n(Lval, ppe[iatno])
         degen = L_degeneracy(Lval)
-        # the ECP only removes (radial) nodes if it replaces an inner shell of the same L
-        if nstart == starting_n(Lval, 0):
-            # this is the starting 'n' you'd have without an ECP, so it may be 'special'
+        if ppe[iatno] == 0:
+        #if nstart == starting_n(Lval, 0) and ppe[iatno] == 0:
             # routine 'assign_n' determines the values of n
             nvals = group.apply(lambda row: assign_n(row['Contrib'], row['Cumul'], degen, nstart), axis=1)
             df_occ['n'].update(nvals)
         else:
-            # some radial nodes have been removed, so this AO is not 'special'
+            # this atom has an ECP, so this AO is not 'special'
             pass
     # For each MO, see if it is dominated by one n.  If so, report that n.
     gmo = df_occ.groupby(by=['MO'])
@@ -369,6 +368,11 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         print('Crude VIE = {:.2f} eV to {:s} cation.'.format(VIE_pp, spinname(mult_pp)))
         ecp = True
     if suff == 'ept1':
+        # get electron counts for neutral reference
+        eneut = read_g09_electrons(fgau).iloc[0]
+        nalpneut = eneut.Alpha
+        nbetneut = eneut.Beta
+        mult_neutref = nalpneut - nbetneut + 1  # the spin mult used for the neutral reference in the EPT1 calc
         # extract correlated orbital energies (negative of binding energies)
         minPS = 0.75
         ept = read_best_ept(fgau, minPS=minPS)
@@ -382,8 +386,8 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         # infer cation ground state
         VIE_ept, iespin, VIE_method = weakest_binding(ept)
         mult_ion, nalp_ion, nbet_ion = ion_multiplicity(nalp, nbet, iespin)
-        print('VIE = {:.2f} eV to the {:s} cation from {:s} theory.'.format(VIE_ept,
-            spinname(mult_ion), VIE_method))
+        print('VIE = {:.2f} eV from the {:s} neutral to the {:s} cation from {:s} theory.'.format(VIE_ept,
+            spinname(mult_neutref), spinname(mult_ion), VIE_method))
         if abs(VIE_ept - VIE) > 1.5:
             # discrepancy between VIE values; 
             #   maybe EPT calculation has wrong number of orbitals
@@ -421,10 +425,11 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
                         ept.loc[idx, 'Orbital'] = momap_ept1[imo]
                 print(ept[['MO', 'Energy', 'Method', 'PS']].to_string(index=False))
     if suff == 'ept2':
-        # get electron counts for cation
+        # get electron counts for cation reference
         ecation = read_g09_electrons(fgau).iloc[0]
         nalpion = ecation.Alpha
         nbetion = ecation.Beta
+        mult_ionref = nalpion - nbetion + 1  # the spin multiplicity used for the +1 reference state
         # find ground state of (vertical) dication and (VIE2 - VIE) energy
         ept2 = read_best_ept(fgau, minPS=minPS)
         print('(minimum acceptable pole strength = {:.2f})'.format(minPS))
@@ -432,25 +437,32 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         # extract molecular ionization energy
         IEcat, ie2spin, ie2meth = weakest_binding(ept2)
         mult_dicat, nalpdbl, nbetdbl = ion_multiplicity(nalpion, nbetion, ie2spin)
-        print('Second IE = {:.2f} eV to the {:s} dication from {:s} theory.'.format(IEcat,
-            spinname(mult_dicat), ie2meth))
+        print('Second IE = {:.2f} eV from the {:s} cation to the {:s} dication from {:s} theory.'.format(IEcat,
+            spinname(mult_ionref), spinname(mult_dicat), ie2meth))
         # infer double-ionization threshold, VIE2
         # was this calculation referenced to the ground state of the ion?
-        if mult_ion == nalpion - nbetion + 1:
-            # yes
+        if mult_ionref == mult_ion:
+            # yes, the reference is the same multiplicity found in the EPT1 step
             VIE2_ept = VIE + IEcat
             VIE2 = VIE2_ept
             VIE2_method = '({:s} + {:s})'.format(VIE_method, ie2meth)
         else:
-            # no, it was referenced to an excited state; it should only be too high by S=1
-            if mult_ion == nalpion - nbetion - 1:
-                # was high-spin; choose the highest beta orbital energy from ept1
-                VIE_exc, iespin, exc_method = weakest_binding(ept.loc[ept['Spin'] == 'beta'])
+            # no, it was referenced to an excited state
+            if abs(mult_ionref - mult_neutref) > 1:
+                # this reference muliplicity could not be found in the EPT1 step
+                print('--- I am confused about the EPT spin states to combine for VIE2 ---')
+                print('Try re-running with reference cation spin multiplicity = {:d}'.format(mult_ion))
+            else:
+                if mult_ionref == mult_neutref - 1:
+                    # reference was the low-spin result from EPT1; get that energy
+                    targspin = 'alpha'
+                if mult_ionref == mult_neutref + 1:
+                    # get the high-spin EPT1 energy
+                    targspin = 'beta'
+                VIE_exc, iespin, exc_method = weakest_binding(ept.loc[ept['Spin'] == targspin])
                 VIE2_ept = VIE_exc + IEcat
                 VIE2 = VIE2_ept
                 VIE2_method = '({:s} + {:s})'.format(exc_method, ie2meth)
-            else:
-                print('--- I am confused about the EPT spin states to combine for VIE2 ---')
         print('Estimated VIE2 = {:.2f} eV from {:s} theory.'.format(VIE2, VIE2_method))
     if re.match('cc\S*', suff):
         # one of the CCSD(T) calculations
