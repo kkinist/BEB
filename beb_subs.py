@@ -508,11 +508,25 @@ def read_g09_ept(fhandl):
     nppe = sum(nppe.values())  # the total number of electrons replaced
     pporb = nppe // 2  # the number of core orbitals replaced
     block = ''  # either 'OVGF' or 'P3'
+    inEPT = False  # flag to indicate that this is EPT/OVGF, if in a multi-step output file
+    regEPT = re.compile(r'\s?#.*(EPT|OVGF)', re.IGNORECASE)
+    regcpu = re.compile(r'Job cpu time:')  # signals the end of a computational step
     while True:
         line = fhandl.readline()
         if not line:
             break
         lineno += 1
+        if not inEPT:
+            # we are not yet reading the results of EPT/OVGF
+            m = regEPT.match(line)
+            if m:
+                # yes, we found the relevant calculation
+                inEPT = True
+            continue
+        # we reach here only if within an EPT/OVGF calculation
+        if regcpu.search(line):
+            # this is the end of the calculation
+            break
         if ncore < 0:
             m = regncore.match(line)
             if m:

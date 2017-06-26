@@ -12,8 +12,9 @@
 #   line 1: charge, spin-multiplicity [integers]
 #   next: element symbol, cartesian triple [one atom per line]
 # 
-# Command-line arguments can be used to specify memory and number of processors:
-#   beb_g09build.py <input file name> -m<Mwords> -n<nprocs>
+# Command-line arguments can be used to specify memory, number of processors,
+# and whether to precede all post-HF steps with HF stability following:
+#   beb_g09build.py <input file name> -m<Mwords> -n<nprocs> [stabilize]
 #   (1 Mword = 8 Mbyte)
 #
 # The resulting Gaussian input files (*.gjf) can be run using the script
@@ -30,8 +31,8 @@
 ############
 #
 # Software citation: 
-#   BEB automation software, Karl K. Irikura, National Institute of Standards
-#   and Technology (2017). 
+#   Irikura, K. K. BEB automation software; vers. 2017-06-26, National Institute of Standards
+#   and Technology: Gaithersburg, MD, 2017; https://github.com/kkinist/BEB. 
 #
 # DISCLAIMER:  
 #   Certain commercial software is identified in order to specify procedures
@@ -328,6 +329,20 @@ def update_log():
         s = 'd-functions used in sets of 6'
         flog.write('{:s}\n'.format(s))
     return
+##
+def stability_prep(directive, charge, mult):
+    # uses globals
+    dir_stabil = '# HF/GEN geom=check guess=check scf=xqc stable=opt' + dir_terminus
+    dir_comment = '\nHF stabilization to precede BEB step {:d}\n\n'.format(step)
+    fgjf.write( header + dir_stabil + dir_comment )
+    fgjf.write( '{:d} {:d}\n\n'.format(charge, mult) + basis )
+    fgjf.write( '--Link1--\n' )
+    regcheck = re.compile('guess=check')
+    if not regcheck.search(directive):
+        # pointless without this
+        directive = directive.rstrip() + ' guess=check\n'
+    return directive
+##
 #
 # MAIN
 #
@@ -337,7 +352,7 @@ def update_log():
 #
 # read command-line input
 if len(sys.argv) < 2:
-    sys.exit( 'Usage:  beb_g09build.py <inputfile.inp> [-n<cpus>] [-m<Mwords>]' )
+    sys.exit( 'Usage:  beb_g09build.py <inputfile.inp> [-n<cpus>] [-m<Mwords>] [stabilize]' )
 try:
     finp = open( sys.argv[1] )
 except:
@@ -346,15 +361,22 @@ except:
 froot = os.path.splitext( sys.argv[1] )[0]
 nprocs = 1  # default value
 mem = 1000   # default value (Mwords)
+stabilize = False  # flag to prepare for post-HF steps with 'stable=opt'
 for arg in sys.argv:
     # nprocs specification leads with '-n'
     m = re.match(r'-n(\d+)', arg)
     if m:
+        # set number of processors
         nprocs = int(m.group(1))
     # memory specification leads with '-m' for Mwords
     m = re.match(r'-m(\d+)', arg)
     if m:
+        # set memory in Mw
         mem = int(m.group(1))
+    m = re.match(r'stabil', arg)
+    if m:
+        # use 'stable=opt' to prepare all post-HF calcuations
+        stabilize = True
 # read input file
 coords = finp.readlines()
 finp.close()
@@ -376,6 +398,8 @@ flog = open(fname_log, 'w')
 flog.write('Descriptions of the Gaussian calculations are below.\n')
 flog.write('See corresponding *.txt files for descriptions of ' \
     'non-standard basis sets.\n')
+if stabilize:
+    flog.write('EPT and CCSD(T) calculations are preceded by HF stabilization.\n')
 #
 # filename extensions for each computational job step
 filext = ['', 'opt', 'bu', 'bupp', 'ept1', 'ept2',
@@ -447,10 +471,16 @@ fgjf, fname = newfile(froot, filext[step])
 basis, nopp, basdescr = specify_basis( elem, step )
 directive = '# EPT(OVGF+P3,ReadOrbitals)/GEN gfinput geom=check guess=check scf=xqc pop(all,thresh=1)'
 if need_ecp( basis ):
-    directive += ' pseudo=read\n'
+    dir_terminus = ' pseudo=read\n'
 else:
-    directive += '\n'
+    dir_terminus = '\n'
+directive += dir_terminus
 comment = '\nBEB step {:d}: EPT B for {:s}\n\n'.format(step, froot)
+regcheck = re.compile('guess=check')
+if stabilize:
+    # all EPT and CCSD(T) calculations will be preceded by a 'stable=opt' job
+    #   of course, they must also include 'guess=check' in the following calculation
+    directive = stability_prep(directive, 0, mult)
 fgjf.write( header + directive + comment )
 fgjf.write( coords[0] + '\n' + basis )
 # figure out the orbital window to get all valence orbs
@@ -492,6 +522,8 @@ step = 5
 fgjf, fname = newfile(froot, filext[step])
 basis, nopp, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: cation EPT for VIE2 for {:s}\n\n'.format(step, froot)
+if stabilize:
+    directive_ept = stability_prep(directive_ept, 1, ref_mult)
 fgjf.write( header + directive_ept + comment )
 fgjf.write('1 {:d}\n'.format(ref_mult) + '\n' + basis )
 # figure out the orbital window to get the HOMO(s)
@@ -510,10 +542,13 @@ fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 directive = '# CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc'
 if need_ecp( basis ):
-    directive += ' pseudo=read\n'
+    dir_terminus = ' pseudo=read\n'
 else:
-    directive += '\n'
+    dir_terminus = '\n'
+directive += dir_terminus
 comment = '\nBEB step {:d}: CCSD(T) for neutral {:s}\n\n'.format(step, froot)
+if stabilize:
+    directive = stability_prep(directive, 0, mult)
 fgjf.write( header + directive + comment )
 fgjf.write( coords[0] + '\n' + basis )
 fgjf.close()
@@ -525,7 +560,11 @@ step = 7
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
-directive_ch = directive.rstrip() + ' guess=check\n'  # avoid excited states
+# try to avoid excited states by using 'guess=check'
+if not regcheck.search(directive):
+    directive_ch = directive.rstrip() + ' guess=check\n'
+if stabilize:
+    directive_ch = stability_prep(directive, 1, ion_mult[0]['hi'])
 fgjf.write( header + directive_ch + comment )
 fgjf.write('1 {:d}\n\n'.format(ion_mult[0]['hi']) + basis)
 fgjf.close()
@@ -537,7 +576,11 @@ step = 8
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for cation of {:s}\n\n'.format(step, froot)
-# not using 'guess=check' here:  it gave a bad result for CS molecule
+if stabilize:
+    directive = stability_prep(directive, 1, ion_mult[0]['lo'])
+else:
+    # not using 'guess=check' here:  it gave a bad result for CS molecule
+    directive = directive.replace('guess=check', '')
 fgjf.write( header + directive + comment )
 fgjf.write('1 {:d}\n\n'.format(ion_mult[0]['lo']) + basis)
 fgjf.close()
@@ -549,6 +592,8 @@ step = 9
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: high-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
+if stabilize:
+    directive_ch = stability_prep(directive_ch, 2, ion_mult[1]['hi'])
 fgjf.write( header + directive_ch + comment )
 fgjf.write('2 {:d}\n\n'.format(ion_mult[1]['hi']) + basis)
 fgjf.close()
@@ -560,6 +605,11 @@ step = 10
 fgjf, fname = newfile(froot, filext[step])
 basis, basdescr = specify_basis( elem, step )
 comment = '\nBEB step {:d}: low-spin CCSD(T) for dication of {:s}\n\n'.format(step, froot)
+if stabilize:
+    directive = stability_prep(directive, 2, ion_mult[1]['lo'])
+else:
+    # not using 'guess=check' for low spin
+    directive = directive.replace('guess=check', '')
 fgjf.write( header + directive + comment )  # no 'guess=check' for low-spin
 fgjf.write('2 {:d}\n\n'.format(ion_mult[1]['lo']) + basis)
 fgjf.close()

@@ -1,7 +1,7 @@
  Entering Gaussian System, Link 0=g09
  Initial command:
- /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-17452.inp" -scrdir="/wrk/irikura/"
- Entering Link 1 = /usr/local/apps/g09/l1.exe PID=     17454.
+ /usr/local/apps/g09/l1.exe "/wrk/irikura/Gau-3768.inp" -scrdir="/wrk/irikura/"
+ Entering Link 1 = /usr/local/apps/g09/l1.exe PID=      3770.
   
  Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2013,
             Gaussian, Inc.  All Rights Reserved.
@@ -74,12 +74,12 @@
  
  ******************************************
  Gaussian 09:  ES64L-G09RevD.01 24-Apr-2013
-                18-May-2017 
+                25-May-2017 
  ******************************************
  %chk=ZnEt2.chk
- %nprocs=8
- Will use up to    8 processors via shared memory.
- %mem=2000mw
+ %nprocs=6
+ Will use up to    6 processors via shared memory.
+ %mem=4000mw
  ---------------------------------------
  # B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
  ---------------------------------------
@@ -511,7 +511,7 @@
                  (A) (A) (B) (B) (A) (A) (B) (B) (A) (B) (A) (B)
                  (A) (B) (A) (A) (B) (A) (B) (A) (B) (A) (B) (A)
  The electronic state of the initial guess is 1-A.
- Keep R1 ints in memory in symmetry-blocked form, NReq=34610383.
+ Keep R1 ints in memory in symmetry-blocked form, NReq=34610145.
  Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
@@ -700,7 +700,7 @@
      Eigenvalues ---    0.21894   0.21907   0.28533   0.28533   0.33697
      Eigenvalues ---    0.33697   0.33707   0.33707   0.33767   0.33767
      Eigenvalues ---    0.33965   0.33965   0.33966   0.33966
- RFO step:  Lambda=-1.72912061D-08 EMin= 2.30000000D-03
+ RFO step:  Lambda=-1.72912060D-08 EMin= 2.30000000D-03
  Linear search not attempted -- first point.
  Iteration  1 RMS(Cart)=  0.00020323 RMS(Int)=  0.00000002
  Iteration  2 RMS(Cart)=  0.00000002 RMS(Int)=  0.00000000
@@ -941,7 +941,7 @@
      15          1           0       -1.727459   -2.287037   -1.226622
  ---------------------------------------------------------------------
  Rotational constants (GHZ):     14.6723335      1.3797086      1.3187032
- 1\1\GINC-GAMBA\FOpt\RB3LYP\Gen\C4H10Zn1\IRIKURA\18-May-2017\0\\# B3LYP
+ 1\1\GINC-GAMBA\FOpt\RB3LYP\Gen\C4H10Zn1\IRIKURA\25-May-2017\0\\# B3LYP
  /GEN gfinput OPT FREQ scf=xqc 6D\\BEB step 1: geom and freqs for ZnEt2
  \\0,1\Zn,0.,0.,0.092059\C,0.,1.933945,0.090127\C,1.360973,2.577345,-0.
  233751\H,-0.346594,2.294125,1.069841\H,-0.75069,2.294418,-0.628225\H,1
@@ -954,12 +954,15 @@
  2.6908702,1.7200667,-0.6116289,0.,0.\PG=C02 [C2(Zn1),X(C4H10)]\\@
 
 
- A politician is a person who can make waves and then
- make you think he's the only one who can save the ship.
- -- Ivern Ball
- Job cpu time:       0 days  0 hours  0 minutes 38.6 seconds.
+ ASKING FOR EFFICIENCY AND ADAPTABILITY IN THE SAME PROGRAM IS LIKE
+ ASKING FOR A BEAUTIFUL AND MODEST WIFE ...
+ WE'LL PROBABLY HAVE TO SETTLE FOR ONE OR THE OTHER.
+
+             -- THE PSYCHOLOGY OF COMPUTER PROGRAMMING
+                GERALD M. WEINBERG
+ Job cpu time:       0 days  0 hours  0 minutes 28.6 seconds.
  File lengths (MBytes):  RWF=      7 Int=      0 D2E=      0 Chk=      2 Scr=      1
- Normal termination of Gaussian 09 at Thu May 18 11:35:18 2017.
+ Normal termination of Gaussian 09 at Thu May 25 16:01:01 2017.
  Link1:  Proceeding to internal job step number  2.
  ------------------------------------------------------------------
  #N Geom=AllCheck Guess=TCheck SCRF=Check GenChk RB3LYP/ChkBas Freq
@@ -1379,7 +1382,7 @@
                  (A) (B) (B) (A) (B) (A) (B) (A) (A) (B) (B) (B)
                  (A) (A) (B) (B) (A) (A) (B) (B) (A) (B) (A) (B)
                  (A) (B) (A) (A) (B) (A) (B) (A) (B) (A) (B) (A)
- Keep R1 ints in memory in symmetry-blocked form, NReq=34610383.
+ Keep R1 ints in memory in symmetry-blocked form, NReq=34610145.
  Requested convergence on RMS density matrix=1.00D-08 within  64 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
@@ -1416,7 +1419,7 @@
      20 vectors produced by pass  5 Test12= 9.96D-15 3.70D-09 XBig12= 4.31D-08 3.13D-05.
       7 vectors produced by pass  6 Test12= 9.96D-15 3.70D-09 XBig12= 4.86D-11 1.24D-06.
       3 vectors produced by pass  7 Test12= 9.96D-15 3.70D-09 XBig12= 6.79D-14 3.61D-08.
- InvSVY:  IOpt=1 It=  1 EMax= 4.44D-15
+ InvSVY:  IOpt=1 It=  1 EMax= 5.33D-15
  Solved reduced A of dimension   165 with    27 vectors.
  Isotropic polarizability for W=    0.000000       67.01 Bohr**3.
  End of Minotr F.D. properties file   721 does not exist.
@@ -1584,16 +1587,16 @@
  ZZZY=              0.0000 XXYY=           -222.3400 XXZZ=            -53.7476 YYZZ=           -184.5197
  XXYZ=              0.0000 YYXZ=              0.0000 ZZXY=            -54.5389
  N-N= 3.207392817687D+02 E-N=-5.265634508821D+03  KE= 1.932936756778D+03
- Symmetry A    KE= 1.415504733908D+03
+ Symmetry A    KE= 1.415504733909D+03
  Symmetry B    KE= 5.174320228699D+02
   Exact polarizability:  60.033   8.368  85.676   0.000   0.000  55.308
  Approx polarizability:  81.152   3.621 101.959   0.000   0.000  80.873
  Calling FoFJK, ICntrl=    100127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 0 NMat=1 NMatS=1 NMatT=0.
  Full mass-weighted force constant matrix:
- Low frequencies ---   -6.7657   -3.4644    0.0048    0.0065    0.0170   18.4882
+ Low frequencies ---   -6.7657   -3.4644   -0.0103   -0.0099   -0.0059   18.4882
  Low frequencies ---   20.5335   56.8768   89.5803
  Diagonal vibrational polarizability:
-        6.1459925       4.9223503       8.5705984
+        6.1459926       4.9223503       8.5705993
  Harmonic frequencies (cm**-1), IR intensities (KM/Mole), Raman scattering
  activities (A**4/AMU), depolarization ratios for plane and unpolarized
  incident light, reduced masses (AMU), force constants (mDyne/A),
@@ -1957,7 +1960,7 @@
                        Q            Log10(Q)             Ln(Q)
  Total Bot       0.906780D-44        -44.042498       -101.411600
  Total V=0       0.410303D+16         15.613105         35.950502
- Vib (Bot)       0.203819D-56        -56.690755       -130.535287
+ Vib (Bot)       0.203819D-56        -56.690755       -130.535286
  Vib (Bot)    1  0.101990D+02          1.008556          2.322285
  Vib (Bot)    2  0.363987D+01          0.561085          1.291947
  Vib (Bot)    3  0.229557D+01          0.360891          0.830981
@@ -2104,7 +2107,7 @@
  Predicted change in Energy=-2.647861D-08
  GradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGrad
 
- 1\1\GINC-GAMBA\Freq\RB3LYP\Gen\C4H10Zn1\IRIKURA\18-May-2017\0\\#N Geom
+ 1\1\GINC-GAMBA\Freq\RB3LYP\Gen\C4H10Zn1\IRIKURA\25-May-2017\0\\#N Geom
  =AllCheck Guess=TCheck SCRF=Check GenChk RB3LYP/ChkBas Freq\\BEB step 
  1: geom and freqs for ZnEt2\\0,1\Zn,0.,0.,0.092059\C,0.,1.933945,0.090
  127\C,1.360973,2.577345,-0.233751\H,-0.346594,2.294125,1.069841\H,-0.7
@@ -2316,9 +2319,7 @@
  \@
 
 
- REFRAIN FROM ILLUSIONS, INSIST ON WORK AND NOT WORDS,
- PATIENTLY SEEK DIVINE AND SCIENTIFIC TRUTH.
- LAST WORDS OF MARIA MENDELEEVA TO HER SON DMITRI, C. 1850
- Job cpu time:       0 days  0 hours  2 minutes 17.3 seconds.
+ IF IT'S NOT TRUE, IT'S WELL INVENTED -- DANTE
+ Job cpu time:       0 days  0 hours  1 minutes 53.2 seconds.
  File lengths (MBytes):  RWF=     21 Int=      0 D2E=      0 Chk=      2 Scr=      1
- Normal termination of Gaussian 09 at Thu May 18 11:35:35 2017.
+ Normal termination of Gaussian 09 at Thu May 25 16:01:21 2017.

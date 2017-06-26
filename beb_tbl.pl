@@ -5,7 +5,9 @@
 #   'dbl' ("yes" for dbl ionization, default is no), 'special' (for special treatment),
 #   'remarks' (for comments)
 # comment lines in data file begin with '#'
-# 6/9/2000 KKI
+# Karl Irikura, NIST
+#
+# First version:  6/9/2000 KKI
 # Add optional 2nd cmd-line arg for single incident KE (6/15/00)
 # add numerical derivative, turned on by the flag $deriv inside the script (7/15/03)
 # add peak value (10/15/04)

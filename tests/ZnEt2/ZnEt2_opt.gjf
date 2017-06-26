@@ -1,6 +1,6 @@
 %chk=ZnEt2.chk
-%nprocs=8
-%mem=2000mw
+%nprocs=6
+%mem=4000mw
 # B3LYP/GEN gfinput OPT FREQ scf=xqc 6D
 
 BEB step 1: geom and freqs for ZnEt2

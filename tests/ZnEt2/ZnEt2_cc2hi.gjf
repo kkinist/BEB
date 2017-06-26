@@ -1,6 +1,23 @@
 %chk=ZnEt2.chk
-%nprocs=8
-%mem=2000mw
+%nprocs=6
+%mem=4000mw
+# HF/GEN geom=check guess=check scf=xqc stable=opt
+
+HF stabilization to precede BEB step 9
+
+2 3
+
+C H 0
+cc-pVTZ
+****
+Zn 0
+cc-pVTZ
+****
+
+--Link1--
+%chk=ZnEt2.chk
+%nprocs=6
+%mem=4000mw
 # CCSD(T,maxcyc=100)/GEN gfinput geom=check scf=xqc guess=check
 
 BEB step 9: high-spin CCSD(T) for dication of ZnEt2

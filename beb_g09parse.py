@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # Read G09 output files and create BUN data file for BEB calculation
 # Expected files are those created by beb_g09build.py
-# Karl Irikura, new version started Sept. 2016
+# Karl Irikura, NIST 
 #
 import sys
 import os
@@ -635,11 +635,11 @@ BUtable['KE'] = BUtable['KE'].apply(hartree_eV)
 BUtable.ix[BUtable['Energy'] > VIE2, 'DblIon'] = 'Yes'
 # combine any degenerate orbitals before installing CCSD(T) binding energy
 if True:
-    # [You can change the preceding test to 'False' if you don't want degenerate
+    # [Change the test on the preceding line to 'False' if you don't want degenerate
     #   orbitals combined.]
     # Consolidate degenerate orbitals
     # [You can change the thresholds on the following line]
-    degen_thresh = (0.05, 0.10)  # (eV, percent)
+    degen_thresh = (0.05, 0.10)  # (eV, percent) orbital energy differences considered negligible
     if degen_thresh[0] == 0:
         print('Combining any exactly degenerate orbitals')
     else:

@@ -56,10 +56,10 @@ MO     Energy         KE Special
 15  -0.991182   1.260299    none
 16  -0.831079   3.096287    none
 17  -0.809265   1.259604    none
-18  -0.776668  11.245779      3d
-19  -0.776529  11.250660      3d
-20  -0.773528  10.939520      3d
-21  -0.772443  10.961102      3d
+18  -0.776668  11.245779    none
+19  -0.776529  11.250660    none
+20  -0.773528  10.939520    none
+21  -0.772443  10.961102    none
 22  -0.743525   8.538683    none
 23  -0.581780   0.880206    none
 24  -0.577345   1.063479    none
@@ -97,21 +97,21 @@ MO   Energy    Method     PS
 30 -0.43302    P3-3rd  0.911
 31 -0.37766    P3-3rd  0.910
 32 -0.31356    P3-3rd  0.903
-VIE = 8.53 eV to the doublet cation from P3-3rd theory.
+VIE = 8.53 eV from the singlet neutral to the doublet cation from P3-3rd theory.
 
 >>> Reading file ZnEt2_ept2.out <<<
 (minimum acceptable pole strength = 0.75)
 Orbital   Spin  Method   Energy     PS
      32  alpha  P3-3rd -0.55301  0.833
      31   beta  P3-3rd -0.55043  0.928
-Second IE = 14.98 eV to the triplet dication from P3-3rd theory.
+Second IE = 14.98 eV from the doublet cation to the triplet dication from P3-3rd theory.
 Estimated VIE2 = 23.51 eV from (P3-3rd + P3-3rd) theory.
 
 >>> Reading file ZnEt2_cc.out <<<
 CCSD(T) = -1936.459097 for neutral molecule
 
 >>> Reading file ZnEt2_cc1hi.out <<<
-CCSD(T) = -1935.900826 for quartet ion
+CCSD(T) = -1935.909100 for quartet ion
 
 >>> Reading file ZnEt2_cc1lo.out <<<
 CCSD(T) = -1936.139171 for doublet ion
@@ -120,10 +120,10 @@ CCSD(T) = -1936.139171 for doublet ion
 CCSD(T) = -1935.585060 for triplet dication
 
 >>> Reading file ZnEt2_cc2lo.out <<<
-CCSD(T) = -1935.593173 for singlet dication
+CCSD(T) = -1935.592691 for singlet dication
 
 VIE = 8.71 eV to doublet cation from CCSD(T)
-VIE2 = 23.56 eV to singlet dication from CCSD(T)
+VIE2 = 23.58 eV to singlet dication from CCSD(T)
 Taking kinetic energies from ECP calculation.
 Taking binding energies from EPT calculation.
 Combining any nearly degenerate orbitals: threshold = (0.05 eV or 0.10%)
@@ -141,10 +141,10 @@ Taking threshold energy from CCSD(T) calculation.
 15	26.96	34.29	2	1	Yes	none	B Koopmans; U ECP
 16	22.70	84.25	2	1	No	none	B Koopmans; U ECP
 17	19.57	34.28	2	1	No	none	B P3-3rd; U ECP
-18	19.26	306.01	2	1	No	3d	B P3-3rd; U ECP
-19	21.52	306.15	2	1	No	3d	B Koopmans; U ECP
-20	19.09	297.68	2	1	No	3d	B P3-3rd; U ECP
-21	21.40	298.27	2	1	No	3d	B Koopmans; U ECP
+18	19.26	306.01	2	1	No	none	B P3-3rd; U ECP
+19	21.52	306.15	2	1	No	none	B Koopmans; U ECP
+20	19.09	297.68	2	1	No	none	B P3-3rd; U ECP
+21	21.40	298.27	2	1	No	none	B Koopmans; U ECP
 22	18.27	232.35	2	1	No	none	B P3-3rd; U ECP
 23	14.60	23.95	2	1	No	none	B P3-3rd; U ECP
 24	14.48	28.94	2	1	No	none	B P3-3rd; U ECP

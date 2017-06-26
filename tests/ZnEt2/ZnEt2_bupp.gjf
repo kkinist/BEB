@@ -1,6 +1,6 @@
 %chk=ZnEt2.chk
-%nprocs=8
-%mem=2000mw
+%nprocs=6
+%mem=4000mw
 # HF/GEN gfinput geom=check IOP(6/81=3) pseudo=read scf=xqc pop(all,thresh=1)
 
 BEB step 3: pseudopotential B and U for ZnEt2

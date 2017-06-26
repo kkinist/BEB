@@ -1,6 +1,6 @@
 # Results from automated beb_g09build.py and beb_g09parse.py
 # Molecule is 'ZnEt2' (singlet C4H10Zn)
-# Double-ionization threshold = 23.56 eV from CCSD(T) (to singlet dication)
+# Double-ionization threshold = 23.58 eV from CCSD(T) (to singlet dication)
 #MO	B/eV	U/eV	N	Q	DblIon	Special	Remarks
 1	9613.90	11850.09	2	1	Yes	heavy_core	Koopmans
 2	1206.69	2272.43	2	1	Yes	heavy_core	Koopmans
@@ -14,10 +14,10 @@
 15	26.96	34.29	2	1	Yes	none	B Koopmans; U ECP
 16	22.70	84.25	2	1	No	none	B Koopmans; U ECP
 17	19.57	34.28	2	1	No	none	B P3-3rd; U ECP
-18	19.26	306.01	2	1	No	3d	B P3-3rd; U ECP
-19	21.52	306.15	2	1	No	3d	B Koopmans; U ECP
-20	19.09	297.68	2	1	No	3d	B P3-3rd; U ECP
-21	21.40	298.27	2	1	No	3d	B Koopmans; U ECP
+18	19.26	306.01	2	1	No	none	B P3-3rd; U ECP
+19	21.52	306.15	2	1	No	none	B Koopmans; U ECP
+20	19.09	297.68	2	1	No	none	B P3-3rd; U ECP
+21	21.40	298.27	2	1	No	none	B Koopmans; U ECP
 22	18.27	232.35	2	1	No	none	B P3-3rd; U ECP
 23	14.60	23.95	2	1	No	none	B P3-3rd; U ECP
 24	14.48	28.94	2	1	No	none	B P3-3rd; U ECP
