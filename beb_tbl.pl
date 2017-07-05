@@ -100,7 +100,7 @@ for ( $i = 0; $i < @t; $i++ ) {			# loop over incident energies
 	}
 }
 close OUTPUT_FILE;
-print "Numerical output written to file $fcsv\n";
+print "\nNumerical output written to file $fcsv\n";
 unless ( $just_one ) {
 	printf "\nPeak cross-section is %.3f at %.0f eV.\n", $xpeak, $tpeak;
 }
