@@ -11,6 +11,7 @@
 # Add optional 2nd cmd-line arg for single incident KE (6/15/00)
 # add numerical derivative, turned on by the flag $deriv inside the script (7/15/03)
 # add peak value (10/15/04)
+# send (energy, xsec) data to a file; add file suffix when missing (7/5/17)
 #
 $i = 0;
 $tmin = 9999.0;
@@ -18,7 +19,17 @@ $comment = "";
 $deriv = 0;	# flag to compute and print derivative
 $dt = 0.01;	# for numerical derivative
 ( $fname, $just_one, $details ) = @ARGV;
+if (! -f $fname) {
+    # try adding suffix ".bun"
+    print "*** File \"$fname\" not found: adding suffix \".bun\" ***\n";
+    $fname .= ".bun";
+}
 open( DATA_FILE, "<$fname" ) or die "Can't open data file $fname!\n";
+# create name for output file (energy, xsec), CSV
+$fcsv = $fname;
+$fcsv =~ s/\..*$//;
+$fcsv .= "_BEBxsec.csv";
+open( OUTPUT_FILE, ">$fcsv" ) or die "Failure creating BEB output file $fcsv\n";
 while ( <DATA_FILE> ) {
 	if ( /^#/ ) {
 		# comment line; append to $comment
@@ -77,6 +88,7 @@ for ( $i = 0; $i < @t; $i++ ) {			# loop over incident energies
         print "\n Energy (eV)\t ", ( $i ? "BEQ" : "BEB" ), " (A**2)\n";
     }
 	printf " %9.2f \t %7.3f", $t[$i], $sigma[$i];
+	printf OUTPUT_FILE "%.4f,%.4f\n", $t[$i], $sigma[$i];
 	if ( $deriv ) {
 		printf "\t%10.6f\n", $dsigma[$i];
 	} else {
@@ -87,6 +99,8 @@ for ( $i = 0; $i < @t; $i++ ) {			# loop over incident energies
 		$tpeak = $t[$i];
 	}
 }
+close OUTPUT_FILE;
+print "Numerical output written to file $fcsv\n";
 unless ( $just_one ) {
 	printf "\nPeak cross-section is %.3f at %.0f eV.\n", $xpeak, $tpeak;
 }
