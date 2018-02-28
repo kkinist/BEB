@@ -709,7 +709,7 @@ def read_g09_ept(fhandl):
         rowFrom = df[(df['Orbital'] == degenFrom) & (df['Spin'] == degenPair[i][0])]
         df = df.append(rowFrom, ignore_index=True)
         lastrow = len(df.index) - 1
-        df.set_value(lastrow, 'Orbital', degenTo[i])
+        df.iat[lastrow, df.columns.get_loc('Orbital')] = degenTo[i]
     if not (df.Spin == 'beta').any():
         # this is an RHF case; change spin labels to 'both'
         df.Spin = 'both'
@@ -735,7 +735,11 @@ def read_best_ept(fhandl, minPS=0.80):
     trust = ['P3-3', 'P3-2', 'OVGF', 'OVGF3', 'OVGF2']
     for meth in trust:
         col = '{:s} PS'.format(meth)     # label for columns with pole strengths
-        idxps = df.columns.get_loc(col)  # column number for pole strength
+        try:
+            idxps = df.columns.get_loc(col)  # column number for pole strength
+        except KeyError:
+            print('--No data for EPT method {:s}'.format(meth))
+            continue
         ecol = df.columns[idxps - 1]     # the corresonding energy
         choose = (df[col] > minPS) & (df['Method'] == 'Koopmans')
         df.ix[choose, 'Method'] = ecol
