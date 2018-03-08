@@ -161,9 +161,17 @@ def read_g09_postHF(fhandl):
             fpos.append(ccsd_mem[1])
             method.append('CCSD')
             energy.append(ccsd_mem[2])
-    data = list(zip(fline, fpos, method, energy))
     cols = ['line', 'byte', 'Method', 'Energy']
-    df = pd.DataFrame(data=data, columns=cols)
+    try:
+        data = list(zip(fline, fpos, method, energy))
+        df = pd.DataFrame(data=data, columns=cols)
+    except OverflowError:
+        # probably file.tell() returned a weird value 
+        # replace positions by NaN
+        print('*** OverflowError; replacing file positions by NaN')
+        dummypos = [np.nan] * len(fpos)
+        data = list(zip(fline, dummypos, method, energy))
+        df = pd.DataFrame(data=data, columns=cols)       
     fhandl.seek(byte_start) # restore file pointer to original position
     return df
 ##
