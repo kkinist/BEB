@@ -355,9 +355,12 @@ if len(sys.argv) < 2:
     sys.exit( 'Usage:  beb_g09build.py <inputfile.inp> [-n<cpus>] [-m<Mwords>] [stabilize]' )
 try:
     finp = open( sys.argv[1] )
-except:
+except FileNotFoundError:
     # assume user forgot file suffix, probably .inp
-    finp = open( sys.argv[1] + '.inp' )
+    try:
+        finp = open( sys.argv[1] + '.inp' )
+    except FileNotFoundError:
+        sys.exit('Unable to open either "{:s}" or "{:s}"!'.format(sys.argv[1], sys.argv[1]+'.inp'))
 froot = os.path.splitext( sys.argv[1] )[0]
 nprocs = 1  # default value
 mem = 1000   # default value (Mwords)
