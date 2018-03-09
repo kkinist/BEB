@@ -269,6 +269,11 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
     if suff == 'bu':
         # this is the only file that is essential to get a BEB result
         # extract stoichiometry, charge, and spin multiplicity
+        if subminimal_basis(fgau):
+            # less than minimal basis set (probably missing basis-set file)
+            # Abort!
+            sys.exit('Less than minimal basis set!\n'
+                     'Check for missing basis set (*.gbs) files.')
         df = read_g09_stoichiometry(fgau)
         stoich = df.iloc[0].Stoich
         elems = df.iloc[0].Elements

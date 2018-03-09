@@ -49,6 +49,11 @@ def read_g09_charge_mult(fhandl):
     fhandl.seek(byte_start) # restore file pointer to original position
     return df
 ##
+def subminimal_basis(fhandl):
+    # search for Gaussian warning; return whether found
+    toosmall = r'This is less than a minimal basis set!'
+    return ( toosmall in fhandl.read() )
+##
 def read_g09_stoichiometry(fhandl):
     # read stoichiometry string(s) and parse into a dict. Return a DataFrame:
     #   (1) line number, (2) byte number,
