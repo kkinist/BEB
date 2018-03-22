@@ -123,6 +123,9 @@ def merge_degenerate(df_orbs, thresh):
 ##
 def assign_n(contrib, cumul, degen, nmin):
     # assign the principal quantum number in Mulliken contributions of AOs to MOs
+    # it is assumed that there are no gaps (e.g., no Rydberg states)
+    # In case of mixed n, use the lower value unless the overflow is more than half
+    #   of the contribution.
     if contrib > 1:
         # avoid n-skipping by disallowing contributions > 1
         cumul -= contrib - 1
@@ -130,8 +133,12 @@ def assign_n(contrib, cumul, degen, nmin):
     i = int(a)
     if a == i:
         n = nmin + i - 1
-    else:
+    elif (a-i)*degen > contrib / 2:
+        # the overflow exceeds half the contribution; assign the higher value
         n = nmin + i
+    else:
+        # the overflow is not so large; assign the lower value
+        n = nmin + i - 1
     return int(n)
 ##
 def special_n(fgau, Nthresh):
@@ -161,7 +168,6 @@ def special_n(fgau, Nthresh):
         nstart = starting_n(Lval, ppe[iatno])
         degen = L_degeneracy(Lval)
         if ppe[iatno] == 0:
-        #if nstart == starting_n(Lval, 0) and ppe[iatno] == 0:
             # routine 'assign_n' determines the values of n
             nvals = group.apply(lambda row: assign_n(row['Contrib'], row['Cumul'], degen, nstart), axis=1)
             df_occ['n'].update(nvals)
@@ -336,8 +342,8 @@ for suff in 'opt bu bupp ept1 ept2 cc cc1hi cc1lo cc2hi cc2lo'.split():
         print('ECP (pseudopotential) replaced {:d} electrons.'.format(ppcore))
         bupp['Method'] = 'ECP'
         # Find any MOs that are dominated by high-n AOs
-        domlbl = special_n(fgau, specialThresh)
         bupp['Special'] = 'none'
+        domlbl = special_n(fgau, specialThresh)
         for mo in domlbl:
             if domlbl[mo]:
                 bupp.loc[bupp['MO'] == mo, 'Special'] = domlbl[mo]
