@@ -1,5 +1,5 @@
 # BEB
-Calculate electron-ionization total ionization cross sections for molecules.
+Calculate electron-ionization total ionization cross sections for molecules using Binary-Encounter-Bethe (BEB) theory.
 
 1.  Starting from simple coordinates, input files are generated for the Gaussian09 quantum chemistry program (G09). 
 You must have a license for G09 to get any results. 
